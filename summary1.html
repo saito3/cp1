@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=Shift_JIS">
@@ -9,542 +9,542 @@
 <BODY>
 <TABLE border="0" width="100%" bgcolor="#0080c0">
   <TR>
-    <TD WIDTH=100%><FONT size="5" color="#ffffff" face="�l�r �S�V�b�N"><B>�O�w���̂܂Ƃ�</B></FONT></TD>
+    <TD WIDTH=100%><FONT size="5" color="#ffffff" face="ＭＳ ゴシック"><B>前学期のまとめ</B></FONT></TD>
   </TR>
 </TABLE>
 <P><BR></P>
-<A href="#��P��">��P�� �C���g���_�N�V�����A�����񂨂�ьv�Z���ʂ̉�ʕ\��</A><BR>
-<A href="#��Q��">��Q�� ���l�̒萔����ѕϐ��̉�ʕ\���A�L�[�{�[�h����</A><BR>
-<A href="#��R��">��R�� �����̒萔����ѕϐ��A�ϐ��̎g�����S��</A><BR>
-<A href="#��S��">��S�� �������䕶(������)�A�Z�p�֐��̎g����</A><BR>
-<A href="#��T��">��T�� �J��Ԃ����䕶(��or���j �A�����v�Z�̌덷�̒~��,���d���[�v</A><BR>
-<A href="#��T��">��U�� ���̑��̐��䕶�iswitch���Cwhile���@do while�� �������[�v�j</A><BR>
-<A href="#��V��">��V�� �P�����z��C���v�v�Z�i���ρC�W���΍��j</A><BR>
+<A href="#第１回">第１回 イントロダクション、文字列および計算結果の画面表示</A><BR>
+<A href="#第２回">第２回 数値の定数および変数の画面表示、キーボード入力</A><BR>
+<A href="#第３回">第３回 文字の定数および変数、変数の使い方全般</A><BR>
+<A href="#第４回">第４回 条件制御文(ｉｆ文)、算術関数の使い方</A><BR>
+<A href="#第５回">第５回 繰り返し制御文(ｆor文） 、実数計算の誤差の蓄積,多重ループ</A><BR>
+<A href="#第５回">第６回 その他の制御文（switch文，while文　do while文 無限ループ）</A><BR>
+<A href="#第７回">第７回 １次元配列，統計計算（平均，標準偏差）</A><BR>
 <P><BR></P>
-<PRE><A NAME="��P��"></A></PRE>
+<PRE><A NAME="第１回"></A></PRE>
 <TABLE border="0" width="100%" bgcolor="#000080">
   <TR>
-    <TD><FONT size="4" color="#ffffff"><B>��P�� �C���g���_�N�V�����A�����񂨂�ьv�Z���ʂ̉�ʕ\��</B></FONT></TD>
+    <TD><FONT size="4" color="#ffffff"><B>第１回 イントロダクション、文字列および計算結果の画面表示</B></FONT></TD>
   </TR>
 </TABLE>
-<FONT COLOR="#000080">��<B>�v���O�����̏������F</B></FONT><BR>
+<FONT COLOR="#000080">■<B>プログラムの書き方：</B></FONT><BR>
 <BR>
-<FONT size="4" color="#0000ff">�@#include &lt;stdio.h&gt;<BR>
-�@int main(void){<BR>
-�@�@�@�d�d<BR>
-�@�@�@�d�d<BR>
-�@}<BR>
+<FONT size="4" color="#0000ff">　#include &lt;stdio.h&gt;<BR>
+　int main(void){<BR>
+　　　‥‥<BR>
+　　　‥‥<BR>
+　}<BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">�d�d�̕����Ƀv���O�����������B</FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">‥‥の部分にプログラムを書く。</FONT><BR>
 <BR>
-�v���O�������ł́C��̐؂�ڂ��̑��̋�����鏊�ŁC�D���Ȑ��̋󔒁CTAB�C���s������č\��Ȃ��B<BR>
+プログラム中では，語の切れ目その他の許される所で，好きな数の空白，TAB，改行をいれて構わない。<BR>
 <BR>
-<FONT COLOR="#000080">��<B>�g�p�\�ȕ����R�[�h</B></FONT><BR>
+<FONT COLOR="#000080">■<B>使用可能な文字コード</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#0000ff">�A���t�@�x�b�g�F�@</FONT><FONT color="#008000">A-Z�@a-z�@</FONT><BR>
-<FONT color="#0000ff">�����F</FONT>�@<FONT color="#008040">0-9</FONT><BR>
-<FONT color="#0000ff">��</FONT>�@<FONT color="#008000"> </FONT><BR>
-<FONT color="#0000ff">�L���F</FONT>�@<FONT color="#008000"> . _ &lt; &gt; ? + - * /; : { } ( )�@[ ] ! &quot; ' # % &amp; \ = | </FONT><BR>
-<FONT color="#0000ff">����R�[�h</FONT>�F�@�@<FONT color="#008000">TAB �@���s</FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#0000ff">アルファベット：　</FONT><FONT color="#008000">A-Z　a-z　</FONT><BR>
+<FONT color="#0000ff">数字：</FONT>　<FONT color="#008040">0-9</FONT><BR>
+<FONT color="#0000ff">空白</FONT>　<FONT color="#008000"> </FONT><BR>
+<FONT color="#0000ff">記号：</FONT>　<FONT color="#008000"> . _ &lt; &gt; ? + - * /; : { } ( )　[ ] ! &quot; ' # % &amp; \ = | </FONT><BR>
+<FONT color="#0000ff">制御コード</FONT>：　　<FONT color="#008000">TAB 　改行</FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff">��p���ď����B�S�p�����i���{�ꕶ���j�͕�����ȊO�Ɏg���Ă͂����Ȃ��B<BR>
-���ɁC<FONT COLOR="#ff0000">�S�p�̋󔒂�����ƃR���p�C���G���[�ɂȂ�</FONT>�̂Œ��ӂ���B<BR>
+<P><FONT size="4" color="#0000ff">を用いて書く。全角文字（日本語文字）は文字列以外に使ってはいけない。<BR>
+特に，<FONT COLOR="#ff0000">全角の空白を入れるとコンパイルエラーになる</FONT>ので注意する。<BR>
 <BR>
-<FONT COLOR="#000080">��</FONT><FONT SIZE=3 COLOR="#000080" FACE="�l�r �S�V�b�N"><B>�����̏�����</B></FONT><BR>
-<FONT SIZE=3 COLOR="#000080" FACE="�l�r �S�V�b�N"><B>�@�����Z�q�̎�ށF</B></FONT><BR>
-<FONT SIZE=3 COLOR="#000080" FACE="�l�r �S�V�b�N">�@�@</FONT><FONT SIZE=3 FACE="�l�r �S�V�b�N">�g�p�\�ȉ��Z�q�F�@</FONT><FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">+</FONT><FONT FACE="�l�r �S�V�b�N">�C</FONT><FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">-</FONT><FONT FACE="�l�r �S�V�b�N">�C</FONT><FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">*</FONT><FONT FACE="�l�r �S�V�b�N">�C</FONT><FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">/</FONT><FONT FACE="�l�r �S�V�b�N">�C</FONT><FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">%</FONT><FONT COLOR="#400040" FACE="�l�r �S�V�b�N">�@</FONT><BR>
-<FONT SIZE=3 COLOR="#000080" FACE="�l�r �o�S�V�b�N">�@�@�@�i</FONT><FONT FACE="�l�r �S�V�b�N">�ׂ��扉�Z�q</FONT><FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">^</FONT><FONT FACE="�l�r �S�V�b�N">�͎g���Ȃ����Ƃɒ��Ӂj</FONT><BR>
-<FONT FACE="�l�r �S�V�b�N">�@</FONT><FONT SIZE=3 COLOR="#000080" FACE="�l�r �S�V�b�N"><B>��</B></FONT><FONT COLOR="#000080" FACE="�l�r �S�V�b�N"><B>���Z�̗D�揇��</B>�F</FONT><BR>
-<FONT FACE="�l�r �S�V�b�N">�@�@()�ň͂񂾂Ƃ��낪�ł��D�揇�ʂ������A�ŏ��Ɏ��s�����B</FONT><BR>
-<FONT FACE="�l�r �S�V�b�N">�@�@*�C/�́{�C�|�����A���Z�̗D�揇�ʂ������B</FONT><BR>
-<FONT SIZE=3 COLOR="#000080" FACE="�l�r �o�S�V�b�N"><B>�@</B></FONT><BR>
-<FONT SIZE=3 COLOR="#000080" FACE="�l�r �o�S�V�b�N"><B>�@��F�@</B></FONT><FONT FACE="�l�r �S�V�b�N">3.0*4.0/5.0+6.0�@�Ɓ@3.0*4.0/(5.0+6.0)�@�͉��Z���ʂ��قȂ�B</FONT><BR>
-<FONT SIZE=3 COLOR="#000080" FACE="�l�r �o�S�V�b�N"><B>�@</B></FONT><BR>
-<FONT SIZE=3 COLOR="#000080" FACE="�l�r �S�V�b�N"><B>�@��</B></FONT><FONT COLOR="#000080" FACE="�l�r �S�V�b�N"><STRONG>�����^�萔</STRONG></FONT><BR>
-<FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">�@���`���i�w���Ȃ��\���j</FONT><FONT FACE="�l�r �S�V�b�N">�@�F�@12.34�@ 2.0�@ 2.�@</FONT><BR>
-<FONT FACE="�l�r �S�V�b�N">�@�i�����_�ȉ����Ȃ��ꍇ�ł������_��t���邱�Ƃɒ��Ӂj</FONT><BR>
-<FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">�@���`���i�w�����\���j</FONT><FONT FACE="�l�r �S�V�b�N">�@�F�@1.234e1 �@2.0e0�@�@2e0 �@</FONT><BR>
-<FONT FACE="�l�r �S�V�b�N">�@�@�i1.234e1�@�́@1.234�~10<SUP>1</SUP>�@��\���j</FONT><BR>
-<FONT SIZE=3 COLOR="#000080" FACE="�l�r �S�V�b�N"><B>�@��</B></FONT><FONT COLOR="#000080" FACE="�l�r �S�V�b�N"><STRONG>�����^�萔</STRONG></FONT><FONT COLOR="#800000" FACE="�l�r �S�V�b�N"><STRONG> </STRONG></FONT><BR>
-<FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">�@���`���@</FONT><FONT FACE="�l�r �S�V�b�N">�F�@1234�@�@2�@�@3</FONT><BR>
-<FONT FACE="�l�r �S�V�b�N">�@�̂悤�ɏ����_�̂Ȃ��萔�͐����Ɣ��f����</FONT><BR>
-<FONT SIZE=3 COLOR="#000080" FACE="�l�r �S�V�b�N"><B>�@�������^</B></FONT><FONT COLOR="#000080" FACE="�l�r �S�V�b�N"><STRONG>�萔</STRONG></FONT><FONT COLOR="#800000" FACE="�l�r �S�V�b�N"><STRONG> </STRONG></FONT><BR>
-<FONT COLOR="#000080"><B>�@�@</B></FONT><FONT COLOR="#0000ff">1����</FONT><FONT COLOR="#000080"> : </FONT>'a' �@(�@�������@<FONT COLOR="#0000ff">'</FONT>�@�Ɓ@<FONT COLOR="#0000ff">�f</FONT>�ň͂ށj<BR>
-�@<FONT COLOR="#0000ff">������F�@</FONT><FONT COLOR="#000000" FACE="�l�r �S�V�b�N">&quot;Hello World!!&quot;</FONT><FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">�@</FONT>(�@��������@&quot;�@�Ɓ@&quot;�ň͂ށj<BR>
+<FONT COLOR="#000080">■</FONT><FONT SIZE=3 COLOR="#000080" FACE="ＭＳ ゴシック"><B>数式の書き方</B></FONT><BR>
+<FONT SIZE=3 COLOR="#000080" FACE="ＭＳ ゴシック"><B>　○演算子の種類：</B></FONT><BR>
+<FONT SIZE=3 COLOR="#000080" FACE="ＭＳ ゴシック">　　</FONT><FONT SIZE=3 FACE="ＭＳ ゴシック">使用可能な演算子：　</FONT><FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">+</FONT><FONT FACE="ＭＳ ゴシック">，</FONT><FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">-</FONT><FONT FACE="ＭＳ ゴシック">，</FONT><FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">*</FONT><FONT FACE="ＭＳ ゴシック">，</FONT><FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">/</FONT><FONT FACE="ＭＳ ゴシック">，</FONT><FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">%</FONT><FONT COLOR="#400040" FACE="ＭＳ ゴシック">　</FONT><BR>
+<FONT SIZE=3 COLOR="#000080" FACE="ＭＳ Ｐゴシック">　　　（</FONT><FONT FACE="ＭＳ ゴシック">べき乗演算子</FONT><FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">^</FONT><FONT FACE="ＭＳ ゴシック">は使えないことに注意）</FONT><BR>
+<FONT FACE="ＭＳ ゴシック">　</FONT><FONT SIZE=3 COLOR="#000080" FACE="ＭＳ ゴシック"><B>○</B></FONT><FONT COLOR="#000080" FACE="ＭＳ ゴシック"><B>演算の優先順序</B>：</FONT><BR>
+<FONT FACE="ＭＳ ゴシック">　　()で囲んだところが最も優先順位が高く、最初に実行される。</FONT><BR>
+<FONT FACE="ＭＳ ゴシック">　　*，/は＋，－よりも、演算の優先順位が高い。</FONT><BR>
+<FONT SIZE=3 COLOR="#000080" FACE="ＭＳ Ｐゴシック"><B>　</B></FONT><BR>
+<FONT SIZE=3 COLOR="#000080" FACE="ＭＳ Ｐゴシック"><B>　例：　</B></FONT><FONT FACE="ＭＳ ゴシック">3.0*4.0/5.0+6.0　と　3.0*4.0/(5.0+6.0)　は演算結果が異なる。</FONT><BR>
+<FONT SIZE=3 COLOR="#000080" FACE="ＭＳ Ｐゴシック"><B>　</B></FONT><BR>
+<FONT SIZE=3 COLOR="#000080" FACE="ＭＳ ゴシック"><B>　○</B></FONT><FONT COLOR="#000080" FACE="ＭＳ ゴシック"><STRONG>実数型定数</STRONG></FONT><BR>
+<FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">　ｆ形式（指数なし表示）</FONT><FONT FACE="ＭＳ ゴシック">　：　12.34　 2.0　 2.　</FONT><BR>
+<FONT FACE="ＭＳ ゴシック">　（小数点以下がない場合でも少数点を付けることに注意）</FONT><BR>
+<FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">　ｅ形式（指数つき表示）</FONT><FONT FACE="ＭＳ ゴシック">　：　1.234e1 　2.0e0　　2e0 　</FONT><BR>
+<FONT FACE="ＭＳ ゴシック">　　（1.234e1　は　1.234×10<SUP>1</SUP>　を表す）</FONT><BR>
+<FONT SIZE=3 COLOR="#000080" FACE="ＭＳ ゴシック"><B>　○</B></FONT><FONT COLOR="#000080" FACE="ＭＳ ゴシック"><STRONG>整数型定数</STRONG></FONT><FONT COLOR="#800000" FACE="ＭＳ ゴシック"><STRONG> </STRONG></FONT><BR>
+<FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">　ｄ形式　</FONT><FONT FACE="ＭＳ ゴシック">：　1234　　2　　3</FONT><BR>
+<FONT FACE="ＭＳ ゴシック">　のように小数点のない定数は整数と判断する</FONT><BR>
+<FONT SIZE=3 COLOR="#000080" FACE="ＭＳ ゴシック"><B>　○文字型</B></FONT><FONT COLOR="#000080" FACE="ＭＳ ゴシック"><STRONG>定数</STRONG></FONT><FONT COLOR="#800000" FACE="ＭＳ ゴシック"><STRONG> </STRONG></FONT><BR>
+<FONT COLOR="#000080"><B>　　</B></FONT><FONT COLOR="#0000ff">1文字</FONT><FONT COLOR="#000080"> : </FONT>'a' 　(　文字を　<FONT COLOR="#0000ff">'</FONT>　と　<FONT COLOR="#0000ff">’</FONT>で囲む）<BR>
+　<FONT COLOR="#0000ff">文字列：　</FONT><FONT COLOR="#000000" FACE="ＭＳ ゴシック">&quot;Hello World!!&quot;</FONT><FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">　</FONT>(　文字列を　&quot;　と　&quot;で囲む）<BR>
 <BR>
-<FONT COLOR="#000080"><B>����ʕ\���̎d���i��{�I��printf���j</B></FONT><BR>
-<FONT COLOR="#000080"><B>��������̉�ʕ\��</B></FONT><BR>
-<FONT COLOR="#000080">�@�@�@</FONT><FONT COLOR="#0000ff" FACE="�l�r �S�V�b�N">printf(&quot;Hello World!!\n&quot;);</FONT><BR>
+<FONT COLOR="#000080"><B>■画面表示の仕方（基本的なprintf文）</B></FONT><BR>
+<FONT COLOR="#000080"><B>○文字列の画面表示</B></FONT><BR>
+<FONT COLOR="#000080">　　　</FONT><FONT COLOR="#0000ff" FACE="ＭＳ ゴシック">printf(&quot;Hello World!!\n&quot;);</FONT><BR>
 <BR>
-<FONT COLOR="#000080"><B>���v�Z���ʂ̉�ʕ\��</B></FONT><BR>
+<FONT COLOR="#000080"><B>○計算結果の画面表示</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#0000ff" face="�l�r �S�V�b�N">printf(&quot;Answer= %e\n&quot;,3.0*4.0/(5.0+6.0));</FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#0000ff" face="ＭＳ ゴシック">printf(&quot;Answer= %e\n&quot;,3.0*4.0/(5.0+6.0));</FONT><BR>
 </FONT>
-<PRE><A NAME="��Q��"></A></PRE>
+<PRE><A NAME="第２回"></A></PRE>
 <TABLE border="0" width="100%" bgcolor="#000080">
   <TR>
-    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="�l�r �o�S�V�b�N"><B>��Q�� ���l�̒萔����ѕϐ��̉�ʏo�́A�L�[�{�[�h����</B></FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="ＭＳ Ｐゴシック"><B>第２回 数値の定数および変数の画面出力、キーボード入力</B></FONT></FONT></TD>
   </TR>
 </TABLE>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">��</FONT><FONT COLOR="#400080"><STRONG>�������������i�j�֐�</STRONG></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">■</FONT><FONT COLOR="#400080"><STRONG>ｐｒｉｎｔｆ（）関数</STRONG></FONT><BR>
 <BR>
-�������������i�j�͏����o�͂̊֐��ł���B <BR>
+ｐｒｉｎｔｆ（）は書式出力の関数である。 <BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#0000ff">�������������i&quot;\na=%d b=%d&quot;,a,b�j; </FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#0000ff">ｐｒｉｎｔｆ（&quot;\na=%d b=%d&quot;,a,b）; </FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff">�̗�Ŏ����悤�ɁC�������������i�h�����h�C�o�͕ϐ��j�̌`�����Ă��āC��{�I�ɂ́C�h�h�ň͂܂ꂽ�����񂪂��̂܂܏o�͂����B�A���C\n �L���̂悤�Ɂ��}�[�N���t���������̓G�X�P�[�v�����ƌĂ΂�C��ʐ�����s�����ʂȋL���Ƃ��Ĉ�����i\n�F���s���A�j�B���̂��߁C��ʏ�ɂ͕\������Ȃ��B�܂��C%�@�́C�h�h�̌�ɕ\�L����Ă���ϐ��i��̗�ł́C�ϐ����C���j�̒l���C�ȉ��Ɏ����e�X�̕ϐ��̌^�ɉ����ĉ�ʂɕ\���ł��鏑���ɕϊ�����ۂ̖񑩂�\���Ă���B <BR>
+<P><FONT size="4" color="#0000ff">の例で示すように，ｐｒｉｎｔｆ（”書式”，出力変数）の形をしていて，基本的には，””で囲まれた文字列がそのまま出力される。但し，\n 記号のように￥マークが付いた文字はエスケープ文字と呼ばれ，画面制御を行う特別な記号として扱われる（\n：改行復帰）。そのため，画面上には表示されない。また，%　は，””の後に表記されている変数（上の例では，変数ａ，ｂ）の値を，以下に示す各々の変数の型に応じて画面に表示できる書式に変換する際の約束を表している。 <BR>
 <BR>
 </FONT></P>
-<P style="margin-left:0ex"><FONT size="4" color="#0000ff">�G�X�P�[�v�����̗�F�@<FONT COLOR="#0000ff">\n</FONT> �F ���A���s�C <FONT COLOR="#0000ff">\t </FONT>�F �����^�u�C<FONT COLOR="#0000ff">\v</FONT> �F �����^�u�C <FONT COLOR="#0000ff">\b</FONT> �F �P�������<BR>
+<P style="margin-left:0ex"><FONT size="4" color="#0000ff">エスケープ文字の例：　<FONT COLOR="#0000ff">\n</FONT> ： 復帰改行， <FONT COLOR="#0000ff">\t </FONT>： 水平タブ，<FONT COLOR="#0000ff">\v</FONT> ： 垂直タブ， <FONT COLOR="#0000ff">\b</FONT> ： １文字後退<BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#0000ff">%d</FONT>�F�@�����iint�^�f�[�^�j�̕����t���P�O�i���\�� <BR>
-<FONT color="#0000ff">%��</FONT>�F�@�P���x�����ifloat�^�f�[�^�j�̎w���Ȃ��\��<BR>
-<FONT color="#0000ff">%��</FONT> �F �P���x�����ifloat�^�f�[�^�j�̎w�����\�� <BR>
-<FONT color="#0000ff">%hd</FONT>: �@�Q�o�C�g�����ishort�^�f�[�^�j�̕\��<BR>
-<FONT color="#0000ff">%l��</FONT>�F �@�{���x�����idouble�^�f�[�^�j�̎w���Ȃ��\�� <BR>
-<FONT color="#0000ff">%l��</FONT> �F �{���x�����idouble�^�f�[�^�j�̎w�����\�� <BR>
-%f�C%e �́Cprintf�֐��ł͒P���x�����^�ifloat)�Ɣ{���x�����^�idouble)�̗����Ɏg���� �B<BR>
-����C���̌�Ő�������Cscanf�֐��ł�,�P���x�����^�ifloat)�̏ꍇ�́C%f�C%���C�{���x�����^�idouble)�ꍇ�� %l���C%l�� ���g���K�v������B <BR>
-<FONT color="#0000ff">%c </FONT>�F �����^�f�[�^�̂P����<BR>
-<FONT color="#0000ff">%��</FONT> �F ������f�[�^<BR>
+<FONT size="4" color="#0000ff"><FONT color="#0000ff">%d</FONT>：　整数（int型データ）の符号付き１０進数表示 <BR>
+<FONT color="#0000ff">%ｆ</FONT>：　単精度実数（float型データ）の指数なし表示<BR>
+<FONT color="#0000ff">%ｅ</FONT> ： 単精度実数（float型データ）の指数つき表示 <BR>
+<FONT color="#0000ff">%hd</FONT>: 　２バイト整数（short型データ）の表示<BR>
+<FONT color="#0000ff">%lｆ</FONT>： 　倍精度実数（double型データ）の指数なし表示 <BR>
+<FONT color="#0000ff">%lｅ</FONT> ： 倍精度実数（double型データ）の指数つき表示 <BR>
+%f，%e は，printf関数では単精度実数型（float)と倍精度実数型（double)の両方に使える 。<BR>
+一方，この後で説明する，scanf関数では,単精度実数型（float)の場合は，%f，%ｅ，倍精度実数型（double)場合は %lｆ，%lｅ を使う必要がある。 <BR>
+<FONT color="#0000ff">%c </FONT>： 文字型データの１文字<BR>
+<FONT color="#0000ff">%ｓ</FONT> ： 文字列データ<BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">��</FONT><FONT COLOR="#400080"><STRONG>�����������i�j�֐�</STRONG></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">■</FONT><FONT COLOR="#400080"><STRONG>ｓｃａｎｆ（）関数</STRONG></FONT><BR>
 <BR>
-�L�[�{�[�h����̓��̓f�[�^��<FONT COLOR="#0000ff">%�d</FONT>�ɋL�����ϊ������ɂ��������āA�ϐ��ɑ������B �i�ϐ����̐擪�Ɂ��������Ƃɒ��ӂ���j <BR>
-<FONT COLOR="#0000ff">%�d</FONT>�̖񑩂�printf()�̏ꍇ�Ɠ��l�ł���B <BR>
-��F<BR>
+キーボードからの入力データを<FONT COLOR="#0000ff">%‥</FONT>に記した変換書式にしたがって、変数に代入する。 （変数名の先頭に＆がつくことに注意する） <BR>
+<FONT COLOR="#0000ff">%‥</FONT>の約束はprintf()の場合と同様である。 <BR>
+例：<BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#0000ff">�����������i&quot;%d&quot;, &amp;���j </FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#0000ff">ｓｃａｎｆ（&quot;%d&quot;, &amp;ａ） </FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">��</FONT><FONT COLOR="#400080"><STRONG>�萔 </STRONG></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">■</FONT><FONT COLOR="#400080"><STRONG>定数 </STRONG></FONT><BR>
 <BR>
-�ϐ��̓v���O�����̒��Œl��ς��邱�Ƃ��ł���f�[�^�ł���̂ɑ΂��āC�萔�͒l���Œ肳��Ă���f�[�^�ł��B�萔�́C�ϐ��Ɠ��l�̌^�������Ă���C�ȉ��̂悤�ɐ��l�╶���𒼐ړI�ɕ\�����܂��B <BR>
+変数はプログラムの中で値を変えることができるデータであるのに対して，定数は値が固定されているデータです。定数は，変数と同様の型をもっており，以下のように数値や文字を直接的に表現します。 <BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#0000ff">�萔�̎�� </FONT><BR>
-<FONT color="#0000ff">����........'z' </FONT><BR>
-<FONT color="#0000ff">������......&quot;abcde&quot; </FONT><BR>
-<FONT color="#0000ff">�����萔........120 </FONT><BR>
-<FONT color="#0000ff">�����萔........2.3e2 </FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#0000ff">定数の種類 </FONT><BR>
+<FONT color="#0000ff">文字........'z' </FONT><BR>
+<FONT color="#0000ff">文字列......&quot;abcde&quot; </FONT><BR>
+<FONT color="#0000ff">整数定数........120 </FONT><BR>
+<FONT color="#0000ff">実数定数........2.3e2 </FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">��</FONT><FONT COLOR="#400080"><STRONG>�Z�p���Z</STRONG></FONT><BR>
-�b����ł́C�ʏ�̐����Ɨގ������񑩂Ő���������킷���Ƃ��ł��܂��B���̂��߂̎Z�p���Z�q�Ɉȉ��̂��̂�����܂��B <BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">■</FONT><FONT COLOR="#400080"><STRONG>算術演算</STRONG></FONT><BR>
+Ｃ言語では，通常の数式と類似した約束で数式をあらわすことができます。そのための算術演算子に以下のものがあります。 <BR>
 <BR>
 </FONT></P>
-<FONT size="4" color="#0000ff">�Z�p���Z�q�̎�� <BR>
-<FONT color="#0000ff">* </FONT>&nbsp;&nbsp; ��Z &nbsp; a*b &nbsp; a��b�������� <BR>
-<FONT color="#0000ff">/ </FONT>&nbsp;&nbsp; ���Z &nbsp; a/b &nbsp; a��b�ł�� <BR>
-<FONT color="#0000ff">+ </FONT>&nbsp;&nbsp; ���Z &nbsp; a+b &nbsp; a��b�𑫂� <BR>
-<FONT color="#0000ff">- </FONT>&nbsp;&nbsp; ���Z &nbsp; a-b &nbsp; a����b������ <BR>
+<FONT size="4" color="#0000ff">算術演算子の種類 <BR>
+<FONT color="#0000ff">* </FONT>&nbsp;&nbsp; 乗算 &nbsp; a*b &nbsp; aにbをかける <BR>
+<FONT color="#0000ff">/ </FONT>&nbsp;&nbsp; 除算 &nbsp; a/b &nbsp; aをbでわる <BR>
+<FONT color="#0000ff">+ </FONT>&nbsp;&nbsp; 加算 &nbsp; a+b &nbsp; aにbを足す <BR>
+<FONT color="#0000ff">- </FONT>&nbsp;&nbsp; 減算 &nbsp; a-b &nbsp; aからbを引く <BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">��</FONT><FONT COLOR="#400080"><STRONG>�ϐ����̋K�� </STRONG></FONT><BR>
-�@�g���镶���C�@�p���ia-z,A-Z)�C�A���_�[�o�[( _ )�C�����i0-9)�̑g�ݍ��킹�B�������C�擪�͉p���B�p���̑啶���C�������͋�ʂ����B���O�̒����́C��ʓI�ɍŏ���31�����܂ł͗L���B<BR>
-�ȉ��̗\���͎g���Ȃ��B<BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">■</FONT><FONT COLOR="#400080"><STRONG>変数名の規則 </STRONG></FONT><BR>
+　使える文字，　英字（a-z,A-Z)，アンダーバー( _ )，数字（0-9)の組み合わせ。ただし，先頭は英字。英字の大文字，小文字は区別される。名前の長さは，一般的に最初の31文字までは有効。<BR>
+以下の予約語は使えない。<BR>
 <BR>
-<FONT COLOR="#0000a0">�\���</FONT><BR>
+<FONT COLOR="#0000a0">予約語</FONT><BR>
 </FONT></P>
 <BLOCKQUOTE><FONT size="4" color="#0000ff"><FONT COLOR="#0000a0">auto break case char const continue default do</FONT><BR>
 <FONT COLOR="#0000a0">double else enum extern float for goto if</FONT><BR>
 <FONT COLOR="#0000a0">int long register return short signed sizeof static</FONT><BR>
 <FONT COLOR="#0000a0">struct switch typedef uinion unsigned void volatile while</FONT><BR>
 </FONT></BLOCKQUOTE>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">��</FONT><FONT COLOR="#400080"><STRONG>����� </STRONG></FONT><BR>
-�E�ӂ̕ϐ���萔�A�܂��́A���̌v�Z���ʂ����A���ӂ̕ϐ��ɑ������B<FONT COLOR="#ff0000">�i���ӂƉE�ӂ��������Ƃ����Ӗ��ł͂Ȃ����Ƃɒ��Ӂj</FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">■</FONT><FONT COLOR="#400080"><STRONG>代入文 </STRONG></FONT><BR>
+右辺の変数や定数、または、式の計算結果をを、左辺の変数に代入する。<FONT COLOR="#ff0000">（左辺と右辺が等しいという意味ではないことに注意）</FONT><BR>
 </FONT></P>
-<BLOCKQUOTE><FONT size="4" color="#0000ff"><FONT COLOR="#0000ff">�ϐ��@=�@�萔�G</FONT><BR>
-<FONT COLOR="#0000ff">�ϐ��@=�@�ϐ��G</FONT><BR>
-<FONT COLOR="#0000ff">�ϐ��@=�@���G </FONT><BR>
+<BLOCKQUOTE><FONT size="4" color="#0000ff"><FONT COLOR="#0000ff">変数　=　定数；</FONT><BR>
+<FONT COLOR="#0000ff">変数　=　変数；</FONT><BR>
+<FONT COLOR="#0000ff">変数　=　式； </FONT><BR>
 </FONT></BLOCKQUOTE>
-<P><FONT size="4" color="#0000ff">��F�@a=b+c; �@c=1.3;�@<BR>
+<P><FONT size="4" color="#0000ff">例：　a=b+c; 　c=1.3;　<BR>
 </FONT></P>
-<PRE><A NAME="��R��"></A></PRE>
+<PRE><A NAME="第３回"></A></PRE>
 <TABLE border="0" width="100%" bgcolor="#000080">
   <TR>
-    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="�l�r �o�S�V�b�N"><B>��R�� �����̒萔����ѕϐ��A�ϐ��̎g�����S��</B></FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="ＭＳ Ｐゴシック"><B>第３回 文字の定数および変数、変数の使い方全般</B></FONT></FONT></TD>
   </TR>
 </TABLE>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">��</FONT><FONT COLOR="#004080"><STRONG>�ϐ����g���Ƃ��̒���</STRONG></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">■</FONT><FONT COLOR="#004080"><STRONG>変数を使うときの注意</STRONG></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff">�P�D�錾���Ő錾����i�錾���Ă��Ȃ��ϐ��͎g���Ȃ��j�B<BR>
-<STRONG>�Q�D</STRONG>�ϐ��̌^�ɉ����āA�\���\�Ȕ͈͂�L������������B<BR>
-<FONT color="#004080"><STRONG>�R�D</STRONG></FONT>printf(),scanf()�ŕϐ��̒l����o�͂���ꍇ�C�ϐ��̌^�̖񑩂ɍ����������i%d, %e)��p����B<BR>
+<FONT size="4" color="#0000ff">１．宣言文で宣言する（宣言していない変数は使えない）。<BR>
+<STRONG>２．</STRONG>変数の型に応じて、表現可能な範囲や有効桁数がある。<BR>
+<FONT color="#004080"><STRONG>３．</STRONG></FONT>printf(),scanf()で変数の値を入出力する場合，変数の型の約束に合った書式（%d, %e)を用いる。<BR>
 </FONT>
 <P><FONT size="4" color="#0000ff"><BR>
-<FONT COLOR="#000080">��</FONT><FONT COLOR="#004080"><STRONG>�萔����ѕϐ��̎��</STRONG></FONT> <BR>
+<FONT COLOR="#000080">■</FONT><FONT COLOR="#004080"><STRONG>定数および変数の種類</STRONG></FONT> <BR>
 </FONT></P>
 <TABLE border="1" cellspacing="1" width="80%" bgcolor="#c4a7fe">
   <TR>
-    <TD ALIGN=CENTER BGCOLOR="#c4a7fe"><FONT size="4" color="#0000ff">�萔�̎��</FONT></TD>
-    <TD ALIGN=CENTER BGCOLOR="#c4a7fe"><FONT size="4" color="#0000ff">�錾</FONT></TD>
-    <TD ALIGN=CENTER BGCOLOR="#c4a7fe"><FONT size="4" color="#0000ff">printf����</FONT></TD>
+    <TD ALIGN=CENTER BGCOLOR="#c4a7fe"><FONT size="4" color="#0000ff">定数の種類</FONT></TD>
+    <TD ALIGN=CENTER BGCOLOR="#c4a7fe"><FONT size="4" color="#0000ff">宣言</FONT></TD>
+    <TD ALIGN=CENTER BGCOLOR="#c4a7fe"><FONT size="4" color="#0000ff">printf書式</FONT></TD>
   </TR><TR>
-    <TD ROWSPAN=2 ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">�����萔</FONT></TD>
+    <TD ROWSPAN=2 ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">整数定数</FONT></TD>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">short</FONT></TD>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">%hd</FONT></TD>
   </TR><TR>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">int</FONT></TD>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">%d</FONT></TD>
   </TR><TR>
-    <TD ROWSPAN=2 ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">�����萔</FONT></TD>
+    <TD ROWSPAN=2 ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">実数定数</FONT></TD>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">float</FONT></TD>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">%f, %e</FONT></TD>
   </TR><TR>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">double</FONT></TD>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">%lf, %le</FONT></TD>
   </TR><TR>
-    <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">�����萔</FONT></TD>
+    <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">文字定数</FONT></TD>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">char</FONT></TD>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">%c</FONT></TD>
   </TR><TR>
-    <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">������萔</FONT></TD>
-    <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">char�̔z��</FONT></TD>
+    <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">文字列定数</FONT></TD>
+    <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">charの配列</FONT></TD>
     <TD ALIGN=CENTER BGCOLOR="#e7e6ff"><FONT size="4" color="#0000ff">%s</FONT></TD>
   </TR>
 </TABLE>
 <FONT size="4" color="#0000ff"><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>���@�f�[�^�̌^�ƕ\���\�Ȕ͈�</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>■　データの型と表現可能な範囲</B></FONT><BR>
 </FONT></P>
 <TABLE border="" width="80%">
   <TR>
-    <TD BGCOLOR="#0080c0"><FONT size="4" color="#0000ff"><FONT COLOR="#ffffff">�^</FONT></FONT></TD>
-    <TD BGCOLOR="#0080c0"><FONT size="4" color="#0000ff"><FONT COLOR="#ffffff">����</FONT></FONT></TD>
-    <TD BGCOLOR="#0080c0"><FONT size="4" color="#0000ff"><FONT COLOR="#ffffff">�\���\�Ȕ͈�</FONT></FONT></TD>
+    <TD BGCOLOR="#0080c0"><FONT size="4" color="#0000ff"><FONT COLOR="#ffffff">型</FONT></FONT></TD>
+    <TD BGCOLOR="#0080c0"><FONT size="4" color="#0000ff"><FONT COLOR="#ffffff">長さ</FONT></FONT></TD>
+    <TD BGCOLOR="#0080c0"><FONT size="4" color="#0000ff"><FONT COLOR="#ffffff">表現可能な範囲</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">char�@</FONT></TD>
-    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">�PByte</FONT></TD>
-    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">�P�����̃R�[�h(=<FONT COLOR="#0000ff">256��ނ̕���</FONT>�A�A�X�L�[�R�[�h)</FONT></TD>
+    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">char　</FONT></TD>
+    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">１Byte</FONT></TD>
+    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">１文字のコード(=<FONT COLOR="#0000ff">256種類の文字</FONT>、アスキーコード)</FONT></TD>
   </TR><TR>
     <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">short int</FONT></TD>
     <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">2Byte=16bit</FONT></TD>
-    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">0�`(2^16-1)�@(=65,535 <FONT COLOR="#0000ff">-32768�`+32767�̐���</FONT>)</FONT></TD>
+    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">0～(2^16-1)　(=65,535 <FONT COLOR="#0000ff">-32768～+32767の整数</FONT>)</FONT></TD>
   </TR><TR>
     <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">long int</FONT></TD>
     <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">4Byte=32bit</FONT></TD>
-    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">0�`(2^32-1)�@(=4,294,967,294�@<FONT COLOR="#0000ff">-2147483648�`+2147483647�̐���</FONT></FONT></TD>
+    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">0～(2^32-1)　(=4,294,967,294　<FONT COLOR="#0000ff">-2147483648～+2147483647の整数</FONT></FONT></TD>
   </TR><TR>
     <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">float</FONT></TD>
     <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">4Byte=32bit</FONT></TD>
-    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">�������i23�r�b�g=8,388,608, <FONT COLOR="#0000ff">6�`7��</FONT>)<BR>
-    �w����(8�r�b�g=256, <FONT COLOR="#0000ff">+38�`-45��</FONT>), ����1bit</FONT></TD>
+    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">仮数部（23ビット=8,388,608, <FONT COLOR="#0000ff">6～7桁</FONT>)<BR>
+    指数部(8ビット=256, <FONT COLOR="#0000ff">+38～-45乗</FONT>), 符号1bit</FONT></TD>
   </TR><TR>
     <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">double</FONT></TD>
     <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">8Byte=64bit</FONT></TD>
-    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">�������i52�r�b�g=4.5036e15, <FONT COLOR="#0000ff">15�`16��</FONT>)<BR>
-    �w����(11�r�b�g=2046, <FONT COLOR="#0000ff">+308�`-324��</FONT>), ����1bit</FONT></TD>
+    <TD BGCOLOR="#dedeef"><FONT size="4" color="#0000ff">仮数部（52ビット=4.5036e15, <FONT COLOR="#0000ff">15～16桁</FONT>)<BR>
+    指数部(11ビット=2046, <FONT COLOR="#0000ff">+308～-324乗</FONT>), 符号1bit</FONT></TD>
   </TR>
 </TABLE>
 <FONT size="4" color="#0000ff"><BR>
 </FONT>
 <PRE>
-<A NAME="��S��"></A></PRE>
+<A NAME="第４回"></A></PRE>
 <TABLE border="0" width="100%" bgcolor="#000080">
   <TR>
-    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="�l�r �o�S�V�b�N"><B>��S��@�������䕶(������)�A�Z�p�֐��̎g����</B></FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="ＭＳ Ｐゴシック"><B>第４回　条件制御文(ｉｆ文)、算術関数の使い方</B></FONT></FONT></TD>
   </TR>
 </TABLE>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">�� <B>if��</B></FONT><BR>
-<FONT COLOR="#000080"><B>�E�\��</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">■ <B>if文</B></FONT><BR>
+<FONT COLOR="#000080"><B>・構文</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#0000ff">if(������){</FONT><BR>
-<FONT color="#0000ff">�����̎��s���P;</FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#0000ff">if(条件式){</FONT><BR>
+<FONT color="#0000ff">複数の実行文１;</FONT><BR>
 <FONT color="#0000ff">}else{</FONT><BR>
-<FONT color="#0000ff">�����̎��s��2;</FONT><BR>
+<FONT color="#0000ff">複数の実行文2;</FONT><BR>
 <FONT color="#0000ff">}</FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>�E����</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>・動作</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#008000">���������������鎞: �@���P�����s</FONT><BR>
-<FONT color="#008000">���������s�����̎��F�@��2�����s</FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#008000">条件式が成立する時: 　文１を実行</FONT><BR>
+<FONT color="#008000">条件式が不成立の時：　文2を実行</FONT><BR>
 </FONT>
 <P><FONT size="4" color="#0000ff"><BR>
-<FONT COLOR="#000080"><B>���������̎��</B></FONT> <BR>
+<FONT COLOR="#000080"><B>■条件式の種類</B></FONT> <BR>
 </FONT></P>
 <TABLE border="1" cellspacing="0">
   <TR>
-    <TD ALIGN=CENTER BGCOLOR="#00ffff"><FONT size="4" color="#0000ff"><FONT COLOR="#400040" FACE="�l�r ����">������</FONT></FONT></TD>
-    <TD BGCOLOR="#00ffff"><FONT size="4" color="#0000ff"><FONT COLOR="#ff0000" FACE="�l�r ����">�@</FONT><FONT COLOR="#0000a0" FACE="�l�r ����">�@�@�Ӂ@��</FONT></FONT></TD>
-    <TD BGCOLOR="#00ffff"><FONT size="4" color="#0000ff">�@<FONT COLOR="#0000a0" FACE="�l�r ����">���@��</FONT></FONT></TD>
+    <TD ALIGN=CENTER BGCOLOR="#00ffff"><FONT size="4" color="#0000ff"><FONT COLOR="#400040" FACE="ＭＳ 明朝">条件式</FONT></FONT></TD>
+    <TD BGCOLOR="#00ffff"><FONT size="4" color="#0000ff"><FONT COLOR="#ff0000" FACE="ＭＳ 明朝">　</FONT><FONT COLOR="#0000a0" FACE="ＭＳ 明朝">　　意　味</FONT></FONT></TD>
+    <TD BGCOLOR="#00ffff"><FONT size="4" color="#0000ff">　<FONT COLOR="#0000a0" FACE="ＭＳ 明朝">注　意</FONT></FONT></TD>
   </TR><TR>
-    <TD ALIGN=CENTER BGCOLOR="#00ff00"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">��r���Z�q</FONT></FONT></TD>
-    <TD BGCOLOR="#00ff00"><FONT size="4" color="#0000ff">�@</FONT></TD>
-    <TD BGCOLOR="#00ff00"><FONT size="4" color="#0000ff">�@</FONT></TD>
+    <TD ALIGN=CENTER BGCOLOR="#00ff00"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">比較演算子</FONT></FONT></TD>
+    <TD BGCOLOR="#00ff00"><FONT size="4" color="#0000ff">　</FONT></TD>
+    <TD BGCOLOR="#00ff00"><FONT size="4" color="#0000ff">　</FONT></TD>
   </TR><TR>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�@x==a�@</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�@x��a�ɓ������H</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff"><FONT COLOR="#ff0000" FACE="�l�r ����">x=a�ƊԈႦ�Ȃ�</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">　x==a　</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">　xがaに等しい？</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT COLOR="#ff0000" FACE="ＭＳ 明朝">x=aと間違えない</FONT></FONT></TD>
   </TR><TR>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�@x!=a</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�@x��a�ɓ������Ȃ��H</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff">�@</FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">　x!=a</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">　xがaに等しくない？</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff">　</FONT></TD>
   </TR><TR>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�@x&gt;a</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�@x��a���傫���H</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff">�@</FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">　x&gt;a</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">　xがaより大きい？</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff">　</FONT></TD>
   </TR><TR>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�@x&lt;a</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�@x��a��菬�����H</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff">�@</FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">　x&lt;a</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">　xがaより小さい？</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff">　</FONT></TD>
   </TR><TR>
-    <TD><FONT size="4" color="#0000ff">�@<FONT FACE="�l�r ����">x&gt;=a</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�@x��a�ȏ�H</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff">�@</FONT></TD>
+    <TD><FONT size="4" color="#0000ff">　<FONT FACE="ＭＳ 明朝">x&gt;=a</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">　xがa以上？</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff">　</FONT></TD>
   </TR><TR>
-    <TD><FONT size="4" color="#0000ff">�@<FONT FACE="�l�r ����">x&lt;=a</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�@x��a�ȉ��H</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff">�@</FONT></TD>
+    <TD><FONT size="4" color="#0000ff">　<FONT FACE="ＭＳ 明朝">x&lt;=a</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">　xがa以下？</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff">　</FONT></TD>
   </TR><TR>
-    <TD ALIGN=CENTER BGCOLOR="#00ff00"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">�_�����Z�q</FONT></FONT></TD>
-    <TD BGCOLOR="#00ff00"><FONT size="4" color="#0000ff">�@</FONT></TD>
-    <TD BGCOLOR="#00ff00"><FONT size="4" color="#0000ff">�@</FONT></TD>
+    <TD ALIGN=CENTER BGCOLOR="#00ff00"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">論理演算子</FONT></FONT></TD>
+    <TD BGCOLOR="#00ff00"><FONT size="4" color="#0000ff">　</FONT></TD>
+    <TD BGCOLOR="#00ff00"><FONT size="4" color="#0000ff">　</FONT></TD>
   </TR><TR>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">(��1)&amp;&amp;(��2)</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">(��1)��(��2)�������ɐ^�H</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff">�@</FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">(式1)&amp;&amp;(式2)</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">(式1)と(式2)が同時に真？</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff">　</FONT></TD>
   </TR><TR>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">(��1)||(��2)</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">(��1)��(��2)�̂ǂ��炩���^�H</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff">�@</FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">(式1)||(式2)</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">(式1)と(式2)のどちらかが真？</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff">　</FONT></TD>
   </TR><TR>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">!(��1)</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">(��1)���U�H</FONT></FONT></TD>
-    <TD><FONT size="4" color="#0000ff">�@</FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">!(式1)</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">(式1)が偽？</FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff">　</FONT></TD>
   </TR>
 </TABLE>
 <FONT size="4" color="#0000ff"><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>���@�Z�p�֐�</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>■　算術関数</B></FONT><BR>
 </FONT></P>
-<DIV align="LEFT"><FONT size="4" color="#0000ff"><FONT COLOR="#004080"><STRONG>�b���ꂪ�p�ӂ��Ă���Z�p�֐��ꗗ</STRONG></FONT><BR>
+<DIV align="LEFT"><FONT size="4" color="#0000ff"><FONT COLOR="#004080"><STRONG>Ｃ言語が用意している算術関数一覧</STRONG></FONT><BR>
 </FONT></DIV>
 <DIV align="LEFT">
 <TABLE BORDER=1>
   <TR>
-    <TD BGCOLOR="#dfdfff"><FONT size="4" color="#0000ff"><FONT COLOR="#400040" FACE="�l�r ����">�֐���</FONT></FONT></TD>
-    <TD BGCOLOR="#dfdfff"><FONT size="4" color="#0000ff"><FONT SIZE=2 COLOR="#400040" FACE="�l�r ����">�����y�ъ֐��̌^</FONT></FONT></TD>
-    <TD BGCOLOR="#dfdfff"><FONT size="4" color="#0000ff"><FONT COLOR="#400040" FACE="�l�r ����">�@�\</FONT></FONT></TD>
+    <TD BGCOLOR="#dfdfff"><FONT size="4" color="#0000ff"><FONT COLOR="#400040" FACE="ＭＳ 明朝">関数名</FONT></FONT></TD>
+    <TD BGCOLOR="#dfdfff"><FONT size="4" color="#0000ff"><FONT SIZE=2 COLOR="#400040" FACE="ＭＳ 明朝">引数及び関数の型</FONT></FONT></TD>
+    <TD BGCOLOR="#dfdfff"><FONT size="4" color="#0000ff"><FONT COLOR="#400040" FACE="ＭＳ 明朝">機能</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����"><STRONG>abs(i)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">int</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����i�̐�Βl�����߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝"><STRONG>abs(i)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">int</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">整数iの絶対値を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">acos(x)</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̋t�]�������߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">acos(x)</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの逆余弦を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">asin(x)</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̋t���������߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">asin(x)</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの逆正弦を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">atan(x)</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̋t���ڂ����߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">atan(x)</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの逆正接を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">ceil(x) </FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̏����_�ȉ���؂�グ��</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">ceil(x) </FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの小数点以下を切り上げる</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����"><STRONG>cos(x)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̗]�������߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝"><STRONG>cos(x)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの余弦を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����"><STRONG>exp(x)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">e�̂�������߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝"><STRONG>exp(x)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">eのｘ乗を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����"><STRONG>fabs(x)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̐�Βl�����߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝"><STRONG>fabs(x)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの絶対値を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">floor(x)</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̏����_�ȉ���؂�̂Ă�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">floor(x)</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの小数点以下を切り捨てる</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����"><STRONG>fmod(x,y)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x��y�Ŋ�������]�����߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝"><STRONG>fmod(x,y)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xをyで割った剰余を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT COLOR="#000000" FACE="�l�r ����"><STRONG>log(x)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̎��R�ΐ������߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT COLOR="#000000" FACE="ＭＳ 明朝"><STRONG>log(x)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの自然対数を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����"><STRONG>log10(x)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̏�p�ΐ������߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝"><STRONG>log10(x)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの常用対数を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����"><STRONG>pow(x,y)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̂�������߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝"><STRONG>pow(x,y)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xのｙ乗を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����"><STRONG>sin(x)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̐��������߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝"><STRONG>sin(x)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの正弦を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����"><STRONG>sqrt(x)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̕����������߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝"><STRONG>sqrt(x)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの平方根を求める</FONT></FONT></TD>
   </TR><TR>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����"><STRONG>tan(x)</STRONG></FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">double</FONT></FONT></TD>
-    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="�l�r ����">����x�̐��ڂ����߂�</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝"><STRONG>tan(x)</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">double</FONT></FONT></TD>
+    <TD BGCOLOR="#bfebff"><FONT size="4" color="#0000ff"><FONT FACE="ＭＳ 明朝">実数xの正接を求める</FONT></FONT></TD>
   </TR>
 </TABLE>
 <FONT size="4" color="#0000ff"><BR>
 <BR>
 </FONT></DIV>
-<PRE><A NAME="��T��"></A></PRE>
+<PRE><A NAME="第５回"></A></PRE>
 <TABLE border="0" width="100%" bgcolor="#000080">
   <TR>
-    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="�l�r �o�S�V�b�N"><B>��T�� </B></FONT><FONT color="#ffffff"><B>�J��Ԃ����䕶(��or���j �A�����v�Z�̌덷�̒~��,���d���[�v</B></FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="ＭＳ Ｐゴシック"><B>第５回 </B></FONT><FONT color="#ffffff"><B>繰り返し制御文(ｆor文） 、実数計算の誤差の蓄積,多重ループ</B></FONT></FONT></TD>
   </TR>
 </TABLE>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>���@for��</B></FONT><BR>
-<FONT COLOR="#000080"><B>�E�\��</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>■　for文</B></FONT><BR>
+<FONT COLOR="#000080"><B>・構文</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#000080">for(��1; ��2; ��3){ </FONT><BR>
-<FONT color="#000080">��1;</FONT><BR>
-<FONT color="#000080">��2;</FONT><BR>
-<FONT color="#000080">�c</FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#000080">for(式1; 式2; 式3){ </FONT><BR>
+<FONT color="#000080">文1;</FONT><BR>
+<FONT color="#000080">文2;</FONT><BR>
+<FONT color="#000080">…</FONT><BR>
 <FONT color="#000080">}</FONT><BR>
 <BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>�E����</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>・動作</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#008000">��1�F�@���[�v�����̍ŏ��Ɏ��s���鎮�i���[�v�ϐ��ɏ����l��^����j</FONT><BR>
-<FONT color="#008000">���Q�F�@���[�v�������J��Ԃ����ۂ��𔻒f���邽�߂̏������B</FONT><BR>
-<FONT color="#008000">�@�@�@�@���̏������������Ă���΁o�@�p�̒��̏������J��Ԃ��B</FONT><BR>
-<FONT color="#008000">�@�@�@�@�������Ă��Ȃ���Ώ������I������B</FONT><BR>
-<FONT color="#008000">���R�F�@���[�v�����̍Ō�Ɏ��s���鎮�i���[�v�ϐ��𑝌����鎮�j�B</FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#008000">式1：　ループ処理の最初に実行する式（ループ変数に初期値を与える）</FONT><BR>
+<FONT color="#008000">式２：　ループ処理を繰り返すか否かを判断するための条件式。</FONT><BR>
+<FONT color="#008000">　　　　式の条件が成立していれば｛　｝の中の処理を繰り返す。</FONT><BR>
+<FONT color="#008000">　　　　成立していなければ処理を終了する。</FONT><BR>
+<FONT color="#008000">式３：　ループ処理の最後に実行する式（ループ変数を増減する式）。</FONT><BR>
 </FONT>
 <P><FONT size="4" color="#0000ff"><BR>
-<FONT COLOR="#000080"><B>��F</B>�����^�̃��[�v�ϐ�����p���āCi���P���炎�܂łP���Ñ��₵�Ȃ���o�@�p�̒��̔�������������J��Ԃ���������</FONT><BR>
+<FONT COLOR="#000080"><B>例：</B>整数型のループ変数ｉを用いて，iを１からｎまで１ずづ増やしながら｛　｝の中の反復処理をｎ回繰り返すｆｏｒ文</FONT><BR>
 </FONT></P>
 <FONT size="4" color="#0000ff"><FONT size="3" color="#0000ff">for(i=1; i&lt;=n; i++){ </FONT><BR>
-<FONT size="3" color="#0000ff">���P;</FONT><BR>
-<FONT size="3" color="#0000ff">���Q;</FONT><BR>
-<FONT size="3" color="#0000ff">�d�d</FONT><BR>
+<FONT size="3" color="#0000ff">文１;</FONT><BR>
+<FONT size="3" color="#0000ff">文２;</FONT><BR>
+<FONT size="3" color="#0000ff">‥‥</FONT><BR>
 <FONT size="3" color="#0000ff">} </FONT><BR>
 </FONT>
-<PRE><A NAME="��U��"></A></PRE>
+<PRE><A NAME="第６回"></A></PRE>
 <TABLE border="0" width="100%" bgcolor="#000080">
   <TR>
-    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="�l�r �o�S�V�b�N"><B>��U��@���̑��̐��䕶�iswitch���Cwhile���@do while�� �������[�v�j</B></FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="ＭＳ Ｐゴシック"><B>第６回　その他の制御文（switch文，while文　do while文 無限ループ）</B></FONT></FONT></TD>
   </TR>
 </TABLE>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>��switch��</B></FONT><BR>
-<FONT COLOR="#000080"><B>�E�\��</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>■switch文</B></FONT><BR>
+<FONT COLOR="#000080"><B>・構文</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#0000ff">switch(�ϐ�){</FONT><BR>
-<FONT color="#0000ff">case �萔1:</FONT><BR>
-<FONT color="#0000ff">���P;</FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#0000ff">switch(変数){</FONT><BR>
+<FONT color="#0000ff">case 定数1:</FONT><BR>
+<FONT color="#0000ff">文１;</FONT><BR>
 <FONT color="#0000ff">break;</FONT><BR>
-<FONT color="#0000ff">case �萔2</FONT><BR>
-<FONT color="#0000ff">���Q; </FONT><BR>
+<FONT color="#0000ff">case 定数2</FONT><BR>
+<FONT color="#0000ff">文２; </FONT><BR>
 <FONT color="#0000ff">break;</FONT><BR>
-<FONT color="#0000ff">�d�d�d</FONT><BR>
+<FONT color="#0000ff">‥‥‥</FONT><BR>
 <FONT color="#0000ff">default:</FONT><BR>
-<FONT color="#0000ff">���R;</FONT><BR>
+<FONT color="#0000ff">文３;</FONT><BR>
 <FONT color="#0000ff">break;</FONT><BR>
 <FONT color="#0000ff">}</FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>�E����</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>・動作</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff">�ϐ��̒l���萔�P�̏ꍇ�F���P�����s�C�萔�Q�̏ꍇ�F ���Q�����s�C����ȊO�̏ꍇ�F���R�����s<BR>
+<FONT size="4" color="#0000ff">変数の値が定数１の場合：文１を実行，定数２の場合： 文２を実行，それ以外の場合：文３を実行<BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>��while��</B></FONT><BR>
-<FONT COLOR="#000080"><B>�E�\��</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>■while文</B></FONT><BR>
+<FONT COLOR="#000080"><B>・構文</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#0000ff">while(������){</FONT><BR>
-<FONT color="#0000ff">���P;</FONT><BR>
-<FONT color="#0000ff">���Q;</FONT><BR>
-<FONT color="#0000ff">�d�d;</FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#0000ff">while(条件式){</FONT><BR>
+<FONT color="#0000ff">文１;</FONT><BR>
+<FONT color="#0000ff">文２;</FONT><BR>
+<FONT color="#0000ff">‥‥;</FONT><BR>
 <FONT color="#0000ff">}</FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>�E����</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>・動作</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff">�������𔻒f���C���������������Ă���΁o �p�̒��̕������s<BR>
+<FONT size="4" color="#0000ff">条件式を判断し，条件式が成立していれば｛ ｝の中の文を実行<BR>
 </FONT>
 <P><FONT size="4" color="#0000ff"><BR>
-<FONT COLOR="#000080"><B>��do while��</B></FONT><BR>
-<FONT COLOR="#000080"><B>�E�\��</B></FONT><BR>
+<FONT COLOR="#000080"><B>■do while文</B></FONT><BR>
+<FONT COLOR="#000080"><B>・構文</B></FONT><BR>
 </FONT></P>
 <FONT size="4" color="#0000ff"><FONT color="#0000ff">do{</FONT><BR>
-<FONT color="#0000ff">���P;</FONT><BR>
-<FONT color="#0000ff">���Q;</FONT><BR>
-<FONT color="#0000ff">�d�d;</FONT><BR>
-<FONT color="#0000ff">}while(������);</FONT><BR>
+<FONT color="#0000ff">文１;</FONT><BR>
+<FONT color="#0000ff">文２;</FONT><BR>
+<FONT color="#0000ff">‥‥;</FONT><BR>
+<FONT color="#0000ff">}while(条件式);</FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>�E����</B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>・動作</B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff">�o�@�p�̒��̏��������s������A�������𔻒f�B<BR>
-�������������Ă���ꍇ�́A�o�@�p���̏�����������x�J��Ԃ��B<BR>
-�������s�����̏ꍇ�́A�������I������B<BR>
+<FONT size="4" color="#0000ff">｛　｝の中の処理を実行した後、条件式を判断。<BR>
+条件が成立している場合は、｛　｝内の処理をもう一度繰り返す。<BR>
+条件が不成立の場合は、処理を終了する。<BR>
 <BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><B>���������[�v</B><BR>
-<FONT COLOR="#000080"><B>�E�\��</B></FONT><BR>
-<FONT COLOR="#000080">��while���ɂ�閳�����[�v</FONT><BR>
+<P><FONT size="4" color="#0000ff"><B>■無限ループ</B><BR>
+<FONT COLOR="#000080"><B>・構文</B></FONT><BR>
+<FONT COLOR="#000080">◎while文による無限ループ</FONT><BR>
 </FONT></P>
 <FONT size="4" color="#0000ff"><FONT color="#0000ff">while(1){</FONT><BR>
-<FONT color="#0000ff">���P;</FONT><BR>
-<FONT color="#0000ff">���Q;</FONT><BR>
-<FONT color="#0000ff">�d�d</FONT><BR>
+<FONT color="#0000ff">文１;</FONT><BR>
+<FONT color="#0000ff">文２;</FONT><BR>
+<FONT color="#0000ff">‥‥</FONT><BR>
 <FONT color="#0000ff">}</FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">��for���ɂ�閳�����[�v</FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">◎for文による無限ループ</FONT><BR>
 </FONT></P>
 <FONT size="4" color="#0000ff"><FONT color="#0000ff">for( ; ; ){</FONT><BR>
-<FONT color="#0000ff">���P;</FONT><BR>
-<FONT color="#0000ff">���Q;</FONT><BR>
-<FONT color="#0000ff">�d�d</FONT><BR>
+<FONT color="#0000ff">文１;</FONT><BR>
+<FONT color="#0000ff">文２;</FONT><BR>
+<FONT color="#0000ff">‥‥</FONT><BR>
 <FONT color="#0000ff">}</FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">��do while���ɂ�閳�����[�v</FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080">◎do while文による無限ループ</FONT><BR>
 </FONT></P>
 <FONT size="4" color="#0000ff"><FONT color="#0000ff">do {</FONT><BR>
-<FONT color="#0000ff">���P;</FONT><BR>
-<FONT color="#0000ff">���Q;</FONT><BR>
-<FONT color="#0000ff">�d�d</FONT><BR>
+<FONT color="#0000ff">文１;</FONT><BR>
+<FONT color="#0000ff">文２;</FONT><BR>
+<FONT color="#0000ff">‥‥</FONT><BR>
 <FONT color="#0000ff">}while(1);</FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>�E���� </B></FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000080"><B>・動作 </B></FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff">{ }���̏����𖳏����ɌJ��Ԃ��iCTLR+C���������܂ŌJ��Ԃ��j�B<BR>
+<FONT size="4" color="#0000ff">{ }内の処理を無条件に繰り返す（CTLR+Cが押されるまで繰り返す）。<BR>
 </FONT>
-<PRE><A NAME="��V��"></A></PRE>
+<PRE><A NAME="第７回"></A></PRE>
 <TABLE border="0" width="100%" bgcolor="#000080">
   <TR>
-    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="�l�r �o�S�V�b�N"><B>��V��@ �P�����z��C���v�v�Z�i���ρC�W���΍��j</B></FONT></FONT></TD>
+    <TD><FONT size="4" color="#0000ff"><FONT size="4" color="#ffffff" face="ＭＳ Ｐゴシック"><B>第７回　 １次元配列，統計計算（平均，標準偏差）</B></FONT></FONT></TD>
   </TR>
 </TABLE>
-<P><FONT size="4" color="#0000ff"><FONT COLOR="#000000">�P�̖��̂ł����邱�Ƃ̂ł���f�[�^�̏W�܂肪����Ƃ��܂��B�z��͂��̕ϐ��̏W�܂�ł���f�[�^�S�̂ɂP�̖��O�����āA�f�[�^�̏W������܂Ƃ߂ɂ��Ĉ�����i��񋟂��܂��B�z��f�[�^�̈��i�z��v�f�j����ʂ��邽�߂ɁA�z�񖼂Ƃ��̗v�f�ԍ����w�肷��g���������܂��B�Ⴆ�΁C�z�񖼂����Ƃ������O�̔z��ϐ��̈��i�z��v�f�j�́C �ȉ��̂悤�ɂȂ�܂��B</FONT><BR>
+<P><FONT size="4" color="#0000ff"><FONT COLOR="#000000">１つの名称でくくることのできるデータの集まりがあるとします。配列はその変数の集まりであるデータ全体に１つの名前をつけて、データの集合を一まとめにして扱う手段を提供します。配列データの一つ一つ（配列要素）を区別するために、配列名とその要素番号を指定する使い方をします。例えば，配列名がａという名前の配列変数の一つ一つ（配列要素）は， 以下のようになります。</FONT><BR>
 </FONT></P>
-<FONT size="4" color="#0000ff"><FONT color="#0000ff">a[0], a[1], a[2]�c�c�@</FONT><BR>
+<FONT size="4" color="#0000ff"><FONT color="#0000ff">a[0], a[1], a[2]……　</FONT><BR>
 </FONT>
-<P><FONT size="4" color="#0000ff">�����ŁA<FONT COLOR="#000000">a�͔z�񖼁C0,1,2�͔z��v�f�̔ԍ�</FONT><BR>
-<FONT COLOR="#000080"><B>���P�����z��</B></FONT><BR>
-<FONT COLOR="#000080">�E�錾�̎d��</FONT><BR>
-�@�f�[�^�̌^�@�z��[�v�f�̍ő吔]�G<BR>
-�@��F�@int a[100]; <BR>
+<P><FONT size="4" color="#0000ff">ここで、<FONT COLOR="#000000">aは配列名，0,1,2は配列要素の番号</FONT><BR>
+<FONT COLOR="#000080"><B>■１次元配列</B></FONT><BR>
+<FONT COLOR="#000080">・宣言の仕方</FONT><BR>
+　データの型　配列名[要素の最大数]；<BR>
+　例：　int a[100]; <BR>
 <BR>
-<FONT COLOR="#000080">�E�Q�Ƃ̎d��</FONT><BR>
-�@�z��[�v�f�ԍ�]<BR>
+<FONT COLOR="#000080">・参照の仕方</FONT><BR>
+　配列名[要素番号]<BR>
 <BR>
-<FONT COLOR="#000080">��F</FONT><BR>
-<FONT COLOR="#000080">�@�@�Ǎ���</FONT><BR>
-<FONT COLOR="#000080">�@�@�@for(i=0;i&lt;100;i++)</FONT><BR>
-<FONT COLOR="#000080">�@�@�@�@scanf(&quot;%e&quot;,&amp;a[i]);</FONT><BR>
-�@<FONT COLOR="#000080">�\��</FONT><BR>
-<FONT COLOR="#000080">�@for(i=0;i&lt;100;i++)</FONT><BR>
-<FONT COLOR="#000080">�@�@�@printff(&quot;%e\n&quot;,a[i]);</FONT><BR>
-�@<FONT COLOR="#000080">���Z</FONT><BR>
-<FONT COLOR="#000080">�@for(i=0;i&lt;100;i++)</FONT><BR>
-<FONT COLOR="#000080">�@�@�@a[i]=2*i-1;</FONT><BR>
+<FONT COLOR="#000080">例：</FONT><BR>
+<FONT COLOR="#000080">　　読込み</FONT><BR>
+<FONT COLOR="#000080">　　　for(i=0;i&lt;100;i++)</FONT><BR>
+<FONT COLOR="#000080">　　　　scanf(&quot;%e&quot;,&amp;a[i]);</FONT><BR>
+　<FONT COLOR="#000080">表示</FONT><BR>
+<FONT COLOR="#000080">　for(i=0;i&lt;100;i++)</FONT><BR>
+<FONT COLOR="#000080">　　　printff(&quot;%e\n&quot;,a[i]);</FONT><BR>
+　<FONT COLOR="#000080">演算</FONT><BR>
+<FONT COLOR="#000080">　for(i=0;i&lt;100;i++)</FONT><BR>
+<FONT COLOR="#000080">　　　a[i]=2*i-1;</FONT><BR>
 <BR>
-<FONT COLOR="#000080"><B>���z��f�[�^�̏�����</B></FONT><BR>
-�E�錾���̏����l�Ƃ��ċL�q����<BR>
-�@�f�[�^�̌^�@�z��[�v�f�̍ő吔]={ <FONT COLOR="#0000ff">,</FONT> �ŋ�؂����f�[�^�̕���}�G<BR>
+<FONT COLOR="#000080"><B>■配列データの初期化</B></FONT><BR>
+・宣言文の初期値として記述する<BR>
+　データの型　配列名[要素の最大数]={ <FONT COLOR="#0000ff">,</FONT> で区切ったデータの並び}；<BR>
 <BR>
-��F�@<FONT COLOR="#0000ff">int a[10]={40,85,90,63,15,53,78,45,93,68};</FONT><BR>
+例：　<FONT COLOR="#0000ff">int a[10]={40,85,90,63,15,53,78,45,93,68};</FONT><BR>
 <BR>
 </FONT></P>
 </BODY>

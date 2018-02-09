@@ -1,15 +1,15 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=Shift_JIS">
 <META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
 <META http-equiv="Content-Style-Type" content="text/css">
-<TITLE>��11��</TITLE>
+<TITLE>第11回</TITLE>
 </HEAD>
 <BODY BGCOLOR="#efefef">
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
   <TR>
-    <TD WIDTH=100%><FONT color="#ffffff" size="+2"><FONT size="+2"><B>�v���O���~���O����щ��K �m�n�D11</B></FONT></FONT></TD>
+    <TD WIDTH=100%><FONT color="#ffffff" size="+2"><FONT size="+2"><B>プログラミングおよび演習 ＮＯ．11</B></FONT></FONT></TD>
   </TR></TABLE>
 <DIV ALIGN=RIGHT><BR>
 Last-Modified: 2013.11.18<BR>
@@ -17,59 +17,59 @@ Last-Modified: 2013.11.18<BR>
 <HR>
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
   <TR>
-    <TD><FONT color="#ffffff"><B>�z��f�[�^�ƃ|�C���^����</B></FONT></TD>
+    <TD><FONT color="#ffffff"><B>配列データとポインタ処理</B></FONT></TD>
   </TR></TABLE>
 <BR>
-��T�̊֐��̗��K���ł́A����������A��d�d�Ƃ�������r�I�A���Ȃ����̕ϐ��̒l�������ɂ��āA�֐��ƌĂяo�����̊ԂŁA�f�[�^�̂��Ƃ����������l���Ă��܂����B<BR>
+先週の関数の練習問題では、せいぜい一つ、二つ‥‥といった比較的、少ない数の変数の値を引数にして、関数と呼び出し側の間で、データのやりとりをする問題を考えてきました。<BR>
 <BR>
-�Q�ȏ�A�Ⴆ��10�A100�Ƃ����悤�ɁA���ɑ����̐��̃f�[�^���A���Ƃ肵�����ꍇ�͂ǂ�������悢�ł��傤���B<BR>
+２つ以上、例えば10個、100個というように、非常に多くの数のデータを、やりとりしたい場合はどうしたらよいでしょうか。<BR>
 <BR>
-���̂��߂̕��@�Ƃ��āA�z��������ɂ��āA�����̃f�[�^���֐��ɓn������A���΂ɑ����̃f�[�^���֐�����󂯎����@�ɂ��ĕ׋����܂��B<BR>
+このための方法として、配列を引数にして、多数のデータを関数に渡したり、反対に多数のデータを関数から受け取る方法について勉強します。<BR>
 <BR>
 <HR><BR>
-�܂��A�R���s���[�^���z��f�[�^���ǂ�Ȍ`�Ń������ɋL�^���邩�𕜏K���܂��B�Ⴆ�΁A<BR>
+まず、コンピュータが配列データをどんな形でメモリに記録するかを復習します。例えば、<BR>
 <BR>
-�@�@<FONT color="#0000ff">int a[10]�G</FONT><BR>
+　　<FONT color="#0000ff">int a[10]；</FONT><BR>
 <BR>
-�Ő錾�����z��a���l���Ă݂܂��B���̎��A�R���s���[�^�͎��̂悤�Ȏ菇�Ŕz��a�̃�������p�ӂ��܂��B<BR>
+で宣言した配列aを考えてみます。この時、コンピュータは次のような手順で配列aのメモリを用意します。<BR>
 <BR>
-<FONT color="#990000">�@(1)�@�z��a�̂��߂ɁA�A�������Ԓn�����A�����^�f�[�^10���̃��������m�ۂ���B<BR>
+<FONT color="#990000">　(1)　配列aのために、連続した番地をもつ、整数型データ10個分のメモリを確保する。<BR>
 </FONT><BR>
-�@<FONT color="#990000">(2)�@(1)�̔z��f�[�^�L�^�p�̃������Ƃ͕ʂɁA�z���</FONT><FONT color="#ff0000">�擪�Ԓn���L�^���邽�߂̃|�C���^�ϐ�a</FONT><FONT color="#990000">��p�ӂ���B���̃|�C���^�ϐ����ɂ�</FONT><FONT color="#ff0000">�z�񖼂Ɠ������O��t����B</FONT><BR>
+　<FONT color="#990000">(2)　(1)の配列データ記録用のメモリとは別に、配列の</FONT><FONT color="#ff0000">先頭番地を記録するためのポインタ変数a</FONT><FONT color="#990000">を用意する。そのポインタ変数名には</FONT><FONT color="#ff0000">配列名と同じ名前を付ける。</FONT><BR>
 <BR>
-�@<FONT color="#990000">(3)�@�|�C���^�ϐ�a�i���z�񖼁j�ɗp�ӂ����������̐擪�Ԓn���L�^����B</FONT><BR>
+　<FONT color="#990000">(3)　ポインタ変数a（＝配列名）に用意したメモリの先頭番地を記録する。</FONT><BR>
 <BR>
-�ȏ�̗l�q��}�ŕ\�킷�ƁA���}�̂悤�ɂȂ�܂��B���̌��ʁA<BR>
+以上の様子を図で表わすと、下図のようになります。その結果、<BR>
 <BR>
-�@�O�Ԗڂ̔z��v�f�@<FONT color="#0000ff">*a</FONT><BR>
-�@�P�Ԗڂ̔z��v�f�@<FONT color="#0000ff">*(a+1)</FONT><BR>
-�@�@�@�@�@�d�d<BR>
+　０番目の配列要素　<FONT color="#0000ff">*a</FONT><BR>
+　１番目の配列要素　<FONT color="#0000ff">*(a+1)</FONT><BR>
+　　　　　‥‥<BR>
 <BR>
-�̂悤�ɕ\���ł��邱�ƂɂȂ�܂��B�@���̃|�C���^�\���́A�l�������Ƃ��ɗ������ɂ����̂ŁA�e�X��<BR>
+のように表現できることになります。　このポインタ表現は、人が見たときに理解しにくいので、各々を<BR>
 <BR>
-�@�O�Ԗڂ̔z��v�f�@<FONT color="#0000ff">a[0]</FONT><BR>
-�@�P�Ԗڂ̔z��v�f�@<FONT color="#0000ff">a[1]</FONT><BR>
-�@�@�@ �d�d<BR>
+　０番目の配列要素　<FONT color="#0000ff">a[0]</FONT><BR>
+　１番目の配列要素　<FONT color="#0000ff">a[1]</FONT><BR>
+　　　 ‥‥<BR>
 <BR>
-�Ə����Ă��悢�񑩂ɂȂ��Ă��܂��i���҂͓����Ӗ��ɂȂ�܂��j�B<BR>
+と書いてもよい約束になっています（両者は同じ意味になります）。<BR>
 <BR>
 <IMG SRC="cp1-11-1.gif" ALT="" WIDTH=577 HEIGHT=153><BR>
 <BR>
-���̗��́A��ɏq�ׂ����e����̓I�Ɋm�F���邽�߂̃v���O�����ł��B<BR>
+次の例題は、上に述べた内容を具体的に確認するためのプログラムです。<BR>
 <BR>
 <TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD><B><FONT color="#000099">��11-1</FONT></B><BR>
+    <TD><B><FONT color="#000099">例11-1</FONT></B><BR>
     <PRE>#include&lt;stdio.h&gt;
 
 int main(void)
 { 
     int a[10]={38, 52, 16, 45, 73,
-               97, 63, 25, 81, 68};/* �z��ϐ��� */
-    int *c; /* �|�C���^�^�̕ϐ�c�̐錾�@*/
+               97, 63, 25, 81, 68};/* 配列変数ａ */
+    int *c; /* ポインタ型の変数cの宣言　*/
     int i;
     
-    for(i=0; i&lt;10; i++)�@/*�z��a�̃f�[�^��\������*/
+    for(i=0; i&lt;10; i++)　/*配列aのデータを表示する*/
         printf(&quot;a+%d=%d *(a+%d)=%d a[%d]=%d\n&quot;,i,a+i,i,*(a+i),i,a[i]);
 
     return(0);
@@ -79,56 +79,56 @@ int main(void)
 <BR>
 <TABLE BORDER WIDTH=100% BGCOLOR="#e1ffff">
   <TR>
-    <TD><B><FONT color="#000099">���K���@11-1</FONT> </B>(Revised : 2012/11/26)<BR>
+    <TD><B><FONT color="#000099">演習問題　11-1</FONT> </B>(Revised : 2012/11/26)<BR>
     <BR>
-    ��P�P�|�P�̃v���O���������s���āA�z��ϐ��̔Ԓn�A�z��v�f�̊e�f�[�^�A�|�C���^�\����p�����Ƃ��̔z��v�f�f�[�^�A�̊e�X�̊֌W���m�F���Ă��������ia,a+1,a+2�d�d�̔Ԓn�́A�S�Â����Ă������ɋC�����Ă��������i�P�̔Ԓn���P�o�C�g�̃�������\���񑩂ɂȂ��Ă���B�P��int�^�f�[�^��4�o�C�g�̃��������g�����߁j�B<BR>
+    例１１－１のプログラムを実行して、配列変数の番地、配列要素の各データ、ポインタ表現を用いたときの配列要素データ、の各々の関係を確認してください（a,a+1,a+2‥‥の番地は、４づつ増えていく所に気をつけてください（１つの番地が１バイトのメモリを表す約束になっている。１つのint型データは4バイトのメモリを使うため）。<BR>
     <BR>
-    ���ɁAint a[10] ��short�^��char�^�ɕύX���������i�v�����g���̏������K�؂Ȃ��̂ɕύX���邱�Ƃ�Y�ꂸ�ɁB�������A�Ԓn�̕\����%d�Achar�^�z��ɕۑ����ꂽ���l�f�[�^�̕\����%d�Ƃ���j��2��ʁX�ɍs�Ȃ��Aint�Ő錾�����ꍇ�Ƃ̈Ⴂ�ɂ��čl�@���Ȃ����B<BR>
+    次に、int a[10] をshort型とchar型に変更した実験（プリント文の書式も適切なものに変更することを忘れずに。ただし、番地の表示は%d、char型配列に保存された数値データの表示は%dとする）を2回別々に行ない、intで宣言した場合との違いについて考察しなさい。<BR>
     <BR>
-    ����ɁA������xint a[10] �ɖ߂�����Łi���������ɖ߂��j�A�ʂɗp�ӂ����|�C���^�ϐ����ɁA<BR>
+    さらに、もう一度int a[10] に戻した後で（書式も元に戻す）、別に用意したポインタ変数ｃに、<BR>
     <BR>
-    �@�@<FONT color="#0000ff">c=a;</FONT><BR>
+    　　<FONT color="#0000ff">c=a;</FONT><BR>
     <BR>
-    �Ƃ��āA�z�񃁃����̐擪�Ԓn�������Ă݂Ă��������B���̌�ŁAprintf()����<BR>
+    として、配列メモリの先頭番地を代入してみてください。その後で、printf()文を<BR>
     <BR>
-    �@�@<FONT color="#0000ff">
+    　　<FONT color="#0000ff">
     printf(&quot;c+%d=%d *(c+%d)=%d c[%d]=%d\n&quot;,i,c+i,i,*(c+i),i,c[i])</FONT>;<BR>
     <BR>
-    �ɕς��Ă݂Ă��������Bc��a�̂Q�̔z��͑S�������f�[�^�ɂȂ��Ă��邱�Ƃ��m�F���A���̗��R�ɂ��čl�@���Ȃ����B�ʂ̌�����������ƁA10���̔z��f�[�^�𒼐ڃR�s�[���Ȃ��Ă��A<BR>
+    に変えてみてください。cとaの２つの配列は全く同じデータになっていることを確認し、その理由について考察しなさい。別の言い方をすると、10個分の配列データを直接コピーしなくても、<BR>
     <BR>
-    �@<FONT color="#0000ff">c=a;</FONT><BR>
+    　<FONT color="#0000ff">c=a;</FONT><BR>
     <BR>
-    �̂悤�ɁA�z��̐擪�Ԓn���R�s�[���邾���Łi�P�̔Ԓn�f�[�^���R�s�[���邾���Łj�A�P�O�S���̔z��f�[�^�̎󂯓n�����ł������Ƃɒ��ӂ��Ă��������B<BR>
+    のように、配列の先頭番地をコピーするだけで（１個の番地データをコピーするだけで）、１０個全部の配列データの受け渡しができたことに注意してください。<BR>
     </TD>
   </TR></TABLE><BR>
-�ȏ�̉��K��肪�����ł�����A���̉��K���ɐi��ł��������B<BR>
+以上の演習問題が理解できたら、次の演習問題に進んでください。<BR>
 <BR>
 <TABLE BORDER WIDTH=100% BGCOLOR="#e1ffff">
   <TR>
-    <TD> <B><FONT color="#000099">���K��� 11-2</FONT></B>(Revised : 2013/11/11)<BR>
+    <TD> <B><FONT color="#000099">演習問題 11-2</FONT></B>(Revised : 2013/11/11)<BR>
     <BR>
-    �ȉ��́A�֐��ƌĂяo�����̊ԂŁA�z��f�[�^���󂯓n�����@�𗝉����Ă��炤���߂̃v���O�����ł��B<BR>
-    �֐�disp_data()�́A��11-1�Ɠ��������^�z��a�̃f�[�^���󂯎���ĉ�ʕ\������֐��ł��B�ȉ��̃v���O���������s���A�ǂ�Ȍ`�ŌĂяo�����Ɗ֐����̊ԂŔz��f�[�^������肵�Ă���̂��������Ă݂Ă��������B<BR>
+    以下は、関数と呼び出し側の間で、配列データを受け渡す方法を理解してもらうためのプログラムです。<BR>
+    関数disp_data()は、例11-1と同じ整数型配列aのデータを受け取って画面表示する関数です。以下のプログラムを実行し、どんな形で呼び出し側と関数側の間で配列データをやり取りしているのか説明してみてください。<BR>
     <BR>
-    <FONT color="#990000">�q���g�F�@�֐����ĂԂƁA�Ăяo�����̈����̃f�[�^���֐����̈����ɃR�s�[����B���̌��ʁA</FONT><BR>
-    <FONT color="#0000ff">�Ăяo�����@�@�@�@�@�@�֐���<BR>
-    �@�@10 �@�@�@�@�@--&gt;�@�@ len(�z��f�[�^�̐��j<BR>
-    �@�@a(�擪�Ԓn�j --&gt;�@�@ c (�|�C���^�^�ϐ��j</FONT><BR>
-    <FONT color="#990000">�ƂȂ邱�Ƃɒ��ӂ��Ă��������B</FONT><BR>
+    <FONT color="#990000">ヒント：　関数を呼ぶと、呼び出し側の引数のデータを関数側の引数にコピーする。その結果、</FONT><BR>
+    <FONT color="#0000ff">呼び出し側　　　　　　関数側<BR>
+    　　10 　　　　　--&gt;　　 len(配列データの数）<BR>
+    　　a(先頭番地） --&gt;　　 c (ポインタ型変数）</FONT><BR>
+    <FONT color="#990000">となることに注意してください。</FONT><BR>
     <BR>
     <PRE>#include &lt;stdio.h&gt;
 int main(void)
 { 
     int a[10]={45, 22, 18, 56, 69,
-               89, 95, 13, 71, 32};/* �z��ϐ�a �̌^�錾*/
-    void disp_data(int, int*); /*�֐�disp_data()�̌^�錾*/
+               89, 95, 13, 71, 32};/* 配列変数a の型宣言*/
+    void disp_data(int, int*); /*関数disp_data()の型宣言*/
     
     disp_data(10, a);
     
     return(0);
 }
 
-/* �z��f�[�^����ʂɕ\������֐�*/ 
+/* 配列データを画面に表示する関数*/ 
 void disp_data(int len,int *c)
 {
     int i;
@@ -139,16 +139,16 @@ void disp_data(int len,int *c)
   </TR></TABLE><BR>
 <HR>
 <BR>
-<B>�z��������ɂ��֐��̉��p���</B>
+<B>配列を引数にもつ関数の応用問題</B>
 <BR>
-���́A�Ăяo�����Ɗ֐��̊ԂŔz��f�[�^�̎󂯓n�����s�����߂̃v���O�����ł��B<BR>
-�����ł́A�z��[]�ɃR�T�C���g�̃f�[�^�������������ފ֐��A�z��f�[�^����ʂɏo�͂���֐��̂Q���g���Ă��܂��B<BR>
-�Q�l�̂��߂ɁA<A HREF="cp1-11-ap.html">�֐����g��Ȃ��Ŏ��������v���O����</A>���ڂ��Ă����܂��B�֐����g�������b�g�𗝉����Ă��������B�֐����g���ăv���O��������邽�߂ɂ́A�z��f�[�^�������Ɏg���K�v������܂��B<BR>
+次は、呼び出し側と関数の間で配列データの受け渡しを行うためのプログラムです。<BR>
+ここでは、配列ｘ[]にコサイン波のデータを書き込きこむ関数、配列データを画面に出力する関数の２つを使っています。<BR>
+参考のために、<A HREF="cp1-11-ap.html">関数を使わないで実現したプログラム</A>を載せておきます。関数を使うメリットを理解してください。関数を使ってプログラムを作るためには、配列データを引数に使う必要があります。<BR>
 <BR>
 <HR>
 <TABLE bgcolor="#ffffff" border="1" width="100%">
   <TR>
-    <TD width="100%" height="100"><B><FONT color="#000099">�� 11-2</FONT></B><BR>
+    <TD width="100%" height="100"><B><FONT color="#000099">例 11-2</FONT></B><BR>
     <PRE>#include&lt;stdio.h&gt;
 #include&lt;math.h&gt;
 
@@ -157,27 +157,27 @@ int main(void)
     int len=500;
 
     
-    float x[500]; /* �z�񂘂̐錾 */
+    float x[500]; /* 配列ｘの宣言 */
     
-    void make_coswave(int,float *), disp_data(int,float *);/* �֐��̌^�錾 */
+    void make_coswave(int,float *), disp_data(int,float *);/* 関数の型宣言 */
     
-    make_coswave(len,x); /* �R�T�C���g�̃f�[�^�����*/
-    disp_data(len,x);    /* �z��f�[�^����ʕ\������*/
+    make_coswave(len,x); /* コサイン波のデータを作る*/
+    disp_data(len,x);    /* 配列データを画面表示する*/
 
     return(0);
 }
 
-/* �R�T�C���g�̔z��f�[�^����邽�߂̊֐�*/
-/*�z��̐擪�Ԓn���A�|�C���^�ϐ��̈���a�Ŏ󂯎��@*/
+/* コサイン波の配列データを作るための関数*/
+/*配列の先頭番地を、ポインタ変数の引数aで受け取る　*/
 void make_coswave(int len, float *a) 
 {
     int i;
 
     for(i=0;i&lt;len;i++)
-        a[i]=�d�d�@; �@�@�@/* ���̕����͎����ō�� */
+        a[i]=‥‥　; 　　　/* この部分は自分で作る */
 }
 
-/* �z��f�[�^��\������֐�*/
+/* 配列データを表示する関数*/
 void disp_data(int len, float *a) 
 {
     int i;
@@ -188,50 +188,50 @@ void disp_data(int len, float *a)
   </TR></TABLE>
 <BR>
 <TABLE width="100%" bgcolor="#e1ffff" border="1">
-  <TR><TD><B><FONT color="#000099">���K��� 11-3</FONT></B>(Revised : 2013/11/11)<BR>
+  <TR><TD><B><FONT color="#000099">演習問題 11-3</FONT></B>(Revised : 2013/11/11)<BR>
     <BR>
-    ��P1-2�ɏ]���Ď����̃R�T�C���g�̒l���v�Z���邽�߂̃v���u���������������Ă��������B�������A�v���O�����̋�̓I�Ȏd�l�͈ȉ��̂悤�ɂ��Ă��������B<BR><BR>
-    <FONT color="#0000ff">x(t) = cos( 2�� f t )</FONT><BR><BR>
-    (1) ���g�����̒l��50[Hz]�Ƃ���B���Ԃ���0.2[ms]���Ƃ�501�_�it=100�`200[ms]�j�̎��Ԃł̒l���v�Z����B<BR>
+    例１1-2に従って次式のコサイン波の値を計算するためのプロブラムを完成させてください。ただし、プログラムの具体的な仕様は以下のようにしてください。<BR><BR>
+    <FONT color="#0000ff">x(t) = cos( 2π f t )</FONT><BR><BR>
+    (1) 周波数ｆの値を50[Hz]とする。時間ｔは0.2[ms]ごとに501点（t=100～200[ms]）の時間での値を計算する。<BR>
     <BR>
-    (2) �v�Z���ʁi501�̃f�[�^�j�͎��Ԃ̏��ԂɈꎟ���z��ɏ������ށB<BR><BR>
-    (3)�v���O���������s���āA�R�T�C���g�̃f�[�^����ʂɕ\�����Ă��������B<BR>
-    �@<BR>
-    (4)��L(3)���s���ƕ\�����ʂ��R���\�[����ʂ�����Ă��܂����߁A�Ō�̕��̃f�[�^�������\�����ꂽ��ԂɂȂ�܂��B�X�N���[���o�[����̂ق��ɃX�N���[�����đS�̂̃f�[�^���m�F���Ă��������B�������A�e�L�X�g�`���̔g�`�f�[�^�͒������Č��邱�Ƃ��ł��܂���̂ŁA���|�[�g�̎��s���ʂɂ͐^�񒆂��Ȃ��Đ擪�ƌ���̐��s�̃f�[�^�������ڂ���悤�ɂ��Ă��������B<BR>
+    (2) 計算結果（501個のデータ）は時間の順番に一次元配列に書き込む。<BR><BR>
+    (3)プログラムを実行して、コサイン波のデータを画面に表示してください。<BR>
+    　<BR>
+    (4)上記(3)を行うと表示結果がコンソール画面から溢れてしまうため、最後の方のデータだけが表示された状態になります。スクロールバーを上のほうにスクロールして全体のデータを確認してください。ただし、テキスト形式の波形データは長すぎて見ることができませんので、レポートの実行結果には真ん中を省いて先頭と後尾の数行のデータだけを載せるようにしてください。<BR>
     <BR>
-    (5) ����ɁA���̂悤�ɂ��ăG�N�Z���ŃO���t��`���Ă݂Ă��������B<BR>
-    <UL><LI>�\�v�Z�\�t�g�̃G�N�Z���ɁA�g�`�f�[�^��ǂݍ��ށi�菇�F�@Eclipse�� <FONT color="#0000ff">�R���\�[����ʂ̃e�L�X�g���N���b�v�{�[�h�ɃR�s�[����B</FONT>-&gt; �A�G�N�Z���𗧂��グ�A�\��ʂɁ@<FONT color="#0000ff">[�ҏW]-&gt;[�\�t��]</FONT>�j�B<BR>
-      <LI>�G�N�Z���̃O���t�E�B�U�[�h���g���āA�g�`��`���Ă݂�i�菇�F�G�N�Z���̕\��ʂŁA<FONT color="#0000ff">[�f�[�^��I��]-&gt;[�O���t�E�B�U�[�h�{�^�����N���b�N]-&gt;[�U�z�}��I��]-&gt;[����]-&gt;[�����{�^��]</FONT>�j�B
+    (5) さらに、次のようにしてエクセルでグラフを描いてみてください。<BR>
+    <UL><LI>表計算ソフトのエクセルに、波形データを読み込む（手順：①Eclipseの <FONT color="#0000ff">コンソール画面のテキストをクリップボードにコピーする。</FONT>-&gt; ②エクセルを立ち上げ、表画面に　<FONT color="#0000ff">[編集]-&gt;[貼付け]</FONT>）。<BR>
+      <LI>エクセルのグラフウィザードを使って、波形を描いてみる（手順：エクセルの表画面で、<FONT color="#0000ff">[データを選択]-&gt;[グラフウィザードボタンをクリック]-&gt;[散布図を選択]-&gt;[次へ]-&gt;[完了ボタン]</FONT>）。
     </UL>
-    <FONT color="#000099">[�⑫����ђ���]</FONT><BR>
-    ���R���\�[����ʂ̃e�L�X�g���N���b�v�{�[�h�ɃR�s�[������@��<A HREF="clip-cp1.html">����</A>���݂Ă��������B<BR>
-    ���G�N�Z���̃O���t���摜�f�[�^�̌`�Ńt�@�C���Z�[�u������@��<A HREF="grcap-cp1.html">����</A>���Q�l�ɂ��Ă��������B<BR>
-    ���Z�[�u�����}�`�t�@�C���i<FONT color="#ff0000">�t�@�C���`���� �fjpg�f �܂��� 'png' �Ƃ���</FONT>�j��<FONT color="#ff0000">���[���̓Y�t�t�@�C���ő����Ă�������</FONT>�B<BR>
-    ��xls�`���̃G�N�Z���t�@�C����Azip�`���̈��k�t�@�C���ő����Ă���l�����܂����A�G�N�Z�����J�����舳�k�t�@�C����W�J����̂Ɏ�Ԃ�������܂��̂Ŏ~�߂Ă��������B<BR>
+    <FONT color="#000099">[補足および注意]</FONT><BR>
+    ○コンソール画面のテキストをクリップボードにコピーする方法は<A HREF="clip-cp1.html">ここ</A>をみてください。<BR>
+    ○エクセルのグラフを画像データの形でファイルセーブする方法は<A HREF="grcap-cp1.html">ここ</A>を参考にしてください。<BR>
+    ○セーブした図形ファイル（<FONT color="#ff0000">ファイル形式は ’jpg’ または 'png' とする</FONT>）を<FONT color="#ff0000">メールの添付ファイルで送ってください</FONT>。<BR>
+    ○xls形式のエクセルファイルや、zip形式の圧縮ファイルで送ってくる人がいますが、エクセルを開いたり圧縮ファイルを展開するのに手間がかかりますので止めてください。<BR>
     </TD>
   </TR></TABLE>
 <BR>
 <HR>
-<B><FONT color="#000099">���@�R�T�C���g�v�Z�v���O�����̊g��</FONT></B><BR><BR>
-��T�́A�z��������ɂ��֐��̗��K���Ƃ��āA<BR><BR>
-�@�@<FONT color="#0000ff">��[i]��A cos(2�΂���t�~i) �@�@�@i=0,1,2,�d�d</FONT><BR><BR>
-�̃R�T�C���g�f�[�^���v�Z����֐�make_coswave()���g�����v���O��������K���܂����B<BR>
-�����́A�O�������v���O�����Ɏ�������āA����̍��񂾃v���O�����Ɋg�����Ă������Ƃɂ��܂��B<BR><BR>
-�O���������g����0�̃R�T�C���gF(��0)�ɁA���̂R�{�i3��0�j�A5�{�i5��0�j�̎��g���̃R�T�C���g��<BR>
-<BR><FONT color="#0000ff">�@�@F'=(4/��) [ F(��0�j-(1/3)F(3��0�j+(1/5)F(5��0�j+�d�d�n</FONT><BR><BR>
-�̂悤�ɑ������킹�Ă����ƕ��`�g�ɋ߂��g�`�������܂��B���l�ɁA<BR>
-<BR><FONT color="#0000ff">�@�@F'=(8/��<SUP>2</SUP>) [ F(��0�j+(1/9)F(3��0�j+(1/25)F(5��0�j+�d�d�n</FONT><BR><BR>
-�̂悤�ɁA�������킹��ƁA���x�͎O�p�g�ɋ߂��g�`�ɂȂ�܂��B<BR><BR>
-��L�̌v�Z���s���v���O��������邽�߂ɁA�O��̃v���O���������̂悤�ȕ��j�̂��ƂɕύX���܂��B<BR><BR>
-<FONT color="#000099"><B>�����P�F</B></FONT><FONT color="#990000"><B>�֐��̒��Ŏg���p�����[�^�������ɂ���B�Ăяo���Ńp�����[�^��ς��āA�v�Z�ł���悤�ɂ���i�֐��̔ėp���������Ȃ�B�֐����C������K�v���Ȃ��Ȃ�j�B</B></FONT><BR>
-�@<BR>
-���̕��j�ɓY���āA�֐�make_coswave()�̂���܂ł̈���<BR><BR>
-�@�@<FONT color="#0000ff">�z��f�[�^ : ��[]�A�@�f�[�^�� : len�A</FONT><BR>
+<B><FONT color="#000099">■　コサイン波計算プログラムの拡張</FONT></B><BR><BR>
+先週は、配列を引数にもつ関数の練習問題として、<BR><BR>
+　　<FONT color="#0000ff">ｘ[i]＝A cos(2πｆΔt×i) 　　　i=0,1,2,‥‥</FONT><BR><BR>
+のコサイン波データを計算する関数make_coswave()を使ったプログラムを練習しました。<BR>
+今日は、前回作ったプログラムに手を加えて、より手の込んだプログラムに拡張していくことにします。<BR><BR>
+前回作った周波数ｆ0のコサイン波F(ｆ0)に、その３倍（3ｆ0）、5倍（5ｆ0）の周波数のコサイン波を<BR>
+<BR><FONT color="#0000ff">　　F'=(4/π) [ F(ｆ0）-(1/3)F(3ｆ0）+(1/5)F(5ｆ0）+‥‥］</FONT><BR><BR>
+のように足し合わせていくと方形波に近い波形が得られます。同様に、<BR>
+<BR><FONT color="#0000ff">　　F'=(8/π<SUP>2</SUP>) [ F(ｆ0）+(1/9)F(3ｆ0）+(1/25)F(5ｆ0）+‥‥］</FONT><BR><BR>
+のように、足し合わせると、今度は三角波に近い波形になります。<BR><BR>
+上記の計算を行うプログラムを作るために、前回のプログラムを次のような方針のもとに変更します。<BR><BR>
+<FONT color="#000099"><B>準備１：</B></FONT><FONT color="#990000"><B>関数の中で使うパラメータを引数にする。呼び出側でパラメータを変えて、計算できるようにする（関数の汎用性が高くなる。関数を修正する必要がなくなる）。</B></FONT><BR>
+　<BR>
+この方針に添って、関数make_coswave()のこれまでの引数<BR><BR>
+　　<FONT color="#0000ff">配列データ : ｘ[]、　データ数 : len、</FONT><BR>
 <BR>
-�ɁA�@���̔g�`�p�����[�^��ǉ�����B<BR><BR>
-�@<FONT color="#0000ff">���g�� : freq�C�@���ԍ��� : tdel,�@�U�� : amp<BR>
+に、　次の波形パラメータを追加する。<BR><BR>
+　<FONT color="#0000ff">周波数 : freq，　時間刻み : tdel,　振幅 : amp<BR>
 </FONT><BR>
-���̍l�����ɏ]���āA��11-2�̃R�T�C���g�̃f�[�^�����֐��Amake_coswave�@�������������̂��A���̃��X�g�ł��B<BR><PRE>
+この考え方に従って、例11-2のコサイン波のデータ生成関数、make_coswave　を書き換えたのが、次のリストです。<BR><PRE>
 void make_coswave(int len, float freq,float tdel,float amp,float *x) 
 {
     int i;
@@ -243,24 +243,24 @@ void make_coswave(int len, float freq,float tdel,float amp,float *x)
     }
 }
 </PRE><BR>
-<FONT color="#000099"><B>�����Q�F�@</B></FONT><FONT color="#990000"><B>�����̔g�`�𑫂����킹�邽�߂̊֐���p�ӂ���B</B></FONT><BR><BR>
-�����ł́A�Q�̔g�`�f�[�^�����Z����֐���p�ӂ��܂��B�ȉ��ɁA���̂Q�̔z��f�[�^��1[]�Ƃ��Q[]�𑫂��Z���A���ʂ���1[]�ɏ������ނ��߂̊֐��@add_data()�@�������܂��B<BR><PRE>
+<FONT color="#000099"><B>準備２：　</B></FONT><FONT color="#990000"><B>複数の波形を足し合わせるための関数を用意する。</B></FONT><BR><BR>
+ここでは、２つの波形データを加算する関数を用意します。以下に、その２つの配列データｘ1[]とｘ２[]を足し算し、結果をｘ1[]に書き込むための関数　add_data()　を示します。<BR><PRE>
 void add_data(int len,float *x1,float *x2)<BR>{
     int i;
 
     for(i=0;i&lt;len;i++)
         x1[i]=x1[i]+x2[i];
 }</PRE>
-��L�̖��̂��߂�3�̔g�`�f�[�^�����Z����ɂ́A��L�̊֐����Q��Ăяo���悤�ɂ��Ďg�����Ƃɂ��܂��B<BR>
+上記の問題のために3つの波形データを加算するには、上記の関数を２回呼び出すようにして使うことにします。<BR>
 <BR>
-<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD WIDTH=100%><FONT color="#000099"><B>���K���11-4</B></FONT> (Revised : 2013/11/18)<BR><BR>
-    �ȉ��̃v���O���������������āA��{�g�̃R�T�C���g�ɁA�Q�{�A�R�{�d�d�̎��g�����������g�̃R�T�C���g���A<BR><BR>
-    �@<FONT color="#0000ff">�@F'=(4/��) [ F(��0�j-(1/3)F(3��0�j+(1/5)F(5��0�j+�d�d�n�@�i���`�g�j<BR>
-    �@�@F'=(8/��<SUP>2</SUP>) [ F(��0�j+(1/9)F(3��0�j+(1/25)F(5��0�j+�d�d�n�@�i�O�p�g�j<BR>
-    �@�@F'=(2/��)- (4/��) [ (1/3)F(2��0�j+(1/15)F(4��0�j+(1/35)F(6��0�j�d�d�n�@�i�S�g�����g�j</FONT><BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD WIDTH=100%><FONT color="#000099"><B>演習問題11-4</B></FONT> (Revised : 2013/11/18)<BR><BR>
+    以下のプログラムを完成させて、基本波のコサイン波に、２倍、３倍‥‥の周波数をもつ高調波のコサイン波を、<BR><BR>
+    　<FONT color="#0000ff">　F'=(4/π) [ F(ｆ0）-(1/3)F(3ｆ0）+(1/5)F(5ｆ0）+‥‥］　（方形波）<BR>
+    　　F'=(8/π<SUP>2</SUP>) [ F(ｆ0）+(1/9)F(3ｆ0）+(1/25)F(5ｆ0）+‥‥］　（三角波）<BR>
+    　　F'=(2/π)- (4/π) [ (1/3)F(2ｆ0）+(1/15)F(4ｆ0）+(1/35)F(6ｆ0）‥‥］　（全波整流波）</FONT><BR>
     <BR>
-    �ɏ]���đ������킹���g�`���v�Z���Ă݂Ă��������B���K���11-3�Ɠ��l�ɁA�G�N�Z���ɕ`���Ă݂Ă��������B�܂��A�v���O�����̓����������Ă��������B<BR><BR>
-    �������A�f�[�^���A���Ԃ����݁A�y�ю��g���͈ȉ��̃v���O�������ɂ�����̂��g���Ă��������B<BR><BR><PRE>#include &lt;stdio.h&gt;
+    に従って足し合わせた波形を計算してみてください。演習問題11-3と同様に、エクセルに描いてみてください。また、プログラムの動作を説明してください。<BR><BR>
+    ただし、データ数、時間きざみ、及び周波数は以下のプログラム中にあるものを使ってください。<BR><BR><PRE>#include &lt;stdio.h&gt;
 #include &lt;math.h&gt;
 #define PI 3.14159265
 
@@ -273,19 +273,19 @@ int main(void)
     float x1[1000], x2[1000];
     float tdel,freq,amp;
     int len;
-    len=400; /*�f�[�^��*/
-    tdel=5e-5; /*���Ԃ�����*/
-    freq=50.0; /*���g��*/
+    len=400; /*データ数*/
+    tdel=5e-5; /*時間きざみ*/
+    freq=50.0; /*周波数*/
     
-    /* @@@�̕����͎����ō�肩���邱�� */
+    /* @@@の部分は自分で作りかえること */
     amp=@@@;
     
-    make_coswave(len,freq,tdel,amp,x1); /*��{�g�̌v�Z*/
+    make_coswave(len,freq,tdel,amp,x1); /*基本波の計算*/
     
-    make_coswave(len, freq*@@@,tdel,amp/@@@,x2); /*1�Ԗڂ̍����g�̌v�Z*/
+    make_coswave(len, freq*@@@,tdel,amp/@@@,x2); /*1番目の高調波の計算*/
     add_data(len,x1,x2);
     
-    make_coswave(len,freq*@@@,tdel,amp/@@@,x2); /*2�Ԗڂ̍����g�̌v�Z*/
+    make_coswave(len,freq*@@@,tdel,amp/@@@,x2); /*2番目の高調波の計算*/
     add_data(len,x1,x2);
     
     disp_data(len,x1);
@@ -301,7 +301,7 @@ void add_data(int len,float *x1,float *x2)
         x1[i]=x1[i]+x2[i];
 }
 
-/*�R�T�C���g�̃f�[�^���v�Z���Ĕz��ɓ����*/
+/*コサイン波のデータを計算して配列に入れる*/
 void make_coswave(int len, float freq,float tdel,float amp,float *x) 
 {
     int i;
@@ -321,9 +321,9 @@ void disp_data(int len, float *x)
         printf(&quot;%e\n&quot;,x[i]);
 }</PRE></TD></TR></TABLE>
 <BR>
-<TABLE BORDER BGCOLOR="#ffffff"><TR><TD><STRONG><FONT color="#000099">�⑫�F�g�`�𒼐ڌv�Z���邽�߂̊֐�</FONT></STRONG><BR><BR>
-    �ȉ��́A���`�g�A�O�p�g�A�S�g�����g�A�𒼐ڌv�Z���邽�߂̊֐��������܂��B���Ԃ��]�����l�́A���K���11-4�̃R�T�C���g�𑫂����킹�č�����g�`�f�[�^�Ɣ�r���Ă݂Ă��������B<BR><BR>
-    /* ���`�g�f�[�^�̌v�Z*/<IMG SRC="cp1-11-2.gif" ALT="" ALIGN=RIGHT WIDTH=196 HEIGHT=421><BR><PRE>void make_rectwave(int len, float freq,float tdel,float amp,float *x)
+<TABLE BORDER BGCOLOR="#ffffff"><TR><TD><STRONG><FONT color="#000099">補足：波形を直接計算するための関数</FONT></STRONG><BR><BR>
+    以下は、方形波、三角波、全波整流波、を直接計算するための関数を示します。時間が余った人は、演習問題11-4のコサイン波を足し合わせて作った波形データと比較してみてください。<BR><BR>
+    /* 方形波データの計算*/<IMG SRC="cp1-11-2.gif" ALT="" ALIGN=RIGHT WIDTH=196 HEIGHT=421><BR><PRE>void make_rectwave(int len, float freq,float tdel,float amp,float *x)
 {
     int i;
     float arg,time;
@@ -341,7 +341,7 @@ void disp_data(int len, float *x)
     
 }
 
-/* �O�p�g�f�[�^�̌v�Z*/
+/* 三角波データの計算*/
 void make_triwave(int len, float freq,float tdel,float amp,float *x)
 {
     int i;
@@ -359,7 +359,7 @@ void make_triwave(int len, float freq,float tdel,float amp,float *x)
     }
 }
 
-/* �S�g�����g�f�[�^�̌v�Z*/
+/* 全波整流波データの計算*/
 void make_fulwavrec(int len, float freq,float tdel,float amp,float *x)
 {
     int i;
@@ -369,7 +369,7 @@ void make_fulwavrec(int len, float freq,float tdel,float amp,float *x)
     }
 }
 
-/* �̂�����g�f�[�^�̌v�Z*/
+/* のこぎり波データの計算*/
 void make_sawtoothwave(int len, float freq,float tdel,float amp,float *x)
 {
     int i;

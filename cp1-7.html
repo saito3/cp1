@@ -1,92 +1,92 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=Shift_JIS">
 <META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
 <META http-equiv="Content-Style-Type" content="text/css">
-<TITLE>��7��</TITLE>
+<TITLE>第7回</TITLE>
 </HEAD>
 <BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080">
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
   <TR>
-    <TD WIDTH=100%><FONT size="+2"><B><FONT color="#ffffff" size="+2">�v���O���~���O����щ��K �m�n�D7</FONT></B></FONT></TD>
+    <TD WIDTH=100%><FONT size="+2"><B><FONT color="#ffffff" size="+2">プログラミングおよび演習 ＮＯ．7</FONT></B></FONT></TD>
   </TR></TABLE>
 <BR>
 <DIV ALIGN=RIGHT>Last-Modified: 2017.06.29<BR></DIV>
 <HR>
 <TABLE BORDER=0 WIDTH=100%>
   <TR>
-    <TD BGCOLOR="#004080" WIDTH=100%><FONT color="#ffffff" size="+1"><FONT size="+1"><B>�z��</B></FONT></FONT></TD>
+    <TD BGCOLOR="#004080" WIDTH=100%><FONT color="#ffffff" size="+1"><FONT size="+1"><B>配列</B></FONT></FONT></TD>
   </TR></TABLE><BR>
-��܂Ƃ܂�̑�ʂ̐��l�f�[�^�i�����Ђ̊����̕ϓ��f�[�^�A����N���X�̎����̓_���A�I�V���X�R�[�v�̔g�`�f�[�^�Ȃǁj������A���̃f�[�^�����v���O���������K�v���������Ƃ��܂��B���̏ꍇ�A�ǂ�Ȍ`�Ńv���O�������������悢�ł��傤���B
-�Ⴆ�΁A���̃f�[�^�ɔԍ����ӂ������O�̕ϐ�����������p�ӂ��āA<BR>
+一まとまりの大量の数値データ（ある会社の株価の変動データ、あるクラスの試験の点数、オシロスコープの波形データなど）があり、そのデータ処理プログラムを作る必要があったとします。この場合、どんな形でプログラムを作ったらよいでしょうか。
+例えば、一つ一つのデータに番号をふった名前の変数をたくさん用意して、<BR>
 <BR>
-<FONT color="#0000ff">�@float a0,a1,a2,a3,a3,a4,�c �@//�錾��<BR>
-�@a0=...;<BR>
-�@a1=...;<BR>
-�@a2=...;<BR>
-�@..</FONT>.<BR>
-<P>�̂悤�ɁA�v���O�����������Ă悢�����m��܂���B�������A����ł̓f�[�^�̐���100�����������ł��A���̈��̕ϐ��ɑ΂��āA�f�[�^�̓ǂݍ��݁A���Z�A���ʂ̉�ʕ\���A��ϐ��̐����������Ȃ���΂Ȃ�Ȃ��Ȃ�ƂĂ���ɕ����܂���B<BR>
+<FONT color="#0000ff">　float a0,a1,a2,a3,a3,a4,… 　//宣言文<BR>
+　a0=...;<BR>
+　a1=...;<BR>
+　a2=...;<BR>
+　..</FONT>.<BR>
+<P>のように、プログラムを書いてよいかも知れません。しかし、これではデータの数が100個あっただけでも、その一つ一つの変数に対して、データの読み込み、演算、結果の画面表示、を変数の数だけ書かなければならなくなりとても手に負えません。<BR>
 <BR>
-���̂��߂ɁA���܂ŏK����for�����g���āAfor���[�v�̒��Ŕԍ������X�ƕς��ĕϐ������w�肷��Ƃ����悤�Ƀv���O���������Ηǂ��ƍl���邱�Ƃ��ł��܂��B�������A���܂ł̕��ʂ̕ϐ��ɂ́A���������g����������܂���B<BR>
+このために、今まで習ったfor文を使って、forループの中で番号を次々と変えて変数名を指定するというようにプログラムを作れば良いと考えることができます。しかし、今までの普通の変数には、こうした使い方がありません。<BR>
 <BR>
-�z��ϐ��́A���̂悤�ȗv���ɓ����邽�߂ɗp�ӂ���Ă��܂��B<BR>
+配列変数は、このような要求に答えるために用意されています。<BR>
 <BR>
-�z��̎g�����́A�ЂƂ����܂�̃f�[�^�S�̂ɖ��O�i�z�񖼁j�����܂��B�����āA���̃f�[�^�̈��i�z��v�f�j�ɗv�f�ԍ����w�肵�ċ�ʂ��Ďg���܂��B�Ⴆ�΁A�z�񖼂�a�Ƃ������O�̔z��ϐ��̈��i�z��v�f�j�́A
+配列の使い方は、ひとかたまりのデータ全体に名前（配列名）をつけます。そして、そのデータの一つ一つ（配列要素）に要素番号を指定して区別して使います。例えば、配列名がaという名前の配列変数の一つ一つ（配列要素）は、
 <IMG src="cp1-7-1.gif" alt="" width="273" height="52" align="right">
 <BR>
 <BR>
-<FONT color="#0000ff">�@a[0], a[1], a[2]�c�c</FONT><BR>
+<FONT color="#0000ff">　a[0], a[1], a[2]……</FONT><BR>
 <BR>
-�̂悤�ɂȂ�܂� <BR>
-<FONT color="#008000">a�͔z�񖼁A0,1,2�͔z��v�f�̔ԍ��ł��B</FONT> <BR>
-�z��ϐ��́A�v�f�w�肪�K�v�ł��邱�Ƃ������΁A���܂ł̕��ʂ̕ϐ��Ɠ����悤�Ɏg�����Ƃ��ł��܂��B<BR>
-<FONT color="#ff0000">�z��̗v�f�ԍ��͂O����n�܂邱�Ƃɒ��ӂ��Ă��������B</FONT>�܂��A-1��-2�Ȃǂ̕��̔ԍ��͂��Ȃ��ł��������i�ԈႢ�łȂ��g����������܂����A�ł��Ȃ��ƍl���Ă��������j�B<BR>
+のようになります <BR>
+<FONT color="#008000">aは配列名、0,1,2は配列要素の番号です。</FONT> <BR>
+配列変数は、要素指定が必要であることを除けば、今までの普通の変数と同じように使うことができます。<BR>
+<FONT color="#ff0000">配列の要素番号は０から始まることに注意してください。</FONT>また、-1や-2などの負の番号はつけないでください（間違いでない使い方もありますが、できないと考えてください）。<BR>
 <BR>
-�z��ϐ����g���O�ɁA���܂ł̕ϐ��Ɠ����悤�ɐ錾���K�v�ł��B<BR>
+配列変数を使う前に、今までの変数と同じように宣言が必要です。<BR>
 <BR>
-�錾�̎d����<BR>
+宣言の仕方は<BR>
 <BR>
-�@<FONT color="#0000ff">�f�[�^�^�@�z��[�v�f�̐�]�G</FONT><BR>
+　<FONT color="#0000ff">データ型　配列名[要素の数]；</FONT><BR>
 <BR>
-�̂悤�ɍs���܂��B�Ⴆ��100�̗v�f������(a[0]����a[99]�܂�)�Aa�Ƃ������O�̐����^�̔z��ϐ����g�������ꍇ�́A<BR>
+のように行います。例えば100個の要素をもつ(a[0]からa[99]まで)、aという名前の整数型の配列変数を使いたい場合は、<BR>
 <BR>
-<FONT color="#0000ff">�@int a[100]; </FONT><P>�̂悤�ɐ錾���܂��B���Ƃ́Aa[0]����a[99]�܂ł̔ԍ��̕t�������̔z��v�f�����܂ł̕ϐ��Ɠ����悤�Ɏg�����Ƃ��ł��܂��B�Ⴆ��</P>
-�@�@<FONT color="#0000ff">b=a[0]+3.0*a[1]</FONT>;<BR>
-<P>�̂悤�ɁA�����^�萔�̔ԍ��Ŏw��ł��܂��B�܂��A</P>
-<FONT color="#0000ff">�@i=0;<BR>
-�@j=1;<BR>
-�@b= a[i]+3.0*a[j]+a[i+j*2];<BR>
-<BR></FONT>�̂悤�ɁA�����^�̕ϐ��⎮���g���Ďw�肷�邱�Ƃ��ł��܂��B<BR>
+<FONT color="#0000ff">　int a[100]; </FONT><P>のように宣言します。あとは、a[0]からa[99]までの番号の付いた一つ一つの配列要素を今までの変数と同じように使うことができます。例えば</P>
+　　<FONT color="#0000ff">b=a[0]+3.0*a[1]</FONT>;<BR>
+<P>のように、整数型定数の番号で指定できます。また、</P>
+<FONT color="#0000ff">　i=0;<BR>
+　j=1;<BR>
+　b= a[i]+3.0*a[j]+a[i+j*2];<BR>
+<BR></FONT>のように、整数型の変数や式を使って指定することもできます。<BR>
 <BR>
-���l�^�̔z��ϐ��́A�����̏ꍇfor���̒��Ŏ��̂悤�Ɏg���܂��B<BR>
+数値型の配列変数は、多くの場合for文の中で次のように使います。<BR>
 <BR>
-��<B>�Ǎ���</B><FONT color="#0000ff"><BR>
+■<B>読込み</B><FONT color="#0000ff"><BR>
 <BR>
-�@float a[100];<BR>
-�@int i;<BR>
+　float a[100];<BR>
+　int i;<BR>
 <BR>
-�@for(i=0;i&lt;100;i++)<BR>
-�@�@�@scanf(&quot;%e&quot;,&amp;a[i]);<BR>
+　for(i=0;i&lt;100;i++)<BR>
+　　　scanf(&quot;%e&quot;,&amp;a[i]);<BR>
 </FONT>
-<P>��<B>�\��</B></P>
-<FONT color="#0000ff">�@float a[100];<BR>
-�@int i;<BR>
-�@for(i=0;i&lt;100;i++)<BR>
-�@�@�@printf(&quot;%e\n&quot;,a[i]);</FONT><BR>
-<P>��<B>���Z���Ƒ��</B></P>
-<FONT color="#0000ff">�@float a[100];<BR>
-�@int i;<BR>
+<P>■<B>表示</B></P>
+<FONT color="#0000ff">　float a[100];<BR>
+　int i;<BR>
+　for(i=0;i&lt;100;i++)<BR>
+　　　printf(&quot;%e\n&quot;,a[i]);</FONT><BR>
+<P>■<B>演算式と代入</B></P>
+<FONT color="#0000ff">　float a[100];<BR>
+　int i;<BR>
 <BR>
-�@for(i=0;i&lt;100;i++)<BR>
-�@�@�@a[i]=2*i-1</FONT>;<BR>
+　for(i=0;i&lt;100;i++)<BR>
+　　　a[i]=2*i-1</FONT>;<BR>
 <BR>
 <HR>
-�ȉ��̗���1����100�܂ł̐��̍��v�����߂�v���O������z����g���Ď������Ă��܂��B<BR>
+以下の例題は1から100までの数の合計を求めるプログラムを配列を使って実現しています。<BR>
 <BR>
 <TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD><FONT color="#000080"><B>��7-1 </B>(1����100�܂ł̐��̍��v�����߂�)</FONT><BR>
+    <TD><FONT color="#000080"><B>例7-1 </B>(1から100までの数の合計を求める)</FONT><BR>
     <PRE>#include &lt;stdio.h&gt;
 
 int main(void)
@@ -109,12 +109,12 @@ int main(void)
     </TD>
   </TR></TABLE><BR>
 <HR>
-���̃v���O�����́A����������̍��񂾃v���O�����ł��B�L�[�{�[�h����An�̃f�[�^����͂��āA�z��ϐ��Ɋe�X�̒l��~���Ă����܂��B���̌�ɁA���̔z��f�[�^�̕��ϒl�ƍ��v�����߂܂��B
+次のプログラムは、もう少し手の込んだプログラムです。キーボードから、n個のデータを入力して、配列変数に各々の値を蓄えておきます。その後に、その配列データの平均値と合計を求めます。
 <BR>
 <BR>
 <TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD><FONT color="#000080"><B>��7-2 </B>(���̃f�[�^����͂��ĕ��ϒl�ƍ��v�����߂�)</FONT><BR>
+    <TD><FONT color="#000080"><B>例7-2 </B>(ｎ個のデータを入力して平均値と合計を求める)</FONT><BR>
     <PRE>#include &lt;stdio.h&gt;
 
 int main(void)
@@ -149,112 +149,112 @@ int main(void)
 <HR>
 <TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
   <TR>
-    <TD><FONT color="#000080"><B>���K���7-1</B> (Revised: 2011/07/07)</FONT><BR>
+    <TD><FONT color="#000080"><B>演習問題7-1</B> (Revised: 2011/07/07)</FONT><BR>
     <BR>
-    ��7-2�ŕW�{�W���΍�sd�A�W�{�c�x skw �����߂�悤�Ƀv���O�������������Ă݂Ă��������B<BR>
-    �������A���ϒlx<SUB>av</SUB>�A�W�{�W���΍�sd�A�W�{�c�xskw�̌v�Z���͎����ɂȂ�܂��B <BR>
+    例7-2で標本標準偏差sd、標本歪度 skw を求めるようにプログラムを改造してみてください。<BR>
+    ただし、平均値x<SUB>av</SUB>、標本標準偏差sd、標本歪度skwの計算式は次式になります。 <BR>
     <BR>
-    <FONT color="#0000ff">�@�@�@ �@ �@1 �@�@N<BR>
-    �@�@��<SUB>av</SUB>= <S>�@�@</S>�@�� ��<SUB>i�@�@</SUB>�@�@�@�@�@�@�@�@�@�@�@(1)<BR>
-    �@�@�@�@ �@N�@�@i=1<BR>
+    <FONT color="#0000ff">　　　 　 　1 　　N<BR>
+    　　ｘ<SUB>av</SUB>= <S>　　</S>　Σ ｘ<SUB>i　　</SUB>　　　　　　　　　　　(1)<BR>
+    　　　　 　N　　i=1<BR>
     <BR>
-    �@ �@�@�@ 1�@ �@N<BR>
-    �@ sd= {<S> �@�@</S>�@ �� (x<SUB>i</SUB>-x<SUB>av</SUB>)<SUP>2</SUP>}<SUP>1/2</SUP>�@�@�@�@�@�@(2)<BR>
-    �@�@�@�@ N-1 �@i=1<BR>
+    　 　　　 1　 　N<BR>
+    　 sd= {<S> 　　</S>　 Σ (x<SUB>i</SUB>-x<SUB>av</SUB>)<SUP>2</SUP>}<SUP>1/2</SUP>　　　　　　(2)<BR>
+    　　　　 N-1 　i=1<BR>
     </FONT><BR>
-    <FONT color="#0000ff">�@�@�@�@ �@�@�@N<SUP class="moz-txt-sup">2</SUP>�@ �@�@�@�@1�@ N �@ <BR>
-    �@skw = <S>�@�@�@�@�@�@�@</S>�@{<S> �@�@</S> �� (x<SUB>i</SUB>-x<SUB>av</SUB>)<SUP class="moz-txt-sup">3</SUP> } / sd<SUP class="moz-txt-sup">3</SUP>�@�@�@(3)<BR>
-    �@�@�@�@�@(N-1)(N-2) �@�@N �@i=1 </FONT><BR>
+    <FONT color="#0000ff">　　　　 　　　N<SUP class="moz-txt-sup">2</SUP>　 　　　　1　 N 　 <BR>
+    　skw = <S>　　　　　　　</S>　{<S> 　　</S> Σ (x<SUB>i</SUB>-x<SUB>av</SUB>)<SUP class="moz-txt-sup">3</SUP> } / sd<SUP class="moz-txt-sup">3</SUP>　　　(3)<BR>
+    　　　　　(N-1)(N-2) 　　N 　i=1 </FONT><BR>
     <BR>
-    �W���΍�sd�̌v�Z�ɓ������āA���i2�j��ό`������(4)���g�����Ƃ��ł��܂��B<BR>
+    標準偏差sdの計算に当たって、式（2）を変形した式(4)を使うこともできます。<BR>
     <BR>
-    <FONT color="#0000ff">�@�@�@�@�@ 1 �@ N�@�@�@�@�@�@�@�@ N<BR>
-    �@sd= { <S>�@ �@</S>�@[�� (��<SUB>i</SUB><SUP>2�@</SUP>-�@2��<SUB>av</SUB>�� ��<SUB>i</SUB> + N x<SUB>av</SUB><SUP>2</SUP>] }<SUP>1/2</SUP><BR>
-    �@�@�@�@ N-1�@i=1 �@�@�@�@�@�@�@ i=1<BR>
+    <FONT color="#0000ff">　　　　　 1 　 N　　　　　　　　 N<BR>
+    　sd= { <S>　 　</S>　[Σ (ｘ<SUB>i</SUB><SUP>2　</SUP>-　2ｘ<SUB>av</SUB>Σ ｘ<SUB>i</SUB> + N x<SUB>av</SUB><SUP>2</SUP>] }<SUP>1/2</SUP><BR>
+    　　　　 N-1　i=1 　　　　　　　 i=1<BR>
     <BR>
-    �@�@�@�@�@1 �@ N�@�@�@�@�@ 1 �@ N<BR>
-    �@�@= {  <S>�@�@</S>�@[�� ��<SUB>i</SUB><SUP>2�@</SUP><S> </S>�@<S>�@ </S>�@( �� ��<SUB>i</SUB>) <SUP>2</SUP> ] }<SUP>1/2</SUP>�@�@�@(4)<BR>
-    �@�@�@�@N-1�@ i=1 �@�@ �@ N �@ i=1�@�@ �@ <BR>
+    　　　　　1 　 N　　　　　 1 　 N<BR>
+    　　= {  <S>　　</S>　[Σ ｘ<SUB>i</SUB><SUP>2　</SUP><S> </S>　<S>　 </S>　( Σ ｘ<SUB>i</SUB>) <SUP>2</SUP> ] }<SUP>1/2</SUP>　　　(4)<BR>
+    　　　　N-1　 i=1 　　 　 N 　 i=1　　 　 <BR>
     </FONT><BR>
-    ��(2)�Ǝ�(4)�̊e�X�Ńv���O����������āA��v�Z�̌��ʂƏƍ�����Ƌ��ɁA�����ɂ�錋�ʂ��݂��ɔ�r���Ă��������B�܂��A�ǂ���̕��������̗ǂ��v���O�����ł��邩�A���R���܂߂Đ������Ă��������B<BR>
-    </TD></TR></TABLE><H3><B><STRONG>�⑫�F</STRONG></B></H3>
-<P><B>�����w�֐����g���ۂ̒���</B><BR>
-���������v�Z����ۂɁA<BR>
+    式(2)と式(4)の各々でプログラムを作って、手計算の結果と照合すると共に、両式による結果を互いに比較してください。また、どちらの方が効率の良いプログラムであるか、理由を含めて説明してください。<BR>
+    </TD></TR></TABLE><H3><B><STRONG>補足：</STRONG></B></H3>
+<P><B>■数学関数を使う際の注意</B><BR>
+平方根を計算する際に、<BR>
 <BR>
-�@<FONT color="#0000ff">sqrt(</FONT>)<BR><BR>
-�̐��w�֐����g���Ă��������B���w�֐����g���Ƃ��́A�v���O�����̐擪�ɁA<BR><BR>
-<FONT color="#0000ff">�@#include &lt;math.h&gt;</FONT><BR><BR>
-�̃C���N���[�h����Y��Ȃ��ŏ����Ă��������B<BR>
+　<FONT color="#0000ff">sqrt(</FONT>)<BR><BR>
+の数学関数を使ってください。数学関数を使うときは、プログラムの先頭に、<BR><BR>
+<FONT color="#0000ff">　#include &lt;math.h&gt;</FONT><BR><BR>
+のインクルード文を忘れないで書いてください。<BR>
 <BR>
-��<B>�W���΍��̌v�Z��</B> (<FONT color="#ff0000">Added : 2017/06/29</FONT>�j</P>
-<P>��(4)��p�����W���΍��̌v�Z���̃����b�g�A�f�����b�g�ɂ��ĕ⑫���܂��B<BR>
-<B><FONT color="#0000cc">�����b�g�F</FONT></B>�E���[�v�ifor���j�̐�����ōςށB���[�v���̉��Z�ʂ����Ȃ����߁A�������Ԃ��Z���čς݂܂��B<BR>
-�E��7-2�̂悤�Ƀ��[�v���ŃL�[�{�[�h���玟�X�ƃf�[�^��ǂݍ��ޏꍇ�A��U�A�z��Ƀf�[�^��~����K�v���Ȃ����߁A���������ߖ�ł��܂��B<BR>
-<FONT color="#0000cc"><B>�f�����b�g�F</B></FONT>��(2)�̌v�Z���ɔ�ׂāA�኱�A�v�Z���x�������Ȃ�܂�(��(4)��P���Ƒ�Q���̈����Z�Ō���������������j�B<BR>
-�]�͂̂���l�́A�ȏ�̓_�ɂ��Ď��ۂɃv���O�����𓮍삳���Ċm���߂Ă݂Ă��������B<BR>
+■<B>標準偏差の計算式</B> (<FONT color="#ff0000">Added : 2017/06/29</FONT>）</P>
+<P>式(4)を用いた標準偏差の計算式のメリット、デメリットについて補足します。<BR>
+<B><FONT color="#0000cc">メリット：</FONT></B>・ループ（for文）の数が一つで済む。ループ内の演算量も少ないため、処理時間が短くて済みます。<BR>
+・例7-2のようにループ内でキーボードから次々とデータを読み込む場合、一旦、配列にデータを蓄える必要がないため、メモリが節約できます。<BR>
+<FONT color="#0000cc"><B>デメリット：</B></FONT>式(2)の計算式に比べて、若干、計算精度が悪くなります(式(4)第１項と第２項の引き算で桁落ちが発生する）。<BR>
+余力のある人は、以上の点について実際にプログラムを動作させて確かめてみてください。<BR>
 </P>
-<P>��<B>�z��f�[�^�̏�����</B><BR>
-�z��ϐ��Ƀf�[�^����������@�͊������܂��B��L�̗��̂悤�ɃL�[�{�[�h������͂�����@�����̈�ł��B ���邢�́A�v���O�����̒��Œ��ڑ�����āA</P>
-<FONT color="#0000ff">�@a[0]=40;<BR>
-�@a[1]=80;<BR>
-�@�d�d<BR>
-�@a[9]=68;<BR></FONT>
-<P>�Ə������Ƃ��ł��܂��B����ȊO�ɂ悭������@�́A�z��ϐ��̏����l�Ƃ��āA�錾���̒��ɐݒ肷����@�ł��B �Ⴆ�΁A10�̗v�f�����������^�z��a[10]�ɑ΂��ď����l��ݒ肷��ɂ́A</P>
-<FONT color="#0000ff">�@int a[10]={40,85,90,63,15,53,78,45,93,68};<BR></FONT><BR>
-�̂悤�ɐ錾�����L�q���܂��B
+<P>■<B>配列データの初期化</B><BR>
+配列変数にデータを代入する方法は幾つかあります。上記の例題のようにキーボードから入力する方法もその一つです。 あるいは、プログラムの中で直接代入して、</P>
+<FONT color="#0000ff">　a[0]=40;<BR>
+　a[1]=80;<BR>
+　‥‥<BR>
+　a[9]=68;<BR></FONT>
+<P>と書くこともできます。これ以外によくある方法は、配列変数の初期値として、宣言文の中に設定する方法です。 例えば、10個の要素数をもつ整数型配列a[10]に対して初期値を設定するには、</P>
+<FONT color="#0000ff">　int a[10]={40,85,90,63,15,53,78,45,93,68};<BR></FONT><BR>
+のように宣言文を記述します。
 <BR><BR>
-<TABLE BORDER=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD><FONT color="#000080"><B>���K���V-2 </B>(Revised: 2015/07/02)</FONT><BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD><FONT color="#000080"><B>演習問題７-2 </B>(Revised: 2015/07/02)</FONT><BR>
     <BR>
-    ���鑪��𓯂������̉���n=20��s�Ȃ��A���̑���l�𓾂��B<BR>
+    ある測定を同じ条件の下でn=20回行ない、次の測定値を得た。<BR>
     <BR>
-    <FONT color="#0000ff">�@6.1, 5.3, 6.4, 6.8, 5.7, 6.4, 6.6, 5.2, 5.3, 6.3, 5.8, 6.3, 6.4, 6.4,
+    <FONT color="#0000ff">　6.1, 5.3, 6.4, 6.8, 5.7, 6.4, 6.6, 5.2, 5.3, 6.3, 5.8, 6.3, 6.4, 6.4,
     6.6, 6.3, 6.6, 5.4, 6.0, 5.9</FONT><BR>
     <BR>
-    ����f�[�^�̕��ϒlx<SUB>av</SUB>�A�ő�lx<SUB>max</SUB>�A�ŏ��lx<SUB>min</SUB>�A�W�{�W���΍�sd���v�Z����v���O����������Ă��������B����ɁA���̑���ɑ΂���M���x99%�̐M����Ԃ������ɏ]���Čv�Z���Ă��������B<BR>
+    測定データの平均値x<SUB>av</SUB>、最大値x<SUB>max</SUB>、最小値x<SUB>min</SUB>、標本標準偏差sdを計算するプログラムを作ってください。さらに、この測定に対する信頼度99%の信頼区間を次式に従って計算してください。<BR>
     <BR>
-    <FONT color="#0000ff">�@�M���x99%�̐M����ԁ� x<SUB>av</SUB> - 2.58 sd/��n�@�` x<SUB>av</SUB> + 2.58 sd/��n <BR>
+    <FONT color="#0000ff">　信頼度99%の信頼区間＝ x<SUB>av</SUB> - 2.58 sd/√n　～ x<SUB>av</SUB> + 2.58 sd/√n <BR>
     </FONT><BR>
-    �Ȃ��A��L�̐����ɂ���悤�ɁA�z��ɏ����l��ݒ肷����@�ɏ]���āA�v���O�������쐬���Ă��������B<BR>
-    ���̍ہA�f�[�^�͕K��������L�̃f�[�^�łȂ��A �������p�ӂ����K���ȃf�[�^���g���Ė���Ă��\���܂���B�܂��A�l�@�Ƃ��āA�v�Z���ʂ���v�Z�̌��ʂƏƍ����A����Ƀv���O�����̓����������ĉ������B<BR>
+    なお、上記の説明にあるように、配列に初期値を設定する方法に従って、プログラムを作成してください。<BR>
+    その際、データは必ずしも上記のデータでなく、 自分が用意した適当なデータを使って貰っても構いません。また、考察として、計算結果を手計算の結果と照合し、さらにプログラムの動作を説明して下さい。<BR>
     <BR>
-    <FONT color="#008000">�R�����g�F<BR>
-    �ő�l�A�ŏ��l�͂ǂ�������Z�o�ł��邩�A�v���O�������l���Ă݂Ă��������B<BR>
+    <FONT color="#008000">コメント：<BR>
+    最大値、最小値はどうしたら算出できるか、プログラムを考えてみてください。<BR>
     <BR>
     </FONT></TD></TR></TABLE>
 <BR>
-<HR><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080"><TR><TD><B><FONT color="#ffffff">�񎟌��z��
+<HR><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080"><TR><TD><B><FONT color="#ffffff">二次元配列
 </FONT></B></TD></TR></TABLE><BR>
-�ȏ�ɏK�����ꎟ���z����g����,�Ⴆ�Ήp��̉Ȗڂ̂T�l���̓_���̔z��f�[�^���A<BR>
-<BR><FONT color="#0000ff">�@int eigo[5]={70,50,70,90,40};</FONT><BR><P>�̂悤�Ɏg�����Ƃ��ł��܂��B�����̃f�[�^�͉p��ȊO�ɁA���w�╨���̃f�[�^������Ƃ���ƁA ���̂悤�Ȕz��f�[�^���g�����ƂɂȂ�܂��B</P>
-<FONT color="#0000ff">�@int sugaku[5]={60,60,90,100,70};<BR>
-�@int buturi[5]={80,50,100,50,80};</FONT><BR><P>���̎��A�e�Ȗڂ̕��ϓ_�A�ō��_�A�Œ�_�A�W���΍����v�Z������A�e�l���Ƃ̑S�Ȗڂ̍��v�_���v�Z����ꍇ���l���Ă݂܂��B���̂��߂ɁA��L�̂悤�ɉȖڂ��ƂɂR�̈ꎟ���z��ϐ���p�ӂ��ăv���O����������Ă��悢�̂ł����A�Ȗڐ��������Ȃ�Ƒ�ςɂȂ��Ă��܂��B<BR><BR>
-�G�N�Z���Ƃ����\�v�Z�\�t�g��m���Ă���l�͑����Ǝv���܂����A���̂悤�ȃf�[�^�͕\�ɂ��ďW�v����Ε֗��Ȃ��Ƃ��킩��܂��B���̂Ƃ��A�ꎟ���z��̓G�N�Z���̕\�f�[�^�̏c�P��̃f�[�^�ł���A�c���̗����ɕ��񂾕\�f�[�^�͂Q�����z��̃f�[�^�ɂȂ�܂��B���Ȃ킿�A�񎟌��z��́A</P>
-<FONT color="#0000ff">�@a[�s�̔ԍ�][��̔ԍ�]</FONT> <BR><P>�̂悤�ɁA�c�̕����ɂ��ԖځA���̕����ɂ��ԖڂƂ����悤�ɔԍ��������f�[�^�ł��B����́A�z�񖼂̌�ɁA���� �Ƃ�������ɂQ�g�̔ԍ��i�Ⴆ��i��j�j�����ĕ\�����܂��B�Q�����z����A�P�����z��Ɠ��l�ɁA�g���O�ɕϐ��̌^�� �z��f�[�^�̑傫����錾���Ă����K�v������܂��B���Ȃ킿�A�錾����</P>
-<FONT color="#0000ff">�@�f�[�^�^�@�z��[�s�̐�][��̐�]�G</FONT><BR><P>�̂悤�ɏ����܂��B�Ⴆ�΁A�c�ɂT�s�A���ɂR��̑傫���̐����^�̂Q�����z���</P>
-<FONT color="#0000ff">�@int a[5][3];<BR>
-</FONT><P>�̂悤�ɂȂ�A����ɂ���Đ}�̂悤�ȂT�s�R��̂Q�����̎��[�̈悪�z��a�̖��O�ŃR���s���[�^�̃������Ɋm�ۂ���܂��B<DIV ALIGN=LEFT><IMG SRC="cp1-8-1.gif" ALT="" WIDTH=307 HEIGHT=281></DIV><BR><B>���f�[�^�̏�������</B><BR>
-�Q�����z��Ƀf�[�^���������ނɂ́A<BR>
-�@<BR>
-�@<FONT color="#0000ff">a[0][0]=70; <BR>
-�@a[0][1]=60; <BR>
-�@�d�d</FONT><BR><P>�̂悤�ȑ�������������Ă������ł��܂��B �������A�P�����z��̏ꍇ�Ɠ����悤�ɁA �錾���̏����l�Ƃ��ė^�����ق����͂邩�ɕ֗��ł��B�����l�𔺂����錾���́A�Ⴆ��</P>
-<FONT color="#0000ff">�@int a[3][3]={{ 70, 60, 80},<BR>
-�@�@�@�@�@�@�@�@{ 50, 60, 50},<BR>
-�@�@�@�@�@�@�@�@{ 70, 90,100}};</FONT><BR><P>�̂悤�ɂ��܂��B<BR><BR>
-<B>���z�񓯎m�̉��Z</B><BR>
-N�sM��̂Q�����z��A<FONT color="#0000ff">a[N][M],b[N][M],c[N][M]</FONT>���l���܂��B��̔z��a��b�̑����Z���s���A���ʂ�c�ɑ������ɂ�</P><FONT color="#0000ff">�@for(i=0; i&lt;N; i++){<BR>
-�@�@�@for(j=0; j&lt;M; j++){<BR>
-�@�@�@�@�@c[i][j]=a[i][j]+b[i][j];<BR>
-�@�@�@}<BR>
-�@}<BR></FONT><P>�̂悤�ɂ��܂��B�����Ȃ�A</P>
-<FONT color="#0000ff">�@c=a+b;</FONT> <FONT color="#008000">//����͊ԈႢ</FONT><BR><P>�̂悤�ɏ������Ƃ��ł��Ȃ����Ƃɒ��ӂ��Ă��������B<BR><BR>
-���̗��́A�ȏ�̐����ɏ]���āA�Q�����z����g���Ď����̓_�����v�Z���邽�߂̃v���O�����ł��B<HR>
-<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff"><TR><TD><FONT color="#000080"><B>��7-3</B> �\�f�[�^�̌v�Z (Revised: 2006/07/13)</FONT><BR>
+以上に習った一次元配列を使って,例えば英語の科目の５人分の点数の配列データを、<BR>
+<BR><FONT color="#0000ff">　int eigo[5]={70,50,70,90,40};</FONT><BR><P>のように使うことができます。試験のデータは英語以外に、数学や物理のデータがあるとすると、 次のような配列データを使うことになります。</P>
+<FONT color="#0000ff">　int sugaku[5]={60,60,90,100,70};<BR>
+　int buturi[5]={80,50,100,50,80};</FONT><BR><P>この時、各科目の平均点、最高点、最低点、標準偏差を計算したり、各個人ごとの全科目の合計点を計算する場合を考えてみます。そのために、上記のように科目ごとに３つの一次元配列変数を用意してプログラムを作ってもよいのですが、科目数が多くなると大変になってきます。<BR><BR>
+エクセルという表計算ソフトを知っている人は多いと思いますが、このようなデータは表にして集計すれば便利なことがわかります。このとき、一次元配列はエクセルの表データの縦１列のデータであり、縦横の両方に並んだ表データは２次元配列のデータになります。すなわち、二次元配列は、</P>
+<FONT color="#0000ff">　a[行の番号][列の番号]</FONT> <BR><P>のように、縦の方向にｉ番目、横の方向にｊ番目というように番号をつけたデータです。それは、配列名の後に、括弧 といっしょに２組の番号（例えばiとj）をつけて表現します。２次元配列も、１次元配列と同様に、使う前に変数の型と 配列データの大きさを宣言しておく必要があります。すなわち、宣言文は</P>
+<FONT color="#0000ff">　データ型　配列名[行の数][列の数]；</FONT><BR><P>のように書きます。例えば、縦に５行、横に３列の大きさの整数型の２次元配列は</P>
+<FONT color="#0000ff">　int a[5][3];<BR>
+</FONT><P>のようになり、これによって図のような５行３列の２次元の収納領域が配列名aの名前でコンピュータのメモリに確保されます。<DIV ALIGN=LEFT><IMG SRC="cp1-8-1.gif" ALT="" WIDTH=307 HEIGHT=281></DIV><BR><B>■データの書き込み</B><BR>
+２次元配列にデータを書き込むには、<BR>
+　<BR>
+　<FONT color="#0000ff">a[0][0]=70; <BR>
+　a[0][1]=60; <BR>
+　‥‥</FONT><BR><P>のような代入文を一つ一つ書いても実現できます。 しかし、１次元配列の場合と同じように、 宣言文の初期値として与えたほうがはるかに便利です。初期値を伴った宣言文は、例えば</P>
+<FONT color="#0000ff">　int a[3][3]={{ 70, 60, 80},<BR>
+　　　　　　　　{ 50, 60, 50},<BR>
+　　　　　　　　{ 70, 90,100}};</FONT><BR><P>のようにします。<BR><BR>
+<B>■配列同士の演算</B><BR>
+N行M列の２次元配列、<FONT color="#0000ff">a[N][M],b[N][M],c[N][M]</FONT>を考えます。二つの配列aとbの足し算を行い、結果をcに代入するには</P><FONT color="#0000ff">　for(i=0; i&lt;N; i++){<BR>
+　　　for(j=0; j&lt;M; j++){<BR>
+　　　　　c[i][j]=a[i][j]+b[i][j];<BR>
+　　　}<BR>
+　}<BR></FONT><P>のようにします。いきなり、</P>
+<FONT color="#0000ff">　c=a+b;</FONT> <FONT color="#008000">//これは間違い</FONT><BR><P>のように書くことができないことに注意してください。<BR><BR>
+次の例題は、以上の説明に従って、２次元配列を使って試験の点数を計算するためのプログラムです。<HR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff"><TR><TD><FONT color="#000080"><B>例7-3</B> 表データの計算 (Revised: 2006/07/13)</FONT><BR>
     <PRE> #include &lt;stdio.h&gt;
 
 int main(void)
 {
-    /*�ϐ��錾�Ɣz��̏����l�ݒ�*/ 
+    /*変数宣言と配列の初期値設定*/ 
     int i,j,total;
     float avg;
     int ten[7][3]={{ 70, 60, 80},
@@ -265,10 +265,10 @@ int main(void)
                   { 60, 80, 70},
                   { 70, 50, 60}};
 
-    /*�\��*/
+    /*表題*/
     printf(&quot; BANGO EIGO SUGAKU BUTURI GOKEI\n&quot;);
 
-    /*�e�w���̂R�Ȗڂ̍��v�i�s�̌v�Z�j*/
+    /*各学生の３科目の合計（行の計算）*/
     for(i=0;i&lt;7;i++){
         total=0;
         printf(&quot; NO.%1d&quot;,i+1);
@@ -279,7 +279,7 @@ int main(void)
         printf(&quot;%8d\n&quot;,total);
     }
 
-    /*�e�Ȗڂ̕��ϓ_�i��̌v�Z�j*/
+    /*各科目の平均点（列の計算）*/
     printf(&quot; HEIKIN&quot;);
     for(j=0;j&lt;3;j++){
         total=0;
@@ -294,46 +294,46 @@ int main(void)
     return(0);
 }</PRE></TD></TR></TABLE><BR><HR><BR>
 <TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
-  <TR><TD><FONT color="#000080"><B>���K���7-3�@</B>(Revised: 2015/07/09)<BR>
+  <TR><TD><FONT color="#000080"><B>演習問題7-3　</B>(Revised: 2015/07/09)<BR>
     </FONT><BR>
-    ��7-3�̃v���O�����ŁA�����̓_���� <BR>
+    例7-3のプログラムで、試験の点数が <BR>
     <BR>
-    <FONT color="#0000ff">�@int ten[7][3]={{ 30, 65,50},<BR>
-    �@ �@�@�@�@�@ �@ �@ { 85, 20, 15}, <BR>
-    �@ �@�@�@ �@�@�@�@�@{ 25, 50, 20},<BR>
-    �@ �@�@�@�@�@�@�@�@{ 45, 75, 80},<BR>
-    �@ �@�@�@�@�@�@�@�@{ 50, 90, 25},<BR>
-    �@ �@�@�@�@�@�@�@�@{ 60, 70, 85},<BR>
-    �@ �@�@�@�@�@�@�@�@{ 75, 30, 45}};<BR>
+    <FONT color="#0000ff">　int ten[7][3]={{ 30, 65,50},<BR>
+    　 　　　　　 　 　 { 85, 20, 15}, <BR>
+    　 　　　 　　　　　{ 25, 50, 20},<BR>
+    　 　　　　　　　　{ 45, 75, 80},<BR>
+    　 　　　　　　　　{ 50, 90, 25},<BR>
+    　 　　　　　　　　{ 60, 70, 85},<BR>
+    　 　　　　　　　　{ 75, 30, 45}};<BR>
     </FONT><BR>
-    �ł���Ƃ��܂��B�΍��l�Ɋ�Â��Đ��т𔻒肵�����B<BR>
-    ���̖ړI�ɓK���悤�ɁA��7-3�̃v���O�������ȉ��̎w���ɏ]���č��ς��Ă݂Ă��������B <BR>
+    であるとします。偏差値に基づいて成績を判定したい。<BR>
+    この目的に適うように、例7-3のプログラムを以下の指示に従って作り変えてみてください。 <BR>
     <BR>
-    (1) �Ȗڂ��Ƃɓ_���̕��ρA�W���΍����v�Z���A����Ɋ�Â��Ċe�l�̊e�Ȗڂ̕΍��l���v�Z���Ă��������B<BR>
-    �@�@�i�΍��l�͈ȉ��̃q���g���Q�Ƃ��Ă��������j <BR>
+    (1) 科目ごとに点数の平均、標準偏差を計算し、それに基づいて各人の各科目の偏差値を計算してください。<BR>
+    　　（偏差値は以下のヒントを参照してください） <BR>
     <BR>
-    (2) �Ȗڂ��Ƃɕ΍��l�̍ō��A�Œ�A���ρA�W���΍������߂ĕ\�����Ă��������B <BR>
+    (2) 科目ごとに偏差値の最高、最低、平均、標準偏差を求めて表示してください。 <BR>
     <BR>
-    (3) 3�Ȗڂ̍��v�_�ɑ΂��ē��l�ɕ��ςƕW���΍����v�Z���A���v�_�ɑ΂���΍��l���v�Z���Ă��������B����ɂ��̕΍��l�̍ō��A�Œ�A���ρA�W���΍������߂ĕ\�����Ă��������B
+    (3) 3科目の合計点に対して同様に平均と標準偏差を計算し、合計点に対する偏差値を計算してください。さらにその偏差値の最高、最低、平均、標準偏差を求めて表示してください。
     <BR>
     <BR>
-    �ȉ��̃q���g�Ɏ����\�����ʂɂȂ�悤�ɁA�v���O�������쐬���Ă��������B<BR>
-    �v�Z���ʂ���v�Z�̌��ʂƏƍ����Đ��������Ƃ��m�F���Ă��������B <BR>
-    ���ɁA�΍��l�̕��ς�W���΍��́A�^�����_���ɂ�炸�A���_�I�ɏ�ɂ�����̒l���Ƃ�܂��B<BR>
-    ���̐��l�������ƂƂ��ɁA�v�Z���ʂ����_�ǂ���ɂȂ邱�Ƃ������ĉ������B <BR>
-    �܂��A��L��(2), (3)�ɑΉ�����v���O�����̓���������܂߂��l�@���s���ĉ������B <BR>
+    以下のヒントに示す表示結果になるように、プログラムを作成してください。<BR>
+    計算結果を手計算の結果と照合して正しいことを確認してください。 <BR>
+    特に、偏差値の平均や標準偏差は、与えた点数によらず、理論的に常にある一定の値をとります。<BR>
+    その数値を示すとともに、計算結果も理論どおりになることを示して下さい。 <BR>
+    また、上記の(2), (3)に対応するプログラムの動作説明を含めた考察を行って下さい。 <BR>
     <BR>
-    <FONT color="#009900"><B>�q���g�F �΍��l�͈ȉ��̎����g���Čv�Z���Ă��������B</B><BR>
+    <FONT color="#009900"><B>ヒント： 偏差値は以下の式を使って計算してください。</B><BR>
     </FONT><BR>
-    <FONT color="#0000ff">�@�@�@�@�@�@�@�@�@ �@�@�_�� - ���ϓ_<BR>
-    �@�@�@�΍��l��10�~<S>�@�@�@�@�@�@�@�@�@�@</S>�{ 50<BR>
-    �@�@�@�@�@�@�@�@�@�@�@�@�W���΍�<BR>
+    <FONT color="#0000ff">　　　　　　　　　 　　点数 - 平均点<BR>
+    　　　偏差値＝10×<S>　　　　　　　　　　</S>＋ 50<BR>
+    　　　　　　　　　　　　標準偏差<BR>
     </FONT><BR>
-    <FONT color="#009900"><B>�ȉ��͗�7-3�̓_���f�[�^���g�p�����ꍇ�̎��s���ʂ̗�ł��B<BR>
-    �i��蕶�̓_���f�[�^���g�p�����ꍇ�̎��s���ʂ��������Ɓj<BR>
+    <FONT color="#009900"><B>以下は例7-3の点数データを使用した場合の実行結果の例です。<BR>
+    （問題文の点数データを使用した場合の実行結果を示すこと）<BR>
     </B></FONT><BR>
-    <pre>(1)�e�Ȗڂ̑f�_�ƁA���̕��ςƕW���΍�
-  �ԍ�    �p��    ���w    ����  
+    <pre>(1)各科目の素点と、その平均と標準偏差
+  番号    英語    数学    物理  
   NO.1     70      60      80  
   NO.2     50      60      50  
   NO.3     70      90     100  
@@ -341,11 +341,11 @@ int main(void)
   NO.5     40      70      80  
   NO.6     60      80      70  
   NO.7     70      50      60  
-  ����     64.3    72.9    70.0
- �W���΍�  16.2    18.0    18.3
+  平均     64.3    72.9    70.0
+ 標準偏差  16.2    18.0    18.3
 
-(2)�e�l�̊e�Ȗڂ̕΍��l�ƁA���̍ō��A�Œ�A���ρA�W���΍�
-  �ԍ�    �p��    ���w    ����
+(2)各人の各科目の偏差値と、その最高、最低、平均、標準偏差
+  番号    英語    数学    物理
   NO.1    53.5    42.9    55.5
   NO.2    41.2    42.9    39.0
   NO.3    53.5    59.5    66.4
@@ -353,13 +353,13 @@ int main(void)
   NO.5    35.0    48.4    55.5
   NO.6    47.4    54.0    50.0
   NO.7    53.5    37.3    44.5
-  �ō�    65.9    65.1    66.4
-  �Œ�    35.0    37.3    39.0 
-  ����    ***     ***     ***
- �W���΍� ***     ***     ***
+  最高    65.9    65.1    66.4
+  最低    35.0    37.3    39.0 
+  平均    ***     ***     ***
+ 標準偏差 ***     ***     ***
 
-(3)�e�l�̉Ȗڍ��v�_�ƁA���̕��ρA�W���΍�
-  �ԍ�   �Ȗڍ��v
+(3)各人の科目合計点と、その平均、標準偏差
+  番号   科目合計
   NO.1    210
   NO.2    160
   NO.3    260
@@ -367,10 +367,10 @@ int main(void)
   NO.5    190
   NO.6    210
   NO.7    180
-  ����    207.1
- �W���΍� 34.5
+  平均    207.1
+ 標準偏差 34.5
 
-�e�l�Ȗڍ��v�̕΍��l�ƁA���̍ō��A�Œ�A���ρA�W���΍�
+各人科目合計の偏差値と、その最高、最低、平均、標準偏差
   NO.1    50.8
   NO.2    36.3
   NO.3    65.3
@@ -378,10 +378,10 @@ int main(void)
   NO.5    45.0
   NO.6    50.8
   NO.7    42.1
-  �ō�    65.3
-  �Œ�    36.3
-  ����    ***
- �W���΍� ***
+  最高    65.3
+  最低    36.3
+  平均    ***
+ 標準偏差 ***
 
 <BR>
 </pre>

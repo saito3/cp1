@@ -1,28 +1,28 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=Shift_JIS">
 <META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
 <META http-equiv="Content-Style-Type" content="text/css">
-<TITLE>��P��</TITLE>
+<TITLE>第１回</TITLE>
 </HEAD>
 <BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080">
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
   <TR>
-    <TD WIDTH=100%><FONT size="6" color="#ffffff"><B>�v���O���~���O����щ��K �m�n�D1</B></FONT></TD>
+    <TD WIDTH=100%><FONT size="6" color="#ffffff"><B>プログラミングおよび演習 ＮＯ．1</B></FONT></TD>
   </TR></TABLE>
-<DIV ALIGN=RIGHT>Last-Modified:�@2015.04.16</DIV>
+<DIV ALIGN=RIGHT>Last-Modified:　2015.04.16</DIV>
 <HR>
 <TABLE BORDER=0 WIDTH=100%>
   <TR>
-    <TD BGCOLOR="#004080" WIDTH=100%><FONT SIZE=4 COLOR="#ffffff"><B>������̉�ʕ\��</B></FONT></TD>
+    <TD BGCOLOR="#004080" WIDTH=100%><FONT SIZE=4 COLOR="#ffffff"><B>文字列の画面表示</B></FONT></TD>
   </TR></TABLE><BR>
-�ȉ��͖w�ǂ̂b����̋��ȏ��̍ŏ��̗��K���ɏo�Ă���v���O�����ł��B���̃v���O���������s����ƁA&quot;Hello world!!&quot;
-�̕����񂪉�ʂɕ\������܂��B��������Ă���̂����e�𗝉����Ȃ���A���ۂɃv���O������ł�����œ������Ă݂Ă��������B<BR>
+以下は殆どのＣ言語の教科書の最初の練習問題に出てくるプログラムです。このプログラムを実行すると、&quot;Hello world!!&quot;
+の文字列が画面に表示されます。何をやっているのか内容を理解しながら、実際にプログラムを打ち込んで動かしてみてください。<BR>
 <BR>
 <TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD><FONT size="3" color="#000099"><B>��P�|�P</B></FONT>
+    <TD><FONT size="3" color="#000099"><B>例１－１</B></FONT>
     <PRE>/* Hello World!! Program */
 #include &lt;stdio.h&gt;
 
@@ -35,105 +35,105 @@ int main(void)
   </TR></TABLE>
 <BR>
 <BR>
-<FONT color="#000099">���v���O�����̐����F</FONT><BR>
+<FONT color="#000099">■プログラムの説明：</FONT><BR>
 <BR>
-�b�̃v���O�����́A����̊֐��i�T�u���[�`���j�̏W���̂̌`�ŋL�q���܂��B�R���s���[�^�̓\�[�X�v���O�����̒�����Amain() �Ƃ����֐���{���āA�ŏ��Ɏ��s���܂��i�t�Ɍ����ƁAmain() �֐����Ȃ��v���O�����́A���s�ł��܂���B�j<BR>
+Ｃのプログラムは、幾つかの関数（サブルーチン）の集合体の形で記述します。コンピュータはソースプログラムの中から、main() という関数を捜して、最初に実行します（逆に言うと、main() 関数がないプログラムは、実行できません。）<BR>
 <BR>
-main() �֐��́o �p�ň͂񂾒��i��̗�ł͂T�s�ځj�ɁA�v���O�����������܂��Bmain�̒��̎��s���́A��{�I�ɐ擪���珇�ԁi�ォ�牺�j�Ɏ��s����Ă����܂����A�r���Ŋ֐��Ăяo��������΁A���̊֐��ɔ��ł����ď��������s������A�ĂьĂяo�������ɖ߂�܂��B�܂��A�������򕶂�����΁A�����ɉ����ď����̏��Ԃ��ς��܂��B�������J��Ԃ��āAmain
-�̍Ō�̍s�܂���exit()�֐��ɓ��B����ƃv���O�������I�����܂��i�v���O�������ǂ��������ԂŎ��s����邩�𗝉�����悤�ɂ��Ă��������j�B <BR>
+main() 関数の｛ ｝で囲んだ中（上の例では５行目）に、プログラムを書きます。mainの中の実行文は、基本的に先頭から順番（上から下）に実行されていきますが、途中で関数呼び出しがあれば、その関数に飛んでいって処理を実行した後、再び呼び出した所に戻ります。また、条件分岐文があれば、条件に応じて処理の順番が変わります。これらを繰り返して、main
+の最後の行またはexit()関数に到達するとプログラムが終了します（プログラムがどういう順番で実行されるかを理解するようにしてください）。 <BR>
 <BR>
-�֐��Ăт���(printf()�֐��̌Ăяo���j�A���̌�ŏK���A�������������򕶂Ȃǂ͎��s���ł��B���s���́A�v�Z�����A�������f�╪��A�������̓ǂݏ����A�ȂǂɊ֘A���ăR���s���[�^�̎��s���e���L�q�����X�e�[�g�����g�ł��B<BR>
+関数呼びだし(printf()関数の呼び出し）、この後で習う、代入文や条件分岐文などは実行文です。実行文は、計算処理、条件判断や分岐、メモリの読み書き、などに関連してコンピュータの実行内容を記述したステートメントです。<BR>
 <BR>
-����ɑ΂��āA�錾���A�֐���`�A�R�����g���ȂǁA���s�O�̖񑩂��`���L�q�����X�e�[�g�����g�ł���A�����͔���s���ɂȂ�܂��B<BR>
+これに対して、宣言文、関数定義、コメント文など、実行前の約束や定義を記述したステートメントであり、これらは非実行文になります。<BR>
 <BR>
-�@�v���O�����\���̗����i���s�����ۂ��j�A�A�ǂ��������ԂŃv���O���������s����邩�A�B�e�X�̎��s���͉����s���Ă��邩�A�Ƃ����ϓ_�����P�̃v���O�����𗝉����Ă��������B
+①プログラム構造の理解（実行文か否か）、②どういう順番でプログラムが実行されるか、③各々の実行文は何を行っているか、という観点から例１のプログラムを理解してください。
 <BR>
 <BR>
-��P�̃v���O�����̊e�X�̍s�̈Ӗ��͈ȉ��̂悤�ɂȂ�܂��B <BR>
+例１のプログラムの各々の行の意味は以下のようになります。 <BR>
 <BR>
-<FONT color="#ff00ff">�P�s��</FONT> �@/* ��*/�ň͂񂾕����̓R�����g���ł���i�v���O�����̎��s�ɂ͊֌W���Ȃ��j�B <BR>
-<FONT color="#ff00ff">�Q�s��</FONT> �@stdio.h �Ƃ������O�̃w�b�_�t�@�C�����C���N���[�h���邱�Ƃ��R���p�C���Ɏw�����Ă���i�V�X�e���ŗp�ӂ��Ă���A���o�͊֐��iprintf�Ascanf
-�֐��Ȃǁj���g�p����ۂɕK���K�v�B���̌�ŁAstdio.h�ȊO�̃w�b�_�t�@�C�����C���N���[�h�������o�Ă��܂��j�B <BR>
-<FONT color="#ff00ff">�R�s��</FONT> �@main�֐��ł��邱�Ƃ��w�肵�Ă���Bint �͂���main�֐��̌^��int�^�ł��邱�Ƃ��w�����Ă���B()�͂��̒��Ɋ֐��̎󂯓n���̂��߂̈����������B���̃v���O�����ł͈������g��Ȃ��̂ŁA���������Ƃ����Ӗ���void
-���g���āA(void)�@�Ə����Ă���B <BR>
+<FONT color="#ff00ff">１行目</FONT> 　/* と*/で囲んだ部分はコメント文である（プログラムの実行には関係しない）。 <BR>
+<FONT color="#ff00ff">２行目</FONT> 　stdio.h という名前のヘッダファイルをインクルードすることをコンパイラに指示している（システムで用意している、入出力関数（printf、scanf
+関数など）を使用する際に必ず必要。この後で、stdio.h以外のヘッダファイルをインクルードする例も出てきます）。 <BR>
+<FONT color="#ff00ff">３行目</FONT> 　main関数であることを指定している。int はこのmain関数の型がint型であることを指示している。()はこの中に関数の受け渡しのための引数を書く。このプログラムでは引数を使わないので、何も無いという意味のvoid
+を使って、(void)　と書いている。 <BR>
 <BR>
-<FONT color="#ff00ff">�S�s�� </FONT>main�֐��̎n�܂�̊��ʁB <BR>
+<FONT color="#ff00ff">４行目 </FONT>main関数の始まりの括弧。 <BR>
 <BR>
-<FONT color="#ff00ff">�T�s��</FONT> �V�X�e�����p�ӂ��Ă��镶���̉�ʕ\���֐�printf()�֐����Ăяo���Ă���B���̍s�͎��s���ł���A��̕��̏I���ɂ͕K���G��t���邱�Ƃɒ��ӂ���Bprintf()�֐��̎g�����́A�h�h�ň͂񂾒��ɕ\��������������������B�Ō��<FONT color="#0000ff">\n</FONT> �͉�ʐ���̂��߂̉��s�w���R�[�h�ł���i<FONT color="#0000ff">\n</FONT>�Ƃ�����������ʂɕ\�������킯�łȂ��j�B <BR>
+<FONT color="#ff00ff">５行目</FONT> システムが用意している文字の画面表示関数printf()関数を呼び出している。この行は実行文であり、一つの文の終わりには必ず；を付けることに注意する。printf()関数の使い方は、””で囲んだ中に表示したい文字列を書く。最後の<FONT color="#0000ff">\n</FONT> は画面制御のための改行指示コードである（<FONT color="#0000ff">\n</FONT>という文字が画面に表示されるわけでない）。 <BR>
 <BR>
-<P><FONT color="#ff00ff">�U�s��</FONT> �[���̖߂�l�ŁAmain�֐����I�����邱�Ƃ��Ӗ�����i�ȗ��j�B</P>
-<FONT color="#ff00ff">�V�s��</FONT> main�֐��̏I���̊��ʁB <BR>
+<P><FONT color="#ff00ff">６行目</FONT> ゼロの戻り値で、main関数を終了することを意味する（省略可）。</P>
+<FONT color="#ff00ff">７行目</FONT> main関数の終わりの括弧。 <BR>
 <BR>
 <HR><TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
   <TR>
-    <TD><B><FONT color="#000099">���K���P�|�P</FONT></B><BR>
-    <PRE>��L�̗��P�|�P���ł����Ƃ���ŁA���̂悤�Ȕh����������Ă݂Ă��������B<BR>
-(1) �ȉ��̂悤�ɁAprintf()����ǉ����āA�����s�ɓn���ĕ������\������B
+    <TD><B><FONT color="#000099">演習問題１－１</FONT></B><BR>
+    <PRE>上記の例題１－１ができたところで、次のような派生問題をやってみてください。<BR>
+(1) 以下のように、printf()文を追加して、複数行に渡って文字列を表示する。
 
     printf(&quot;Hello World!!\n&quot;);
-    printf(&quot;����ɂ���!!\n&quot;);
+    printf(&quot;こんにちは!!\n&quot;);
 
-(2)�ȉ��̂悤�ɂ��Ă����ʂ͓����ł��B
+(2)以下のようにしても結果は同じです。
 
-    printf(&quot;Hello World!!\n����ɂ���!!\n&quot;);
+    printf(&quot;Hello World!!\nこんにちは!!\n&quot;);
 
-(3)printf()���̒��̉��s�R�[�h\n����菜������ǂ��Ȃ�܂����H
+(3)printf()文の中の改行コード\nを取り除いたらどうなりますか？
 
-    printf(&quot;Hello World!!����ɂ���!!&quot;);
+    printf(&quot;Hello World!!こんにちは!!&quot;);
   </PRE></TD>
   </TR></TABLE><BR>
-<STRONG>�m�����܂ł̂܂Ƃ߁n</STRONG><BR>
+<STRONG>［ここまでのまとめ］</STRONG><BR>
 <BR>
-<B>���v���O�����̏������F</B><BR>
+<B>○プログラムの書き方：</B><BR>
 <BR>
 <FONT color="#0000cc">#include &lt;stdio.h&gt;;</FONT><BR>
-<P>���ŏ��ɏ����āA<BR>
+<P>を最初に書いて、<BR>
 <BR>
 <FONT color="#0000cc">int main(void)</FONT><BR>
 <FONT color="#0000cc">{</FONT><BR>
-�@�i�����Ƀv���O�����������j<BR>
-<FONT color="#0000cc">�@�@return(0);<BR>
+　（ここにプログラムを書く）<BR>
+<FONT color="#0000cc">　　return(0);<BR>
 }</FONT><BR>
 <BR>
-�́o �p�̒��ɁA�v���O�����̖{���������B�i���΂炭�́A���܂��Ȃ��Ǝv���ď����j<BR>
+の｛ ｝の中に、プログラムの本文を書く。（しばらくは、おまじないと思って書く）<BR>
 <BR>
-���v���O�����̍Ō��<BR>
+○プログラムの最後は<BR>
 <BR>
-�@<FONT color="#0000ff">return(0);</FONT><BR>
+　<FONT color="#0000ff">return(0);</FONT><BR>
 <BR>
-�ŏI���B�������Areturn�����ȗ����Ă�warning ���o�邾���Ńv���O�����̎��s�ɍ������͂Ȃ��B<BR>
+で終わる。ただし、return文を省略してもwarning が出るだけでプログラムの実行に差し障りはない。<BR>
 <BR>
-�����̍Ō�� �Z�~�R���� ;�@ ������̂�Y��Ȃ��B<BR>
+○文の最後に セミコロン ;　 をつけるのを忘れない。<BR>
 <BR>
-�@<FONT color="#0000ff">printf();</FONT></P>
-<P>���v���O�������ł́A��̐؂�ڂ��̑��̋�����鏊�ŁA�D���Ȑ��̋󔒁ATAB�A���s������č\��Ȃ��B<BR>
+　<FONT color="#0000ff">printf();</FONT></P>
+<P>○プログラム中では、語の切れ目その他の許される所で、好きな数の空白、TAB、改行をいれて構わない。<BR>
 <BR>
-�󔒁ATAB�A���s�́A�v���O���������₷���Ȃ�悤�ɓ����B���ȏ���WEB�̗��̒i�����i�C���f���g�j�̎d����^����悤�ɂ���B<BR>
+空白、TAB、改行は、プログラムが見やすくなるように入れる。教科書やWEBの例題の段下げ（インデント）の仕方を真似るようにする。<BR>
 <BR>
-���v���O�����́A���p��</P>
-<BLOCKQUOTE><FONT color="#0000ff">�A���t�@�x�b�g�F�@A-Z�@a-z <BR>
-�����F�@0-9 <BR>
-�󔒁@ <BR>
-�L���F�@ . _ &lt; &gt; ? + - * /; : { } ( )�@[ ] ! &quot; ' # % &amp; \ = |
+○プログラムは、半角の</P>
+<BLOCKQUOTE><FONT color="#0000ff">アルファベット：　A-Z　a-z <BR>
+数字：　0-9 <BR>
+空白　 <BR>
+記号：　 . _ &lt; &gt; ? + - * /; : { } ( )　[ ] ! &quot; ' # % &amp; \ = |
 <BR>
-����R�[�h�F�@�@TAB �@���s</FONT></BLOCKQUOTE>
-<P>��p���ď����B�S�p�����i���{�ꕶ���j�͕�����ȊO�Ɏg���Ă͂����Ȃ��B<BR>
-���ɁA<FONT color="#ff0000">�S�p�̋󔒂�����ƃr���h�G���[�ɂȂ�̂Œ��ӂ���B</FONT><BR>
+制御コード：　　TAB 　改行</FONT></BLOCKQUOTE>
+<P>を用いて書く。全角文字（日本語文字）は文字列以外に使ってはいけない。<BR>
+特に、<FONT color="#ff0000">全角の空白を入れるとビルドエラーになるので注意する。</FONT><BR>
 <BR>
-��printf()�֐��̎g�����̋K���𗝉�����B</P>
-<BLOCKQUOTE>printf()�̂Ȃ��ŁA�\����������������A&quot;�@&quot;�̒��ɏ����B</BLOCKQUOTE>
+○printf()関数の使い方の規則を理解する。</P>
+<BLOCKQUOTE>printf()のなかで、表示したい文字列を、&quot;　&quot;の中に書く。</BLOCKQUOTE>
 <HR>
 <BR>
 <TABLE BORDER=0 WIDTH=100%>
   <TR>
-    <TD BGCOLOR="#004080" WIDTH=100%><B><FONT color="#ffffff">�v�Z���ʂ̉�ʕ\��</FONT></B></TD>
+    <TD BGCOLOR="#004080" WIDTH=100%><B><FONT color="#ffffff">計算結果の画面表示</FONT></B></TD>
   </TR></TABLE>
 <BR>
-����ǂ́A������̕\�������łȂ��A�����Ōv�Z�������v�Z���������āA���̌v�Z���ʂ���ʂɕ\������v���O���������܂��i�d��̑��������v���O�����j�B�ȉ��̃v���O�����𓮂����Ă��������B<BR>
+こんどは、文字列の表示だけでなく、自分で計算したい計算式を書いて、その計算結果を画面に表示するプログラムを作ります（電卓の代わりをするプログラム）。以下のプログラムを動かしてください。<BR>
 <BR>
 <TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD><FONT color="#000099"><B><FONT color="#0000cc" size="3">��P�|2</FONT></B></FONT>
+    <TD><FONT color="#000099"><B><FONT color="#0000cc" size="3">例１－2</FONT></B></FONT>
     <PRE>#include &lt;stdio.h&gt;
 
 int main(void)
@@ -143,74 +143,74 @@ int main(void)
 }</PRE>
     </TD>
   </TR></TABLE><HR><BR>
-<FONT color="#0000cc"><STRONG>�v���O�����̐����F</STRONG></FONT><BR>
-���1-1�ł́Aprintf()�֐��̑�P�����ɕ�����������܂������A���̗��ł́A�Q�Ԗڂ̈����ɐ����������Ă��܂��B���̂悤�ɁAprintf()�֐���<BR>
-<BLOCKQUOTE><FONT color="#0000ff">printf(&quot;����&quot;,�P�߂̌v�Z���܂��͕ϐ�,�Q�߂̌v�Z���܂��͕ϐ��C�d�d)</FONT></BLOCKQUOTE>
-<P>�̌`�ŏ������Ƃɂ��A��Q�����ȉ��ɏ����ꂽ�����̐����̌v�Z���ʂ��A��P�����̏����ɏ]���ĉ�ʂɕ\�����܂��B<BR>
-���Ȃ킿�A��L�̃v���O���������s����ƁA</P>
+<FONT color="#0000cc"><STRONG>プログラムの説明：</STRONG></FONT><BR>
+例題1-1では、printf()関数の第１引数に文字列を書きましたが、この例題では、２番目の引数に数式を書いています。このように、printf()関数は<BR>
+<BLOCKQUOTE><FONT color="#0000ff">printf(&quot;書式&quot;,１個めの計算式または変数,２個めの計算式または変数，‥‥)</FONT></BLOCKQUOTE>
+<P>の形で書くことにより、第２引数以下に書かれた複数の数式の計算結果を、第１引数の書式に従って画面に表示します。<BR>
+すなわち、上記のプログラムを実行すると、</P>
 <BLOCKQUOTE><FONT color="#0000ff">Answer=</FONT></BLOCKQUOTE>
-<P>�̕�����̌�ɁA <FONT color="#0000ff">3.0*4.0/(5.0+6.0)</FONT>�@�̐����̌v�Z���ʂ��\������܂��B<BR>
-��1������&quot;����&quot;�̂Ƃ���ɁA<FONT color="#0000ff">%e</FONT>�@�Ƃ����L�������߂ďo�Ă��Ă��܂����A����͑�Q�����ɏ����������̌v�Z���ʁi�����^�萔�j���w�����ŕ\������Ƃ����񑩂�\���Ă��܂��B</P>
+<P>の文字列の後に、 <FONT color="#0000ff">3.0*4.0/(5.0+6.0)</FONT>　の数式の計算結果が表示されます。<BR>
+第1引数の&quot;書式&quot;のところに、<FONT color="#0000ff">%e</FONT>　という記号が初めて出てきていますが、これは第２引数に書いた数式の計算結果（実数型定数）を指数つきで表示するという約束を表しています。</P>
 <HR>
 <BR>
-<STRONG>����</STRONG><BR>
-�����������ꍇ�A���������񑩂͂���܂���B����ł��AC������L�̖񑩂��������܂��B�������ȉ��ɗ񋓂��܂��B<BR>
+<STRONG>説明</STRONG><BR>
+数式を書く場合、それ程難しい約束はありません。それでも、C言語特有の約束が幾つかあります。それらを以下に列挙します。<BR>
 <BR>
-�������̒��Ŏg�����ȉ��Z�q�ɂ́A<FONT color="#0000ff">+�C-�C*�C/�@</FONT>�̂S������܂��B<BR>
-���̑��ɁA<FONT color="#0000ff">% </FONT>�̉��Z�q������܂��B%�͐����̊���Z�������Ƃ��̗]����v�Z���܂��B�Ⴆ�΁A<FONT color="#0000ff">4%3</FONT>�@�̌v�Z���ʂ͂S����R�̌v�Z�̗]��P�ɂȂ�܂��B <BR>
+○数式の中で使える主な演算子には、<FONT color="#0000ff">+，-，*，/　</FONT>の４つがあります。<BR>
+この他に、<FONT color="#0000ff">% </FONT>の演算子があります。%は整数の割り算をしたときの余りを計算します。例えば、<FONT color="#0000ff">4%3</FONT>　の計算結果は４割る３の計算の余り１になります。 <BR>
 <BR>
-���ׂ��扉�Z�q^�͎g���Ȃ��B<BR>
-���̂��߁A<FONT color="#0000ff">2^3�@</FONT>�̂悤�Ȍv�Z���������ꍇ�A<FONT color="#0000ff"> 2*2*2</FONT> �Ə����B<BR>
-���̏������́A�ׂ��̐����傫���Ȃ�ƕs�ւȂ̂ŁA��ʓI�ɂ͎Z�p�֐�<FONT color="#0000ff">pow()</FONT>���g���āA<FONT color="#0000ff">pow(2,3)</FONT>�@�Ə����B�Z�p�֐��̎g�����́A��ŏڂ����������܂��B <BR>
+○べき乗演算子^は使えない。<BR>
+そのため、<FONT color="#0000ff">2^3　</FONT>のような計算をしたい場合、<FONT color="#0000ff"> 2*2*2</FONT> と書く。<BR>
+この書き方は、べきの数が大きくなると不便なので、一般的には算術関数<FONT color="#0000ff">pow()</FONT>を使って、<FONT color="#0000ff">pow(2,3)</FONT>　と書く。算術関数の使い方は、後で詳しく説明します。 <BR>
 <BR>
-�����Z�̗D�揇���ɒ��ӂ���B<BR>
-��{�I�ɍ�����E�ɏ��ԂɌv�Z����B<BR>
-()�ň͂񂾂Ƃ��낪�ł��D�揇�ʂ������i�i)�ň͂񂾂Ƃ�����ŏ��Ɏ��s����j�B*�A/�́{�A�|���D�揇�ʂ������B<BR>
+○演算の優先順序に注意する。<BR>
+基本的に左から右に順番に計算する。<BR>
+()で囲んだところが最も優先順位が高い（（)で囲んだところを最初に実行する）。*、/は＋、－より優先順位が高い。<BR>
 <BR>
-�������^�f�[�^�Ǝ����^�f�[�^�̏���<BR>
+○整数型データと実数型データの書式<BR>
 <BR>
-<STRONG><FONT color="#800080">�����^�萔</FONT></STRONG><BR>
+<STRONG><FONT color="#800080">実数型定数</FONT></STRONG><BR>
 <BR>
-�@�@���`���i�w���Ȃ��\���j�@�F�@12.34�@ 2.0�@ 2.�@<BR>
-�@�@�@�@�i�����_�ȉ����Ȃ��ꍇ�ł������_��t���邱�Ƃɒ��Ӂj<BR>
-�@�@���`���i�w�����\���j�@�F�@1.234e1 �@2.0e0�@�@2e0 �@<BR>
-�@�@�i1.234e1�@�́@1.234�~10<SUP>1</SUP>�@��\���j<BR>
+　　ｆ形式（指数なし表示）　：　12.34　 2.0　 2.　<BR>
+　　　　（小数点以下がない場合でも小数点を付けることに注意）<BR>
+　　ｅ形式（指数つき表示）　：　1.234e1 　2.0e0　　2e0 　<BR>
+　　（1.234e1　は　1.234×10<SUP>1</SUP>　を表す）<BR>
 <BR>
-�ȏ�̂Q�̕\����������B<BR>
-<P><FONT color="#800080"><STRONG>�����^�萔</STRONG></FONT></P>
-<BLOCKQUOTE>���`���@�F�@1234�@�@2�@�@3</BLOCKQUOTE>
-<P>�̂悤�ɏ����_�̂Ȃ��萔�͐����Ɣ��f����B<BR>
+以上の２つの表し方がある。<BR>
+<P><FONT color="#800080"><STRONG>整数型定数</STRONG></FONT></P>
+<BLOCKQUOTE>ｄ形式　：　1234　　2　　3</BLOCKQUOTE>
+<P>のように小数点のない定数は整数と判断する。<BR>
 <BR>
-�����^�Ǝ����^�̓R���s���[�^�̒��̃f�[�^�̋L�^�`�����قȂ�B�Ⴆ�΁A�����^���m�̃f�[�^�̊���Z���ʂ́A�����_�ȉ��͐؂�̂ĂɂȂ邱�Ƃɒ��ӂ���B�����^�Ǝ����^���������Ă���ꍇ�A�������Z�ɒu�������Čv�Z���s����B<HR>
+整数型と実数型はコンピュータの中のデータの記録形式が異なる。例えば、整数型同士のデータの割り算結果は、小数点以下は切り捨てになることに注意する。整数型と実数型が混じっている場合、実数演算に置き換えて計算が行われる。<HR>
 <TABLE border="1" cellspacing="1" width="100%" bgcolor="#e1ffff">
   <TBODY>
     <TR>
-      <TD><FONT size="3" color="#000099" face="�l�r �S�V�b�N"><B>���K��� 1�|2 </B></FONT>(Revised : 2015/04/16)<BR>
+      <TD><FONT size="3" color="#000099" face="ＭＳ ゴシック"><B>演習問題 1－2 </B></FONT>(Revised : 2015/04/16)<BR>
       <BR>
-      �ȏ�̐����̋L�q���@�������ł�����A���̖�������Ă݂Ă��������B<BR>
+      以上の数式の記述方法が理解できたら、次の問題をやってみてください。<BR>
       <BR>
-      ���P�|�Q���ȉ��̌v�Z���ɕύX�����ꍇ�A���ʂ��ǂ��Ȃ�܂����H<BR>
-      ���߂ɁA���̏�Ōv�Z�����ė\�z�����ĂĂ��������B���ɁA���ۂɃv���O�����ŋ��߂����ʂƔ�r���Ă��������B�\�z�ʂ�łȂ��ꍇ�́A�ǂ����Ⴄ�̂��H�@�R���s���[�^�̌v�Z�K���𗝉�������ŁA��v�Z�Ƃ̈Ⴂ�ƁA���ꂪ�����闝�R�ɂ��ďq�ׂčl�@�����Ă��������B<BR>
+      例題１－２を以下の計算式に変更した場合、結果がどうなりますか？<BR>
+      初めに、紙の上で計算をして予想をたててください。次に、実際にプログラムで求めた結果と比較してください。予想通りでない場合は、どこが違うのか？　コンピュータの計算規則を理解した上で、手計算との違いと、それが生じる理由について述べて考察をしてください。<BR>
       <BR>
-      (1)���Z�̏���<BR>
+      (1)演算の順序<BR>
       <BR>
-      <FONT color="#0000ff">�@�@5.0*3.0+8.0�@�@5.0*(3.0+8.0)</FONT><BR>
+      <FONT color="#0000ff">　　5.0*3.0+8.0　　5.0*(3.0+8.0)</FONT><BR>
       <BR>
-      (2)����Z���܂񂾉��Z�̏���<BR>
+      (2)割り算を含んだ演算の順序<BR>
       <BR>
-      <FONT color="#0000ff">�@8.0/3.0*5.0�@�@�@8.0/(3.0*5.0)</FONT><BR>
+      <FONT color="#0000ff">　8.0/3.0*5.0　　　8.0/(3.0*5.0)</FONT><BR>
       <BR>
-      (3)�����^�f�[�^�Ǝ����^�f�[�^�̍������Z<BR>
+      (3)整数型データと実数型データの混合演算<BR>
       <BR>
-      <FONT color="#0000ff">�@4*5/(8+3)�@�@�@4.0*5/(8+3)</FONT><BR>
+      <FONT color="#0000ff">　4*5/(8+3)　　　4.0*5/(8+3)</FONT><BR>
       <BR>
-      <FONT color="#ff0000">����</FONT>�F<FONT color="#0000ff">4*5/(8+3)</FONT>��\������ɂ́A�����^�f�[�^�ɑ΂��鏑���w��A<FONT color="#0000ff">%d</FONT> ���g���Ă��������B<BR>
-      <FONT color="#000000">����A</FONT><FONT color="#0000ff">4.0*5/(8+3)</FONT><FONT color="#000000">��\������ɂ́A�����^�f�[�^�ɑ΂��鏑���w��A</FONT><FONT color="#0000ff"><FONT color="#0000ff">%e</FONT></FONT><FONT color="#000000"> ���g���Ă��������B</FONT><BR>
-      <FONT color="#000000">������</FONT>����Ďg���Ƃǂ̂悤�ȕ\���ɂȂ邩�m���߂Ă��������B<BR>
+      <FONT color="#ff0000">注意</FONT>：<FONT color="#0000ff">4*5/(8+3)</FONT>を表示するには、整数型データに対する書式指定、<FONT color="#0000ff">%d</FONT> を使ってください。<BR>
+      <FONT color="#000000">一方、</FONT><FONT color="#0000ff">4.0*5/(8+3)</FONT><FONT color="#000000">を表示するには、実数型データに対する書式指定、</FONT><FONT color="#0000ff"><FONT color="#0000ff">%e</FONT></FONT><FONT color="#000000"> を使ってください。</FONT><BR>
+      <FONT color="#000000">これらを</FONT>誤って使うとどのような表示になるか確かめてください。<BR>
       <BR>
-      (4)�������G�Ȍv�Z���i���ł��������G�Ȍv�Z�����邱�Ƃ��ł��܂��B�����̍D���Ȍv�Z�����Ă݂Ă��������B�j<BR>
+      (4)長い複雑な計算式（幾らでも長い複雑な計算をすることができます。自分の好きな計算をしてみてください。）<BR>
       <BR>
-      <FONT color="#0000ff">�@9.704*3.2+6.3*(4.6+7.2)+(3.0*4.0+8.6)/7.0</FONT><BR>
+      <FONT color="#0000ff">　9.704*3.2+6.3*(4.6+7.2)+(3.0*4.0+8.6)/7.0</FONT><BR>
       <BR>
       </TD>
     </TR>

@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=Shift_JIS">
@@ -6,330 +6,330 @@
 <META name="Date" CONTENT="1/23/97">
 <META name="Version" CONTENT="8.0.3720">
 <META http-equiv="Content-Style-Type" content="text/css">
-<TITLE>�v���O�����̍���</TITLE>
+<TITLE>プログラムの作り方</TITLE>
 </HEAD>
 <BODY BGCOLOR="#efefef">
 <DIV ALIGN=CENTER>
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#008000">
   <TR>
-    <TD><FONT SIZE=6 COLOR="#ffffff">�v���O�����̍��� </FONT></TD>
+    <TD><FONT SIZE=6 COLOR="#ffffff">プログラムの作り方 </FONT></TD>
   </TR></TABLE>
 </DIV>
 <HR>
-<DIV ALIGN=RIGHT>Last-Modified:�@2016.04.14</DIV>
+<DIV ALIGN=RIGHT>Last-Modified:　2016.04.14</DIV>
 <HR>
-<H2><FONT color="#009900">���o�b�̃n�[�h�E�F�A�ƃv���O���� </FONT></H2>
-<P>�v���O�����́APC���\������X�̃n�[�h�E�F�A�ɑ΂��铮��w�ߏ��ł���B����w�߂ł���ȏ�́A�v���O�����쐬�ɂ������āAPC�̃n�[�h�E�F�A��S���m��Ȃ��킯�ɂ͂����Ȃ��B�ׂ������Ƃ͂Ƃ������Œ���̒m���͕K�v�ł���B�ዉ����Ɉʒu�t�����Ă���C����ɂ����ẮA���̓x���������B�ڍׂ͑��̎��ƉȖڂŕ׋����ĖႢ�������A�ȉ��ɊȒP�ɐ������Ă����B</P>
-<STRONG><SPAN STYLE="color:#400080" lang=EN-US>���b�o�t</SPAN></STRONG>�i�������Z�����f�q�A�R���s���[�^�̓��]�ɑ�������j
-<P>CPU�̓R���s���[�^�S�̂̓���𐧌䂷��B��{�I�Ɉ��CPU�i�V���O���R�A��CPU�j���A���߂���Â��ԂɎ��s���Ă�������������z�肷��i�ŋ߂̓}���`�R�A��CPU��O��ɂ������񏈗����s���邪�{���K�ł͈���Ȃ��j�B</P>
-<STRONG><SPAN STYLE="color:#400080" lang=EN-US>���L�^�}��</SPAN></STRONG><BR>
+<H2><FONT color="#009900">◎ＰＣのハードウェアとプログラム </FONT></H2>
+<P>プログラムは、PCを構成する個々のハードウェアに対する動作指令書である。動作指令である以上は、プログラム作成にあたって、PCのハードウェアを全く知らないわけにはいかない。細かいことはともかく最低限の知識は必要である。低級言語に位置付けられているC言語においては、その度合が強い。詳細は他の授業科目で勉強して貰いたいが、以下に簡単に説明しておく。</P>
+<STRONG><SPAN STYLE="color:#400080" lang=EN-US>○ＣＰＵ</SPAN></STRONG>（中央演算処理素子、コンピュータの頭脳に相当する）
+<P>CPUはコンピュータ全体の動作を制御する。基本的に一つのCPU（シングルコアのCPU）が、命令を一つづつ順番に実行していく逐次処理を想定する（最近はマルチコアのCPUを前提にした並列処理も行われるが本演習では扱わない）。</P>
+<STRONG><SPAN STYLE="color:#400080" lang=EN-US>○記録媒体</SPAN></STRONG><BR>
 <BR>
-�@<FONT color="#000099"><B>�E�����n�[�h�f�B�X�N�i�g�c�c�j</B></FONT>�F�����A��e�ʁi���SGB)�A�O���L�^�i�d����؂��Ă��f�[�^���c��j�A���^�ѕs�B<BR>
-�@<FONT color="#000099"><B>�E�t�r�a������</B></FONT>�F�@�����A���e�ʁi��GB�`���\GB�j�A�O���L�^�A���^�щB<BR>
-�@<B><FONT color="#000099">�E�����̃������i�q�`�l�j</FONT></B>�F�����A���e�ʁi��GB�j�A�����L�^�i�d����؂�ƃf�[�^��������j�A���^�ѕs�B
-<P><FONT color="#0000ff">[��]</FONT>�ʏ�͏�L�̂悤��PC�{�̂������͊O���ڑ������L�^�}�̂Ƀf�[�^��ۑ�����B�ŋ߂̓N���E�h��i�l�b�g��j�̃h���C�u�i<A href="../../../cabinet.tuat.ac.jp/">TUAT Cabinet</A>��Google�h���C�u�Ȃǁj�𗘗p���邱�Ƃ��ł���B��҂̏ꍇ�A�ǂ���PC������f�[�^�ɃA�N�Z�X�ł���̂ŕ֗��ł���iUSB�����������������K�v���Ȃ��j�B</P>
-<P><B><FONT color="#000099">�����͑��u</FONT></B><BR>
-�@�E�L�[�{�[�h�A�E�}�E�X <BR>
+　<FONT color="#000099"><B>・内臓ハードディスク（ＨＤＤ）</B></FONT>：中速、大容量（数百GB)、外部記録（電源を切ってもデータが残る）、持運び不可。<BR>
+　<FONT color="#000099"><B>・ＵＳＢメモリ</B></FONT>：　中速、中容量（数GB～数十GB）、外部記録、持運び可。<BR>
+　<B><FONT color="#000099">・半導体メモリ（ＲＡＭ）</FONT></B>：高速、小容量（数GB）、内部記録（電源を切るとデータが消える）、持運び不可。
+<P><FONT color="#0000ff">[注]</FONT>通常は上記のようにPC本体もしくは外部接続した記録媒体にデータを保存する。最近はクラウド上（ネット上）のドライブ（<A href="../../../cabinet.tuat.ac.jp/">TUAT Cabinet</A>やGoogleドライブなど）を利用することもできる。後者の場合、どこのPCからもデータにアクセスできるので便利である（USBメモリを持ち歩く必要がない）。</P>
+<P><B><FONT color="#000099">○入力装置</FONT></B><BR>
+　・キーボード、・マウス <BR>
 <BR>
-<B><FONT color="#000099">���o�͑��u</FONT></B><BR>
-�@�E�t���f�B�X�v���C �A�E�v�����^ </P>
+<B><FONT color="#000099">○出力装置</FONT></B><BR>
+　・液晶ディスプレイ 、・プリンタ </P>
 <HR>
 <DIV class="Section1">
-  <H2><FONT color="#009900">��Windows�̃t�@�C���Ǘ��`��</FONT></H2>
-�����ł́A�{���K�Ŏg�p���鉼�z�f�X�N�g�b�v�̃I�y���[�e�B���O�V�X�e���ł���Windows�̃t�@�C���Ǘ��`���ɂ��Đ�������B <BR>
+  <H2><FONT color="#009900">◎Windowsのファイル管理形式</FONT></H2>
+ここでは、本演習で使用する仮想デスクトップのオペレーティングシステムであるWindowsのファイル管理形式について説明する。 <BR>
   <BR>
-  <STRONG><SPAN STYLE="color:#400080">�P�D�t�@�C��</SPAN></STRONG></DIV>
-  <DIV class="Section1">�f�X�N�g�b�v��ʏ���ʉ����^�X�N�o�[�ɂ���t�H���_�A�C�R�����N���b�N����ƃG�N�X�v���[����ʂ��J���A�l�X�ȃt�@���_��t�@�C�����\�������i�����́A�_�H��̃l�b�g���[�N�h���C�u��ɕۑ�����Ă���t�@�C���ł���j�B���ꂼ��ɕt�����Ă���t�@�C������
+  <STRONG><SPAN STYLE="color:#400080">１．ファイル</SPAN></STRONG></DIV>
+  <DIV class="Section1">デスクトップ画面上や画面下部タスクバーにあるフォルダアイコンをクリックするとエクスプローラ画面が開き、様々なファルダやファイルが表示される（これらは、農工大のネットワークドライブ上に保存されているファイルである）。それぞれに付けられているファイル名は
 <BR>
-�i�t�@�C����<SPAN lang=EN-US>).(�g���q�j </SPAN><BR>
-�̌`�ŕ\����Ă���B�����ŁA�g���q�̓t�@�C���̎�ʂ������ړI�Ŏg����B <BR>
+（ファイル名<SPAN lang=EN-US>).(拡張子） </SPAN><BR>
+の形で表されている。ここで、拡張子はファイルの種別を示す目的で使われる。 <BR>
   <BR>
-  �� <BR>
-  ���s�t�@�C���F �@<FONT color="#0000ff">*.exe</FONT> <BR>
-  �f�[�^�t�@�C���F�@<FONT color="#0000ff"><SPAN lang=EN-US>*.c</SPAN></FONT><SPAN lang=EN-US> �iC�̃\�[�X�t�@�C��)�A <FONT color="#0000ff">*.cpp</FONT>�iC++�̃\�[�X�t�@�C��) </SPAN><BR>
-  �@�@�@�@�@�@�@�@�@ <SPAN lang=EN-US><FONT color="#0000ff">*.gif</FONT> (�摜�f�[�^�t�@�C��)�A<FONT color="#0000ff"> *.txt</FONT>�i�e�L�X�g�f�[�^�t�@�C���j<BR>
-  �@�@�@�@�@�@�@�@�@ <FONT color="#0000ff">*.doc</FONT>(�h�L�������e�[�V�����t�@�C��) </SPAN></DIV>
+  例 <BR>
+  実行ファイル： 　<FONT color="#0000ff">*.exe</FONT> <BR>
+  データファイル：　<FONT color="#0000ff"><SPAN lang=EN-US>*.c</SPAN></FONT><SPAN lang=EN-US> （Cのソースファイル)、 <FONT color="#0000ff">*.cpp</FONT>（C++のソースファイル) </SPAN><BR>
+  　　　　　　　　　 <SPAN lang=EN-US><FONT color="#0000ff">*.gif</FONT> (画像データファイル)、<FONT color="#0000ff"> *.txt</FONT>（テキストデータファイル）<BR>
+  　　　　　　　　　 <FONT color="#0000ff">*.doc</FONT>(ドキュメンテーションファイル) </SPAN></DIV>
   <DIV CLASS="Section1"><BR>
-  <STRONG><SPAN STYLE="color:#400080">�Q�D�t�H���_</SPAN></STRONG></DIV>
-  <DIV class="Section1">�L�����u�̂P�̔}�̂ɔ��ɐ������̃t�@�C����ۑ����邱�Ƃ��ł���B�������A�t�@�C���̐��������Ȃ�ƁA�e�X�̃t�@�C�������̃t�@�C���ł��邩�킩��Ȃ��Ȃ�Ǘ���x����������B�����ŁA�֘A�̂���t�@�C������ɂ܂Ƃ߃t�H���_�ɕ����ĕۑ�����i�t�H���_�̉��ɍX�ɃT�u�t�H���_����邱�Ƃ��ł���j�B<BR>
+  <STRONG><SPAN STYLE="color:#400080">２．フォルダ</SPAN></STRONG></DIV>
+  <DIV class="Section1">記憶装置の１つの媒体に非常に数多くのファイルを保存することができる。しかし、ファイルの数が多くなると、各々のファイルが何のファイルであるかわからなくなり管理上支障をきたす。そこで、関連のあるファイルを一つにまとめフォルダに分けて保存する（フォルダの下に更にサブフォルダを作ることもできる）。<BR>
   <BR>
-  <STRONG><SPAN STYLE="color:#400080">�R�D�f�X�N�g�b�v�̃t�H���_�\�� </SPAN></STRONG><BR>
+  <STRONG><SPAN STYLE="color:#400080">３．デスクトップのフォルダ構成 </SPAN></STRONG><BR>
 </DIV>
-<DIV class="Section1">�l�ō쐬�����t�@�C���́A�z�[���f�B���N�g���i���邢�̓z�[���f�B���N�g���̉��̃T�u�t�H���_�j�ɕۑ�����悤�ɂ���B�{���K�ŗp���鉼�z�f�X�N�g�b�v�ɂ̓z�[���f�B���N�g���������悤�Ɍ�����B��́A
-C�h���C�u�̈ȉ��̏ꏊ�ɂ���B</DIV>
-<PRE><SPAN lang=EN-US>C:\Users\&quot;TUAT-ID&quot;\�i���z�f�X�N�g�b�v�̃z�[���f�B���N�g���j
-</SPAN>    �@    �@�@�@  �� WINDOWS
- �@�@     �@�@�@  �� MyDocuments (TUAT�L���r�l�b�g�t�H���_�̃V���[�g�J�b�g�j
- �@�@     �@�@�@  �� MyMusic�@�@ (�@�J�@�j
-�@�@           �@�@�@�d�d�@�@</PRE>
-<P>������́A<FONT color="#000000">Z�h���C�u�̃��[�g�t�H���_�i<FONT color="#0000cc">Z:\</FONT>)�ł���B</FONT>
-<PRE><SPAN lang=EN-US>Z:\�iTUAT�L���r�l�b�g�t�H���_�j
- �� MyDocuments
-</SPAN> �� workspace ��ex1
-�@ �@ �@�@�@�@��ex2
-�@  �@�@�@�@�@��ex3
-�@ �@�@�@�@�@�@�d�d�@</PRE>
-<P><FONT color="#000000">���͂���Z�h���C�u��</FONT>�Z���^�[���N���E�h��ɗp�ӂ��Ă���<A href="../../../cabinet.tuat.ac.jp/">TUAT�L���r�l�b�g�t�H���_</A>�Ɠ������̂ł���B�ȉ��ɏq�ׂ闝�R�ŁA�l�t�@�C���́A<FONT color="#000000">Z�h���C�u�ɕۑ����邱�Ƃ𐄏�����B</FONT>���̑��̗��R�́A�L���r�l�b�g�t�H���_��Web�u���E�U�o�R�Ŋw�O������A�N�Z�X�ł��Ďg�����肪�悢����ł���B���̗��R�́AC�h���C�u�͉��z�[�����̈ꎞ�I�ȃt�H���_�ł���A�[�������O�C��/���O�I�t����x�Ƀf�[�^��]�����ėp�ӂ��Ă���B���ʂȓ]���������邽�߂ɂ��A�L���r�l�b�g�t�H���_�iZ�h���C�u�j�Ƀf�[�^��ۑ������ق����悢�i�������R�ɂ��AC�h���C�u��MyDocuments�A�C�R���́A����Z�h���C�uMyDocuments�t�H���_�̃V���[�g�J�b�g�ɂȂ��Ă���A���̂�Z�h���C�u�ł���j�B<BR>
+<DIV class="Section1">個人で作成したファイルは、ホームディレクトリ（あるいはホームディレクトリの下のサブフォルダ）に保存するようにする。本演習で用いる仮想デスクトップにはホームディレクトリが二つあるように見える。一つは、
+Cドライブの以下の場所にある。</DIV>
+<PRE><SPAN lang=EN-US>C:\Users\&quot;TUAT-ID&quot;\（仮想デスクトップのホームディレクトリ）
+</SPAN>    　    　　　  ├ WINDOWS
+ 　　     　　　  ├ MyDocuments (TUATキャビネットフォルダのショートカット）
+ 　　     　　　  ├ MyMusic　　 (　゛　）
+　　           　　　‥‥　　</PRE>
+<P>もう一つは、<FONT color="#000000">Zドライブのルートフォルダ（<FONT color="#0000cc">Z:\</FONT>)である。</FONT>
+<PRE><SPAN lang=EN-US>Z:\（TUATキャビネットフォルダ）
+ ├ MyDocuments
+</SPAN> ├ workspace ┬ex1
+　 　 　　　　├ex2
+　  　　　　　├ex3
+　 　　　　　　‥‥　</PRE>
+<P><FONT color="#000000">実はこのZドライブは</FONT>センターがクラウド上に用意している<A href="../../../cabinet.tuat.ac.jp/">TUATキャビネットフォルダ</A>と同じものである。以下に述べる理由で、個人ファイルは、<FONT color="#000000">Zドライブに保存することを推奨する。</FONT>その第一の理由は、キャビネットフォルダはWebブラウザ経由で学外からもアクセスできて使い勝手がよいからである。第二の理由は、Cドライブは仮想端末内の一時的なフォルダであり、端末をログイン/ログオフする度にデータを転送して用意している。無駄な転送をさけるためにも、キャビネットフォルダ（Zドライブ）にデータを保存したほうがよい（同じ理由により、CドライブのMyDocumentsアイコンは、実はZドライブMyDocumentsフォルダのショートカットになっている、実体はZドライブである）。<BR>
 <BR>
-<FONT color="#0000cc">[��]</FONT>���̌��Eclipse�̏����ݒ�ŁA<FONT color="#0000ff">workspace</FONT>�t�H���_�̏ꏊ���w�肷��B�{���K���Ƃō쐬����X�̃v���W�F�N�g�t�@�C���́A�w�肵��<FONT color="#0000ff">workspace</FONT>�̉��̃T�u�t�H���_(��L�̗�ł́Aex1,ex2,ex3�̃t�H���_�j�ɕۑ������B</P>
-<DIV CLASS="Section1"><STRONG><SPAN STYLE="font-size:13.5pt;color:#400080;" lang=EN-US><SPAN style="color:#400080">�S�D</SPAN>�G�N�X�v���[���ɂ��t�@�C������</SPAN> </STRONG></DIV>
-<P>�G�N�X�v���[����ʏ�ŁA�ȉ��̂悤�ȃt�@�C�����삪�\�ł���B</P>
+<FONT color="#0000cc">[注]</FONT>この後のEclipseの初期設定で、<FONT color="#0000ff">workspace</FONT>フォルダの場所を指定する。本演習授業で作成する個々のプロジェクトファイルは、指定した<FONT color="#0000ff">workspace</FONT>の下のサブフォルダ(上記の例では、ex1,ex2,ex3のフォルダ）に保存される。</P>
+<DIV CLASS="Section1"><STRONG><SPAN STYLE="font-size:13.5pt;color:#400080;" lang=EN-US><SPAN style="color:#400080">４．</SPAN>エクスプローラによるファイル操作</SPAN> </STRONG></DIV>
+<P>エクスプローラ画面上で、以下のようなファイル操作が可能である。</P>
 <UL>
     <LI>
-    <DIV CLASS="Section1"><SPAN lang=EN-US>�h���C�u�A�t�H���_��I���F �@�h���C�u��t�H���_�A�C�R�����N���b�N</SPAN><BR>
+    <DIV CLASS="Section1"><SPAN lang=EN-US>ドライブ、フォルダを選択： 　ドライブやフォルダアイコンをクリック</SPAN><BR>
     </DIV>
     <LI>
-    <DIV CLASS="Section1"><SPAN lang=EN-US>�f�[�^�t�@�C���̕\�� �F �t�@�C���A�C�R�����N���b�N </SPAN><BR>
+    <DIV CLASS="Section1"><SPAN lang=EN-US>データファイルの表示 ： ファイルアイコンをクリック </SPAN><BR>
     </DIV>
     <LI>
-    <DIV CLASS="Section1"><SPAN lang=EN-US>�v���O�����t�@�C���̎��s �F �t�@�C���A�C�R�����N���b�N </SPAN><BR>
+    <DIV CLASS="Section1"><SPAN lang=EN-US>プログラムファイルの実行 ： ファイルアイコンをクリック </SPAN><BR>
     </DIV>
     <LI>
-    <DIV CLASS="Section1"><SPAN lang=EN-US>�t�@�C���̍폜�F �t�@�C���A�C�R����</SPAN>���ݔ��Ƀh���b�O<SPAN lang=EN-US>�I���i�N���b�N����ƐF���ς��j=&gt; Delete�L�[�������B </SPAN></DIV>
+    <DIV CLASS="Section1"><SPAN lang=EN-US>ファイルの削除： ファイルアイコンを</SPAN>ごみ箱にドラッグ<SPAN lang=EN-US>選択（クリックすると色が変わる）=&gt; Deleteキーを押す。 </SPAN></DIV>
     <DIV CLASS="Section1"></DIV>
   <LI>
   <DIV CLASS="Section1">
-  <DIV CLASS="Section1"><SPAN lang=EN-US>�t�@�C���̃R�s�[�F�@�R�s�[���ƃR�s�[��̊e�X�̃t�H���_��ʂ��o���Ă����B�A�R�s�[���̃t�@�C����I���i�N���b�N����ƐF���ς��j�A�B�R�s�[��̃t�H���_��ʓ��ɑI�������t�@�C�����h���b�O���h���b�v����B
+  <DIV CLASS="Section1"><SPAN lang=EN-US>ファイルのコピー：①コピー元とコピー先の各々のフォルダ画面を出しておく。②コピー元のファイルを選択（クリックすると色が変わる）、③コピー先のフォルダ画面内に選択したファイルをドラッグ＆ドロップする。
   &nbsp; </SPAN><SPAN lang=EN-US></SPAN></DIV>
   </DIV>
 </UL>
-<FONT color="#0000cc">[��]</FONT> ��L�͉��z�[���f�X�N�g�b�v���ł̂݉\�ȑ���ɂȂ�B��������PC�̃t�H���_�Ƃ܂����ōs�����Ƃ��ł��Ȃ��B�܂������t�@�C������́AWEB���<A href="../../../cabinet.tuat.ac.jp/">TUAT�L���r�l�b�g</A>��ʂ��čs���K�v������B<BR>
+<FONT color="#0000cc">[注]</FONT> 上記は仮想端末デスクトップ内でのみ可能な操作になる。持ち込みPCのフォルダとまたいで行うことができない。またいだファイル操作は、WEB上の<A href="../../../cabinet.tuat.ac.jp/">TUATキャビネット</A>を通して行う必要がある。<BR>
 <BR>
 <HR size="2" width="100%" align="CENTER">
 <DIV class="Section1">
-<H2><FONT color="#009900">�����zWindows�f�X�N�g�b�v</FONT></H2>
+<H2><FONT color="#009900">◎仮想Windowsデスクトップ</FONT></H2>
 </DIV>
-<P>WEB�u���E�U�o�R�œ��삷�鉼�zWindows�f�X�N�g�b�v���̉��ŉ��K���Ƃ��s�Ȃ��B���̉��zWindows�f�X�N�g�b�v�ɂ́A��������������PC�iBYOD:Bring
-Your Own Device�j����A�N�Z�X����B��������PC��OS�́AWindows, MacOSX, Linux, Chrome�̂ǂ�ł��\��Ȃ��iOS�Ɉˑ����܂���j�B�l�b�g���[�N�ɐڑ��ł���ꏊ�i����LAN�ڑ��ł���ꏊ�j�ł���΁A�w���̂ǂ��ł����p�ł���B��������PC��<A href="../../../sites.google.com/a/go.tuat.ac.jp/imc/home/info-system0/byodspec2016">�����X�y�b�N</A>�����炩���ߊm�F���Ă������ƁB</P>
+<P>WEBブラウザ経由で動作する仮想Windowsデスクトップ環境の下で演習授業を行なう。この仮想Windowsデスクトップには、自分が持ち込んだPC（BYOD:Bring
+Your Own Device）からアクセスする。持ち込みPCのOSは、Windows, MacOSX, Linux, Chromeのどれでも構わない（OSに依存しません）。ネットワークに接続できる場所（無線LAN接続できる場所）であれば、学内のどこでも利用できる。持ち込みPCの<A href="../../../sites.google.com/a/go.tuat.ac.jp/imc/home/info-system0/byodspec2016">推奨スペック</A>をあらかじめ確認しておくこと。</P>
 <DIV class="Section1">
-<H3><B><FONT color="#000099">�ڑ����@</FONT></B></H3>
-<DIV class="Section1"><SPAN lang=EN-US>�ڑ����@�̏ڍׂ́A<A href="../../../sites.google.com/a/go.tuat.ac.jp/imc/home/documents">�Z���^�[�̃}�j���A��</A>���Q�ƁB<BR>
+<H3><B><FONT color="#000099">接続方法</FONT></B></H3>
+<DIV class="Section1"><SPAN lang=EN-US>接続方法の詳細は、<A href="../../../sites.google.com/a/go.tuat.ac.jp/imc/home/documents">センターのマニュアル</A>を参照。<BR>
   <BR>
-  �@PC�̋N��<BR>
-PC���N�����A�_�H��̃l�b�g���[�N�ɐڑ�����Ă��邱�Ƃ��m�F����B�ʏ�́A����LAN�iSSID���Ftuatnet�j�Őڑ�����B<BR>
+  ①PCの起動<BR>
+PCを起動し、農工大のネットワークに接続されていることを確認する。通常は、無線LAN（SSID名：tuatnet）で接続する。<BR>
 <BR>
-<FONT color="#0000ff">[��]</FONT> ����LAN�ɐڑ��ł��Ȃ��ꍇ�A<A href="../../../sites.google.com/a/go.tuat.ac.jp/imc/home/documents">�Z���^�[�̃}�j���A��</A>�ɏ]���āAtuatnet��<FONT color="#0000ff">[���C�����X�̃v���p�e�B]</FONT>���Đݒ肷��B�����̏ꍇ����Őڑ��ł���悤�ɂȂ�B<BR>
+<FONT color="#0000ff">[注]</FONT> 無線LANに接続できない場合、<A href="../../../sites.google.com/a/go.tuat.ac.jp/imc/home/documents">センターのマニュアル</A>に従って、tuatnetの<FONT color="#0000ff">[ワイヤレスのプロパティ]</FONT>を再設定する。多くの場合これで接続できるようになる。<BR>
   <BR>
-  �A���z�f�X�N�g�b�v�ւ̐ڑ�<BR>
-  WEB�u���E�U�iInternetExplorer�AFirefox�AChrome�Ȃǁj���N������B�u���E�U�̌������iURL�A�h���X���͑��j�ɁA</SPAN><BR>
+  ②仮想デスクトップへの接続<BR>
+  WEBブラウザ（InternetExplorer、Firefox、Chromeなど）を起動する。ブラウザの検索窓（URLアドレス入力窓）に、</SPAN><BR>
   <BR>
 <A href="../../../mydesk.ecs.tuat.ac.jp/"><FONT color="#0000ff">https://mydesk.ecs.tuat.ac.jp/</FONT></A><BR>
   <BR>
-  ����͂�<FONT color="#0000ff">[Enter]</FONT>�������B���ꂽ�A���O�C����ʂɁA<FONT color="#0000ff"><SPAN lang=EN-US>���[�U�h�c�iTUAT-ID)</SPAN></FONT><SPAN lang=EN-US>�A�����<FONT color="#0000ff">�p�X���[�h</FONT>����́A<BR>
-  <FONT color="#0000ff">[���O�C��]</FONT>���N���b�N����B<BR>
+  を入力し<FONT color="#0000ff">[Enter]</FONT>を押す。現れた、ログイン画面に、<FONT color="#0000ff"><SPAN lang=EN-US>ユーザＩＤ（TUAT-ID)</SPAN></FONT><SPAN lang=EN-US>、および<FONT color="#0000ff">パスワード</FONT>を入力、<BR>
+  <FONT color="#0000ff">[ログイン]</FONT>をクリックする。<BR>
   </SPAN><BR>
-���z�f�X�N�g�b�v�T�[�r�X�Ƃ������O�̈ȉ��̉�ʂ������B���j���[�̒�����A<FONT color="#0000ff">[���Ɨp]</FONT><FONT color="#000000">�̊Y���Ȗ�</FONT>��I��ŃN���b�N����B<BR>
+仮想デスクトップサービスという名前の以下の画面が現れる。メニューの中から、<FONT color="#0000ff">[授業用]</FONT><FONT color="#000000">の該当科目</FONT>を選んでクリックする。<BR>
 <BR>
 <IMG src="VirtualDesktop0.jpg" width="640" height="416" border="0"><BR>
 <BR>
-<FONT color="#0000cc">[��]</FONT>�@<FONT color="#000000">���K���Ԓ�</FONT>�ɐڑ�����Ƃ��́A<FONT color="#0000ff">[���Ɨp</FONT><FONT color="#0000cc">]</FONT><FONT color="#000000">�̒��̒S�������̉Ȗڂ�I�ԁB���̃��j���[�͉��K</FONT>���ԓ��̂ݕ\������i<FONT color="#000000">����</FONT>�J�n15���O����\�������j�A���ԊO��<FONT color="#000000">�\������Ȃ��B</FONT>���ԊO�ɉ��z�f�X�N�g�b�v�ɐڑ����鎞�́A<FONT color="#0000ff">[���K�p]</FONT>�܂��́A<FONT color="#0000ff">[���K��p]</FONT>��I�ԁB<BR>
+<FONT color="#0000cc">[注]</FONT>　<FONT color="#000000">演習時間中</FONT>に接続するときは、<FONT color="#0000ff">[授業用</FONT><FONT color="#0000cc">]</FONT><FONT color="#000000">の中の担当教員の科目を選ぶ。このメニューは演習</FONT>時間内のみ表示され（<FONT color="#000000">授業</FONT>開始15分前から表示される）、時間外は<FONT color="#000000">表示されない。</FONT>時間外に仮想デスクトップに接続する時は、<FONT color="#0000ff">[自習用]</FONT>または、<FONT color="#0000ff">[自習専用]</FONT>を選ぶ。<BR>
 <BR>
-����ƁA<BR>
-  <FONT color="#0000ff">[���Ɨp]�̉��z�f�X�N�g�b�v�ł��B���z�f�X�N�g�b�v�ɐڑ����܂��B</FONT><BR>
+すると、<BR>
+  <FONT color="#0000ff">[授業用]の仮想デスクトップです。仮想デスクトップに接続します。</FONT><BR>
   <BR>
-  �̃��b�Z�[�W���o��B�����ŁA<FONT color="#0000ff">[�ڑ�] </FONT>�{�^�����N���b�N����B<BR>
-  <FONT color="#0000ff">[���[�U�v���t�@�C���T�[�r�X�̏���]</FONT>�A�ɂ��΂炭���Ԃ�����������A�ȉ��̂悤�ȉ��z�f�X�N�g�b�v��ʂ������オ��B<BR>
+  のメッセージが出る。ここで、<FONT color="#0000ff">[接続] </FONT>ボタンをクリックする。<BR>
+  <FONT color="#0000ff">[ユーザプロファイルサービスの処理]</FONT>、にしばらく時間がかかった後、以下のような仮想デスクトップ画面が立ち上がる。<BR>
 <BR>
 <IMG src="VirtualDesktop1.jpg" width="648" height="404" border="0"><BR>
 <BR>
-<SPAN lang=EN-US>�B���z�f�X�N�g�b�v�̐ؒf<BR>
-  </SPAN>�@�ʍ�����<FONT color="#0000ff">[�X�^�[�g�{�^��]</FONT>���N���b�N���ăX�^�[�g��ʂ��J���B<BR>
-  �@��ʉE���<FONT color="#0000ff">[�d���{�^��]</FONT>���N���b�N -&gt; ���ꂽ���j���[��<FONT color="#0000ff">[�ؒf]</FONT>���N���b�N�B<BR>
+<SPAN lang=EN-US>③仮想デスクトップの切断<BR>
+  </SPAN>　面左下の<FONT color="#0000ff">[スタートボタン]</FONT>をクリックしてスタート画面を開く。<BR>
+  　画面右上の<FONT color="#0000ff">[電源ボタン]</FONT>をクリック -&gt; 現れたメニューの<FONT color="#0000ff">[切断]</FONT>をクリック。<BR>
 <STRONG><SPAN STYLE="font-size:13.5pt;color:#008040;" lang=EN-US></SPAN></STRONG></DIV>
 <BR>
 <HR size="2" width="100%" align="CENTER">
-<H2><SPAN STYLE="color:#008040" lang=EN-US>��Eclipse �ɂ��v���O�����J��</SPAN><IMG src="ProgDevelop.jpg" width="123" height="333" border="0" align="right"></H2>
+<H2><SPAN STYLE="color:#008040" lang=EN-US>◎Eclipse によるプログラム開発</SPAN><IMG src="ProgDevelop.jpg" width="123" height="333" border="0" align="right"></H2>
 </DIV>
 
-<H3><B><FONT color="#000099">�v���O�����J���̎菇</FONT></B></H3>
-�v���O�����̍쐬������s�Ɏ���菇�́A�@�G�f�B�^�ɂ��\�[�X�v���O�����̕ҏW�A�A�r���h�i�R���p�C��&amp;�����N�j�A�B�v���O�����̎��s�A�ƂȂ�B�A�̃r���h���Ƀr���h�G���[�����������ꍇ�A���邢�́A�B�̎��s���Ɏ��s�G���[�����������ꍇ�A
-�@�̕ҏW��Ƃɖ߂��āA�G���[���C������B���̍�Ƃ��G���[�������Ȃ�܂ŌJ��Ԃ��B�G���[����菜����Ƃ��f�o�b�O�ƌĂԁB �v���O�����J���ɂ����ẮA�ŏ��̃\�[�X�R�[�h�쐬�ɗv���鎞�Ԃ����A�f�o�b�O��Ƃɂ�葽���̎��Ԃ�������B�v���O�����쐬�ɂ́A���ꂮ�炢���Ӑ[���Ɛh���������v�������B<BR>
-Eclipse�i�����J����)���g�����v���O�����J���̎菇���ȉ��Ɏ����B<BR>
+<H3><B><FONT color="#000099">プログラム開発の手順</FONT></B></H3>
+プログラムの作成から実行に至る手順は、①エディタによるソースプログラムの編集、②ビルド（コンパイル&amp;リンク）、③プログラムの実行、となる。②のビルド時にビルドエラーが発生した場合、あるいは、③の実行時に実行エラーが発生した場合、
+①の編集作業に戻って、エラーを修正する。この作業をエラーが無くなるまで繰り返す。エラーを取り除く作業をデバッグと呼ぶ。 プログラム開発においては、最初のソースコード作成に要する時間よりも、デバッグ作業により多くの時間がかかる。プログラム作成には、それぐらい注意深さと辛抱強さが要求される。<BR>
+Eclipse（統合開発環境)を使ったプログラム開発の手順を以下に示す。<BR>
   <BR>
-  <B><U>�i<SPAN lang=EN-US>1�j�V���Ƀ\�[�X�t�@�C�����쐬����ꍇ</SPAN></U></B><BR>
+  <B><U>（<SPAN lang=EN-US>1）新たにソースファイルを作成する場合</SPAN></U></B><BR>
   <BR>
-  <FONT color="#0000ff">[���z�f�X�N�g�b�v]</FONT>�̉�ʍ�����<FONT color="#0000ff">[�X�^�[�g�{�^��]</FONT>���N���b�N���Ĉȉ��̂悤��<FONT color="#0000ff">[�X�^�[�g���]</FONT>���J���B�@��ʉE��� <FONT color="#0000ff">[����]</FONT><FONT color="#000000">�{�^�����N���b�N�B ���ꂽ��������</FONT><FONT color="#0000ff">�uEclipse�v</FONT>�@����́B����ɁA���ꂽ<FONT color="#0000ff">�uEclipse�v</FONT>�̃A�C�R�����N���b�N����B
+  <FONT color="#0000ff">[仮想デスクトップ]</FONT>の画面左下の<FONT color="#0000ff">[スタートボタン]</FONT>をクリックして以下のような<FONT color="#0000ff">[スタート画面]</FONT>を開く。　画面右上の <FONT color="#0000ff">[検索]</FONT><FONT color="#000000">ボタンをクリック。 現れた検索窓に</FONT><FONT color="#0000ff">「Eclipse」</FONT>　を入力。さらに、現れた<FONT color="#0000ff">「Eclipse」</FONT>のアイコンをクリックする。
 <BR>
-(�X�^�[�g��ʍ����́��A�C�R�����N���b�N�A�J�����A�v����ʂ̒���Eclipse�A�C�R�����N���b�N���Ă��ǂ��j�B
+(スタート画面左下の↓アイコンをクリック、開いたアプリ画面の中のEclipseアイコンをクリックしても良い）。
 <BR>
 <BR>
 <IMG src="VirtualDesktop2.jpg" width="563" height="326" border="0"><BR>
 <BR>
-����ƁA���̂悤�� Eclipse�̋N����ʂ������B<BR>
+すると、次のような Eclipseの起動画面が現れる。<BR>
 <BR>
 <IMG src="Eclipse-img0.jpg" width="557" height="389" border="0"><BR>
 <BR>
-�����ŁA�ΐF�̃v���O���X�o�[���E�[�܂œ��B�܂ő҂B<BR>
-����ƈȉ��̃��[�N�X�y�[�X�E�����`���[��ʂ������B<BR>
+ここで、緑色のプログレスバーが右端まで到達まで待つ。<BR>
+すると以下のワークスペース・ランチャー画面が現れる。<BR>
 <BR>
 <IMG src="Eclipse-img1.jpg" width="655" height="293" border="0"><BR>
 <BR>
-�v���O�����t�@�C����ۑ����邽�߂́A���[�N�X�y�[�X�t�H���_��ݒ肷��B�f�t�H���g�ł́A
-<P>�@<FONT color="#0000ff">C:\Users\�e�l��TUAT-ID\workspace</FONT><BR>
+プログラムファイルを保存するための、ワークスペースフォルダを設定する。デフォルトでは、
+<P>　<FONT color="#0000ff">C:\Users\各人のTUAT-ID\workspace</FONT><BR>
   <BR>
-�̂悤�ɁAC�h���C�u�̃z�[���f�B���N�g���̉���workspace�Ƃ����t�H���_���w�肳��Ă���B������A�ȉ��̂悤��Z�h���C�u�i�L���r�l�b�g�t�H���_�j�̉���workspace�t�H���_�ɕύX����B<BR>
-<BR>�@<FONT color="#0000ff">Z:\workspace</FONT><BR>
+のように、Cドライブのホームディレクトリの下のworkspaceというフォルダが指定されている。これを、以下のようにZドライブ（キャビネットフォルダ）の下のworkspaceフォルダに変更する。<BR>
+<BR>　<FONT color="#0000ff">Z:\workspace</FONT><BR>
 <BR>
-<FONT color="#0000cc">[��]</FONT> workspace�t�H���_��C�h���C�u�Ɏw�肷��Ɖ��z�[�����炵���A�N�Z�X�ł��Ȃ��B�܂��A�ڑ����݂̂̈ꎞ�t�H���_�ł���A���O�C��/���O�I�t���ɖ��ʂȓ]�����Ԃ��������Ă��܂��B���̂��߁AWeb�u���E�U�o�R�Ŋw�O������A�N�Z�X�\��Z�h���C�u��workspace�t�H���_
-���쐬����B<BR>
+<FONT color="#0000cc">[注]</FONT> workspaceフォルダをCドライブに指定すると仮想端末からしかアクセスできない。また、接続時のみの一時フォルダであり、ログイン/ログオフ時に無駄な転送時間がかかってしまう。そのため、Webブラウザ経由で学外からもアクセス可能なZドライブにworkspaceフォルダ
+を作成する。<BR>
 <BR>
-���ڈȍ~�́A���[�N�X�y�[�X�t�H���_��ύX����K�v���Ȃ��ꍇ�́A<BR>
+二回目以降は、ワークスペースフォルダを変更する必要がない場合は、<BR>
   <BR>
-  �@<FONT color="#0000ff">���̑I�����f�t�H���g�Ƃ��Ďg�p���A���ケ�̎����\�����Ȃ�</FONT><BR>
+  　<FONT color="#0000ff">この選択をデフォルトとして使用し、今後この質問を表示しない</FONT><BR>
   <BR>
-�̗��Ƀ`�F�b�N������B�Ō�<FONT color="#0000ff">��[OK]</FONT>�������Ď��ɐi�ށB<BR>
-����ƁA���̃��[�N�x���`��ʂ������オ��B<BR>
+の欄にチェックを入れる。最後<FONT color="#0000ff">に[OK]</FONT>を押して次に進む。<BR>
+すると、次のワークベンチ画面が立ち上がる。<BR>
 <BR>
 <IMG src="Eclipse-img2.jpg" width="512" height="384" border="0"><BR>
 <BR>
-���j���[�o�[�́@<FONT color="#0000ff">[�t�@�C��]-&gt;[�V�K]-&gt;[�v���W�F�N�g]</FONT>�@�̏��ɑI��<BR>
+メニューバーの　<FONT color="#0000ff">[ファイル]-&gt;[新規]-&gt;[プロジェクト]</FONT>　の順に選択<BR>
 <BR>
-�i���L�͏���̉�ʁj<BR>
+（下記は初回の画面）<BR>
 <IMG src="Eclipse-img3.jpg" width="511" height="384" border="0"><BR>
 <BR>
-���̐V�K�v���W�F�N�g��ʂ��J���BC/C++�̒���<FONT color="#0000ff">[C�v���W�F�N�g]</FONT> ��I��(�Ԉ����C++�v���W�F�N�g��I�����Ȃ�)�A<BR>
-�Ō��<FONT color="#0000ff">[����]</FONT>�@���N���b�N<BR>
+次の新規プロジェクト画面が開く。C/C++の中の<FONT color="#0000ff">[Cプロジェクト]</FONT> を選ぶ(間違ってC++プロジェクトを選択しない)、<BR>
+最後に<FONT color="#0000ff">[次へ]</FONT>　をクリック<BR>
 <BR>
 <IMG src="Eclipse-img4.jpg" width="263" height="250" border="0"><BR>
 <BR>
-<FONT color="#0000ff">[��]</FONT> �Q��ڂ���͏�L�Ə����Ⴄ��ʂ��o�邱�Ƃɒ��ӁiC�v���W�F�N�g�̑I�����j���[���ŏ�����ł�j�B<BR>
+<FONT color="#0000ff">[注]</FONT> ２回目からは上記と少し違う画面が出ることに注意（Cプロジェクトの選択メニューが最初からでる）。<BR>
 <BR>
-����C�v���W�F�N�g��ʂ��J���B<BR>
+次のCプロジェクト画面が開く。<BR>
 <BR>
 <IMG src="Eclipse-img5.jpg" width="263" height="302" border="0"><BR>
 <BR>
-�v���W�F�N�g�����ɁA�@<BR>
-�@<FONT color="#0000ff">�v���W�F�N�g��</FONT>�i��Fex1)�@<BR>
-����͂���B����ɁA�v���W�F�N�g�^�C�v���̎��s�\���j���[�̒�����A<BR>
-�@<FONT color="#0000ff">Hello World ANSI C�v���W�F�N�g</FONT>�@<BR>
-��I������(���j���[���W�J����Ă��Ȃ��ꍇ�͍��́����N���b�N���ēW�J����j�B<BR>
-�c�[���`�F�[�����́A<BR>
-�@<FONT color="#0000ff">MinGW GCC</FONT><BR>
-��I������i�Ԉ���āACrossGCC��Microsoft VisualC��I�����Ȃ��j�B<BR>
-�Ō�ɁA<FONT color="#0000ff">[����]�@</FONT>���N���b�N�B</P>
+プロジェクト名欄に、　<BR>
+　<FONT color="#0000ff">プロジェクト名</FONT>（例：ex1)　<BR>
+を入力する。さらに、プロジェクトタイプ欄の実行可能メニューの中から、<BR>
+　<FONT color="#0000ff">Hello World ANSI Cプロジェクト</FONT>　<BR>
+を選択する(メニューが展開されていない場合は左の▲をクリックして展開する）。<BR>
+ツールチェーン欄は、<BR>
+　<FONT color="#0000ff">MinGW GCC</FONT><BR>
+を選択する（間違って、CrossGCCやMicrosoft VisualCを選択しない）。<BR>
+最後に、<FONT color="#0000ff">[次へ]　</FONT>をクリック。</P>
 <DIV class="Section1"></DIV>
-  <DIV CLASS="Section1">C�v���W�F�N�g��{�ݒ��ʂ��J���B<BR>
-�쐬�җ��ɁA�쐬�҂̎��������<BR>
-<FONT color="#0000ff">[�����{�^��]</FONT>���N���b�N����B<BR>
+  <DIV CLASS="Section1">Cプロジェクト基本設定画面が開く。<BR>
+作成者欄に、作成者の氏名を入力<BR>
+<FONT color="#0000ff">[完了ボタン]</FONT>をクリックする。<BR>
 <BR>
 <IMG src="Eclipse-img6.jpg" width="598" height="344" border="0"><BR>
 <BR>
-����<FONT color="#0000ff">[�֘A�t����ꂽ�p�[�X�y�N�e�B�u���J���܂����H]</FONT>�̉�ʂ��o��B<BR>
+次の<FONT color="#0000ff">[関連付けられたパースペクティブを開きますか？]</FONT>の画面が出る。<BR>
 <BR>
 <IMG src="Eclipse-img7.jpg" width="382" height="123" border="0"><BR>
 <BR>
-<FONT color="#0000ff">��ɂ��̐ݒ���g�p����</FONT>�@�Ƀ`�F�b�N������<FONT color="#0000ff">[�͂�]</FONT>���N���b�N����B<BR>
+<FONT color="#0000ff">常にこの設定を使用する</FONT>　にチェックを入れて<FONT color="#0000ff">[はい]</FONT>をクリックする。<BR>
 <BR>
-<FONT color="#0000ff">[��]</FONT>�`�F�b�N����ꂽ�ꍇ�A�Q��ڈȍ~�͂��̉�ʂ͂łȂ��B�܂��A�v���W�F�N�g�̐V�K�쐬��ʂ��AC�v���W�F�N�g�܂���C++�v���W�F�N�g��I�������ʂɕς��B<BR>
+<FONT color="#0000ff">[注]</FONT>チェックを入れた場合、２回目以降はこの画面はでない。また、プロジェクトの新規作成画面が、CプロジェクトまたはC++プロジェクトを選択する画面に変わる。<BR>
 <BR>
-�ȉ��̂悤�ȁAEclipse�̃\�[�X�v���O�����ҏW��ʂ������オ��B<BR>
-��i��<FONT color="#0000ff">[���j���[�o�[]</FONT>�A���i��<FONT color="#0000ff">[�v���W�F�N�g�G�N�X�v���[��]</FONT>�A������<FONT color="#0000ff">[�\�[�X�R�[�h�ҏW���]</FONT>�A �E�i��<FONT color="#0000ff">[make�^�[�Q�b�g���]</FONT>�A���i��<FONT color="#0000ff">[�R���\�[�����]</FONT>�A�̊e�X���\�������B<BR>
+以下のような、Eclipseのソースプログラム編集画面が立ち上がる。<BR>
+上段に<FONT color="#0000ff">[メニューバー]</FONT>、左段に<FONT color="#0000ff">[プロジェクトエクスプローラ]</FONT>、中央に<FONT color="#0000ff">[ソースコード編集画面]</FONT>、 右段に<FONT color="#0000ff">[makeターゲット画面]</FONT>、下段に<FONT color="#0000ff">[コンソール画面]</FONT>、の各々が表示される。<BR>
 <BR>
 <IMG src="Eclipse-img8.jpg" width="717" height="538" border="0"></DIV>
 <DIV CLASS="Section1"><BR>
-������<FONT color="#0000ff">[�\�[�X�R�[�h�ҏW���]</FONT>�iHello, World!�̃T���v���O�������\�ߏ������܂�Ă���j�ɁA�v���O������ł�����ł����B�ҏW��Ƃ��I��������A<BR>
-  <FONT color="#0000ff">[�v���W�F�N�g]</FONT> ���j���|�̒��́@<FONT color="#0000ff">[�v���W�F�N�g�̃r���h]�@</FONT> ���N���b�N����B<BR>
-  (�܂��́A���Ƃ̊G�̃A�C�R�����N���b�N����Ɓj<BR>
+中央の<FONT color="#0000ff">[ソースコード編集画面]</FONT>（Hello, World!のサンプルグラムが予め書き込まれている）に、プログラムを打ち込んでいく。編集作業が終了したら、<BR>
+  <FONT color="#0000ff">[プロジェクト]</FONT> メニュ－の中の　<FONT color="#0000ff">[プロジェクトのビルド]　</FONT> をクリックする。<BR>
+  (または、金槌の絵のアイコンをクリックすると）<BR>
   <BR>
-�\�[�X�R�[�h�̃r���h�i�R���p�C���������N�j���n�܂�B<BR>
+ソースコードのビルド（コンパイル＆リンク）が始まる。<BR>
   <BR>
   </DIV>
   <DIV class="Section1"><IMG src="Eclipse-img9.jpg" width="713" height="536" border="0"><BR>
 <BR>
-�r���h�G���[���Ȃ����Ƃ��m�F���āA<BR>
+ビルドエラーがないことを確認して、<BR>
 <BR>
-<FONT color="#000099">[��]</FONT> �r���h�ɐ��������ꍇ�A�ȉ��̂悤�ȃ��b�Z�[�W���R���\�[����ʂɕ\�������B<BR>
+<FONT color="#000099">[注]</FONT> ビルドに成功した場合、以下のようなメッセージがコンソール画面に表示される。<BR>
 <FONT color="#0000cc">**** Build of configuration Debug for project ex1 ****<BR>
 **** Internal Builder is used for build               ****<BR>
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -osrc\ex1.o ..\src\ex1.c<BR>
 gcc -oex1.exe src\ex1.o<BR>
-Build complete for project ex1�@<FONT color="#000099">��</FONT><FONT color="#ff0000">Build �����̃��b�Z�[�W</FONT><BR>
+Build complete for project ex1　<FONT color="#000099">←</FONT><FONT color="#ff0000">Build 成功のメッセージ</FONT><BR>
 Time consumed: 2184  ms.  <BR>
 </FONT><BR>
-<FONT color="#0000cc">[���s]</FONT> ���j���[�� �@<FONT color="#0000ff">���s</FONT>�@���N���b�N����ƁA<BR>
-�i�܂��́A�E�����O�p�̊G�̃A�C�R�����N���b�N����Ɓj<BR>
+<FONT color="#0000cc">[実行]</FONT> メニューの 　<FONT color="#0000ff">実行</FONT>　をクリックすると、<BR>
+（または、右向き三角の絵のアイコンをクリックすると）<BR>
 <BR>
-���s�G���[���Ȃ���΁A���i�̃R���\�[����ʂɎ��s���ʂ��\�������B��̃v���O�����ł́A<BR>
-�@<FONT color="#0000ff"><B>!!!Hello World!!!</B></FONT> <BR>
+実行エラーがなければ、下段のコンソール画面に実行結果が表示される。例のプログラムでは、<BR>
+　<FONT color="#0000ff"><B>!!!Hello World!!!</B></FONT> <BR>
 <BR>
-�̕����񂪉�ʂɕ\�������B<BR>
+の文字列が画面に表示される。<BR>
 <BR>
 <IMG src="Eclipse-img10.jpg" width="717" height="538" border="0"><BR>
 <BR>
-�\�[�X�R�[�h�ɕ��@��̃G���[������ƁA�ȉ��̂悤�ɊY������s�̍����Ɂ@�G���[�}�[�N<FONT color="#660000"><B>�H</B></FONT>���t���B�����ɁA�R���\�[����ʂɈȉ��̂悤�ȃG���[���b�Z�[�W���\�������B<BR>
+ソースコードに文法上のエラーがあると、以下のように該当する行の左側に　エラーマーク<FONT color="#660000"><B>？</B></FONT>が付く。同時に、コンソール画面に以下のようなエラーメッセージが表示される。<BR>
 <BR>
 <FONT color="#0000cc">..\src\ex1.c: In function `main':<BR>
-..\src\ex1.c:16: error: syntax error before &quot;return&quot; </FONT><FONT color="#000099">��</FONT><FONT color="#ff0000">�t�@�C��ex1.c��16�s�ڂɕ��@�G���[������<BR>
-</FONT><FONT color="#0000cc">Build error occurred, build is stopped <FONT color="#000099">��</FONT><FONT color="#ff0000">�G���[������������Build�𒆎~�����Ƃ������b�Z�[�W</FONT><BR>
+..\src\ex1.c:16: error: syntax error before &quot;return&quot; </FONT><FONT color="#000099">←</FONT><FONT color="#ff0000">ファイルex1.cの16行目に文法エラーがある<BR>
+</FONT><FONT color="#0000cc">Build error occurred, build is stopped <FONT color="#000099">←</FONT><FONT color="#ff0000">エラーがあったためBuildを中止したというメッセージ</FONT><BR>
 </FONT><BR>
-��L�̂悤�ȃG���[���������A�r���h���������Ȃ��i���s�t�@�C��������Ȃ��̂Ŏ��s�ł��Ȃ��j�B�G���[���C�����āA������x<FONT color="#0000cc">[�r���h]</FONT>�@����B<BR>
+上記のようなエラーがある限り、ビルドが完了しない（実行ファイルが作られないので実行できない）。エラーを修正して、もう一度<FONT color="#0000cc">[ビルド]</FONT>　する。<BR>
 <BR>
 <IMG src="Eclipse-img11.jpg" width="717" height="538" border="0"></DIV>
-<DIV CLASS="Section1"><BR>�r���h���I���A���s�ł����Ƃ��Ă��A�R���\�[����ʂɎ��s�G���[���\������邱�Ƃ�����B<BR>
-���s�G���[����������ƁA�����Ńv���O�������~�܂�����A�t���[�Y���Ă��܂����Ƃ�����B<BR>
-���邢�͊��҂����Ƃ���̌��ʂɂȂ�Ȃ����Ƃ�����B�����̖w�ǂ̓v���O�����̂ǂ������Ԉ���Ă��邱�ƂɌ���������i�R���s���[�^�Ɍ��������邱�Ƃ͂��܂�Ȃ��j�B<BR>
-�\�[�X�R�[�h��ǂ����Ȃ����āA���퓮�삷��܂ŏC����Ƃ��J��Ԃ��B<BR>
+<DIV CLASS="Section1"><BR>ビルドが終わり、実行できたとしても、コンソール画面に実行エラーが表示されることがある。<BR>
+実行エラーが発生すると、そこでプログラムが止まったり、フリーズしてしまうことがある。<BR>
+あるいは期待したとおりの結果にならないこともある。これらの殆どはプログラムのどこかが間違っていることに原因がある（コンピュータに原因があることはあまりない）。<BR>
+ソースコードを良く見なおして、正常動作するまで修正作業を繰り返す。<BR>
 <BR>
-�S�Ă̍�Ƃ��I�������A�t�@�C�����j���[��<BR>
-�@<FONT color="#0000ff">[�I��]</FONT>�i�����͉E����́~��j</DIV>
-  <P>���N���b�N����ƁAEclipse�@���I������B</P>
+全ての作業が終わったら、ファイルメニューの<BR>
+　<FONT color="#0000ff">[終了]</FONT>（或いは右上隅の×印）</DIV>
+  <P>をクリックすると、Eclipse　が終了する。</P>
   <DIV CLASS="Section1"><BR>
-  <B><U>�i<SPAN lang=EN-US>2�j���ɑ��݂���v���W�F�N�g�t�@�C����ҏW����ꍇ</SPAN></U></B><BR>
+  <B><U>（<SPAN lang=EN-US>2）既に存在するプロジェクトファイルを編集する場合</SPAN></U></B><BR>
   <BR>
-  �@Eclipse�@�𗧂��グ��ƁA�v���W�F�N�g�G�N�X�v���[����ʂɁA�ߋ��ɍ쐬�����v���W�F�N�g�̈ꗗ���\�������B�ҏW�������v���W�F�N�g���̃A�C�R����I�����āA���l�̍�Ƃ��s���΂悢�B<BR>
+  　Eclipse　を立ち上げると、プロジェクトエクスプローラ画面に、過去に作成したプロジェクトの一覧が表示される。編集したいプロジェクト名のアイコンを選択して、同様の作業を行えばよい。<BR>
   <BR>
-  <FONT color="#000099"><B>[�⑫�P] �r���h���o���Ȃ��ꍇ�̑Ώ����@</B></FONT><BR>
-�@�r���h�����ۂɃR���\�[����ʂ�<BR>
+  <FONT color="#000099"><B>[補足１] ビルドが出来ない場合の対処方法</B></FONT><BR>
+　ビルドした際にコンソール画面に<BR>
   <BR>
-  <FONT color="#0000ff">�@**** Build of configuration Debug for project �v���W�F�N�g�� ****<BR>
-  �@**** Internal Builder is used for build ****<BR>
-  �@Nothing to build for �v���W�F�N�g��<BR>
+  <FONT color="#0000ff">　**** Build of configuration Debug for project プロジェクト名 ****<BR>
+  　**** Internal Builder is used for build ****<BR>
+  　Nothing to build for プロジェクト名<BR>
   </FONT><BR>
-�̃��b�Z�[�W���o�ăr���h�ł��Ȃ����Ƃ����邪�A<FONT color="#0000ff">[�t�@�C��]-&gt;[�ۊ�]</FONT>�@���s�Ȃ��Ă���r���h����ƁA���̌��ۂ�����邱�Ƃ��ł���B�������A�O��r���h���Ă���\�[�X�R�[�h�ɕύX���������Ă��Ȃ��ꍇ�A<FONT color="#0000ff">[�ۊ�]</FONT><FONT color="#000000">�@���삻�̂��̂��ł��Ȃ��B���̏ꍇ�͂���ɁA�\�[�X�R�[�h�̈ꕔ�������I�ɕύX���Ă���<FONT color="#0000ff">[�ۊ�]</FONT>�@������s�Ȃ��B</FONT><BR>
+のメッセージが出てビルドできないことがあるが、<FONT color="#0000ff">[ファイル]-&gt;[保管]</FONT>　を行なってからビルドすると、この現象を避けることができる。ただし、前回ビルドしてからソースコードに変更が加えられていない場合、<FONT color="#0000ff">[保管]</FONT><FONT color="#000000">　操作そのものができない。この場合はさらに、ソースコードの一部を強制的に変更してから<FONT color="#0000ff">[保管]</FONT>　操作を行なう。</FONT><BR>
   <BR>
-  <B><FONT color="#000099">[�⑫2] ���[�N�X�y�[�X�t�H���_���ォ��ύX������@</FONT></B><BR>
+  <B><FONT color="#000099">[補足2] ワークスペースフォルダを後から変更する方法</FONT></B><BR>
   <BR>
-  �@<FONT color="#0000ff">[�t�@�C��] -&gt; [���[�N�X�y�[�X�̐؂�ւ�]-&gt;[���̑�]</FONT><BR>
+  　<FONT color="#0000ff">[ファイル] -&gt; [ワークスペースの切り替え]-&gt;[その他]</FONT><BR>
   <BR>
-�Ƒ��삷��ƃ��[�N�X�y�[�X�����`���[��ʂ��J���B���̌�́A��L��Eclipse ���g�����v���O�����J���菇�Ɠ��l�̖񑩂ɏ]���āA���[�N�X�y�[�X�t�H���_��ύX����B<BR>
+と操作するとワークスペースランチャー画面が開く。この後は、上記のEclipse を使ったプログラム開発手順と同様の約束に従って、ワークスペースフォルダを変更する。<BR>
   <BR>
-  <B><FONT color="#000099">[�⑫�R] Eclipse�̃g���u��</FONT></B><BR>
+  <B><FONT color="#000099">[補足３] Eclipseのトラブル</FONT></B><BR>
   <BR>
-Eclipse���N���ł��Ȃ��A�v���W�F�N�g���쐬�ł��Ȃ��A���삪���������A�Ȃǃg���u���Ɍ������邱�Ƃ�����B���̏ꍇ�A<A href="eclipse_trouble.html">����</A>�ɏ����Ă���΍���u���Ă݂�Ƃ悢�B<BR>
+Eclipseが起動できない、プロジェクトが作成できない、動作がおかしい、などトラブルに見舞われることがある。その場合、<A href="eclipse_trouble.html">ここ</A>に書いてある対策を講じてみるとよい。<BR>
   <BR>
   <HR size="2" width="100%" align="CENTER">
   </DIV>
   <DIV class="Section1">
-  <H2><SPAN STYLE="color:#008040" lang=EN-US>�����{����͂̕��@ </SPAN></H2>
+  <H2><SPAN STYLE="color:#008040" lang=EN-US>◎日本語入力の方法 </SPAN></H2>
   </DIV>
-  <DIV class="Section1">���Ȋ����ϊ��\�t�g�E�F�A��Microsoft IME���C���X�g�[������Ă���B<BR>
-  ���[�}�����Ȋ����ϊ����͂Ɣ��p�p�������͂̐؂�ւ��́A���̂����ꂩ�ōs�����Ƃ��ł���B<BR>
+  <DIV class="Section1">かな漢字変換ソフトウェアにMicrosoft IMEがインストールされている。<BR>
+  ローマ字かな漢字変換入力と半角英数字入力の切り替えは、次のいずれかで行うことができる。<BR>
   <BR>
-  (1) ���j���[�o�[�́A���Ȋ����ϊ��A�C�R�����N���b�N�����ۂɕ\��郁�j���[����A�ړI�Ƃ�����͌`����I�ԁB<BR>
+  (1) メニューバーの、かな漢字変換アイコンをクリックした際に表れるメニューから、目的とする入力形式を選ぶ。<BR>
   <BR>
-  (2) ���p/�S�p�L�[���������ƂɁA���p�p�������͂Ɗ������́@�Ƃ��؂�ւ��B<BR>
+  (2) 半角/全角キーを押すごとに、半角英数字入力と漢字入力　とが切り替わる。<BR>
   <BR>
-  ����<SPAN lang=EN-US>���̓��[�h�ł́A���[�}�����͂���Ƃ������ɂЂ炪�ȕϊ������B����Ɋ����ɕϊ�����K�v������Ƃ��ɂ́A�X�y�[�X�L�[�������āA�ϊ�����B�A���A�����ًc��̈Ⴄ�������o�͂���邱�Ƃ����肤��̂ŁA���̏ꍇ�A����ɃX�y�[�X�L�[�������Ă����ƁA�����玟�ւƌ�₪�����̂ŁA�Y���̊��������ꂽ���_�őI������iEnter�L�[�������j�B</SPAN><BR>
+  漢字<SPAN lang=EN-US>入力モードでは、ローマ字入力するとただちにひらがな変換される。さらに漢字に変換する必要があるときには、スペースキーを押して、変換する。但し、同音異議語の違う漢字が出力されることもありうるので、その場合、さらにスペースキーを押していくと、次から次へと候補が現れるので、該当の漢字が現れた時点で選択する（Enterキーを押す）。</SPAN><BR>
   <BR>
-  <B>�]�k�F</B>�@�v���O�����쐬�ɂ������ẮA���p�p�������͂Ɗ������͂̂ǂ���̓��͏�ԂɂȂ��Ă��邩���ӂ���K�v������B�Ⴆ�΁A�����o�͂�R�����g�s�ȊO�̏ꏊ�ł́A�S�Ĕ��p�p�����œ��͂���B�悭������́A�v���O�������X�g�ɑS�p�X�y�[�X�����Ă��܂��~�X�ł���B�S�p�X�y�[�X�����ꍞ��ł��Ă��A�����ڂɕ�����Ȃ����A�R���p�C������ƁA�G���[�ɂȂ邱�Ƃɒ��ӂ���B<BR>
+  <B>余談：</B>　プログラム作成にあたっては、半角英数字入力と漢字入力のどちらの入力状態になっているか注意する必要がある。例えば、文字出力やコメント行以外の場所では、全て半角英数字で入力する。よくある誤りは、プログラムリストに全角スペースを入れてしまうミスである。全角スペースが紛れ込んでいても、見た目に分からないが、コンパイルすると、エラーになることに注意する。<BR>
 <BR>
 <HR size="2" width="100%" align="CENTER">
 </DIV>
-<P><SPAN style="color:#008040" lang="EN-US"><FONT size="5">�����ЁA�Q�l���A�}�j���A�� </FONT></SPAN><BR>
+<P><SPAN style="color:#008040" lang="EN-US"><FONT size="5">◎書籍、参考書、マニュアル </FONT></SPAN><BR>
   </P>
-  <DIV class="Section1">��C����̕��@�𒆐S�ɉ�����Ă���{���ǂꂩ��w�����Ă݂Ă��������B�������A�{���K�ŕ׋�����̂́A���ɉ������Ă��Ȃ��hC����h�ł��̂ŊԈႦ�Ȃ��悤�ɂ��Ă��������B�Ⴆ�΁A�hC�{�{�h�́hC�h����h����������ł����A���@�����X�Ⴂ�܂��B�X�ɁA�hVisual
-C�h�̓}�C�N���\�t�g���o���Ă���WindowsApplication�J���p�̌���ł��B�����́A��b�ƂȂ�C���\���ɏK��������ɕ׋����Ă��������B<BR>
-  ��r�I�]���̂悢�hC����h�̖{���ȉ��ɂ����Ă����܂��B</DIV>
+  <DIV class="Section1">○C言語の文法を中心に解説している本をどれか一つ購入してみてください。ただし、本演習で勉強するのは、後ろに何もついていない”C言語”ですので間違えないようにしてください。例えば、”C＋＋”は”C”から派生した言語ですが、文法が所々違います。更に、”Visual
+C”はマイクロソフトが出しているWindowsApplication開発用の言語です。これらは、基礎となるCを十分に習得した後に勉強してください。<BR>
+  比較的評判のよい”C言語”の本を以下にあげておきます。</DIV>
   <UL>
-  <LI>���񂽂�C����A�匴���j�A�������N�@���A�Z�p�]�_�ЁA2010�N�A\2700
+  <LI>かんたんC言語、大原竜男、大川内隆朗　著、技術評論社、2010年、\2700
   <LI>
-  <DIV CLASS="Section1"><SPAN lang=EN-US>�V�E����C���� ����ҁA�ēc�]�m���A�\�t�g�o���N�N���G�C�e�B�u�A2014�N�A\2500 </SPAN><BR>
+  <DIV CLASS="Section1"><SPAN lang=EN-US>新・明解C言語 入門編、柴田望洋著、ソフトバンククリエイティブ、2014年、\2500 </SPAN><BR>
     </DIV>
   </UL>
-  <DIV class="Section1">�����z�f�X�N�g�b�v�̎g�����i�ڑ��̎d���j�A����LAN�̐ݒ���@�A���[���̎g�p���@�A����������Ȃ��Ƃ��́A�ȉ��̃T�C�g�ɂ���A������񃁃f�B�A�Z���^�[�񋟂̃}�j���A�����Q�Ƃ��Ă��������B</DIV>
+  <DIV class="Section1">○仮想デスクトップの使い方（接続の仕方）、無線LANの設定方法、メールの使用方法、等が分からないときは、以下のサイトにある、総合情報メディアセンター提供のマニュアルを参照してください。</DIV>
   <UL>
   <LI>
-  <DIV CLASS="Section1"><A href="../../../sites.google.com/a/go.tuat.ac.jp/imc/home/documents">���f�B�A�Z���^�[�K�C�_���X�E�������</A></DIV>
+  <DIV CLASS="Section1"><A href="../../../sites.google.com/a/go.tuat.ac.jp/imc/home/documents">メディアセンターガイダンス・説明会資料</A></DIV>
  
 </UL>
  <BR>

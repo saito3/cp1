@@ -1,15 +1,15 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=Shift_JIS">
 <META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
 <META http-equiv="Content-Style-Type" content="text/css">
-<TITLE>��10��</TITLE>
+<TITLE>第10回</TITLE>
 </HEAD>
 <BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080">
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
   <TR>
-    <TD WIDTH=100%><B><FONT color="#ffffff" size="+2">�v���O���~���O����щ��K �m�n�D10</FONT></B></TD>
+    <TD WIDTH=100%><B><FONT color="#ffffff" size="+2">プログラミングおよび演習 ＮＯ．10</FONT></B></TD>
   </TR></TABLE>
 <DIV ALIGN=RIGHT>Last-Modified: 2014.11.03<BR>
 <BR>
@@ -17,65 +17,65 @@
 </DIV>
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
   <TR>
-    <TD><FONT color="#ffffff"><B>�|�C���^</B></FONT></TD>
+    <TD><FONT color="#ffffff"><B>ポインタ</B></FONT></TD>
   </TR></TABLE>
 <BR>
-�����́A<FONT color="#0000ff">�|�C���^</FONT>�Ƃ���C����̒��Ŕ�r�I�ނ������������ɂ��ĕ׋����܂��B�ƌ����Ă��A�ȉ��̐�����ǂ��ǂ�ŖႦ�΁A����Ȃɓ�����Ƃł͂���܂���B�|�C���^�𗝉����邽�߂ɂ́A�R���s���[�^���ǂ̂悤�ȃ�������������āA�v���O���������s���Ă��邩�Ƃ������Ƃ��l����K�v������܂��B�|�C���^����́A���R���݂Ƀv���O���������i�R���s���[�^�����ۂɍs���Ă��邱�Ƃɑ������������s���j���߂ɏd�v�ł��B����Ƃ��撣���Đg�ɂ��Ă��������B<BR>
+今日は、<FONT color="#0000ff">ポインタ</FONT>というC言語の中で比較的むずかしい事柄について勉強します。と言っても、以下の説明を良く読んで貰えば、そんなに難しいことではありません。ポインタを理解するためには、コンピュータがどのようなメモリ操作をして、プログラムを実行しているかということを考える必要があります。ポインタ操作は、自由自在にプログラムを作る（コンピュータが実際に行っていることに即した処理を行う）ために重要です。是非とも頑張って身につけてください。<BR>
 <BR>
-�|�C���^���������O�ɁA�R���s���[�^���ϐ��̃f�[�^����������<IMG SRC="cp1-10-0.gif" ALT="" ALIGN=RIGHT WIDTH=466 HEIGHT=255>�ǂݏ������邵���݂𓪂ɂ����K�v������܂��B<BR>
+ポインタを説明する前に、コンピュータが変数のデータをメモリに<IMG SRC="cp1-10-0.gif" ALT="" ALIGN=RIGHT WIDTH=466 HEIGHT=255>読み書きするしくみを頭にいれる必要があります。<BR>
 <BR>
-�R���s���[�^�́A�ϐ��̃f�[�^��ǂݏ������邽�߂̃�������p�ӂ��܂��B�����ŁA��������ϐ��̈�����ʂ��邽�߂ɁA�������ɔԍ���t����K�v������܂��B���̔ԍ����A<FONT color="#0000ff">�A�h���X(�Ԓn�j</FONT>�Ƃ����܂��B<BR>
-�Ⴆ�΁A�ϐ���a�� <BR>
+コンピュータは、変数のデータを読み書きするためのメモリを用意します。ここで、複数ある変数の一つ一つを区別するために、メモリに番号を付ける必要があります。その番号を、<FONT color="#0000ff">アドレス(番地）</FONT>といいます。<BR>
+例えば、変数名aを <BR>
 <BR>
-<FONT color="#0000ff">�@int a;<BR>
+<FONT color="#0000ff">　int a;<BR>
 <BR>
-</FONT>�̂悤�Ɍ^�錾����ƁA�R���s���[�^�͕ϐ�a�̂��߂̃�������p�ӂ��܂��B���Ȃ킿�A�K���ȃA�h���X(�Ԓn�j�̃�������ϐ�a�̂��߂Ɋm�ۂ��܂��i�Ⴆ�΁A�ϐ�a�̃������Ƃ���100�Ԓn�����蓖�Ă�j�B���̂Ƃ��A<BR>
+</FONT>のように型宣言すると、コンピュータは変数aのためのメモリを用意します。すなわち、適当なアドレス(番地）のメモリを変数aのために確保します（例えば、変数aのメモリとして100番地を割り当てる）。このとき、<BR>
 <BR>
-<FONT color="#0000ff">�@a=50;</FONT><BR>
+<FONT color="#0000ff">　a=50;</FONT><BR>
 <BR>
-�̂悤�ɁAa��50�̐��l��������v���O���������s����ƁA�R���s���[�^�́A�ϐ�a�̃�������50�̐����������݂܂��B���l�ɁA<BR>
+のように、aに50の数値を代入するプログラムを実行すると、コンピュータは、変数aのメモリに50の数を書き込みます。同様に、<BR>
 <BR>
-�@<FONT color="#0000ff">c=a+3</FONT>;<BR>
+　<FONT color="#0000ff">c=a+3</FONT>;<BR>
 <BR>
-�̂悤�ɁA�ϐ�a���Q�Ƃ��鎮�����s����ƁA�R���s���[�^�́A�ϐ�a�̃������ɏ������܂�Ă���f�[�^��ǂݏo���܂��B��̗�ł́A�ǂݏo����a�̃f�[�^��3�𑫂��Ƃ������Z���s���A���ʂ�c�̃������ɏ������݂܂��B���Ȃ킿�A�ϐ�a�̎Q�Ƃ͎��̂悤�Ȃ��Ƃ��Ӗ����܂��B<BR>
+のように、変数aを参照する式を実行すると、コンピュータは、変数aのメモリに書き込まれているデータを読み出します。上の例では、読み出したaのデータに3を足すという演算を行い、結果をcのメモリに書き込みます。すなわち、変数aの参照は次のようなことを意味します。<BR>
 <BR>
-�@<FONT color="#0000ff">a</FONT>�@<FONT color="#990000">�F�ϐ����̃������ɏ������܂�Ă���f�[�^</FONT><BR>
+　<FONT color="#0000ff">a</FONT>　<FONT color="#990000">：変数ａのメモリに書き込まれているデータ</FONT><BR>
 <BR>
-�v���O���������l�ɂƂ��āA�ϐ�a�̃������A�h���X�����Ԓn�ł��邩�A���i�͋C�ɂ�����K�v�͂���܂���B<BR>
-�������A�ϐ������w�肵����L�̃f�[�^�̓ǂݏ����i����������j�ɑ����āA�ϐ��̃A�h���X���w�肵�ă�����������s�����ق����֗��Ȃ��Ƃ�����܂��B<BR>
-�@���̂��Ƃ͌�Ő������܂����A�b����ł̓A�h���X���w�肵���ϐ��̑���A���Ȃ킿�|�C���^������\�ɂ��邽�߂ɁA���Ɓ��̂Q�̋L�����A���̂悤�ɖ񑩂��܂��B <BR>
+プログラムを作る人にとって、変数aのメモリアドレスが何番地であるか、普段は気にかける必要はありません。<BR>
+しかし、変数名を指定した上記のデータの読み書き（メモリ操作）に代わって、変数のアドレスを指定してメモリ操作を行ったほうが便利なことがあります。<BR>
+　そのことは後で説明しますが、Ｃ言語ではアドレスを指定した変数の操作、すなわちポインタ操作を可能にするために、＆と＊の２つの記号を、次のように約束します。 <BR>
 <BR>
-�@<FONT color="#0000ff">&amp;a</FONT>�@<FONT color="#990000">�Fa�̃������A�h���X</FONT><BR>
-�@<FONT color="#0000ff">*a</FONT>�@<FONT color="#990000">�Fa���|�C���^�^�ϐ��Ő錾����Ba���A�h���X�Ɖ��߂��āA�A�h���Xa�Ԓn�ɏ������܂�Ă���f�[�^�ia���w���Ă���i�|�C���g���Ă���j�A�h���X�̃f�[�^�j</FONT><BR>
+　<FONT color="#0000ff">&amp;a</FONT>　<FONT color="#990000">：aのメモリアドレス</FONT><BR>
+　<FONT color="#0000ff">*a</FONT>　<FONT color="#990000">：aをポインタ型変数で宣言する。aをアドレスと解釈して、アドレスa番地に書き込まれているデータ（aが指している（ポイントしている）アドレスのデータ）</FONT><BR>
 <BR>
-��L�̖񑩂̂��ƂɁA(1)���ʂ̕ϐ���(2)�|�C���^�ϐ����A�e�X���̂悤�ȈӖ��Ŏg���܂��B<BR>
+上記の約束のもとに、(1)普通の変数と(2)ポインタ変数を、各々次のような意味で使います。<BR>
 <BR>
-<U>(1)���ʂ̕ϐ�</U><BR>
+<U>(1)普通の変数</U><BR>
 <BR>
-�@<FONT color="#0000ff">int a</FONT>�@<FONT color="#990000">�F�@�����^�ϐ�a�̐錾�i���ʂ̐錾�j</FONT>�@<BR>
-�@<FONT color="#0000ff">a�@</FONT>�@ <FONT color="#990000">�F�@�ϐ�a�̒��g�Aa�ɂ͐����^�̃f�[�^�i���ʂ̐��l�f�[�^�j��������B</FONT><BR>
-�@<FONT color="#0000ff">&amp;a</FONT>�@�@<FONT color="#990000">�F�@�����^�ϐ�a�̃������A�h���X</FONT><BR>
+　<FONT color="#0000ff">int a</FONT>　<FONT color="#990000">：　整数型変数aの宣言（普通の宣言）</FONT>　<BR>
+　<FONT color="#0000ff">a　</FONT>　 <FONT color="#990000">：　変数aの中身、aには整数型のデータ（普通の数値データ）を代入する。</FONT><BR>
+　<FONT color="#0000ff">&amp;a</FONT>　　<FONT color="#990000">：　整数型変数aのメモリアドレス</FONT><BR>
 <BR>
-<U>(2)�|�C���^�ϐ�</U> <BR>
+<U>(2)ポインタ変数</U> <BR>
 <BR>
-�@<FONT color="#0000ff">int *a</FONT>�@<FONT color="#990000">�F�@�����^�|�C���^�ϐ�a�̐錾</FONT><BR>
-�@<FONT color="#0000ff">a</FONT>�@�@�@<FONT color="#990000">�F�@�ϐ�a�̒��g�Aa�ɂ͐����^�̃A�h���X�f�[�^�i�|�C���^�f�[�^�j��������B</FONT><BR>
-�@<FONT color="#0000ff">*a</FONT>�@ �@<FONT color="#990000">�F�@�A�h���Xa���w���Ă��郁�����ɏ������܂�Ă��鐮���^�f�[�^(a�Ԓn�̃������̃f�[�^�Aa���A�h���X�Ɖ��߂���j</FONT><BR>
+　<FONT color="#0000ff">int *a</FONT>　<FONT color="#990000">：　整数型ポインタ変数aの宣言</FONT><BR>
+　<FONT color="#0000ff">a</FONT>　　　<FONT color="#990000">：　変数aの中身、aには整数型のアドレスデータ（ポインタデータ）を代入する。</FONT><BR>
+　<FONT color="#0000ff">*a</FONT>　 　<FONT color="#990000">：　アドレスaが指しているメモリに書き込まれている整数型データ(a番地のメモリのデータ、aをアドレスと解釈する）</FONT><BR>
 <BR>
 <HR>
 <BR>
-�|�C���^�̓�����m�F���邽�߂̃v���O�������ȉ��Ɏ����܂��B�i���̃v���O�����͎��ۂ̖��ɂ͂����܂���j<BR>
+ポインタの動作を確認するためのプログラムを以下に示します。（このプログラムは実際の役にはたちません）<BR>
 <BR>
 <TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD><FONT color="#000080"><B>�� 10-1</B></FONT><BR><PRE> #include&lt;stdio.h&gt;
+    <TD><FONT color="#000080"><B>例 10-1</B></FONT><BR><PRE> #include&lt;stdio.h&gt;
     
  int main(void)
  {
-    int a,*c; /*�@a�F���ʂ̕ϐ��Ac�F�|�C���^�^�̕ϐ� �̐錾*/
+    int a,*c; /*　a：普通の変数、c：ポインタ型の変数 の宣言*/
     
-    a=10;     /* �ϐ�a��10���� */
-    c=&amp;a;     /*�ϐ�a�̃A�h���X���|�C���^�ϐ��ɑ��*/
+    a=10;     /* 変数aに10を代入 */
+    c=&amp;a;     /*変数aのアドレスをポインタ変数に代入*/
     
     printf(&quot;a=%d &amp;a=%d\n&quot;,a,&amp;a);
     printf(&quot;c=%d *c=%d &amp;c=%d\n&quot;,c,*c,&amp;c);
@@ -86,14 +86,14 @@
   </TR></TABLE>
 <FONT color="#000080"><B><BR>
 <BR>
-�⑫�F</B></FONT><BR>
-���10�|�P�ł́A�|�C���^�^�ϐ�����<BR>
+補足：</B></FONT><BR>
+例題10－１では、ポインタ型変数ｃに<BR>
 <BR>
-�@<FONT color="#0000ff">c=&amp;a;</FONT> <BR>
+　<FONT color="#0000ff">c=&amp;a;</FONT> <BR>
 <BR>
-�Ƃ��āA�ϐ����̃A�h���X����������ł��܂��B<BR>
-���̂Ƃ��A�ϐ����ƃ|�C���^�^�ϐ����̊֌W�͉��}�̂悤�ɂȂ�܂��B<BR>
-�����w���Ă��郁�����i���̃������̒��g���A�h���X�Ƃ݂Ȃ����Ƃ��A���̃A�h���X�������̒��g�j�̃f�[�^�@*c�@�́A���ɂȂ�܂��B<BR>
+として、変数ａのアドレスを書き込んでいます。<BR>
+このとき、変数ａとポインタ型変数ｃの関係は下図のようになります。<BR>
+ｃが指しているメモリ（ｃのメモリの中身をアドレスとみなしたとき、そのアドレスメモリの中身）のデータ　*c　は、ａになります。<BR>
 <BR>
 <TABLE>
   <TR>
@@ -103,27 +103,27 @@
 <BR>
 <TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
   <TR>
-    <TD WIDTH=100%><FONT color="#000080"><B>���K���P0-�P</B></FONT> �@(Revised : 2013/10/28)<BR>
+    <TD WIDTH=100%><FONT color="#000080"><B>演習問題１0-１</B></FONT> 　(Revised : 2013/10/28)<BR>
     <BR>
-    ��P0-�P�̃v���O�����̓����������Ă��������B�܂��A���̃v���O�����́Ac=&amp;a�̌�ɁA<BR>
+    例１0-１のプログラムの動作を説明してください。また、このプログラムの、c=&amp;aの後に、<BR>
     <BR>
-    �@<FONT color="#0000ff">*c=100</FONT>;<BR>
+    　<FONT color="#0000ff">*c=100</FONT>;<BR>
     <BR>
-    �̂悤�ȑ������}�������ꍇ�̌��ʂ��m���߂Ă��������B<BR>
-    �ϐ�a�ɑ΂��������Z���A�|�C���^�ϐ�c��p���Ă������ł��邱�Ƃ𗝉����Ă��������i<FONT color="#0000ff">a=100</FONT>��<FONT color="#0000ff">*c=100</FONT>�̃���������́A�܂�������������������j�B<BR>
+    のような代入文を挿入した場合の結果を確かめてください。<BR>
+    変数aに対する代入演算が、ポインタ変数cを用いても実現できることを理解してください（<FONT color="#0000ff">a=100</FONT>と<FONT color="#0000ff">*c=100</FONT>のメモリ操作は、まったく同じ働きをする）。<BR>
     </TD>
   </TR></TABLE><BR>
 <HR><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
   <TR>
-    <TD><FONT color="#ffffff"><B>�|�C���^�̉��p�i�֐��̈����j</B></FONT></TD>
+    <TD><FONT color="#ffffff"><B>ポインタの応用（関数の引数）</B></FONT></TD>
   </TR></TABLE><BR>
-�͂��߂ɁA��T�K�����悤�ɁA�Q�̕ϐ����A���̑����Z������֐�<FONT color="#0000ff">sum(x,y)</FONT>���g�����v���O�����͗�10-2�̂悤�ɂȂ�܂��B�����ł́A�����Z�̌��ʂ��{���́A�֐���return()�̖߂�l���g���āA���ʂ��󂯎��܂����B<BR>
+はじめに、先週習ったように、２つの変数ｘ、ｙの足し算をする関数<FONT color="#0000ff">sum(x,y)</FONT>を使ったプログラムは例10-2のようになります。ここでは、足し算の結果ｘ＋ｙは、関数のreturn()の戻り値を使って、結果を受け取りました。<BR>
 <BR>
-�ȉ��̗�10-2�́A��T�̗��Ɠ��l�ɁA�߂�l���g���������Z�̊֐��v���O�����ł��B<BR>
+以下の例10-2は、先週の例題と同様に、戻り値を使った足し算の関数プログラムです。<BR>
 <BR>
 <TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD><FONT color="#000080"><B>��10-2<BR>
+    <TD><FONT color="#000080"><B>例10-2<BR>
     </B></FONT><PRE>#include&lt;stdio.h&gt;
 
 int main(void)
@@ -131,9 +131,9 @@ int main(void)
     int x=1,y=3,z=0;
     int add(int,int);
 
-    z=add(x,y); /*����y�̑����Z���ʂ����ɓ����*/
+    z=add(x,y); /*ｘとyの足し算結果をｚに入れる*/
 
-    printf(&quot;���͊֐�main�̏o��\n&quot;);
+    printf(&quot;次は関数mainの出力\n&quot;);
     printf(&quot;%d+%d=%d\n&quot;,x,y,z);
 
     return(0);
@@ -144,23 +144,23 @@ int add(int a, int b)
     int c;
 
     c=a+b;
-    printf(&quot;���͊֐�add�̏o��\n&quot;);
+    printf(&quot;次は関数addの出力\n&quot;);
     printf(&quot;%d+%d=%d\n&quot;,a,b,c);
 
     return(c);
 }</PRE></TD></TR></TABLE><BR>
-�����ł́A�Ăяo�����Ɗ֐��{�̂Ƃ̃f�[�^�̎󂯓n���̗l�q�𕪂���₷���������邽�߂ɁA ���i�R���s���[�^�̃������j���g�������f���ɒu�������Ă݂܂��B�����ŁA�������Ƀf�[�^���������ޑ�����A
-�f�[�^�����������i�ϐ��f�[�^�j�𔠂̒��ɓ�����Ƃɂ��������čl���܂��B�܂��A����������f�[�^�� �ǂݏo��������A�����玆�����o���ēǂލ�Ƃɂ��������čl���܂��B�ǂ̔��Ƀf�[�^����ꂽ��������Ȃ���
-����܂��̂ŁA���ɔԍ������܂��B������܂Ƃ߂�ƁA���̂悤�ɂȂ�܂��B<BR>
-<P>�@�@<FONT color="#0000ff">���̖��O�F</FONT>�@<FONT color="#990000">�@�ϐ���</FONT><BR>
-�@�@<FONT color="#0000ff">���̔ԍ��F</FONT>�@<FONT color="#990000">�@�������̃A�h���X</FONT><BR>
-�@�@<FONT color="#0000ff">���̒��̎��F</FONT>�@<FONT color="#990000">�������ɏ������܂�Ă���f�[�^</FONT><BR>
+ここでは、呼び出し側と関数本体とのデータの受け渡しの様子を分かりやすく説明するために、 箱（コンピュータのメモリ）を使ったモデルに置き換えてみます。ここで、メモリにデータを書き込む操作を、
+データを書いた紙（変数データ）を箱の中に入れる作業におきかえて考えます。また、メモリからデータを 読み出す操作を、箱から紙を取り出して読む作業におきかえて考えます。どの箱にデータを入れたか分からないと
+困りますので、箱に番号をつけます。これをまとめると、次のようになります。<BR>
+<P>　　<FONT color="#0000ff">箱の名前：</FONT>　<FONT color="#990000">　変数名</FONT><BR>
+　　<FONT color="#0000ff">箱の番号：</FONT>　<FONT color="#990000">　メモリのアドレス</FONT><BR>
+　　<FONT color="#0000ff">箱の中の紙：</FONT>　<FONT color="#990000">メモリに書き込まれているデータ</FONT><BR>
 <BR>
-��L���̊֐��Ăяo���ɂ�����f�[�^�̎󂯓n�����A�����f����p���Ď������̂��ȉ��̐}�ł��B<BR>
+上記例題の関数呼び出しにおけるデータの受け渡しを、箱モデルを用いて示したのが以下の図です。<BR>
 </P>
 <TABLE><TR><TD><IMG SRC="cp1-10-3.gif" ALT="" WIDTH=589 HEIGHT=772></TD></TR></TABLE><BR>
-���āA��L�̂悤�ɖ߂�l�Ō��ʂ��󂯎�����ɁA���̗��̂悤�ɂR�Ԗڂ̈��������g���Č��ʂ��󂯎�邱�Ƃ��ł��邩�ǂ��������Ă݂܂��H�B�܂��A���҂������ʂɂȂ邩�ǂ����v���O�����𓮂����Ċm���߂��������B<BR><BR>
-<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff"><TR><TD><FONT color="#000080"><B>��10-3</B><BR></FONT><PRE>
+さて、上記のように戻り値で結果を受け取る代わりに、次の例題のように３番目の引数ｚを使って結果が受け取ることができるかどうか試してみます？。まず、期待した結果になるかどうかプログラムを動かして確かめください。<BR><BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff"><TR><TD><FONT color="#000080"><B>例10-3</B><BR></FONT><PRE>
 #include&lt;stdio.h&gt;
 
 int main(void)
@@ -169,78 +169,78 @@ int main(void)
 
     void add(int,int,int);
 
-    add(x,y,z); /*����y�̑����Z���ʂ����ɓ����*/
-    printf(&quot;���͊֐�main�̏o��\n&quot;);
+    add(x,y,z); /*ｘとyの足し算結果をｚに入れる*/
+    printf(&quot;次は関数mainの出力\n&quot;);
     printf(&quot;%d+%d=%d\n&quot;,x,y,z);
     
     return(0);
 }
 
-/* a�Ƃ��̒l�𑫂��Z���ʂ�c�ɓ����v���O����*/
+/* aとｂの値を足し算結果をcに入れるプログラム*/
 void add(int a, int b, int c)
 {
     c=a+b;
-    printf(&quot;���͊֐�add�̏o��\n&quot;);
+    printf(&quot;次は関数addの出力\n&quot;);
     printf(&quot;%d+%d=%d\n&quot;,a,b,c);
 }</PRE></TD></TR></TABLE><BR>
-��̗�10-3�̖��́A�֐��Ăяo���ɂ�����A �Ăяo�����Ɗ֐����̕ϐ��ƈ������A���̃��f���ɕ\���Ɖ��}�̂悤�ɂȂ�܂��B<BR><BR><TABLE BGCOLOR="#ffffff">
-  <TR><TD><B><FONT color="#000080">��10-�R�̊֐��Ăяo��</FONT></B></TD></TR><TR><TD><IMG SRC="cp1-10-4.gif" ALT="" WIDTH=470 HEIGHT=606></TD></TR></TABLE><BR>
-<FONT color="#ff0000">�����ŁA�����̔�a,b,c�́A�Ăяo�����̕ϐ��̔����A���A���ƁA�ʂ̔��ł��邱�Ƃɒ��ӂ��Ă��������B</FONT><BR>
+上の例10-3の問題の、関数呼び出しにおける、 呼び出し側と関数側の変数と引数を、箱のモデルに表すと下図のようになります。<BR><BR><TABLE BGCOLOR="#ffffff">
+  <TR><TD><B><FONT color="#000080">例10-３の関数呼び出し</FONT></B></TD></TR><TR><TD><IMG SRC="cp1-10-4.gif" ALT="" WIDTH=470 HEIGHT=606></TD></TR></TABLE><BR>
+<FONT color="#ff0000">ここで、引数の箱a,b,cは、呼び出し側の変数の箱ｘ、ｙ、ｚと、別の箱であることに注意してください。</FONT><BR>
 <BR>
-��10-�R�̃v���O�����̏����菇���ڂ����݂Ă݂�Ǝ��̂悤�ɂȂ�܂��B<BR>
+例10-３のプログラムの処理手順を詳しくみてみると次のようになります。<BR>
 <BR>
-<FONT color="#000099">�@�Ăяo����(main�֐��j</FONT><BR>
+<FONT color="#000099">①呼び出し側(main関数）</FONT><BR>
 <BR>
-�@�@�@�ϐ����̔��ɂ͂P�A�ϐ����ɂ͂Q�A�ϐ����ɂ͂O���A�����Ă���B�@�@�@<BR>
-�@�@�@�֐�add()�̈���a�̔��ɁA�ϐ�x�̔��̒��g���R�s�[���ē����B<BR>
-�@�@�@�@�@�@�@�V�@�@����b�̔��ɁA�ϐ�y�̔��̒��g���R�s�[���ē����B<BR>
-�@�@�@�@�@�@�@�V�@�@�������̔��ɁA�ϐ����̔��̒��g���R�s�[���ē����B <BR>
-�@�@�@�֐�add()���Ăт��� <BR><BR>
-<FONT color="#000099">�A�֐���(add�֐��j</FONT><BR>
+　　　変数ｘの箱には１、変数ｙには２、変数ｚには０が、入っている。　　　<BR>
+　　　関数add()の引数aの箱に、変数xの箱の中身をコピーして入れる。<BR>
+　　　　　　　〃　　引数bの箱に、変数yの箱の中身をコピーして入れる。<BR>
+　　　　　　　〃　　引数ｃの箱に、変数ｚの箱の中身をコピーして入れる。 <BR>
+　　　関数add()を呼びだす <BR><BR>
+<FONT color="#000099">②関数側(add関数）</FONT><BR>
 <BR>
-�@�@�@����a�C���̊e�X�̔��̒��g�����o���āA���҂𑫂��B<BR>
-�@�@�@���̌��ʂ��A�������̔��ɓ����B<BR>
-�@�@�@a,b,c�̔��̒��g��\������B<BR>
-�@�@�@�Ăяo�����ɖ߂�B<BR><BR>
-<FONT color="#000099">�B�Ăяo����(main�֐��j</FONT><BR>
+　　　引数a，ｂの各々の箱の中身を取り出して、両者を足す。<BR>
+　　　その結果を、引数ｃの箱に入れる。<BR>
+　　　a,b,cの箱の中身を表示する。<BR>
+　　　呼び出し側に戻る。<BR><BR>
+<FONT color="#000099">③呼び出し側(main関数）</FONT><BR>
 <BR>
-�@�@�@��,��,���̔��̒��g��\������B<BR>
+　　　ｘ,ｙ,ｚの箱の中身を表示する。<BR>
 <BR>
-��L�̐����ŁA���̔��̒��g�͏��������Ȃ����Ƃɒ��ӂ��Ă��������B�v����ɁA�Ăяo�����ł́A�֐��̈����Ƀf�[�^���R�s�[���ēn���Ă��邾���ł��i<FONT color="#ff0000">�l�n��</FONT>�j�B �����̃f�[�^���Ăяo�����Ŏ󂯎�邱�Ƃ͏o�����Ȃ��̂ł��B���Ȃ킿�AC���� �ł͒l�n���̕��@�Ŋ֐��Ƀf�[�^��n�����߁A�f�[�^�̂����͊�{�I�ɂ�,���̂悤�Ɉ���ʍs�����ł��܂���B<BR>
+上記の説明で、ｚの箱の中身は書き換わらないことに注意してください。要するに、呼び出し側では、関数の引数にデータをコピーして渡しているだけです（<FONT color="#ff0000">値渡し</FONT>）。 引数のデータを呼び出し側で受け取ることは出来きないのです。すなわち、C言語 では値渡しの方法で関数にデータを渡すため、データのやり取りは基本的には,次のように一方通行しかできません。<BR>
 <BR>
-�@�@<FONT color="#990000">�����F�@</FONT><FONT color="#0000ff">�Ăяo����--&gt;�֐�</FONT><BR>
-�@�@<FONT color="#990000">�߂�l�F</FONT><FONT color="#0000ff">�֐�--&gt;�Ăяo����</FONT><BR>
+　　<FONT color="#990000">引数：　</FONT><FONT color="#0000ff">呼び出し側--&gt;関数</FONT><BR>
+　　<FONT color="#990000">戻り値：</FONT><FONT color="#0000ff">関数--&gt;呼び出し側</FONT><BR>
 <BR>
-���̂��߁A��L�̏ꍇ�A�֐��̒��� �������ɐV�����l�������Ă��A�Ăяo�����̕ϐ����͌��̂܂܂ł��imain�Ō��ʂ��󂯎�邱�Ƃ��ł��܂���j�B<BR><BR>
-��10-3�̃v���O�������C�����āA�Ăяo�����̈������ɑ����Z�̌��ʂ𐳂����󂯎���悤�ɂ���ɂ́A�ȉ��̂悤�ɂ��܂��B<BR><BR><U>�ďo�����F</U><BR><BR>
-�@�@<FONT color="#0000ff">void add(int,int,int*);</FONT>�@<FONT color="#990000">/*�@*��̓|�C���^�^�ϐ��i�����͊֐��j�ł��邱�Ƃ��Ӗ�����*/</FONT> <BR>
-�@�@<FONT color="#0000ff">add(x,y,&amp;z);</FONT>�@�@�@�@�@�@ <FONT color="#990000">/* 3�Ԗڂ̈����́A�ϐ�z�̔Ԓn��n���Ă��� */ <BR>
+このため、上記の場合、関数の中で 引数ｃに新しい値を代入しても、呼び出し側の変数ｚは元のままです（mainで結果を受け取ることができません）。<BR><BR>
+例10-3のプログラムを修正して、呼び出し側の引数ｚに足し算の結果を正しく受け取れるようにするには、以下のようにします。<BR><BR><U>呼出し側：</U><BR><BR>
+　　<FONT color="#0000ff">void add(int,int,int*);</FONT>　<FONT color="#990000">/*　*印はポインタ型変数（或いは関数）であることを意味する*/</FONT> <BR>
+　　<FONT color="#0000ff">add(x,y,&amp;z);</FONT>　　　　　　 <FONT color="#990000">/* 3番目の引数は、変数zの番地を渡している */ <BR>
 </FONT><BR>
-<U>�֐����F</U><BR><BR>
-�@�@<FONT color="#0000ff">void add(int a, int b, int *c)</FONT>�@ <FONT color="#990000">/* ����c�ɔԒn�f�[�^���󂯎��B���̂��߂ɁAc���|�C���^�ϐ��Ő錾���Ă��� */</FONT><BR>
-�@<FONT color="#0000ff">�@{</FONT><BR>
-�@�@�@�@�@<FONT color="#0000ff">*c=a+b;</FONT>�@�@<FONT color="#990000">/* c�Ԃ̔ԍ��̔��i���Ȃ킿���̔��j�ɁAa+b�̌��ʂ������� */</FONT><BR>
-�@<FONT color="#0000ff">�@} </FONT><BR>
+<U>関数側：</U><BR><BR>
+　　<FONT color="#0000ff">void add(int a, int b, int *c)</FONT>　 <FONT color="#990000">/* 引数cに番地データを受け取る。そのために、cをポインタ変数で宣言している */</FONT><BR>
+　<FONT color="#0000ff">　{</FONT><BR>
+　　　　　<FONT color="#0000ff">*c=a+b;</FONT>　　<FONT color="#990000">/* c番の番号の箱（すなわちｚの箱）に、a+bの結果を代入する */</FONT><BR>
+　<FONT color="#0000ff">　} </FONT><BR>
 <BR>
-<TABLE BGCOLOR="#ffffff"><TR><TD><FONT color="#000099"><B>�|�C���^�ϐ��������ɗp�����֐��Ăяo��</B></FONT></TD></TR><TR><TD><IMG SRC="cp1-10-5.gif" ALT="" WIDTH=488 HEIGHT=645></TD></TR></TABLE>
+<TABLE BGCOLOR="#ffffff"><TR><TD><FONT color="#000099"><B>ポインタ変数を引数に用いた関数呼び出し</B></FONT></TD></TR><TR><TD><IMG SRC="cp1-10-5.gif" ALT="" WIDTH=488 HEIGHT=645></TD></TR></TABLE>
 <BR>
-�ȏ�̂悤�Ɉ����ɕϐ����̃f�[�^�𒼐ړn�������ɁA���̃������A�h���X������n���܂��B ��������΁Areturn����p���Ȃ��Ă��A�A�h���X������ĊԐړI�Ƀf�[�^���󂯎�邱�Ƃ��ł��܂�
-�i���̕��@��<FONT color="#ff0000">�Q�Ɠn��</FONT>�ƌ����܂��BC����̊֐��Ƀf�[�^��n�����@�́A��{�I�ɒl�n����O��ɂ��Ă��܂��B���̂��߁A ��������āA�֐����̃f�[�^��Ⴄ���߂ɂ́A��L�̂悤�Ƀ|�C���^�ϐ���p����K�v������܂��j�B<BR>
+以上のように引数に変数ｚのデータを直接渡すかわりに、ｚのメモリアドレス＆ｚを渡します。 こうすれば、return文を用いなくても、アドレス情報を介して間接的にデータを受け取ることができます
+（この方法を<FONT color="#ff0000">参照渡し</FONT>と言います。C言語の関数にデータを渡す方法は、基本的に値渡しを前提にしています。このため、 引数を介して、関数側のデータを貰うためには、上記のようにポインタ変数を用いる必要があります）。<BR>
 <BR>
-<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD WIDTH=100%><FONT color="#000080"><B>���K��� 10-2</B></FONT> �@(Revised : 2011/10/31)<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD WIDTH=100%><FONT color="#000080"><B>演習問題 10-2</B></FONT> 　(Revised : 2011/10/31)<BR>
     <BR>
-    �@�O��̉��K���9-1�ł́Areturn���̖߂�l���g���āA�֐��̌��ʂ������A��� �����B��L�̐����ɏ]���āA�|�C���^�^�̈������g���āA�l�������A��i�D�ɑS�Ă̊֐������������Ă݂Ă��������B<BR>
-    �܂��Ascanf����scanf(�g%e�h,&amp;a)�̂悤�� �ϐ�a�̓���&amp;��t���闝�R�ɂ��Ă����|�[�g�Ɏ����Ă��������B<BR>
+    　前回の演習問題9-1では、return文の戻り値を使って、関数の結果を持ち帰りま した。上記の説明に従って、ポインタ型の引数を使って、値を持ち帰る格好に全ての関数を書き換えてみてください。<BR>
+    また、scanf文でscanf(“%e”,&amp;a)のように 変数aの頭に&amp;を付ける理由についてもレポートに示してください。<BR>
     <BR>
 </TD></TR></TABLE>
 <BR>
-<FONT color="#000080">��<B>�󂯎�肽�����ʂ���������ꍇ�̊֐��̍���</B></FONT><BR>
+<FONT color="#000080">■<B>受け取りたい結果が複数ある場合の関数の作り方</B></FONT><BR>
 <BR>
-��L�̗�ł́A��̕ϐ��̒l���󂯎���������ł��B���̏ꍇ�́A��T�̗��̂悤�ɖ߂�l���g���Č��ʂ��󂯎��̂ɔ�ׂāA�s���̗ǂ����Ƃ͉�������܂���B�������A�󂯎�肽���ϐ��̐����Q�ȏ゠��ꍇ�́A�|�C���^�^�̈������g���ƕ֗��ł��B<BR>
+上記の例では、一つの変数の値を受け取っただけです。この場合は、先週の例題のように戻り値を使って結果を受け取るのに比べて、都合の良いことは何もありません。しかし、受け取りたい変数の数が２つ以上ある場合は、ポインタ型の引数を使うと便利です。<BR>
 <BR>
-���̗��́A���f��z=x+jy�̎�����x�Ƌ�����y����͂���ƁA��Βl|z|�ƈʑ��p�ڂ����A�v�Z���Ă����֐�henkan()���g�����v���O�����ł��B<BR>
+次の例題は、複素数z=x+jyの実数部xと虚数部yを入力すると、絶対値|z|と位相角∠ｚを、計算してくれる関数henkan()を使ったプログラムです。<BR>
 <BR>
-<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff"><TR><TD WIDTH=100%><FONT color="#000080"><B>�� 10-�S</B>�i�󂯎�肽���f�[�^���Q����֐��j</FONT><BR><PRE>#include&lt;stdio.h&gt;
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff"><TR><TD WIDTH=100%><FONT color="#000080"><B>例 10-４</B>（受け取りたいデータが２つある関数）</FONT><BR><PRE>#include&lt;stdio.h&gt;
 #include&lt;math.h&gt;
 
 int main(void)
@@ -252,7 +252,7 @@ int main(void)
     printf(&quot;Input imag part=&quot;); fflush(0); scanf(&quot;%e&quot;,&amp;b);
     
     henkan(a,b,&amp;amp,&amp;phase);
-    printf(&quot;%e+j%e=|%e|��%e\n&quot;,a,b, amp,phase);
+    printf(&quot;%e+j%e=|%e|∠%e\n&quot;,a,b, amp,phase);
 
     return(0);
  }
@@ -266,90 +266,90 @@ int main(void)
 <BR>
 <TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
   <TR>
-    <TD WIDTH=100%><FONT color="#000080"><B>���K���@10-3</B></FONT>�@(Revised : 2014/11/03)<BR>
+    <TD WIDTH=100%><FONT color="#000080"><B>演習問題　10-3</B></FONT>　(Revised : 2014/11/03)<BR>
     <BR>
-    �Ŕ����ň������120�~�̃n���o�[�O��n�A��t������100�~�̃W���[�X��m�t�A��܂�����250�~�̃|�e�g��k�܂𔃂������́A�Ŕ������iC�A�����(8%)Tax�A�y�ѐō��݉��iS�����߂�֐����쐬���ĉ������B<BR>
+    税抜きで一個あたり120円のハンバーグをn個、一杯あたり100円のジュースをm杯、一袋あたり250円のポテトをk袋を買った時の、税抜き価格C、消費税(8%)Tax、及び税込み価格Sを求める関数を作成して下さい。<BR>
     <BR>
-    �������A�n���o�[�O�A�W���[�X�A�|�e�g�̂R�_���Z�b�g�Ŕ������ꍇ�́A�e�X��P�i�Ŕ������ꍇ�̍��v���z(�Ŕ������i)����A<FONT color="#ff0000">40�~�~�Z�b�g���̒l����</FONT>�����邱�Ƃɒ��ӂ��Ă�������(�Z�b�g���́An,m,k�̍ŏ��l�̐��Ƃ���j�B<BR>
+    ただし、ハンバーグ、ジュース、ポテトの３点をセットで買った場合は、各々を単品で買った場合の合計金額(税抜き価格)から、<FONT color="#ff0000">40円×セット数の値引き</FONT>があることに注意してください(セット数は、n,m,kの最小値の数とする）。<BR>
     <BR>
-    �܂��A����ł͒l������̑��v�ɑ΂��Čv�Z���A��~�����͐؂�̂Ăĉ������B <BR>
+    また、消費税は値引き後の総計に対して計算し、一円未満は切り捨てて下さい。 <BR>
     <BR>
-    �����ł́A��Ŏ������S�Ă̕ϐ��in, m, k, C, Tax, S�j�������Ƃ��An, m, k ���L�[�{�[�h������͂���ƁA���v�z�̐Ŕ������iC�A�����(8%)Tax�A�y�ѐō��݉��iS����ʂɕ\������v���O�����Ƃ��Ă��������B<BR>
+    ここでは、上で示した全ての変数（n, m, k, C, Tax, S）を引数とし、n, m, k をキーボードから入力すると、合計額の税抜き価格C、消費税(8%)Tax、及び税込み価格Sを画面に表示するプログラムとしてください。<BR>
     <BR>
-    �܂��A���C�����Ɗ֐��Ԃ̒l�̎󂯓n�����@�ɒ��ڂ��āA�v���O�����̓����������Ă��������B<BR>
+    また、メイン文と関数間の値の受け渡し方法に注目して、プログラムの動作を説明してください。<BR>
     </TD>
   </TR>
 </TABLE>
 <BR>
 <HR>
 <BR>
-<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080"><TR><TD><B><FONT color="#ffffff">�v���v���Z�b�T</FONT></B></TD></TR></TABLE>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080"><TR><TD><B><FONT color="#ffffff">プリプロセッサ</FONT></B></TD></TR></TABLE>
 <BR>
-�v���O�����̐擪�̂Ƃ���ɁA#�L���̂��Ƃɑ����āA�ȉ��̂悤�ȍ\��������ƁA�R���p�C���͂����܂����񑩂̏������s���܂��B���̊����������܂��B<BR><BR><FONT color="#000080">��<B>�C���N���[�h��</B></FONT><BR><BR>
-�@�@�@<FONT color="#0000ff">#include &quot;�t�@�C����&quot;</FONT><BR>
-�܂���<BR><BR>
-�@�@�@<FONT color="#0000ff">#include &lt;�t�@�C����&gt;</FONT><BR>
+プログラムの先頭のところに、#記号のあとに続けて、以下のような構文があると、コンパイラはある定まった約束の処理を行います。その幾つかを説明します。<BR><BR><FONT color="#000080">■<B>インクルード文</B></FONT><BR><BR>
+　　　<FONT color="#0000ff">#include &quot;ファイル名&quot;</FONT><BR>
+または<BR><BR>
+　　　<FONT color="#0000ff">#include &lt;ファイル名&gt;</FONT><BR>
 <BR>
-����͈ȑO�ɐ������܂����悤�ɁA�t�@�C�����̃t�@�C����include���̈ʒu�ɑ}�����ăR���p�C�����邱�Ƃ��Ӗ����Ă��܂��B<BR><BR>
-�����ŁA�t�@�C������&quot;&quot;�ň͂ނƁA�R���p�C���̓J�����g�f�B���N�g�������Ƀt�@�C����T���܂��B����A&lt;&gt;�ň͂񂾂Ƃ��́A�R���p�C���̃V�X�e���f�B���N�g�������ɑ{���񑩂�\���Ă��܂��B���̂��߁A�W���֐��̃w�b�_�t�@�C���istdio.h
-��math.h)��&lt;&gt;�ň͂ޖ񑩂ł���Ɨ������Ă��������B<BR>
+これは以前に説明しましたように、ファイル名のファイルをinclude文の位置に挿入してコンパイルすることを意味しています。<BR><BR>
+ここで、ファイル名を&quot;&quot;で囲むと、コンパイラはカレントディレクトリから先にファイルを探します。一方、&lt;&gt;で囲んだときは、コンパイラのシステムディレクトリから先に捜す約束を表しています。そのため、標準関数のヘッダファイル（stdio.h
+やmath.h)は&lt;&gt;で囲む約束であると理解してください。<BR>
 <BR>
-<FONT color="#000080">��<B>define��</B></FONT><BR><BR>
-�@�@�@<FONT color="#0000ff">#define ������P�@������Q</FONT><BR>
+<FONT color="#000080">■<B>define文</B></FONT><BR><BR>
+　　　<FONT color="#0000ff">#define 文字列１　文字列２</FONT><BR>
 <BR>
-��L�̂悤��define�����v���O�����̐擪�ɗp�ӂ��܂��B���̂Ƃ��A�v���O�����̂ǂ����ɁA������P���܂܂�Ă���ƁA����𕶎���Q�Œu�������āA�R���p�C�����܂��B<BR><BR>
-�Ⴆ�΁A�v���O�����̂Ȃ��ŉ~�����΂�p����v�Z�͂悭����܂��B���̂��߂ɁA<BR><BR>
-�@�@�@<FONT color="#0000ff">#define PI 3.14159265</FONT><BR>
+上記のようなdefine文をプログラムの先頭に用意します。このとき、プログラムのどこかに、文字列１が含まれていると、それを文字列２で置き換えて、コンパイルします。<BR><BR>
+例えば、プログラムのなかで円周率πを用いる計算はよくあります。そのために、<BR><BR>
+　　　<FONT color="#0000ff">#define PI 3.14159265</FONT><BR>
 <BR>
-�Ƃ��܂��B��L��define����p�ӂ����ꍇ�A�{������<BR><BR>
-�@�@�@<FONT color="#0000ff">sin(30.0/180.0*3.141593)</FONT>�@<FONT color="#990000">/* sin(30��)�̌v�Z */<BR>
+とします。上記のdefine文を用意した場合、本文中で<BR><BR>
+　　　<FONT color="#0000ff">sin(30.0/180.0*3.141593)</FONT>　<FONT color="#990000">/* sin(30°)の計算 */<BR>
 </FONT><BR>
-�Ə�������ɁA<BR><BR>
-�@�@�@<FONT color="#0000ff">sin(30.0/180.0*PI)</FONT>�@<BR>
+と書く代わりに、<BR><BR>
+　　　<FONT color="#0000ff">sin(30.0/180.0*PI)</FONT>　<BR>
 <BR>
-�̂悤�ɁAPI���L���̂悤�Ɏg���ăv���O�������������Ƃ��ł��܂��B<BR><BR><FONT color="#000080">��<B>�}�N����</B></FONT><BR>
-define���̎�̍��񂾎g�����Ƃ��āA�}�N����������܂��B�}�N�����͊֐��Ɨǂ������ړI�̂��߂Ɏg�����Ƃ��ł��܂��B<BR>
-�}�N�����́A<BR><BR>
-�@�@�@<FONT color="#0000ff">#define �}�N����(x�Cy�d�d)�@�@�}�N����`��<BR>
+のように、PIを記号のように使ってプログラムを書くことができます。<BR><BR><FONT color="#000080">■<B>マクロ文</B></FONT><BR>
+define文の手の込んだ使い方として、マクロ文があります。マクロ文は関数と良く似た目的のために使うことができます。<BR>
+マクロ文は、<BR><BR>
+　　　<FONT color="#0000ff">#define マクロ名(x，y‥‥)　　マクロ定義文<BR>
 </FONT><BR>
-�̂悤�ɒ�`���܂��B���̂Ƃ��A�v���O�����{�̂̒��ŁA<BR>
+のように定義します。このとき、プログラム本体の中で、<BR>
 <BR>
-�@�@�@<FONT color="#0000ff">�}�N�����ia�Cb�d�d)</FONT><BR>
+　　　<FONT color="#0000ff">マクロ名（a，b‥‥)</FONT><BR>
 <BR>
-�̂悤�ɏ����ă}�N�������g���܂��B�}�N�������\���ƃR���p�C���́A�ʏ��define���Ɠ����悤�ɁA�܂��}�N�������`���̕�����ɒu�������܂��B���̍ہA�}�N�����̈����ɑ΂��ẮA����ɁA
-��`���̒��̈�����������A�Ăяo�����̈���������ɒu�������܂��B��L�̗�ł́A�A�R���p�C���́A�}�N����`���̈���������
-<FONT color="#0000ff">&quot;x&quot;</FONT>��
-<FONT color="#0000ff">&quot;y&quot;</FONT>�̊e�X���A�v���O�������̃}�N�����̈���������A
-<FONT color="#0000ff">&quot;a&quot;</FONT>,<FONT color="#0000ff">&quot;b&quot;</FONT>�ɒu�������܂��B<BR>
+のように書いてマクロ文を使います。マクロ名が表れるとコンパイラは、通常のdefine文と同じように、まずマクロ名を定義式の文字列に置き換えます。その際、マクロ文の引数に対しては、さらに、
+定義文の中の引数文字列を、呼び出し側の引数文字列に置き換えます。上記の例では、、コンパイラは、マクロ定義文の引数文字列
+<FONT color="#0000ff">&quot;x&quot;</FONT>と
+<FONT color="#0000ff">&quot;y&quot;</FONT>の各々を、プログラム中のマクロ文の引数文字列、
+<FONT color="#0000ff">&quot;a&quot;</FONT>,<FONT color="#0000ff">&quot;b&quot;</FONT>に置き換えます。<BR>
 <BR>
-���̌��ʁA���������}�N����()�̖��O�̊֐���p�ӂ����̂Ɠ��������������邱�Ƃ��ł��܂��B<BR><BR>
-��������Đ������܂��B<BR><BR>
+その結果、あたかもマクロ名()の名前の関数を用意したのと同じ働きをさせることができます。<BR><BR>
+例をあげて説明します。<BR><BR>
 <FONT color="#0000ff">#define PI 3.141593</FONT><BR>
-<FONT color="#0000ff">#define VOLUME(r) 4.0*PI*r*r*r/3.0 </FONT>�@
-<FONT color="#990000">/*���ar�̋��̑̐ς����߂�}�N��*/<BR>
+<FONT color="#0000ff">#define VOLUME(r) 4.0*PI*r*r*r/3.0 </FONT>　
+<FONT color="#990000">/*半径rの球の体積を求めるマクロ*/<BR>
 </FONT><BR>
-�̂悤��define����p�ӂ��܂��B�����āA�{���̒��ŁA<BR><BR>
-�@�@<FONT color="#0000ff">VOLUME(2.0) </FONT>;<BR>
+のようにdefine文を用意します。そして、本文の中で、<BR><BR>
+　　<FONT color="#0000ff">VOLUME(2.0) </FONT>;<BR>
 <BR>
-�̂悤�Ƀ}�N�������Ăяo�����Ƃ��܂��B���̂悤�ɁAPI��VOLUME�Ƃ��������񂪃v���O�������ɕ\���ƁA�R���p�C���́A�e�X��define��`���̕�����<FONT color="#0000ff">3.141593</FONT>�����<FONT color="#0000ff">4.0*PI*r*r*r/3.0</FONT>�Œu�������܂��B���̍ہA<FONT color="#009900">VOLUME</FONT>�̓}�N�����ł���̂Łi�����i�J�b�R�̒��̕�����j������̂Łj�A��`�����̈���������
-<FONT color="#0000ff">&quot;��&quot;</FONT>���A�Ăяo�����̈���������
-<FONT color="#0000ff">&quot;2.0&quot;</FONT>�ɒu�������܂��B���Ȃ킿�A<FONT color="#0000ff">VOLUME(2.0)</FONT>�@���A<BR>
+のようにマクロ文を呼び出したとします。このように、PIやVOLUMEという文字列がプログラム中に表れると、コンパイラは、各々をdefine定義文の文字列<FONT color="#0000ff">3.141593</FONT>および<FONT color="#0000ff">4.0*PI*r*r*r/3.0</FONT>で置き換えます。その際、<FONT color="#009900">VOLUME</FONT>はマクロ文であるので（引数（カッコの中の文字列）があるので）、定義文中の引数文字列
+<FONT color="#0000ff">&quot;ｒ&quot;</FONT>を、呼び出し側の引数文字列
+<FONT color="#0000ff">&quot;2.0&quot;</FONT>に置き換えます。すなわち、<FONT color="#0000ff">VOLUME(2.0)</FONT>　を、<BR>
 <BR>
-�@�@<FONT color="#0000ff">4.0*3.141593*2.0*2.0*2.0/3.0;</FONT> <BR>
+　　<FONT color="#0000ff">4.0*3.141593*2.0*2.0*2.0/3.0;</FONT> <BR>
 <BR>
-�̕�����ɒu�������܂��B<BR><BR>
-�@�ȏ�̂悤�ɁA�v���O���������l�ɂƂ��āA��������AVOLUME�Ƃ������O�̊֐����Ăяo�������̂悤�Ɏg�����Ƃ��ł��܂����i�������A�}�N�����́A������̒u�������ɂ���Ď������Ă���_�ŁA�֐��Ăяo���i�T�u���[�`���̎��s�j�Ƃ͖{���I�ɈقȂ邱�Ƃɒ��ӂ��Ă��������j�B<BR><BR><BR><TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD WIDTH=100%><FONT color="#000080"><B>���K���@10-4�i�}�N�����̗��K�j</B></FONT>�@(Revised : 2011/11/3)<BR><BR>
-    (1) �ȉ��́A�}�N����COMPUTE(a,b)�@��p�����@a*10+b�@�̌v�Z�v���O�����ł��B<BR>
-    �v���O���������s���A�L�[�{�[�h����a,b�ɓK���Ȑ��l����͂����ۂ̌v�Z���ʂ��m�F���Ă��������B<BR>
-    ���ɁA2*(a*10+b) ���v�Z����ړI�ŁA<BR>
+の文字列に置き換えます。<BR><BR>
+　以上のように、プログラムを作る人にとって、見かけ上、VOLUMEという名前の関数を呼び出したかのように使うことができました（ただし、マクロ文は、文字列の置換処理によって実現している点で、関数呼び出し（サブルーチンの実行）とは本質的に異なることに注意してください）。<BR><BR><BR><TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD WIDTH=100%><FONT color="#000080"><B>演習問題　10-4（マクロ文の練習）</B></FONT>　(Revised : 2011/11/3)<BR><BR>
+    (1) 以下は、マクロ文COMPUTE(a,b)　を用いた　a*10+b　の計算プログラムです。<BR>
+    プログラムを実行し、キーボードからa,bに適当な数値を入力した際の計算結果を確認してください。<BR>
+    次に、2*(a*10+b) を計算する目的で、<BR>
     <BR>
-    �@�@<FONT color="#0000ff">ans=2*COMPUTE(a,b)</FONT>;<BR>
+    　　<FONT color="#0000ff">ans=2*COMPUTE(a,b)</FONT>;<BR>
     <BR>
-    �̂悤�ɕύX���Ă݂Ă��������B���̏ꍇ�A���Ғʂ�̓����ɂȂ�܂���B<BR>
-    ���̗��R���l�@���A�������������o��悤�ɁA�}�N������������Ă��������B<BR>
+    のように変更してみてください。この場合、期待通りの答えになりません。<BR>
+    その理由を考察し、正しい答えが出るように、マクロ文を訂正してください。<BR>
     <PRE wrap="">#include&lt;stdio.h&gt;
 
-#define COMPUTE(a,b) a*10+b  /* a��10�{��b�����Z�������ʂ�Ԃ� */
+#define COMPUTE(a,b) a*10+b  /* aの10倍にbを加算した結果を返す */
 
 int main(void)
 {
@@ -362,27 +362,27 @@ int main(void)
 
     return(0);
 }</PRE>
-    (2) ���̃v���O�����́A���̔��a���w�肵�āA���̑̐ς����߂邽�߂̃v���O�����ł��Bxxx�̕����ɂ͋��̔��a���w�肵�܂��Bxxx��K���Ȑ��l�ɏ�����������ŁA�v���O���������s���Ă݂Ă��������B<BR>
-    xxx�̂Ƃ�����A���l�łȂ��A�Ⴆ�΁@3+2�@�̂悤�ȁA�����Z���܂񂾎��ɂ���ƁA�������������łĂ��܂���B<BR>
-    ���̗��R���l�@���A�������������o��悤�ɁA�}�N������������Ă��������B<BR>
+    (2) 次のプログラムは、球の半径を指定して、球の体積を求めるためのプログラムです。xxxの部分には球の半径を指定します。xxxを適当な数値に書きかえた上で、プログラムを実行してみてください。<BR>
+    xxxのところを、数値でなく、例えば　3+2　のような、足し算を含んだ式にすると、正しい答えがでてきません。<BR>
+    その理由を考察し、正しい答えが出るように、マクロ文を訂正してください。<BR>
     <PRE>#include&lt;stdio.h&gt;
 
 #define PI 3.14159
-#define VOLUME(r) 4.0/3.0*PI*r*r*r /*���a���̋��̑̐� */
+#define VOLUME(r) 4.0/3.0*PI*r*r*r /*半径ｒの球の体積 */
 
 int main(void)
 {
-    printf(&quot;\n���a%f�̋��̑̐ρ�%f\n&quot;,xxx,VOLUME(xxx));
+    printf(&quot;\n半径%fの球の体積＝%f\n&quot;,xxx,VOLUME(xxx));
 
     return(0);
 }</PRE>
-    <DIV ALIGN=LEFT>(3) ���\��ʑ̂̑̐�V���w�肵�āA��ӂ̒���a�����߂�}�N�����쐬���ĉ������B<BR>
-    �Ȃ��AV��a�̊֌W�͈ȉ��̐}�̉��Ɏ����܂����B<BR>
+    <DIV ALIGN=LEFT>(3) 正十二面体の体積Vを指定して、一辺の長さaを求めるマクロを作成して下さい。<BR>
+    なお、Vとaの関係は以下の図の下に示しました。<BR>
     <BR>
     <BR>
     <IMG src="dodecahedron.jpg" width="215" height="235" border="0"></DIV>
     <BR>
-    (4)�֐����g���Ă������v���O���������܂��B�}�N���Ɗ֐��́A�ǂ�ȈႢ������܂����H<BR>
-    �@�e�X�̃����b�g�A�f�����b�g�ɂ��čl�@���ă��|�[�g�ɏ����Ă��������B<BR>
+    (4)関数を使っても同じプログラムが作れます。マクロと関数は、どんな違いがありますか？<BR>
+    　各々のメリット、デメリットについて考察してレポートに書いてください。<BR>
     <BR>
     </TD></TR></TABLE><BR></BODY></HTML>

@@ -1,4 +1,4 @@
-<HTML>
+﻿<HTML>
 <HEAD>
 <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=Shift_JIS">
 <META NAME="GENERATOR" CONTENT="HOTALL Ver.7.2W">
@@ -7,204 +7,204 @@
 <BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080">
 <PRE><TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
 <TR>
-<TD WIDTH=100%><FONT SIZE=5 COLOR="#ffffff" FACE="�l�r �S�V�b�N"><B>��w���̂܂Ƃ�</B></FONT></TD>
+<TD WIDTH=100%><FONT SIZE=5 COLOR="#ffffff" FACE="ＭＳ ゴシック"><B>後学期のまとめ</B></FONT></TD>
 </TR>
 </TABLE>
 </PRE><P>
-<A HREF="#��W��">��W�� �Q�����z��C������z��C���p���i���ѕ\�̍쐬�j</A><BR>
-<A HREF="#��X��">��X�� �֐��C�ϐ��̗L���͈͂ƋL���N���X</A><BR>
-<A HREF="#��10��">��P�O�� �|�C���^�Ɗ֐��̈����C�v���v���Z�b�T�i�}�N���v���O�����j</A><BR>
-<A HREF="#��11��">��P�P�� �z��ƃ|�C���^�����C���p���i�g�`�f�[�^�̍쐬�ƕ\���j</A><BR>
-<A HREF="#��12��">��P�Q�� �t�@�C�������C�f�[�^�̓����\���C�o�C�i���t�@�C��</A><BR>
-<A HREF="#��13��">��P�R�� �O���t�B�b�N�i�g�`�f�[�^�̃O���t�B�b�N�\���j</A><BR>
-<A HREF="#��14��">��P�S�� �{�[���̉^���C�A�j���[�V����</A><BR></P><PRE><A NAME="��W��"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<A HREF="#第８回">第８回 ２次元配列，文字列配列，応用問題（成績表の作成）</A><BR>
+<A HREF="#第９回">第９回 関数，変数の有効範囲と記憶クラス</A><BR>
+<A HREF="#第10回">第１０回 ポインタと関数の引数，プリプロセッサ（マクロプログラム）</A><BR>
+<A HREF="#第11回">第１１回 配列とポインタ処理，応用問題（波形データの作成と表示）</A><BR>
+<A HREF="#第12回">第１２回 ファイル処理，データの内部表現，バイナリファイル</A><BR>
+<A HREF="#第13回">第１３回 グラフィック（波形データのグラフィック表示）</A><BR>
+<A HREF="#第14回">第１４回 ボールの運動，アニメーション</A><BR></P><PRE><A NAME="第８回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
 <TR>
-<TD><FONT SIZE=4 COLOR="#ffffff" FACE="�l�r �o�S�V�b�N"><B>��W�� �Q�����z��C������z��C���p���i���ѕ\�̍쐬�j</B></FONT></TD>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第８回 ２次元配列，文字列配列，応用問題（成績表の作成）</B></FONT></TD>
 </TR>
 </TABLE>
 </PRE><P>
-<FONT COLOR="#000080">���Q�����z��</FONT><BR>
-�錾�F�@�@�f�[�^�^�@�z��[�s�̐�][��̐�]�G<BR>
-�� int a[5][3]<BR>
+<FONT COLOR="#000080">■２次元配列</FONT><BR>
+宣言：　　データ型　配列名[行の数][列の数]；<BR>
+例 int a[5][3]<BR>
 <BR>
-�g�����@�@a[i][j]=�d�d�@ �@���<BR>
-�@�@�@�@�@(a[i][j]�{�d�d�j�@���̒��̒l�Q��<BR>
+使い方　　a[i][j]=‥‥　 　代入<BR>
+　　　　　(a[i][j]＋‥‥）　式の中の値参照<BR>
 <BR>
-<FONT COLOR="#000080">��������z��</FONT><BR>
-�P�v�f�ɂP�������͂���B<BR>
-����̎d���@char a[5]=&quot;book&quot;;�@�@�^�錾�̏������̂Ƃ���ő������<BR>
+<FONT COLOR="#000080">■文字列配列</FONT><BR>
+１要素に１文字がはいる。<BR>
+代入の仕方　char a[5]=&quot;book&quot;;　　型宣言の初期化のところで代入する<BR>
 <BR>
-�Q�����̕����z��<BR>
-�@char country[6][8]={&quot;USA&quot;, &quot;Japan&quot;, &quot;Germany&quot;, &quot;France&quot;,&quot;China&quot;,&quot;Korea&quot;};<BR>
-�G�N�Z���̃V�[�g�̂悤�ȕ\�́A�e�s�ɕ����񂪕���ł���B<BR>
+２次元の文字配列<BR>
+　char country[6][8]={&quot;USA&quot;, &quot;Japan&quot;, &quot;Germany&quot;, &quot;France&quot;,&quot;China&quot;,&quot;Korea&quot;};<BR>
+エクセルのシートのような表の、各行に文字列が並んでいる。<BR>
 <BR>
-<FONT COLOR="#000080">�����p���i���ѕ\�̍쐬�j</FONT><BR>
-<BR></P><PRE><A NAME="��X��"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<FONT COLOR="#000080">■応用問題（成績表の作成）</FONT><BR>
+<BR></P><PRE><A NAME="第９回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
 <TR>
-<TD><FONT SIZE=4 COLOR="#ffffff" FACE="�l�r �o�S�V�b�N"><B>��X�� �֐��C�ϐ��̗L���͈͂ƋL���N���X</B></FONT></TD>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第９回 関数，変数の有効範囲と記憶クラス</B></FONT></TD>
 </TR>
 </TABLE>
 </PRE><P>
-<FONT COLOR="#000080">���֐�</FONT><BR>
-�@�֐��Ăяo���̗���<BR>
-�@�@�v���O�������Ɋ֐��������ƁA�֐����Ă΂��B<BR>
-�@�@--&gt; �Ăяo�����̈������֐��{�̂̈����ɃR�s�[����<BR>
-�@�@--&gt; �֐��{�̂̃��[�`�������s<BR>
-�@ --&gt; �߂�l�ɒl����<BR>
- --&gt; �Ăяo�����Ƃ���ɖ߂��āA����̏����𑱂���B<BR>
-�@�֐��̌Ăяo���̗�<BR>
-�@a=sin(PI/4.0); ������PI/4.0�Ƃ��āAsin()���Ăяo���B���ʁi�߂�l�j��a�ɑ���B�@c=2.0*(sin(PI/6.0)+4.0); <BR>
-�@printf(&quot;Hello!!\n&quot;); �ivoid�^���܂߂āj �߂�l��K�v�Ƃ��Ȃ��֐��Ăяo���B<BR>
+<FONT COLOR="#000080">■関数</FONT><BR>
+　関数呼び出しの流れ<BR>
+　　プログラム中に関数が現れると、関数が呼ばれる。<BR>
+　　--&gt; 呼び出し側の引数を関数本体の引数にコピーする<BR>
+　　--&gt; 関数本体のルーチンを実行<BR>
+　 --&gt; 戻り値に値を代入<BR>
+ --&gt; 呼び出したところに戻って、直後の処理を続ける。<BR>
+　関数の呼び出しの例<BR>
+　a=sin(PI/4.0); 引数をPI/4.0として、sin()を呼び出す。結果（戻り値）をaに代入。　c=2.0*(sin(PI/6.0)+4.0); <BR>
+　printf(&quot;Hello!!\n&quot;); （void型を含めて） 戻り値を必要としない関数呼び出し。<BR>
  func(x);<BR>
- �Ə������ꍇ�A�����̒l�����ɂ����āA�֐�func(x)���Ăяo���B<BR>
+ と書いた場合、引数の値をｘにおいて、関数func(x)を呼び出す。<BR>
 <BR>
-<FONT COLOR="#000080">���ϐ��̗L���͈͂ƋL���N���X</FONT><BR>
-�L���N���X�F�@�����ϐ��ƃX�^�e�B�b�N�ϐ��̂Q��ނ�����B<BR>
-�L���͈́F�@�֐��́o�@�p�̒��Ő錾����Ă���ϐ��́A����{}�̒������ŗL���B<BR>
-main()�̑O�̃v���O�����̐擪�Ő錾����ƁA�ǂ̊֐���{}�ɂ������Ȃ�����A<BR>
-�v���O�����S�̂ŗL���B<BR>
-<BR></P><PRE><A NAME="��10��"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<FONT COLOR="#000080">■変数の有効範囲と記憶クラス</FONT><BR>
+記憶クラス：　自動変数とスタティック変数の２種類がある。<BR>
+有効範囲：　関数の｛　｝の中で宣言されている変数は、その{}の中だけで有効。<BR>
+main()の前のプログラムの先頭で宣言すると、どの関数の{}にも属さないから、<BR>
+プログラム全体で有効。<BR>
+<BR></P><PRE><A NAME="第10回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
 <TR>
-<TD><FONT SIZE=4 COLOR="#ffffff" FACE="�l�r �o�S�V�b�N"><B>��P�O�� �|�C���^�Ɗ֐��̈����C�v���v���Z�b�T�i�}�N���v���O�����j</B></FONT></TD>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第１０回 ポインタと関数の引数，プリプロセッサ（マクロプログラム）</B></FONT></TD>
 </TR>
 </TABLE>
 </PRE><P>
-<FONT COLOR="#000080">���|�C���^</FONT><BR>
-&amp;a�@�F���̃������A�h���X<BR>
-*a�@�F�����A�h���X�Ɖ��߂��āC�A�h���X���Ԓn�ɏ������܂�Ă���f�[�^<BR>
-��������āA�֐�������l���󂯎�肽���ꍇ�A�ϐ��̃A�h���X���֐��ɓn���B<BR>
-�֐��̓A�h���X�̃������̒��g������������i����́A�Ăяo�����̕ϐ��̒��g�������ς��邱�ƂƓ����j�B<BR>
+<FONT COLOR="#000080">■ポインタ</FONT><BR>
+&amp;a　：ａのメモリアドレス<BR>
+*a　：ａをアドレスと解釈して，アドレスａ番地に書き込まれているデータ<BR>
+引数を介して、関数側から値を受け取りたい場合、変数のアドレスを関数に渡す。<BR>
+関数はアドレスのメモリの中身を書き換える（これは、呼び出し側の変数の中身を書き変えることと同じ）。<BR>
 <BR>
-��F�@henkan(a,b,&amp;amp,&amp;phase);<BR>
+例：　henkan(a,b,&amp;amp,&amp;phase);<BR>
 <BR>
-<FONT COLOR="#000080">���v���v���Z�b�T</FONT><BR>
-#include #define ���̖񑩁B<BR>
+<FONT COLOR="#000080">■プリプロセッサ</FONT><BR>
+#include #define 文の約束。<BR>
 <BR>
-�}�N����<BR>
-#define �}�N����(x�Cy�d�d) x, y�d�d���܂񂾎�<BR>
+マクロ文<BR>
+#define マクロ名(x，y‥‥) x, y‥‥を含んだ式<BR>
 <BR>
-��<BR>
-#define AREA(r) 4.0*PI*r*r /*���a���̋��̕\�ʐ� */<BR>
-<BR></P><PRE><A NAME="��11��"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+例<BR>
+#define AREA(r) 4.0*PI*r*r /*半径ｒの球の表面積 */<BR>
+<BR></P><PRE><A NAME="第11回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
 <TR>
-<TD><FONT SIZE=4 COLOR="#ffffff" FACE="�l�r �o�S�V�b�N"><B>��P�P�� �z��ƃ|�C���^�����C���p���i�g�`�f�[�^�̍쐬�ƕ\���j</B></FONT></TD>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第１１回 配列とポインタ処理，応用問題（波形データの作成と表示）</B></FONT></TD>
 </TR>
 </TABLE>
 </PRE><P>
-<FONT COLOR="#000080">���z��ƃ|�C���^����</FONT><BR>
-�z��@a[10]�@��<BR>
+<FONT COLOR="#000080">■配列とポインタ処理</FONT><BR>
+配列　a[10]　の<BR>
 <BR>
-a�̓|�C���^�ϐ��ɂȂ��Ă��āAa�ɂ͔z��a�̐擪�Ԓn�������Ă���B<BR>
-*(a+i)��a[i]�Ɠ����B<BR>
+aはポインタ変数になっていて、aには配列aの先頭番地が入っている。<BR>
+*(a+i)はa[i]と同じ。<BR>
 <BR>
-�����ɔz��a ��n���āA�֐�sindata()���Ăяo���ꍇ<BR>
+引数に配列a を渡して、関数sindata()を呼び出す場合<BR>
 <BR>
-�@sindata(len,a); <BR>
+　sindata(len,a); <BR>
 <BR>
-�́A�z��a�̐擪�Ԓn�̃A�h���X��n���Ă���B<BR>
-�֐��@sindata() �{�̂́A�n���Ă�������A�A�h���X�������ɁA<BR>
-�@a[i]=****<BR>
-�̂悤�ȏ����ɂ��A�Ăяo�����̔z��a�̊e�v�f�ɒl�������邱�Ƃ��ł���B<BR>
+は、配列aの先頭番地のアドレスを渡している。<BR>
+関数　sindata() 本体は、渡してもらった、アドレスをたよりに、<BR>
+　a[i]=****<BR>
+のような処理により、呼び出し側の配列aの各要素に値を代入することができる。<BR>
 <BR>
-<FONT COLOR="#000080">�����p���@�g�`�f�[�^�̍쐬�Ɖ�ʕ\��</FONT><BR>
-�@�i�T�C���g�A�����g�̃T�C���g�̑����Z�A���`�g�A�̂�����g�j<BR>
-<BR></P><PRE><A NAME="��12��"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<FONT COLOR="#000080">■応用問題　波形データの作成と画面表示</FONT><BR>
+　（サイン波、高調波のサイン波の足し算、方形波、のこぎり波）<BR>
+<BR></P><PRE><A NAME="第12回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
 <TR>
-<TD><FONT SIZE=4 COLOR="#ffffff" FACE="�l�r �o�S�V�b�N"><B>��P�Q�� �t�@�C�������C�f�[�^�̓����\���C�o�C�i���t�@�C��</B></FONT></TD>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第１２回 ファイル処理，データの内部表現，バイナリファイル</B></FONT></TD>
 </TR>
 </TABLE>
 </PRE><P>
-<FONT COLOR="#000080">���t�@�C������</FONT><BR>
-�@�t�@�C���I�[�v���A<BR>
-�t�@�C���̃A�N�Z�X�̓t�@�C���|�C���^����čs���B<BR>
+<FONT COLOR="#000080">■ファイル処理</FONT><BR>
+①ファイルオープン、<BR>
+ファイルのアクセスはファイルポインタを介して行う。<BR>
 <BR>
-FILE *fp; �t�@�C���|�C���^fp�̐錾<BR>
+FILE *fp; ファイルポインタfpの宣言<BR>
 <BR>
-fp = fopen(&quot;�t�@�C����&quot;,&quot;r�܂���w&quot;); �ǂݏ����������t�@�C�����̃t�@�C�����A<BR>
-�t�@�C���|�C���^fp�Ɋ֘A�t����B<BR>
+fp = fopen(&quot;ファイル名&quot;,&quot;rまたはw&quot;); 読み書きしたいファイル名のファイルを、<BR>
+ファイルポインタfpに関連付ける。<BR>
 <BR>
-�A�t�@�C���f�[�^�̓ǂݏ���<BR>
-fprintf(fp,&quot;�d�d&quot;,a,b)�@ �i�t�@�C���|�C���^fp�̃t�@�C���փf�[�^���������ށj<BR>
-fscanf(fp,&quot;�d�d&quot;,&amp;a,&amp;b)�@�i�t�@�C���|�C���^fp�̃t�@�C������f�[�^��ǂ݂��ށj<BR>
+②ファイルデータの読み書き<BR>
+fprintf(fp,&quot;‥‥&quot;,a,b)　 （ファイルポインタfpのファイルへデータを書き込む）<BR>
+fscanf(fp,&quot;‥‥&quot;,&amp;a,&amp;b)　（ファイルポインタfpのファイルからデータを読みこむ）<BR>
 <BR>
-�B�t�@�C���N���[�Y<BR>
-fclose(fp); �t�@�C���|�C���^fp�̃t�@�C�����N���[�Y����B<BR>
+③ファイルクローズ<BR>
+fclose(fp); ファイルポインタfpのファイルをクローズする。<BR>
 <BR>
-<FONT COLOR="#000080">�����p���</FONT><BR>
-�E�g�`�f�[�^�̃t�@�C����������<BR>
-�E�t�@�C������ǂݍ��񂾃f�[�^�̉�ʕ\��<BR>
+<FONT COLOR="#000080">■応用問題</FONT><BR>
+・波形データのファイル書き込み<BR>
+・ファイルから読み込んだデータの画面表示<BR>
 <BR>
-<FONT COLOR="#000080">���f�[�^�̓����\��</FONT><BR>
-�Echar �^�f�[�^�i�A�X�L�[�R�[�h�j<BR>
-�Eshort�^�@2Byte=16bit 0�`(2^16-1)�@(=65,535) <BR>
-�Elong(int)�^ �@4Byte= 32bit 0�`(2^32-1)�@(=4,294,967,294) <BR>
-�Efloat�^�Adouble�^<BR>
+<FONT COLOR="#000080">■データの内部表現</FONT><BR>
+・char 型データ（アスキーコード）<BR>
+・short型　2Byte=16bit 0～(2^16-1)　(=65,535) <BR>
+・long(int)型 　4Byte= 32bit 0～(2^32-1)　(=4,294,967,294) <BR>
+・float型、double型<BR>
 <BR>
-�����f�[�^�̂P�U�i�\���i��F0x0A)<BR>
-�����f�[�^�̕\��<BR>
-�i�|�̃f�[�^�̕\�����@�A�Q�̕␔�\���j<BR>
+整数データの１６進表示（例：0x0A)<BR>
+整数データの表現<BR>
+（－のデータの表現方法、２の補数表現）<BR>
 <BR>
-<FONT COLOR="#000080">���o�C�i���`���̃t�@�C���̓ǂݏ���</FONT><BR>
-�@�t�@�C���I�[�v��<BR>
-�@fp=fopen(&quot;file.bin&quot;,&quot;wb&quot;)<BR>
-�Afp��1�o�C�g�������݁@�@putc(d,fp)<BR>
-�@fp����1�o�C�g�ǂݍ��݁@ds=getc(fp)<BR>
-�Ⴆ�΁Ashort int�^�f�[�^��ǂݏ�������ꍇ�A<BR>
-��ʃo�C�g�A���ʃo�C�g�ɕ������ēǂݏ�������B<BR>
-<BR></P><PRE><A NAME="��13��"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<FONT COLOR="#000080">■バイナリ形式のファイルの読み書き</FONT><BR>
+①ファイルオープン<BR>
+　fp=fopen(&quot;file.bin&quot;,&quot;wb&quot;)<BR>
+②fpに1バイト書き込み　　putc(d,fp)<BR>
+　fpから1バイト読み込み　ds=getc(fp)<BR>
+例えば、short int型データを読み書きする場合、<BR>
+上位バイト、下位バイトに分解して読み書きする。<BR>
+<BR></P><PRE><A NAME="第13回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
 <TR>
-<TD><FONT SIZE=4 COLOR="#ffffff" FACE="�l�r �o�S�V�b�N"><B>��P�R�� �O���t�B�b�N�i�g�`�f�[�^�̃O���t�B�b�N�\���j</B></FONT></TD>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第１３回 グラフィック（波形データのグラフィック表示）</B></FONT></TD>
 </TR>
 </TABLE>
 </PRE><P>
-<FONT COLOR="#000080">���O���t�B�b�N�֐��̎g����</FONT><BR>
-�X�N���[�����W�̒�`�iVGA���[�h�ł́A600�~400�̑傫���j<BR>
+<FONT COLOR="#000080">■グラフィック関数の使い方</FONT><BR>
+スクリーン座標の定義（VGAモードでは、600×400の大きさ）<BR>
 <BR>
-�w�肳�ꂽ�X�N���[�����W�Ɏw�肳�ꂽ�F�̓_��łB<BR>
-�w�肳�ꂽ�Q�_�i�X�N���[�����W�j�Ԃ��w�肳�ꂽ���������B<BR>
-�̂悤�ȓ���������֐������C�u�����֐��Ƃ��ėp�ӂ���Ă���B<BR>
+指定されたスクリーン座標に指定された色の点を打つ。<BR>
+指定された２点（スクリーン座標）間を指定された線を引く。<BR>
+のような働きをする関数がライブラリ関数として用意されている。<BR>
 <BR>
-#include&lt;gucc/gucc.h&gt; �O���t�B�b�N�`��p�w�b�_�t�@�C�����C���N���[�h���� <BR>
-G_INIT(); �O���t�B�b�N�֐��̏�����<BR>
-�O���t�B�b�N�֐��̌Ăяo��<BR>
-getch();�@�Ō�A��ʂ������Ȃ��悤�ɂ��邽�߂ɓ����<BR>
+#include&lt;gucc/gucc.h&gt; グラフィック描画用ヘッダファイルをインクルードする <BR>
+G_INIT(); グラフィック関数の初期化<BR>
+グラフィック関数の呼び出し<BR>
+getch();　最後、画面が消えないようにするために入れる<BR>
 <BR>
-<FONT COLOR="#000080">�����K���F�l�p�̖͗l��`��</FONT><BR>
+<FONT COLOR="#000080">■練習問題：四角の模様を描く</FONT><BR>
 <BR>
-<FONT COLOR="#000080">�����l�f�[�^�̃O���t�\��</FONT><BR>
+<FONT COLOR="#000080">■数値データのグラフ表示</FONT><BR>
 <BR>
-�z��f�[�^ y[i]�̃O���t��`���菇�B<BR>
+配列データ y[i]のグラフを描く手順。<BR>
 <BR>
-i=0����N-1�܂ŏ��ԂɎ��̕`�揈�����J��ւ����B<BR>
-�@i�Ԗڂ̃f�[�^�̂����W�Fi�����Ay���W�� y[i]���A�����W(xi,yi)���Z�b�g����B<BR>
-�A�����W(xi,yi)=(i����,y[i])�@���X�N���[�����W�iWxi,Wyi)�ɕϊ�����B<BR>
-�B��O�ƌ��݂̃X�N���[�����W�̂Q�_�ԁi�iWxi-1,Wyi-1)�ƁiWxi,Wyi)�j��<BR>
-�@���Ō��ԁB<BR>
+i=0からN-1まで順番に次の描画処理を繰り替えす。<BR>
+①i番目のデータのｘ座標：iΔｘ、y座標は y[i]より、原座標(xi,yi)をセットする。<BR>
+②原座標(xi,yi)=(iΔｘ,y[i])　をスクリーン座標（Wxi,Wyi)に変換する。<BR>
+③一つ前と現在のスクリーン座標の２点間（（Wxi-1,Wyi-1)と（Wxi,Wyi)）を<BR>
+　線で結ぶ。<BR>
 <BR>
-<FONT COLOR="#000080">�����p���@�T�C���g�̔g�`�A�����g�𑫂��Z�����g�`�̕`��</FONT><BR>
+<FONT COLOR="#000080">■応用問題　サイン波の波形、高調波を足し算した波形の描画</FONT><BR>
 <BR>
-<BR></P><PRE><A NAME="��14��"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<BR></P><PRE><A NAME="第14回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
 <TR>
-<TD><FONT SIZE=4 COLOR="#ffffff" FACE="�l�r �o�S�V�b�N"><B>��P�S�� �{�[���̕����^���C�A�j���[�V����</B></FONT></TD>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第１４回 ボールの放物運動，アニメーション</B></FONT></TD>
 </TR>
 </TABLE>
 </PRE><P>
-<FONT COLOR="#000080">���{�[���̕����^��</FONT><BR>
-���ʂ�[kg]�̕��̂������x��0[m/s]�Ŋp�x��[rad]�̕����ɓ����グ����<BR>
-�{�[���̉^�������������Ă�B<BR>
-���Ԃ��ɂ�����{�[���̈ʒu(ux,uy)�́A<BR>
- u���� ��0�� cos(��)<BR>
- u������0�� sin(��)�|����^2/2<BR>
-�ƂȂ�B���Ԃ�ω������Ă����āA(ux,uy)���v�Z�B<BR>
+<FONT COLOR="#000080">■ボールの放物運動</FONT><BR>
+質量ｍ[kg]の物体を初速度ｖ0[m/s]で角度α[rad]の方向に投げ上げる問題<BR>
+ボールの運動方程式をたてる。<BR>
+時間ｔにおけるボールの位置(ux,uy)は、<BR>
+ uｘ＝ ｖ0ｔ cos(θ)<BR>
+ uｙ＝ｖ0ｔ sin(θ)－ｇｔ^2/2<BR>
+となる。時間を変化させていって、(ux,uy)を計算。<BR>
 <BR>
-���l�f�[�^���O���t�\�������ꍇ�Ɠ����l�������g���āA<BR>
-���W�ʒu�̓_����Ō���ł����΁A�^���O�Ղ���ʂɕ`��ł���B<BR>
+数値データをグラフ表示した場合と同じ考え方を使って、<BR>
+座標位置の点を線で結んでいけば、運動軌跡を画面に描画できる。<BR>
 <BR>
-<FONT COLOR="#000080">���A�j���[�V����</FONT><BR>
-�{�[���̋O�Ղ���ŕ`�������ɉ~�ŕ`���B<BR>
- �@�O�����̉~������ --&gt; �A���ԑ҂� --&gt; �B�������̉~��`��<BR>
-���J��Ԃ����Ƃɂ��A�A�j���[�V�����̊G���������Ƃ��ł���B<BR>
-�i�J��Ԃ肵�����́A�Ⴆ�΂P�b�ԂɂR�O�R�}�ɂ���΁A�l�Ԃ͓����Ă���<BR>
-�悤�ɔF������B�j<BR>
+<FONT COLOR="#000080">■アニメーション</FONT><BR>
+ボールの軌跡を線で描くかわりに円で描く。<BR>
+ ①前時刻の円を消す --&gt; ②時間待ち --&gt; ③現時刻の円を描く<BR>
+を繰り返すことにより、アニメーションの絵を書くことができる。<BR>
+（繰り返りし周期は、例えば１秒間に３０コマにすれば、人間は動いている<BR>
+ように認識する。）<BR>
 <BR></P></BODY>
 </HTML>

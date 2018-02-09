@@ -1,12 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=Shift_JIS">
 <META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
 <META http-equiv="Content-Style-Type" content="text/css">
-<TITLE>��14��</TITLE>
+<TITLE>第14回</TITLE>
 <SCRIPT LANGUAGE="JavaScript">
-<!-- [dynhtml script ver.1.00] �ȉ��̃X�N���v�g��HOTALL Ver.7.2W�ɂ���č쐬����܂����B���e��ύX����Ɛ��������삵�Ȃ��\��������܂��B
+<!-- [dynhtml script ver.1.00] 以下のスクリプトはHOTALL Ver.7.2Wによって作成されました。内容を変更すると正しく動作しない可能性があります。
 function dBsftUaCheck() {
     if(navigator.appName == "Netscape" && eval(navigator.appVersion.charAt(0)) >=4 )
         return 1;
@@ -25,29 +25,29 @@ function dBsftReload() {
 <BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080">
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
   <TR>
-    <TD WIDTH=100%><FONT size="+2" color="#ffffff"><B>�v��</B><FONT color="#ffffff"><B>�O���~���O����щ��K �m�n.14</B></FONT></FONT></TD>
+    <TD WIDTH=100%><FONT size="+2" color="#ffffff"><B>プロ</B><FONT color="#ffffff"><B>グラミングおよび演習 ＮＯ.14</B></FONT></FONT></TD>
   </TR></TABLE>
 <BR>
 <DIV ALIGN=RIGHT>Last-Modified: 2017.1.5<BR></DIV>
 <HR>
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
   <TR>
-    <TD><B><FONT color="#efefef" size="+1">�{�[���̕������^���̃A�j���[�V����</FONT></B></TD>
+    <TD><B><FONT color="#efefef" size="+1">ボールの放物線運動のアニメーション</FONT></B></TD>
   </TR></TABLE>
 <BR>
-����͖{���K���Ƃ̍ŏI��ł����A���̑��d�グ�̉ۑ�Ƃ��āA�A�j���[�V�����v���O�����ɒ��킷�邱�Ƃɂ��܂��B <FONT color="#000099" size="+1"><B><BR>
+今回は本演習授業の最終回ですが、その総仕上げの課題として、アニメーションプログラムに挑戦することにします。 <FONT color="#000099" size="+1"><B><BR>
 <BR>
-�� �^�C�}�[���荞�݂ɂ��`�揈��</B></FONT><FONT size="+1"> </FONT><BR>
-<P>�@�O��K�����O���t�B�N�X�͐Î~���`�����߂̃v���O�����ł����B����́A���̃O���t�B�N�X�v���O����������ɔ��W�����āA�����̂���A�j���[�V�����i����j����邱�Ƃɂ��܂��B�A�j���[�V�������ǂ̂悤�ɍ��΂悢���Ƃ����ƁA��莞�Ԃ��ƂɁA�Î~�摜�����X�ɕ`���ς��Ă������ƂŎ����ł��܂��i�p���p������Ɠ����d�g�݂ł��j�B<BR>
+■ タイマー割り込みによる描画処理</B></FONT><FONT size="+1"> </FONT><BR>
+<P>　前回習ったグラフィクスは静止画を描くためのプログラムでした。今回は、そのグラフィクスプログラムをさらに発展させて、動きのあるアニメーション（動画）を作ることにします。アニメーションをどのように作ればよいかというと、一定時間ごとに、静止画像を次々に描き変えていくことで実現できます（パラパラ漫画と同じ仕組みです）。<BR>
 <BR>
-�@��莞�Ԃ��Ƃɉ�ʂ����������Ă��������́A�ȒP�����Ɍ����܂����A�����ň�傫�Ȗ�肪����܂��B����́APC�̉�ʂ��Ǘ����Ă���WINDOWS
-OS����񓮍삵�Ă��鑼�̃A�v���P�[�V�����Ƃ̊ԂŊ����Ȃ��悤�ɂ��Ȃ���A��莞�ԊԊu���Ƃɉ�ʂ�����������K�v�����邱�Ƃł��B�K���Ȃ��ƂɁA�{���K�ŗp���Ă���GDI���C�u�����iWINDOWS
-API�̈�j�́AWINDOWS OS�̊Ǘ��̂��Ƃɓ��삷��v���O�����ł��BWINDOWS OS�́A�O������̃C�x���g���󂯕t���ē��삷��C�x���g�쓮�^�v���O�����i�⑫�������Q�Ɓj�ɂ���āA�����̃v���O�������݂��Ɋ����邱�ƂȂ����񓮍삷��d�g�݂��������Ă��܂��B����v���O�����ŃC�x���g�i�L�[�{�[�h�A�}�E�X�A�^�C�}�[�Ȃǂɂ��C�x���g�j�����������Ƃ��܂��B���̎��A����ɑ����Ă��鑼�̃v���O�����𒆒f���āA���������C�x���g��D�悵�Ď󂯕t���鏈�������荞�ݏ����ƌ����܂��B���̒��ŁA�^�C�}�[�i���v�j�ɂ���Ĕ������銄�荞�݂��A�^�C�}�[���荞�݂Ƃ����܂��B�A�j���[�V�����v���O�����́A����WINDOWS���p�ӂ��Ă���^�C�}�[���荞�݃��[�`�����g���܂��B<BR>
+　一定時間ごとに画面を書き換えていく処理は、簡単そうに見えますが、ここで一つ大きな問題があります。それは、PCの画面を管理しているWINDOWS
+OSや並列動作している他のアプリケーションとの間で干渉しないようにしながら、一定時間間隔ごとに画面を書き換える必要があることです。幸いなことに、本演習で用いているGDIライブラリ（WINDOWS
+APIの一つ）は、WINDOWS OSの管理のもとに動作するプログラムです。WINDOWS OSは、外部からのイベントを受け付けて動作するイベント駆動型プログラム（補足説明を参照）によって、複数のプログラムが互いに干渉することなく並列動作する仕組みを実現しています。あるプログラムでイベント（キーボード、マウス、タイマーなどによるイベント）が発生したとします。この時、並列に走っている他のプログラムを中断して、発生したイベントを優先して受け付ける処理を割り込み処理と言います。その中で、タイマー（時計）によって発生する割り込みを、タイマー割り込みといいます。アニメーションプログラムは、このWINDOWSが用意しているタイマー割り込みルーチンを使います。<BR>
 <BR>
-�@�Ƃ���ŁA�{���K������ōŏI����}���Ă��܂��AWINDOWS �A�v���P�[�V�����v���O�����ɂ��āA����ȏ�ڂ������グ�鎞�Ԃ��Ȃ��Ȃ��Ă��܂��܂����i�����̂���l�́A���̌�Ɗw�ŕ׋����ĖႤ�Ƃ悢�Ǝv���܂��j�B���̂��߁A���܂Ŋo����C����̒m��������p���āA�ȒP�ɃA�j���[�V�����v���O�����iWINDOWS
-API ��p�����^�C�}�[���荞�ݕ`��v���O�����j������悤�ɁA�w�b�_�t�@�C�� <FONT color="#0000ff">gdi.h</FONT> ��p�ӂ��܂����B�{���K�ł͂�����g���ăA�j���[�V�����v���O��������邱�Ƃɂ��܂��B���̃v���O�����̍쐬�菇���ȉ��Ɏ����܂��B<IMG src="eventprog.jpg" width="368" height="355" border="0" align="right"></P>
+　ところで、本演習も今回で最終回を迎えてしまい、WINDOWS アプリケーションプログラムについて、これ以上詳しく取り上げる時間がなくなってしまいました（興味のある人は、この後独学で勉強して貰うとよいと思います）。そのため、今まで覚えたC言語の知識だけを用いて、簡単にアニメーションプログラム（WINDOWS
+API を用いたタイマー割り込み描画プログラム）を作れるように、ヘッダファイル <FONT color="#0000ff">gdi.h</FONT> を用意しました。本演習ではこれを使ってアニメーションプログラムを作ることにします。そのプログラムの作成手順を以下に示します。<IMG src="eventprog.jpg" width="368" height="355" border="0" align="right"></P>
 
-<P><B><FONT color="#000099">(�⑫) </FONT></B>�C�x���g�ɂ́A�w�L�[�{�[�h���́x�A�w�}�E�X���́x�A�w�^�C�}�[���荞�݁x�Ȃǂ�����܂��BWindows�A�v���P�[�V�����v���O�����́A�����̃C�x���g�����������牽�����s���Ƃ��������̃v���O�����ł�(�}���Q�Ɓj�B������C�x���g�쓮�^�v���O�����ƌ����܂��B���̃v���O�����̓���́A�R���s���[�^��OS���̒��łǂ̂悤�ȃC�x���g���������邩�Ɉˑ����܂��i���s���đ����Ă��鑼�̃v���O�����ɂ���ăv���O�����̎��s�������ω�����j�B����ɂ���āAWindowsOS�Ƌ������Ȃ���A�A�j���[�V�����̂悤�Ȉ�莞�ԊԊu�œ��삷��v���O�����̎��s���\�ɂȂ�܂��B����ɑ΂��āA���܂ł̑�12��܂ł̉��K�ŏK���Ă����v���O�����́A�\�ߌ��߂�ꂽ���Ԃɏ]���Ė��߂����s���钀�����s�^�̃v���O�����ł��B���̃v���O�����͒P�̂̓��삵���l���Ă��܂���̂ŁA�r���ő��̃v���O���������荞�񂾏ꍇ�A�A�j���[�V�����������ňꎞ��~���Ă��܂��s�s���𐶂��܂��B</P>
+<P><B><FONT color="#000099">(補足) </FONT></B>イベントには、『キーボード入力』、『マウス入力』、『タイマー割り込み』などがあります。Windowsアプリケーションプログラムは、これらのイベントが発生したら何かを行うという方式のプログラムです(図を参照）。これをイベント駆動型プログラムと言います。そのプログラムの動作は、コンピュータのOS環境の中でどのようなイベントが発生するかに依存します（並行して走っている他のプログラムによってプログラムの実行順序が変化する）。これによって、WindowsOSと協調しながら、アニメーションのような一定時間間隔で動作するプログラムの実行が可能になります。これに対して、今までの第12回までの演習で習ってきたプログラムは、予め決められた順番に従って命令を実行する逐次実行型のプログラムです。このプログラムは単体の動作しか考えていませんので、途中で他のプログラムが割り込んだ場合、アニメーションがそこで一時停止してしまう不都合を生じます。</P>
 <P><FONT color="#000099" size="+1"><B><BR>
 <BR>
 <BR>
@@ -56,248 +56,248 @@ API ��p�����^�C�}�[���荞�ݕ`��v���O�����j������悤�ɁA�w�b�_�t�@�C�� <FONT
 <BR>
 <BR>
 <BR>
-�� �w�b�_�t�@�C��(gdi.h)��p�����^�C�}�[�����`��v���O�����̍쐬�菇</B></FONT><IMG src="calltimer.jpg" width="377" height="346" border="0" align="right"></P>
-<P>�����ł́A�w�b�_�t�@�C��<FONT color="#0000ff">gdi.h</FONT>�ɗp�ӂ����A�j���[�V�����v���O�����̍����ɂ��Đ������܂��B���̂��߂ɕK�v�Ȃ��Ƃ̓w�b�_�t�@�C��<FONT color="#0000ff">gdi.h</FONT>���C���N���[�h���邱�ƂƁA�v���O�����{�̂�<FONT color="#0000ff">wm_create</FONT>�֐���<FONT color="#0000ff">wm_paint</FONT>�֐��̓�̊֐���p�ӂ��邱�Ƃł��B�E�}�̓v���O���������S�̗̂���̒��Ŋe�X�̊֐����ǂ̂悤�ȃ^�C�~���O�ŌĂяo����邩�������Ă��܂��B<BR>
-�܂��A�v���O�����̊J�n�����wm_create�֐����Ăяo�����̂ŁA�����ɃC�x���g���[�v�ɓ���O�̏����ݒ�̂��߂̃R�[�h�i�^�C�}�[�̏����ݒ�֌W�̃R�[�h�j���L�q���܂��B���̌�A�v���O�����{�̂ł���C�x���g���[�v�ɂ͂���܂��B�����ł́A�^�C�}�[���荞�݂���������x�ɁAwm_paint�֐����Ăяo����܂��B����wm_paint�֐��̒��ɁA��莞�Ԃ��ƂɌJ��Ԃ��ĕ`�悵�����R�[�h�������Ηǂ����ƂɂȂ�܂��B��̓I�ȍ쐬�菇�͈ȉ��̂悤�ɂȂ�܂��B</P>
+■ ヘッダファイル(gdi.h)を用いたタイマー割込描画プログラムの作成手順</B></FONT><IMG src="calltimer.jpg" width="377" height="346" border="0" align="right"></P>
+<P>ここでは、ヘッダファイル<FONT color="#0000ff">gdi.h</FONT>に用意したアニメーションプログラムの作り方について説明します。そのために必要なことはヘッダファイル<FONT color="#0000ff">gdi.h</FONT>をインクルードすることと、プログラム本体に<FONT color="#0000ff">wm_create</FONT>関数と<FONT color="#0000ff">wm_paint</FONT>関数の二つの関数を用意することです。右図はプログラム処理全体の流れの中で各々の関数がどのようなタイミングで呼び出されるかを示しています。<BR>
+まず、プログラムの開始直後にwm_create関数が呼び出されるので、ここにイベントループに入る前の初期設定のためのコード（タイマーの初期設定関係のコード）を記述します。その後、プログラム本体であるイベントループにはいります。ここでは、タイマー割り込みが発生する度に、wm_paint関数が呼び出されます。このwm_paint関数の中に、一定時間ごとに繰り返して描画したいコードを書けば良いことになります。具体的な作成手順は以下のようになります。</P>
 <P><BR>
 </P>
 <FONT color="#000000"><B><BR>
-[1] �O���t�B�b�N�X�֐����g�����߂̑O����</B></FONT> <BR>
+[1] グラフィックス関数を使うための前準備</B></FONT> <BR>
 <BR>
-��P�R��Ɠ��l�ɁA<A href="GDIGraphics.html">�O���t�B�b�N�X�֐����g�����߂̑O����</A>�i�v���W�F�N�g�̍쐬�A�w�b�_�t�@�C��gdi.h�̃C���N���[�h�AGDI���C�u�����̃����N�w��Ȃǁj���s���Ă����܂��B<BR>
+第１３回と同様に、<A href="GDIGraphics.html">グラフィックス関数を使うための前準備</A>（プロジェクトの作成、ヘッダファイルgdi.hのインクルード、GDIライブラリのリンク指定など）を行っておきます。<BR>
 <BR>
 <BR>
-<B>[2] C�v���O�����̍쐬�i�\�[�X�t�@�C���̕ҏW�j</B><BR>
-<FONT color="#000099"><B>(1) define���̐ݒ�<BR>
+<B>[2] Cプログラムの作成（ソースファイルの編集）</B><BR>
+<FONT color="#000099"><B>(1) define文の設定<BR>
 </B></FONT><BR>
-�܂��A�^�C�}�[���荞�ݏ�����ON�ɂ��邽�߂ɁA�v���O�����̐擪�ɁA�ȉ���define����p�ӂ��܂��B<BR><FONT color="#0000ff">#define TIMER TRUE<BR>
+まず、タイマー割り込み処理をONにするために、プログラムの先頭に、以下のdefine文を用意します。<BR><FONT color="#0000ff">#define TIMER TRUE<BR>
 </FONT><BR>
-���ɁA�^�C�}�[���荞�݂�<FONT color="#000000">�^�C���C���^�[�o��</FONT>TIMEINT���A�ȉ���define���Őݒ肵�܂��B<BR><FONT color="#0000ff">#define TIMEINT 20</FONT><BR>
-�i�P�ʂ�ms�A��L�̗�ł̓^�C���C���^�[�o����20ms�ɐݒ肳���)�B<BR>
-<P>�܂��A�`��O�̉�ʂ��������邩�ۂ����i�A�j���[�V�����ɂ���ɂ͑O�̉摜����������B����A�O�Ղ��d�ˏ����������ꍇ�́A�������Ȃ��Ŏc���Ă����j�A�ȉ��̂悤�ɐݒ肵�܂��B<BR>
+次に、タイマー割り込みの<FONT color="#000000">タイムインターバル</FONT>TIMEINTを、以下のdefine文で設定します。<BR><FONT color="#0000ff">#define TIMEINT 20</FONT><BR>
+（単位はms、上記の例ではタイムインターバルが20msに設定される)。<BR>
+<P>また、描画前の画面を消去するか否かを（アニメーションにするには前の画像を消去する。一方、軌跡を重ね書きしたい場合は、消去しないで残しておく）、以下のように設定します。<BR>
 <BR>
-<FONT color="#0000ff">#define ERASE TRUE</FONT><FONT color="#000000">�i�܂���</FONT><FONT color="#0000ff">FALSE</FONT><FONT color="#000000">�j</FONT><BR>
-�i��������ꍇ��TRUE�A�㏑������ꍇ��FALSE)�B<BR>
+<FONT color="#0000ff">#define ERASE TRUE</FONT><FONT color="#000000">（または</FONT><FONT color="#0000ff">FALSE</FONT><FONT color="#000000">）</FONT><BR>
+（消去する場合はTRUE、上書きする場合はFALSE)。<BR>
 <BR>
-<FONT color="#000099"><B>(2) �w�b�_�t�@�C��gdi.h�̃C���N���[�h</B></FONT><BR>
-��L(1)��define���̌�ɁA�w�b�_�t�@�C��gdi.h���ȉ��̂悤�ɃC���N���[�h���܂��B<BR>
+<FONT color="#000099"><B>(2) ヘッダファイルgdi.hのインクルード</B></FONT><BR>
+上記(1)のdefine文の後に、ヘッダファイルgdi.hを以下のようにインクルードします。<BR>
 <FONT color="#0000ff">#include &quot;gdi.h&quot;</FONT><BR>
 <BR>
-<FONT color="#000099"><B>(3) wm_create�֐��̋L�q</B></FONT><BR>
-�`�揈���ɓ���O�̏����ݒ�i��ʍ쐬���ɌĂяo�����j���A�ȉ��̂悤��wm_create�֐��̒��ɋL�q���܂��B<BR>
+<FONT color="#000099"><B>(3) wm_create関数の記述</B></FONT><BR>
+描画処理に入る前の初期設定（画面作成時に呼び出される）を、以下のようにwm_create関数の中に記述します。<BR>
 <FONT color="#0000ff">void wm_create(void)<BR>
 {</FONT><BR>
-�@�����ŁA�`�揈���ɓ���O�̏����ݒ���s���B<BR>
+　ここで、描画処理に入る前の初期設定を行う。<BR>
 <FONT color="#0000ff">}<BR>
-</FONT>wm_create�֐����Ăяo���ꂽ��A�^�C�}�[�J�E���g���J�n���܂��B <BR>
+</FONT>wm_create関数が呼び出された後、タイマーカウントを開始します。 <BR>
 <BR>
-<B><FONT color="#000099">(4)wm_paint�֐��̋L�q</FONT></B><BR>
-�^�C�}�[���荞�ݏ������[�`���̒��ŁA�`�惁�b�Z�[�W����������ƁAwm_paint()�֐����Ă�����܂��B<BR>
-wm_paint()�̒��ɁA�^�C�}�[���荞�݂̓x�ɁA�`�悵�����v���O�������ȉ��̂悤�ɋL�q���܂��B<BR>
+<B><FONT color="#000099">(4)wm_paint関数の記述</FONT></B><BR>
+タイマー割り込み処理ルーチンの中で、描画メッセージが発生すると、wm_paint()関数が呼だされます。<BR>
+wm_paint()の中に、タイマー割り込みの度に、描画したいプログラムを以下のように記述します。<BR>
 <BR>
 <FONT color="#0000ff">void wm_paint(void)<BR>
 {</FONT><BR>
-�@�����ɁA�^�C�}�[���荞�݂̓x�Ɏ��s����`��v���O�������L�q����B<BR>
+　ここに、タイマー割り込みの度に実行する描画プログラムを記述する。<BR>
 }<BR>
 <BR>
-<B><FONT color="#000099">(5)�^�C�}�J�E���^�̗��p</FONT></B><BR>
-�^�C�}�[���荞�݂̓x�ɁA���荞�݃��[�`���̒��Ń^�C�}�J�E���^Count���A<BR>
+<B><FONT color="#000099">(5)タイマカウンタの利用</FONT></B><BR>
+タイマー割り込みの度に、割り込みルーチンの中でタイマカウンタCountを、<BR>
 <FONT color="#0000ff">Count=Count+1</FONT><BR>
 <BR>
-�ɏ]���ĂP�Â��₵�Ă��܂��i�^�C�}�[���荞�݉񐔂𐔂��Ă���j�B<BR>
-���̃^�C�}�J�E���^���A�v���O�����̒��Ŏ��̂悤�Ɏg���܂��B<BR>
+に従って１づつ増やしています（タイマー割り込み回数を数えている）。<BR>
+このタイマカウンタを、プログラムの中で次のように使います。<BR>
 <FONT color="#000000"><BR>
-�͂��߂ɁA�����Ƃ��āA</FONT><FONT color="#0000ff">wm_create</FONT><FONT color="#000000">�֐��̒��ŁA<BR>
+はじめに、準備として、</FONT><FONT color="#0000ff">wm_create</FONT><FONT color="#000000">関数の中で、<BR>
 </FONT><FONT color="#0000ff">Count=0</FONT><BR>
-�Ƃ��āA�^�C�}�J�E���^�̏����l��0�ɂ��Ă����܂��B<BR>
+として、タイマカウンタの初期値を0にしておきます。<BR>
 <BR>
-<FONT color="#000000">�^�C�}�J�E���^Count��p���āA</FONT><BR>
-<FONT color="#0000ff">�Ewm_paint</FONT><FONT color="#000000">�֐��̒��ŁA<BR>
-</FONT>�@<FONT color="#0000ff">t=Count*tdel</FONT>;<BR>
-�̂悤�Ȏ�����邱�Ƃɂ��itdel�͎��Ԃ����݁j�A�`��J�n����̎���t�����߂邱�Ƃ��ł��܂��B<BR>
+<FONT color="#000000">タイマカウンタCountを用いて、</FONT><BR>
+<FONT color="#0000ff">・wm_paint</FONT><FONT color="#000000">関数の中で、<BR>
+</FONT>　<FONT color="#0000ff">t=Count*tdel</FONT>;<BR>
+のような式を作ることにより（tdelは時間きざみ）、描画開始からの時間tを求めることができます。<BR>
 </P>
 <P><IMG src="cp1-14(timer).gif" width="641" height="116" border="0"></P>
 <BR>
-�ȏ���܂Ƃ߂āA�^�C�}���荞�ݕ`��v���O�������ȉ��̂悤�ɍ��܂��B<BR><BR>
+以上をまとめて、タイマ割り込み描画プログラムを以下のように作ります。<BR><BR>
 <TABLE border="1" width="100%" bgcolor="#ffffff">
   <TBODY>
     <TR>
-      <TD>/*�@�^�C�}���荞�ݕ`��v���O���� */<BR>
+      <TD>/*　タイマ割り込み描画プログラム */<BR>
       <BR>
-      <FONT color="#0000ff">#define PROGRAM &quot;ex14-1&quot; <FONT color="#000000">/* �^�C�g���o�[�̕\�� */</FONT><BR>
-      #define TIMER TRUE </FONT><FONT color="#000000">/* �^�C�}�[�����݂̗L�� */</FONT><FONT color="#0000ff"><BR>
-      #define TIMEINT 20 </FONT><FONT color="#000000">/* �^�C�}�[�̃^�C���C���^�[�o��[ms] */</FONT><FONT color="#0000ff"><BR>
-      #define ERASE TRUE </FONT><FONT color="#000000">/* ���荞�ݎ��̉�ʏ����̗L�� */</FONT><FONT color="#0000ff"> <BR>
-      #include &quot;gdi.h&quot;</FONT><FONT color="#000000">/*</FONT> �O���t�B�b�N�p�w�b�_�t�@�C�� */<BR>
+      <FONT color="#0000ff">#define PROGRAM &quot;ex14-1&quot; <FONT color="#000000">/* タイトルバーの表題 */</FONT><BR>
+      #define TIMER TRUE </FONT><FONT color="#000000">/* タイマー割込みの有無 */</FONT><FONT color="#0000ff"><BR>
+      #define TIMEINT 20 </FONT><FONT color="#000000">/* タイマーのタイムインターバル[ms] */</FONT><FONT color="#0000ff"><BR>
+      #define ERASE TRUE </FONT><FONT color="#000000">/* 割り込み時の画面消去の有無 */</FONT><FONT color="#0000ff"> <BR>
+      #include &quot;gdi.h&quot;</FONT><FONT color="#000000">/*</FONT> グラフィック用ヘッダファイル */<BR>
       <BR>
-      /* �����ɁAwm_create��wm_paint�ŋ��ʂ��Ďg�p����ϐ���錾���� */<BR>
+      /* ここに、wm_createとwm_paintで共通して使用する変数を宣言する */<BR>
       <BR>
-      <FONT color="#0000ff">void wm_create(void)</FONT> { /* ��ʐ������ɌĂяo�����֐� */<BR>
+      <FONT color="#0000ff">void wm_create(void)</FONT> { /* 画面生成時に呼び出される関数 */<BR>
       <BR>
-      �@�@/* �����ɁA�^�C�}���荞�ݏ����̑O�Ɏ��s�����������ݒ�v���O�������L�q����B*/<BR>
+      　　/* ここに、タイマ割り込み処理の前に実行したい初期設定プログラムを記述する。*/<BR>
       }<BR>
       <BR>
-      <FONT color="#0000ff">void wm_paint(void)</FONT> { /* �^�C�}���荞�݂̍ۂɌĂяo�����`��֐� */<BR>
+      <FONT color="#0000ff">void wm_paint(void)</FONT> { /* タイマ割り込みの際に呼び出される描画関数 */<BR>
       <BR>
-      �@�@/* �����ɁA�^�C�}���荞�݂ɂ���莞�ԊԊu���ƂɌJ��Ԃ��Ď��s�������`��v���O�������L�q����B*/<BR>
+      　　/* ここに、タイマ割り込みにより一定時間間隔ごとに繰り返して実行したい描画プログラムを記述する。*/<BR>
       }<BR>
-      �@�@</TD>
+      　　</TD>
     </TR>
   </TBODY>
 </TABLE>
 <B><FONT color="#000099" size="+1"><BR>
-�� �{�[���̕����^��������</FONT></B>
+■ ボールの放物運動方程式</FONT></B>
 <BR>
 <BR>
-�����ł́A�A�j���[�V�����v���O�����̗��K�Ƃ��āA��Ɍ������ă{�[���𓊂��グ���ۂ́A�{�[���̕������O�Ղ��R���s���[�^��ʂɃA�j���[�V�����\������v���O����������Ă݂邱�Ƃɂ��܂��B
+ここでは、アニメーションプログラムの練習として、空に向かってボールを投げ上げた際の、ボールの放物線軌跡をコンピュータ画面にアニメーション表示するプログラムを作ってみることにします。
 <BR>
-�͂��߂ɁA�{�[���̉^���O�Ղ̎������߂Ă݂܂��i���Z�̕����ŏK���Ă���̂Ő����̕K�v�͂Ȃ��Ǝv���܂����j�B���������Ƃ��āA���ʂ�[kg]�̕��̂������x��<SUB>0</SUB>[m/s]�Ŋp�x��[rad]�̕����ɓ����グ�邱�Ƃɂ��܂��B�{�[���̐��������i�������j�̍��W��u<SUB>��</SUB>�C���������i�������j�̍��W��u<SUB>��</SUB>�C�d�͉����x����[m/s<SUP>2</SUP>]�Ƃ��܂��Bi�����̉����x����<SUB>i</SUB>�C�����͂�F<SUB>i</SUB>�Ƃ���ƁC�{�[���̉^���́C
-<P>�@�@<FONT color="#0000ff">����<SUB>i</SUB>���e<SUB>i</SUB>�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@�@(1)</FONT></P>
-<P>�̃j���[�g���̉^���������ɂ���Ďx�z����܂��B���������i�������j�Ɖ�������(�������j�̊e�X�̕����ɁA���̉^����������K�p����Ǝ����̂悤�ɂȂ�܂��i�����x��<SUB>i</SUB>�́Au<SUB>i</SUB> �̎��Ԃ��Ɋւ���Q�K�����ŕ\�킳��邱�Ƃɒ��ӂ���j�B</P>
-<P><FONT color="#0000ff">�@�@�@�@��<SUP>2</SUP>u<SUB>��</SUB><BR>
-�@�@�� <S>�@�@�@ </S>��0�@�@�i�������̉^���������j�@�@�@�@�@�@�@�@�@(2)<BR>
-�@�@�@�@����<SUP>2</SUP>�@<BR>
-�@�@ �@ ��<SUP>2</SUP>u<SUB>��</SUB>�@�@<BR>
-�@�@��<S>�@�@�@ </S>��-�����@�i�������̉^���������j�@�@�@�@�@�@�@�@(3)<BR>
-�@ �@�@ ����<SUP>2</SUP>�@</FONT></P>
-<P>�㎮�����Ԃ��Őϕ����A���������Ƃ��āA�{�[���̏����x����<SUB>0</SUB>�A�����ʒu��(u<SUB>x0</SUB>,0)�Ƃ���ƁA�����̂悤�ɓ��������܂�܂��B<BR>
+はじめに、ボールの運動軌跡の式を求めてみます（高校の物理で習っているので説明の必要はないと思いますが）。物理条件として、質量ｍ[kg]の物体を初速度ｖ<SUB>0</SUB>[m/s]で角度θ[rad]の方向に投げ上げることにします。ボールの水平方向（ｘ方向）の座標をu<SUB>ｘ</SUB>，鉛直方向（ｙ方向）の座標をu<SUB>ｙ</SUB>，重力加速度をｇ[m/s<SUP>2</SUP>]とします。i方向の加速度をα<SUB>i</SUB>，働く力をF<SUB>i</SUB>とすると，ボールの運動は，
+<P>　　<FONT color="#0000ff">ｍα<SUB>i</SUB>＝Ｆ<SUB>i</SUB>　　　　　　　　　　　　　　　　　　　　　　　　　　　(1)</FONT></P>
+<P>のニュートンの運動方程式によって支配されます。水平方向（ｘ方向）と鉛直方向(ｙ方向）の各々の方向に、この運動方程式を適用すると次式のようになります（加速度α<SUB>i</SUB>は、u<SUB>i</SUB> の時間ｔに関する２階微分で表わされることに注意する）。</P>
+<P><FONT color="#0000ff">　　　　ｄ<SUP>2</SUP>u<SUB>ｘ</SUB><BR>
+　　ｍ <S>　　　 </S>＝0　　（ｘ方向の運動方程式）　　　　　　　　　(2)<BR>
+　　　　ｄｔ<SUP>2</SUP>　<BR>
+　　 　 ｄ<SUP>2</SUP>u<SUB>ｙ</SUB>　　<BR>
+　　ｍ<S>　　　 </S>＝-ｍｇ　（ｙ方向の運動方程式）　　　　　　　　(3)<BR>
+　 　　 ｄｔ<SUP>2</SUP>　</FONT></P>
+<P>上式を時間ｔで積分し、初期条件として、ボールの初速度をｖ<SUB>0</SUB>、初期位置を(u<SUB>x0</SUB>,0)とすると、次式のように答えが求まります。<BR>
 <BR>
-<FONT color="#0000ff">�@�@u<SUB>��</SUB>�� u<SUB>x0</SUB> + ��<SUB>0</SUB>�� cos �Ɓ�u<SUB>x0</SUB> +��<SUB>��0</SUB>�� �@�@�@�@�@�@�@ �@�@�@(4)<BR>
-�@ �@�@ �@�@�@ �@ �@ �@�@ ����<SUP>2</SUP> �@�@�@�@�@�@�@ ����<SUP>2</SUP><BR>
-�@�@u<SUB>��</SUB>����<SUB>0</SUB>�� sin ��- <S>�@�@�@</S>�@����<SUB>y0</SUB>�� - <S>�@�@�@</S>�@�@�@�@�@�@ �@ (5)<BR>
-�@�@�@�@�@�@�@ �@�@ �@�@�@ 2�@�@�@�@�@�@�@�@�@2�@ </FONT><BR>
-<FONT color="#000000">�����ŁAvx0(=v0 cos��) ��v0�̂�</FONT>���������A<FONT color="#000000">vy0(=v0 sin��) ��v0��y</FONT>���������ł���B<BR>
+<FONT color="#0000ff">　　u<SUB>ｘ</SUB>＝ u<SUB>x0</SUB> + ｖ<SUB>0</SUB>ｔ cos θ＝u<SUB>x0</SUB> +ｖ<SUB>ｘ0</SUB>ｔ 　　　　　　　 　　　(4)<BR>
+　 　　 　　　 　 　 　　 ｇｔ<SUP>2</SUP> 　　　　　　　 ｇｔ<SUP>2</SUP><BR>
+　　u<SUB>ｙ</SUB>＝ｖ<SUB>0</SUB>ｔ sin θ- <S>　　　</S>　＝ｖ<SUB>y0</SUB>ｔ - <S>　　　</S>　　　　　　 　 (5)<BR>
+　　　　　　　 　　 　　　 2　　　　　　　　　2　 </FONT><BR>
+<FONT color="#000000">ここで、vx0(=v0 cosθ) はv0のｘ</FONT>方向成分、<FONT color="#000000">vy0(=v0 sinθ) はv0のy</FONT>方向成分である。<BR>
 <BR>
 <IMG src="cp1-14(ball).gif" width="668" height="353" border="0"></P>
-<P><FONT size="+1"><B><FONT color="#000099">���{�[���̕����^���`��v���O�����̍쐬���@</FONT></B></FONT></P>
-<P>�ȏ�̌v�Z���ɏ]���āA�{�[���̕����^���O�Ղ�`���A�j���[�V�����v���O�������A�ǂ̂悤�ɍ��΂悢���l���܂��B<BR>
+<P><FONT size="+1"><B><FONT color="#000099">■ボールの放物運動描画プログラムの作成方法</FONT></B></FONT></P>
+<P>以上の計算式に従って、ボールの放物運動軌跡を描くアニメーションプログラムを、どのように作ればよいか考えます。<BR>
 <BR>
-<FONT color="#009900"><B>�v���O�����̎d�l<BR>
-</B></FONT><B>(1) </B>y=0�̈ʒu�ɒn�ʂ��l����Bux=0, uy=0�̈ʒu�Ƀ{�[�����Z�b�g���A��=0[s] �̎��ԂɁAV0��30[m/s]�̏������x�Ŋp�xTheta�̕����Ƀ{�[����ł��グ��BTheta�̓L�[�{�[�h������͂��āA�ς�����悤�ɂ���B<BR>
+<FONT color="#009900"><B>プログラムの仕様<BR>
+</B></FONT><B>(1) </B>y=0の位置に地面を考える。ux=0, uy=0の位置にボールをセットし、ｔ=0[s] の時間に、V0＝30[m/s]の初期速度で角度Thetaの方向にボールを打ち上げる。Thetaはキーボードから入力して、変えられるようにする。<BR>
 <BR>
-<B>(2)</B> ���Ԃ���Tdel�̎��ԂÂ��₵�Ă����Ȃ���A�{�[���̉^���O�Ղ���ʂɕ`���B�܂��A�{�[�����n�ʂɒ��n����܂ł̋O�Ղ�`���悤���Ԃ�ݒ肷��B�P��̒��˕Ԃ�܂ł̎��ԁi�n�ʂɒ��n����܂ł̎��ԁjTland���A<BR>
-<FONT color="#0000ff">�@Tland=2.0*Vy0/g</FONT><BR>
+<B>(2)</B> 時間ｔをTdelの時間づつ増やしていきながら、ボールの運動軌跡を画面に描く。まず、ボールが地面に着地するまでの軌跡を描くよう時間を設定する。１回の跳ね返りまでの時間（地面に着地するまでの時間）Tlandが、<BR>
+<FONT color="#0000ff">　Tland=2.0*Vy0/g</FONT><BR>
 <BR>
-�ŗ^������B<FONT color="#000000">�����ŁAVy0(=V0*sin(Theta)) ��V0��y</FONT>���������ł���B<BR>
-�����ł́A�ł��グ���璅�n�܂ł̊Ԃ́A�{�[���̕`��񐔂�<FONT color="#000000">Dnum�Ƃ��āA</FONT>�������W��̕`�掞�ԊԊu Tdel���A<BR>
-�@<FONT color="#0000ff">Tdel��Tland/Dnum</FONT><BR>
-�̂悤�ɐݒ肷��i�f�t�H���g�́A<FONT color="#000000">Dnum=100�ɐݒ�j</FONT>�B<BR>
+で与えられる。<FONT color="#000000">ここで、Vy0(=V0*sin(Theta)) はV0のy</FONT>方向成分である。<BR>
+ここでは、打ち上げから着地までの間の、ボールの描画回数を<FONT color="#000000">Dnumとして、</FONT>物理座標上の描画時間間隔 Tdelを、<BR>
+　<FONT color="#0000ff">Tdel＝Tland/Dnum</FONT><BR>
+のように設定する（デフォルトは、<FONT color="#000000">Dnum=100に設定）</FONT>。<BR>
 <BR>
-<B>(3)</B> �X�N���[�����W�́iXmin=60�CYmin=150)�ƁiXmax=560�CYmax=350)�̂Q�_��Ίp�Ƃ���l�p��`��̈�ɂ���B<BR>
+<B>(3)</B> スクリーン座標の（Xmin=60，Ymin=150)と（Xmax=560，Ymax=350)の２点を対角とする四角を描画領域にする。<BR>
 <BR>
-<B><FONT color="#009900">�v���O�����̏ڍ�</FONT></B><BR>
+<B><FONT color="#009900">プログラムの詳細</FONT></B><BR>
 <BR>
-wm_paint()�֐��̒��Ɉȉ��̂悤�ȃv���O��������邱�Ƃɂ��A�^�C�}���荞�݂ɂ��`�揈�����J��Ԃ��B<BR>
+wm_paint()関数の中に以下のようなプログラムを作ることにより、タイマ割り込みによる描画処理を繰り返す。<BR>
 <BR>
-<B><FONT color="#000099">(�P)�^�C�}�ɂ�鎞�ԍX�V<BR>
-</FONT></B>�^�C�}���荞�݂̉񐔂́A�^�C�}�J�E���^�ϐ�Count�ɁA�ێ�����Ă���B<BR>
-�{�[���^���̌o�ߎ���t���A�^�C�}�J�E���^Count�A���Ԃ�����Tdel ��p���āA<BR>
-�@<FONT color="#0000ff">t=Tdel�@���@Count</FONT><BR>
+<B><FONT color="#000099">(１)タイマによる時間更新<BR>
+</FONT></B>タイマ割り込みの回数は、タイマカウンタ変数Countに、保持されている。<BR>
+ボール運動の経過時間tを、タイマカウンタCount、時間きざみTdel を用いて、<BR>
+　<FONT color="#0000ff">t=Tdel　ｘ　Count</FONT><BR>
 <BR>
-�ɏ]���čX�V���Ă����B<BR>
+に従って更新していく。<BR>
 <BR>
-<B><FONT color="#000099">(�Q) �{�[���ʒu�̌v�Z</FONT></B><BR>
-���Ԃ��ɂ�����A�{�[���̈ʒu(ux,uy)���A��(4),(5)��p���Ď��̂悤�ɋ��߂�B<BR>
+<B><FONT color="#000099">(２) ボール位置の計算</FONT></B><BR>
+時間ｔにおける、ボールの位置(ux,uy)を、式(4),(5)を用いて次のように求める。<BR>
 <BR>
-<FONT color="#0000ff">�@�@ux=Ux0+Vx0*��;<BR>
-�@�@uy=Vy0*t-g*t*t/2.0;</FONT><BR>
+<FONT color="#0000ff">　　ux=Ux0+Vx0*ｔ;<BR>
+　　uy=Vy0*t-g*t*t/2.0;</FONT><BR>
 <BR>
-�����ŁA�{�[���̏����ʒu�̂����WUx0�́A�{�[���̑ł��グ���_�ł�Ux0=0�ɐݒ肵�Ă����B<BR>
+ここで、ボールの初期位置のｘ座標Ux0は、ボールの打ち上げ時点ではUx0=0に設定しておく。<BR>
 <B><BR>
-<FONT color="#000099">(�R) �������W����X�N���[�����W�ւ̕ϊ�</FONT></B><BR>
-�X�N���[�����W�́iXmin=60�CYmin=150)�ƁiXmax=560�CYmax=350)�̂Q�_��Ίp�Ƃ���l�p�̒��ɃO���t��`���B���̂��߂ɁA�{�[���ʒu�̕������W�iux,uy)���A�����ɏ]���ăX�N���[�����W�iX1,Y1)�ɕϊ�����B<BR>
+<FONT color="#000099">(３) 物理座標からスクリーン座標への変換</FONT></B><BR>
+スクリーン座標の（Xmin=60，Ymin=150)と（Xmax=560，Ymax=350)の２点を対角とする四角の中にグラフを描く。そのために、ボール位置の物理座標（ux,uy)を、次式に従ってスクリーン座標（X1,Y1)に変換する。<BR>
 <BR>
-�@�@<FONT color="#0000ff">X1=Xmin+ux*Xfac;<BR>
-�@�@Y1=Ymax-uy*Yfac;</FONT>�@�@<BR>
-�@�i�������W�ƃX�N���[�����W�́A���_�̈ʒu���قȂ�A�܂��Ay���̌������t�ł��邱�Ƃɒ��ӂ���j<BR>
+　　<FONT color="#0000ff">X1=Xmin+ux*Xfac;<BR>
+　　Y1=Ymax-uy*Yfac;</FONT>　　<BR>
+　（物理座標とスクリーン座標は、原点の位置が異なる、また、y軸の向きが逆であることに注意する）<BR>
 <BR>
-�����ŁA(Xmin,Ymax)�̓X�N���[�����W�̍������̍��W�A�iXfac,Yfac)��x,y�e�X�̕����̃X�P�[���t�@�N�^�ł���A�v�Z�Ώۂ̕����̈�̑傫�����l�����Č��肷��B�Ⴆ�΁AXfac=2.5�AYfac=5.0�ɑI�񂾏ꍇ�A�����̈��200m�~40���̑傫���ɂȂ�B<BR>
+ここで、(Xmin,Ymax)はスクリーン座標の左下隅の座標、（Xfac,Yfac)はx,y各々の方向のスケールファクタであり、計算対象の物理領域の大きさを考慮して決定する。例えば、Xfac=2.5、Yfac=5.0に選んだ場合、物理領域は200m×40ｍの大きさになる。<BR>
 <BR>
-<B><FONT color="#000099">(�S) �{�[���̕`��</FONT></B><BR>
-�v�Z���ꂽ�{�[���ʒu�iX1,Y1)�ɔ��aRadius�̑傫���̃{�[����͋[�����~���w��F�ŕ`�悷��B<FONT color="#0000ff"><BR>
-�@G_FCIRCLE(X1,Y1, Radius, Red);</FONT><BR>
+<B><FONT color="#000099">(４) ボールの描画</FONT></B><BR>
+計算されたボール位置（X1,Y1)に半径Radiusの大きさのボールを模擬した円を指定色で描画する。<FONT color="#0000ff"><BR>
+　G_FCIRCLE(X1,Y1, Radius, Red);</FONT><BR>
 <BR>
-�ȉ��̗��ł͉~�̔��a��<FONT color="#000000">Radius=8</FONT>�A�~�̐F��Red�ɑI��ł���i�����̃p�����[�^�͏󋵂ɉ����ēK�X�ύX����j�B<BR>
+以下の例題では円の半径を<FONT color="#000000">Radius=8</FONT>、円の色をRedに選んでいる（これらのパラメータは状況に応じて適宜変更する）。<BR>
 <BR>
-<B><FONT color="#000099">(�T) �I������</FONT></B><BR>
-�{�[�������n����iy�����ʒuY1��Ymax���傫���j�A�������́A�{�[������ʂ̉E�[���z������ix�����ʒuX1��Xmax���傫���j�A��L�̕`�揈�����I������B<BR>
+<B><FONT color="#000099">(５) 終了判定</FONT></B><BR>
+ボールが着地する（y方向位置Y1がYmaxより大きい）、もしくは、ボールが画面の右端を越えたら（x方向位置X1がXmaxより大きい）、上記の描画処理を終了する。<BR>
 <BR>
 <IMG src="image.jpg" width="864" height="333" border="0"><BR>
 </P>
 <TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
   <TR>
-    <TD WIDTH=100%><B><FONT color="#000099">���K��� 14-1</FONT></B> (Revised : 2017/1/5)<BR>
-    ��L�̍l�����ɏ]���č쐬�����v���O�������ȉ��Ɏ����B<BR>
+    <TD WIDTH=100%><B><FONT color="#000099">演習問題 14-1</FONT></B> (Revised : 2017/1/5)<BR>
+    上記の考え方に従って作成したプログラムを以下に示す。<BR>
     <BR>
-    (1)�������̕����i@@@�̋L���̕����j��₤�`�ŁA�v���O���������������Ȃ����B�܂��A�A�j���[�V�����v���O�����̓����������Ă��������B<BR>
+    (1)未完成の部分（@@@の記号の部分）を補う形で、プログラムを完成させなさい。また、アニメーションプログラムの動作を説明してください。<BR>
     <BR>
-    <FONT color="#009900"><B>�q���g�F</B></FONT>�{�[�����n�ʂɒ��n�������ǂ����̔��f���Aif(Y1&gt;=@@@)�ł͂Ȃ��Aif(Y1&gt;=@@@ &amp;&amp; Count&gt;1)
-    �Ƃ��Ă���B���̗��R�ɂ��čl�@����B<BR>
+    <FONT color="#009900"><B>ヒント：</B></FONT>ボールが地面に着地したかどうかの判断を、if(Y1&gt;=@@@)ではなく、if(Y1&gt;=@@@ &amp;&amp; Count&gt;1)
+    としている。その理由について考察せよ。<BR>
     <BR>
-    (2)�I�����胋�[�`���̕������폜����ƁA�ǂ��Ȃ邩�����Ă��������B<BR>
+    (2)終了判定ルーチンの部分を削除すると、どうなるか試してください。<BR>
     <BR>
-    (3)TIMEINT��Dnum�̒l��ς���ƁA�A�j���[�V�����̕`�摬�x���ʂ̂�������ς��܂��B���낢�뎎���čœK�Ȓl��T���Ă݂Ă��������B<BR>
+    (3)TIMEINTやDnumの値を変えると、アニメーションの描画速度や画面のちらつきが変わります。いろいろ試して最適な値を探してみてください。<BR>
     <BR>
-    (4)ERASE��FALSE�ɂ���ƁA�{�[���̉^���O�Ղ��X�g���{�X�R�[�v�̂悤�ȉ摜�ŕ`�����Ƃ��ł��܂��B�{�[���̉^���̗l�q���ǂ�������悤�ɁADnum���œK�l�ɒ������Ă݂Ă��������B<BR>
+    (4)ERASEをFALSEにすると、ボールの運動軌跡をストロボスコープのような画像で描くことができます。ボールの運動の様子が良く分かるように、Dnumを最適値に調整してみてください。<BR>
     <BR>
     <IMG src="cp1-14(strobo).gif" width="529" height="232" border="0">
     <PRE>#define  PROGRAM &quot;ex14-1&quot;
-#define  TIMER TRUE /* �^�C�}�[���荞�݂̗L�� */
-#define  TIMEINT 20 /* �^�C�}�[�̃^�C���C���^�[�o��[ms] */
-#define  ERASE TRUE /* ���荞�ݎ��̉�ʏ����̗L�� */
+#define  TIMER TRUE /* タイマー割り込みの有無 */
+#define  TIMEINT 20 /* タイマーのタイムインターバル[ms] */
+#define  ERASE TRUE /* 割り込み時の画面消去の有無 */
 #include &quot;gdi.h&quot;
 
-float g=9.80665; /* �d�͉����x */
-int   Dnum=100;  /* ���n�܂ł̕`��� */
-int   Radius=8; /* �{�[���̕`�攼�a */ 
+float g=9.80665; /* 重力加速度 */
+int   Dnum=100;  /* 着地までの描画回数 */
+int   Radius=8; /* ボールの描画半径 */ 
 
-int   Xmin=60, Xmax=560, Ymin=150, Ymax=350;/* �`��̈�͈̔� */
-float Xfac=2.5, Yfac=5; /*���W�ϊ��̃X�P�[���t�@�N�^*/
+int   Xmin=60, Xmax=560, Ymin=150, Ymax=350;/* 描画領域の範囲 */
+float Xfac=2.5, Yfac=5; /*座標変換のスケールファクタ*/
 float Vx0,Vy0,V0,Ux0;
 float Tland,Tdel,Theta;
-int   X1,Y1; /* �������̃{�[���ʒu */
+int   X1,Y1; /* 現時刻のボール位置 */
 
 void wm_create(void)
 {
-    V0=30; /* �����x */ 
-    Count=0; /* �^�C�}�[�J�E���^��0�ɏ����� */ 
-    Ux0=0.0; /* x�����̏������W */
+    V0=30; /* 初速度 */ 
+    Count=0; /* タイマーカウンタを0に初期化 */ 
+    Ux0=0.0; /* x方向の初期座標 */
 
-    printf(&quot;�ŏ�p�x=&quot;); fflush(0);
-    scanf(@@@); /* �L�[�{�[�h����A�ϐ�Theta�ɑŏ�p�x(��)����� */
-    Theta=Theta*PI/180.0; /* Theta�̒P�ʂ������烉�W�A���ɕϊ� */
+    printf(&quot;打上角度=&quot;); fflush(0);
+    scanf(@@@); /* キーボードから、変数Thetaに打上角度(°)を入力 */
+    Theta=Theta*PI/180.0; /* Thetaの単位を°からラジアンに変換 */
 
-    Vx0=@@@; /* x�����̏����x */
-    Vy0=@@@; /* y�����̏����x */
-    Tland=@@@; /* ���n�܂ł̎��� */
-    Tdel=@@@;  /* �`�掞�Ԃ����� */
+    Vx0=@@@; /* x方向の初速度 */
+    Vy0=@@@; /* y方向の初速度 */
+    Tland=@@@; /* 着地までの時間 */
+    Tdel=@@@;  /* 描画時間きざみ */
 }
 
 void wm_paint(void)
 {
     float ux,uy,t;
     
-    t=Tdel*Count;/*�ł��グ��̌o�ߎ���*/
+    t=Tdel*Count;/*打ち上げ後の経過時間*/
 
-    ux=@@@; /* �{�[����x���W(�������W) */
-    uy=@@@; /* �{�[����y���W(�������W) */
+    ux=@@@; /* ボールのx座標(物理座標) */
+    uy=@@@; /* ボールのy座標(物理座標) */
 
-    X1=@@@; /* �{�[����x���W(�X�N���[�����W) */
-    Y1=@@@; /* �{�[����y���W(�X�N���[�����W) */
+    X1=@@@; /* ボールのx座標(スクリーン座標) */
+    Y1=@@@; /* ボールのy座標(スクリーン座標) */
 
-    G_LINE(Xmin,Ymin,Xmin,Ymax,Black);/* y���̕`�� */
-    G_LINE(Xmin,Ymax,Xmax,Ymax,Black);/* x���̕`�� */
-    G_FCIRCLE(@@@);  /* ���n�_(X1,Y1)�ɔ��aRadius�̑傫���̃{�[�����w��F�ŕ`��*/
+    G_LINE(Xmin,Ymin,Xmin,Ymax,Black);/* y軸の描画 */
+    G_LINE(Xmin,Ymax,Xmax,Ymax,Black);/* x軸の描画 */
+    G_FCIRCLE(@@@);  /* 現地点(X1,Y1)に半径Radiusの大きさのボールを指定色で描く*/
 
-    /* �{�[�����n�ʂɒ��n�������̓^�C�}��~ */
+    /* ボールが地面に着地した時はタイマ停止 */
     if(Y1&gt;=@@@ &amp;&amp; Count&gt;1){
-        KillTimer(hwnd,ID_TIMER);/*�^�C�}���~������*/
+        KillTimer(hwnd,ID_TIMER);/*タイマを停止させる*/
         return;
     }
 
-    /* �{�[�����E�[�ɓ��B�������̓^�C�}��~ */
+    /* ボールが右端に到達した時はタイマ停止 */
     if(X1&gt;=@@@){
-        KillTimer(hwnd,ID_TIMER); /*�^�C�}���~������*/ 
+        KillTimer(hwnd,ID_TIMER); /*タイマを停止させる*/ 
         return;
     }
 }
@@ -306,134 +306,134 @@ void wm_paint(void)
 <BR>
 <TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
   <TR>
-    <TD WIDTH=100%><B><FONT color="#000099">���K��� 14-2</FONT></B> (Revised : 2017/1/5)<BR>
+    <TD WIDTH=100%><B><FONT color="#000099">演習問題 14-2</FONT></B> (Revised : 2017/1/5)<BR>
     <BR>
-    ���K��� 14-1�̃v���O���������̂悤�ɕύX���Ă݂Ă��������B<BR>
+    演習問題 14-1のプログラムを次のように変更してみてください。<BR>
     <BR>
-    (1) 1��ڂ̒��n�̌�A�{�[�������˕Ԃ�悤�Ƀv���O������ύX����B<BR>
+    (1) 1回目の着地の後、ボールが跳ね返るようにプログラムを変更する。<BR>
     <BR>
-    <FONT color="#009900"><B>�q���g�F</B></FONT><BR>
-    ��Tdel�̎��Ԃ����݂Ŏ���t�𑝂₵�Ȃ���A�{�[���̈ʒu(ux,uy)����т��̃X�N���[�����W(X1,Y1)�𒀎��v�Z���Ă����B<BR>
+    <FONT color="#009900"><B>ヒント：</B></FONT><BR>
+    ○Tdelの時間きざみで時間tを増やしながら、ボールの位置(ux,uy)およびそのスクリーン座標(X1,Y1)を逐次計算していく。<BR>
     <BR>
-    ���̍ہA�ŏ��Ƀ{�[���𓊂��Ă���̎��Ԃł͂Ȃ��A�����グ�n�_�i�܂��͒��O�̒��n�_�j����̌o�ߎ��Ԃ�t�Ƃ���B�܂��A�����グ�n�_��x���W��Ux0�Ƃ���B<BR>
-    ���̎��A��(4)�Ɏ����悤�ɁA�{�[����x���Wux�́A����t�o�ߌ��x�����̈ړ������ɁAUx0���������l�ɂȂ�B�܂��A�{�[����y���Wuy�́A��(5)�Ɍo�ߎ��Ԃ����������l�ɂȂ�B<BR>
+    その際、最初にボールを投げてからの時間ではなく、投げ上げ地点（または直前の着地点）からの経過時間をtとする。また、投げ上げ地点のx座標をUx0とする。<BR>
+    この時、式(4)に示すように、ボールのx座標uxは、時間t経過後のx方向の移動距離に、Ux0を加えた値になる。また、ボールのy座標uyは、式(5)に経過時間ｔを代入した値になる。<BR>
     <BR>
-    �����K���14-1�ł́A�{�[�������n�������ɁAKillTimer�֐����Ăяo���ă^�C�}�[���~�߂ĕ`�揈�����I���������B�^�C�}�[���~�߂��Ɉȉ��̂悤�ɂ���΁A���˕Ԃ��̏������p�����邱�Ƃ��ł���B<BR>
+    ○演習問題14-1では、ボールが着地した時に、KillTimer関数を呼び出してタイマーを止めて描画処理を終了させた。タイマーを止めずに以下のようにすれば、跳ね返り後の処理を継続することができる。<BR>
     <BR>
-    <FONT color="#0000ff">�@�@�E�^�C�}�[�J�E���^Count��0�ɖ߂��i����t��0�ɖ߂��j�B<BR>
-    �@�@�E�{�[���̏����ʒuUx0�𒅒n�_��x���W�ɐݒ肷��B<BR>
-    �@�@�Ereturn��wm_paint���I������B</FONT><BR>
+    <FONT color="#0000ff">　　・タイマーカウンタCountを0に戻す（時間tを0に戻す）。<BR>
+    　　・ボールの初期位置Ux0を着地点のx座標に設定する。<BR>
+    　　・returnでwm_paintを終了する。</FONT><BR>
     <BR>
-    ���{�[�����E�[�ɓ��B������A�^�C�}�[���~�߂�B<BR>
+    ○ボールが右端に到達したら、タイマーを止める。<BR>
     <BR>
-    �ȏ�̍l�����ɏ]���āA���̂悤�Ƀv���O���������B<BR>
+    以上の考え方に従って、次のようにプログラムを作る。<BR>
     <BR>
-    <FONT color="#0000ff">�i�ŏ��́A���n�_��x���WUx0����сA�^�C�}�[�J�E���^Count��0�ɂ��Ă����B�j<BR>
+    <FONT color="#0000ff">（最初は、着地点のx座標Ux0および、タイマーカウンタCountを0にしておく。）<BR>
     <BR>
-    �@�@�@�@t=Tdel*Count;�@ /*�ł��グ��(���˕Ԃ��)�̌o�ߎ���*/ <BR>
+    　　　　t=Tdel*Count;　 /*打ち上げ後(跳ね返り後)の経過時間*/ <BR>
     <BR>
-    �@�@�@�@ux=@@@;�@�@�@/*�@�{�[���̂����W�i�������W�j */<BR>
-    �@�@�@�@uy=@@@;�@�@�@/*�@�{�[���̂����W�i�������W�j */<BR>
+    　　　　ux=@@@;　　　/*　ボールのｘ座標（物理座標） */<BR>
+    　　　　uy=@@@;　　　/*　ボールのｙ座標（物理座標） */<BR>
     <BR>
-    �@�@�@�@X1=@@@;�@�@/* �{�[����x���W(�X�N���[�����W) */<BR>
-    �@�@�@�@Y1=@@@;�@�@/* �{�[����y���W(�X�N���[�����W) */<BR>
+    　　　　X1=@@@;　　/* ボールのx座標(スクリーン座標) */<BR>
+    　　　　Y1=@@@;　　/* ボールのy座標(スクリーン座標) */<BR>
     <BR>
-    �@�@�@�@G_LINE(Xmin,Ymin,Xmin,Ymax,Black);/* y���̕`�� */<BR>
-    �@�@�@�@G_LINE(Xmin,Ymax,Xmax,Ymax,Black);/* x���̕`�� */<BR>
-    �@�@�@�@G_FCIRCLE(@@@); /* ���n�_(X1,Y1)�ɉ~��`�� */<BR>
-    �@�@�@<BR>
-    �@�@�@�@/* �{�[�����n�ʂɒ��n�����ꍇ�̏��� */<BR>
-    �@�@�@�@if(Y1&gt;=@@@ &amp;&amp; Count&gt;1) { <BR>
-    �@ �@�@�@�@�@�@�@@@@; �@/* �^�C�}�[�J�E���^Count���[���ɖ߂� */<BR>
-    �@ �@�@�@�@�@�@�@@@@;�@ /* ���n�_��x���Wux��Ux0�ɕۑ� */<BR>
-    �@�@�@�@�@�@�@�@ return; /*wm_paint���I��*/<BR>
-    �@�@�@�@}<BR>
+    　　　　G_LINE(Xmin,Ymin,Xmin,Ymax,Black);/* y軸の描画 */<BR>
+    　　　　G_LINE(Xmin,Ymax,Xmax,Ymax,Black);/* x軸の描画 */<BR>
+    　　　　G_FCIRCLE(@@@); /* 現地点(X1,Y1)に円を描く */<BR>
+    　　　<BR>
+    　　　　/* ボールが地面に着地した場合の処理 */<BR>
+    　　　　if(Y1&gt;=@@@ &amp;&amp; Count&gt;1) { <BR>
+    　 　　　　　　　@@@; 　/* タイマーカウンタCountをゼロに戻す */<BR>
+    　 　　　　　　　@@@;　 /* 着地点のx座標uxをUx0に保存 */<BR>
+    　　　　　　　　 return; /*wm_paintを終了*/<BR>
+    　　　　}<BR>
     <BR>
-    �@�@�@�@/* �{�[�����E�[�ɓ��B�������̏��� */<BR>
-    �@�@�@�@if(X1&gt;=@@@) �o<BR>
-    �@�@�@�@�@�@�@KillTimer(hwnd,ID_TIMER);/*�^�C�}�[���~�߂�*/<BR>
-    �@�@�@�@�@�@�@return; /*wm_paint���I��*/<BR>
-    �@�@�@�@�p<BR>
+    　　　　/* ボールが右端に到達した時の処理 */<BR>
+    　　　　if(X1&gt;=@@@) ｛<BR>
+    　　　　　　　KillTimer(hwnd,ID_TIMER);/*タイマーを止める*/<BR>
+    　　　　　　　return; /*wm_paintを終了*/<BR>
+    　　　　｝<BR>
     </FONT><BR>
-    (2) �{�[�����E�[�ɓ��B�����Ƃ��A�ł��グ�p���L�[�{�[�h������͂���ŏ��̏�Ԃɖ߂��āA���x���J��Ԃ��ĕ`���v���O�����ɕύX���Ă݂Ă��������B<BR>
+    (2) ボールが右端に到達したとき、打ち上げ角をキーボードから入力する最初の状態に戻って、何度も繰り返して描くプログラムに変更してみてください。<BR>
     <BR>
-    <FONT color="#009900"><B>�q���g�F</B></FONT>�{�[�����E�[�ɓ��B�������̏����Ƃ��āAKillTimer()�̑���ɁAwm_create() ���Ăяo���B<BR>
+    <FONT color="#009900"><B>ヒント：</B></FONT>ボールが右端に到達した時の処理として、KillTimer()の代わりに、wm_create() を呼び出す。<BR>
     <BR>
     <BR>
-    (3)��L(2)�ɂ����ă{�[�����������Ɏc�����Ƃɂ��A�ł��グ�p��ς����Ƃ��̉^���O�Ղ̈Ⴂ��\������悤�ɂ��Ă��������B<BR>
+    (3)上記(2)においてボールを消さずに残すことにより、打ち上げ角を変えたときの運動軌跡の違いを表示するようにしてください。<BR>
     <BR>
-    <FONT color="#009900"><B>�q���g�F</B></FONT>���K���14-1(4)�Ɠ��l�ɁAERASE��FALSE�ɂ��Ĉ��O�̉摜�������Ȃ��Ŏc���B�`��p�xDnum�𑝂₵�ă{�[�����aRadius������������ΐ����ׂ̍��}�̂悤�ȋO�Ղ�`�����Ƃ��ł��܂��B<BR>
+    <FONT color="#009900"><B>ヒント：</B></FONT>演習問題14-1(4)と同様に、ERASEをFALSEにして一回前の画像を消さないで残す。描画頻度Dnumを増やしてボール半径Radiusを小さくすれば線幅の細い図のような軌跡を描くことができます。<BR>
     <BR>
     <IMG src="cp1-14(ball2).gif" width="547" height="244" border="0"><BR>
     <BR>
     <BR>
-    (4) �{�[�������n�����ۂɁA�{�[���̉��������n�ʂɐH������ł��܂��܂��B�H�����܂Ȃ��悤�ɂ���ɂ͂ǂ�������悢�ł��傤���B<BR>
+    (4) ボールが着地した際に、ボールの下半分が地面に食い込んでしまいます。食い込まないようにするにはどうしたらよいでしょうか。<BR>
     <BR>
-    <FONT color="#009900"><B>�q���g�F</B></FONT>�{�[����`���ʒu���H�v���Ă��������B<BR>
+    <FONT color="#009900"><B>ヒント：</B></FONT>ボールを描く位置を工夫してください。<BR>
     <BR>
     </TD>
   </TR></TABLE>
 <BR><BR>
 <TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
   <TR>
-    <TD WIDTH=100%><FONT color="#000099"><B>���K��� 14-3�@</B></FONT>(Revised : 2017/1/5)<BR>
+    <TD WIDTH=100%><FONT color="#000099"><B>演習問題 14-3　</B></FONT>(Revised : 2017/1/5)<BR>
     <BR>
-    (1)�@�ȏ�̕`��v���O�����́A�{�[�����n�ʂɏՓ˂����ۂ̃G�l���M�[�����i�e�������▀�C�����j���l���Ă��Ȃ����߁A�i���Ƀ{�[�����^�����Ă��܂��A�s���R�ł��B�ȉ��̕⑫�����ɏ]���āA���˕Ԃ���x�ɏ������{�[���̐�������܂��Ă����A�₪�ă{�[�����~�܂�悤�ȃv���O�����ɉ��ǂ��Ă��������B�ł��グ�p�x�ƒ��˕Ԃ�W�����A���Ⴉ���������ʂ����|�[�g�ɂ��Ă��������B<BR>
+    (1)　以上の描画プログラムは、ボールが地面に衝突した際のエネルギー損失（弾性損失や摩擦損失）を考えていないため、永遠にボールが運動してしまい、不自然です。以下の補足説明に従って、跳ね返える度に少しずつボールの勢いが弱まっていき、やがてボールが止まるようなプログラムに改良してください。打ち上げ角度と跳ね返り係数を、何例か試した結果をレポートにしてください。<BR>
     <BR>
-    <B><FONT color="#000099">�⑫����</FONT></B><BR>
+    <B><FONT color="#000099">補足説明</FONT></B><BR>
     <BR>
-    <FONT color="#009900"><B>�l�����F</B></FONT><BR>
-    �G�l���M�[�ۑ����ɂ��A�G�l���M�[�������Ȃ���΁A���˕Ԃ����A<BR>
+    <FONT color="#009900"><B>考え方：</B></FONT><BR>
+    エネルギー保存則により、エネルギー損失がなければ、跳ね返り後も、<BR>
     <BR>
-    <FONT color="#0000ff">�@�@������: vx0=v0*cos��<BR>
-    �@�@������: vy0=v0*sin��</FONT><BR>
+    <FONT color="#0000ff">　　ｘ方向: vx0=v0*cosθ<BR>
+    　　ｙ方向: vy0=v0*sinθ</FONT><BR>
     <BR>
-    �̏������x��ۂ����܂܁A�ƕ����Ƀ{�[�����ł��グ����^�����A������J��Ԃ��B<BR>
+    の初期速度を保ったまま、θ方向にボールが打ち上げられる運動を、何回も繰り返す。<BR>
     <BR>
-    ����ɑ΂��āA �Փˎ��ɑ���������ꍇ�́A���˕Ԃ�W����Bf�iBf��0�`1�̌W���j�Ƃ��āA�����̂悤�ɁA���˕Ԃ�x�ɁA�ł��グ���xV0��Bf�{�ɏ���������B<BR>
+    これに対して、 衝突時に損失がある場合は、跳ね返り係数をBf（Bfは0～1の係数）として、次式のように、跳ね返る度に、打ち上げ速度V0をBf倍に小さくする。<BR>
     <BR>
-    �@�@<FONT color="#0000ff">x����: vx0�@���@ Bf*vx0<BR>
-    �@�@������: vy0�@���@Bf*vy0</FONT><BR>
+    　　<FONT color="#0000ff">x方向: vx0　←　 Bf*vx0<BR>
+    　　ｙ方向: vy0　←　Bf*vy0</FONT><BR>
     <BR>
-    <FONT color="#009900"><B>�������@�F</B></FONT><BR>
+    <FONT color="#009900"><B>実現方法：</B></FONT><BR>
     <BR>
-    ���{�[���̒��n���菈�����[�`���ɁA�ȉ��̏�����ǉ�����B<BR>
+    ○ボールの着地判定処理ルーチンに、以下の処理を追加する。<BR>
     <BR>
-    <FONT color="#0000ff">�@�@�Ex�����̏������xvx0��Bf�{����B<BR>
-    �@�@�Ey�����̏������xvy0��Bf�{����B</FONT><BR>
+    <FONT color="#0000ff">　　・x方向の初期速度vx0をBf倍する。<BR>
+    　　・y方向の初期速度vy0をBf倍する。</FONT><BR>
     <BR>
-    ���v���O�����̍ŏ��ŁA�ł��グ�p�xTheta�̓��͂ɉ����āA���˕Ԃ�W��Bf���L�[�{�[�h������͂��āA�ύX�ł���悤�ɂ���B<BR>
+    ○プログラムの最初で、打ち上げ角度Thetaの入力に加えて、跳ね返り係数Bfをキーボードから入力して、変更できるようにする。<BR>
     <BR>
     <BR>
-    <B><FONT color="#000099">�i���W���j</FONT></B><BR>
-    �]�T�̂���l�́A����Ɉȉ��̉ۑ������Ă݂Ă��������B<BR>
+    <B><FONT color="#000099">（発展問題）</FONT></B><BR>
+    余裕のある人は、さらに以下の課題をやってみてください。<BR>
     <BR>
-    (2)��L�̃v���O�����ł́A�{�[��������ȏ㒵�˕Ԃ�Ȃ��Ȃ�ƃ{�[�����r���Ŏ~�܂��Ă��܂��܂��B�{�[�����~�܂��Ă���ꍇ�́A�ŏ��ɖ߂��ē����������J��Ԃ��悤�ɂ���ɂ͂ǂ�������悢�ł��傤���B<BR>
+    (2)上記のプログラムでは、ボールがそれ以上跳ね返らなくなるとボールが途中で止まってしまいます。ボールが止まっている場合は、最初に戻って同じ処理を繰り返すようにするにはどうしたらよいでしょうか。<BR>
     <BR>
-    <FONT color="#009900"><B>�q���g�F<BR>
-    </B></FONT>Y1&gt;=Ymax �łȂ�����Count==@@@ �̎��A�{�[�����~�܂��Ă���Ɣ��f���āA�ŏ��ɖ߂�iwm_create���Ăяo���j����������B���|�[�g�ɂ́A�{�[���̉^���ɔ����i���ˏ������ɒ��n�����A���邢�͒��ˏ�邱�ƂȂ����n��Ԃ������Ă���i�~�܂��Ă���j�̂��̈Ⴂ�jCount�̒l�̕ω��ɒ��ڂ��A��L��������Count==@@@
-    �̏������ۂ����R�iCount&lt;=@@@ �ł͑ʖ�?�j�ɂ��čl�@����B<BR>
+    <FONT color="#009900"><B>ヒント：<BR>
+    </B></FONT>Y1&gt;=Ymax でなおかつCount==@@@ の時、ボールが止まっていると判断して、最初に戻る（wm_createを呼び出す）処理をする。レポートには、ボールの運動に伴う（跳ね上った後に着地した、あるいは跳ね上ることなく着地状態が続いている（止まっている）のかの違い）Countの値の変化に着目し、上記条件式にCount==@@@
+    の条件を課す理由（Count&lt;=@@@ では駄目?）について考察せよ。<BR>
     <BR>
-    (3) �{�[���̋O�Ղ���Ō��񂾐��O�Ղ�`���v���O����������Ă��������B<BR>
+    (3) ボールの軌跡を線で結んだ線軌跡を描くプログラムを作ってください。<BR>
     <FONT color="#009900"><B><BR>
-    �q���g�F</B></FONT><BR>
-    ERASE��FALSE�ɂ��āA���O�̉摜�������Ȃ��Ŏc���B����A�������̃{�[���̈ʒu�iX1,Y1)�ɉ����āA���O�����̃{�[���̈ʒu�iXb,Yb)��ۑ����Ă����iwm_paint�̍Ō�ɁAXb=@@@;
-    Yb=@@@; ��������j�B���̏�ŁA(Xb,Yb)��(X1,Y1)��2�_�Ԃ𒼐��Ō��Ԋ֐�G_LINE���Ăяo���悤�ɂ���΂悢�B<BR>
+    ヒント：</B></FONT><BR>
+    ERASEをFALSEにして、一回前の画像を消さないで残す。一方、現時刻のボールの位置（X1,Y1)に加えて、直前時刻のボールの位置（Xb,Yb)を保存しておく（wm_paintの最後に、Xb=@@@;
+    Yb=@@@; を加える）。その上で、(Xb,Yb)と(X1,Y1)の2点間を直線で結ぶ関数G_LINEを呼び出すようにすればよい。<BR>
     <BR>
     </TD>
   </TR></TABLE>
 <BR>
 <HR>
-<P><FONT color="#000099" size="+1"><B>���A�j���[�V�����摜�̃��|�[�g��o���@</B></FONT><BR>
+<P><FONT color="#000099" size="+1"><B>◎アニメーション画像のレポート提出方法</B></FONT><BR>
 <BR>
-�@�Ō�ɁA���|�[�g��o���@�ɂ��Đ������܂��B<BR>
+　最後に、レポート提出方法について説明します。<BR>
 <BR>
-�@����`���i<FONT color="#0000ff">mpg</FONT>, <FONT color="#0000ff">avi</FONT>, <FONT color="#0000ff">mov</FONT>, <FONT color="#0000ff">wmv</FONT>�Ȃǂ̊g���q�������t�@�C���j�Ńt�@�C���Z�[�u�����t�@�C���𑗂��ĖႦ�Ηǂ���������܂��񂪁A����L���v�`���[�\�t�g���K�v�ɂȂ邱�Ƃ�A�t�@�C���T�C�Y�����ɑ傫���Ȃ��Ă��܂��A�s�����悭����܂���B���̂��߁A���K���14-1
-(4)�≉�K���14-2 (3)�̕��@�ɏ]���č쐬�����A�X�g���{�X�R�[�v�摜�i�Î~��j��<A href="grcap-cp1.html">���܂łƓ�������</A>�Ńt�@�C���Z�[�u���Ē�o���Ă��������B</P>
+　動画形式（<FONT color="#0000ff">mpg</FONT>, <FONT color="#0000ff">avi</FONT>, <FONT color="#0000ff">mov</FONT>, <FONT color="#0000ff">wmv</FONT>などの拡張子がついたファイル）でファイルセーブしたファイルを送って貰えば良いかもしれませんが、動画キャプチャーソフトが必要になることや、ファイルサイズが非常に大きくなってしまい、都合がよくありません。そのため、演習問題14-1
+(4)や演習問題14-2 (3)の方法に従って作成した、ストロボスコープ画像（静止画）を<A href="grcap-cp1.html">今までと同じやり方</A>でファイルセーブして提出してください。</P>
 <P><BR>
 </P>
 <HR>
-<P><B>�@�ȏ�ŁA�u�v���O���~���O����щ��K�v�̎��Ƃ��I���ɂ��܂��B</B></P>
+<P><B>　以上で、「プログラミングおよび演習」の授業を終わりにします。</B></P>
 <HR>
 </BODY>
 </HTML>

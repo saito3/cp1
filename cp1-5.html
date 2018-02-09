@@ -1,75 +1,75 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=Shift_JIS">
 <META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
 <META http-equiv="Content-Style-Type" content="text/css">
-<TITLE>��5��</TITLE>
+<TITLE>第5回</TITLE>
 </HEAD>
 <BODY BGCOLOR="#efefef"><BR>
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
   <TR>
-    <TD WIDTH=100%><B><FONT size="+2" color="#ffffff">�v���O���~���O����щ��K �m�n�D5</FONT></B></TD>
+    <TD WIDTH=100%><B><FONT size="+2" color="#ffffff">プログラミングおよび演習 ＮＯ．5</FONT></B></TD>
   </TR></TABLE>
 <BR>
 <DIV ALIGN=RIGHT>Last-Modified: 2016.6.2<BR></DIV>
 <HR><BR>
-���䕶�ɂ́A�@�I�������ƇA����������2��ނ�����A���̂����O��͇@��if�����K���܂����B���T�́A�A�̔����������s�����䕶�Ƃ���for�������グ�܂��Bfor���͓���̏�����������J��Ԃ����s�������ꍇ�Ɏg���܂��Bif����for���́A�g������m��Ȃ��Ɩ����ȃv���O�����͍��Ȃ��Ƃ������炢�ɏd�v�ł��̂ŁA��������o����悤�ɂ��Ă��������B<BR>
+制御文には、①選択処理と②反復処理の2種類があり、このうち前回は①のif文を習いました。今週は、②の反復処理を行う制御文としてfor文を取り上げます。for文は特定の処理を何回も繰り返し実行したい場合に使います。if文とfor文は、使い方を知らないと満足なプログラムは作れないというぐらいに重要ですので、しっかり覚えるようにしてください。<BR>
 <BR>
 <TABLE BORDER=0 WIDTH=100%>
   <TR>
-    <TD BGCOLOR="#004080" WIDTH=100%><FONT color="#ffffff" size="+1"><FONT size="+1"><STRONG>�@for��</STRONG></FONT></FONT></TD>
+    <TD BGCOLOR="#004080" WIDTH=100%><FONT color="#ffffff" size="+1"><FONT size="+1"><STRONG>　for文</STRONG></FONT></FONT></TD>
   </TR></TABLE><BR>
-for���̍\���͈ȉ��̂悤�ɂȂ��Ă��܂��B<BR>
+for文の構造は以下のようになっています。<BR>
 <BR>
-<FONT color="#0000ff">�@�@for(��1; ��2; ��3){</FONT>
+<FONT color="#0000ff">　　for(式1; 式2; 式3){</FONT>
 <TABLE align="RIGHT">
   <TR>
     <TD><FONT color="#0000ff"><IMG SRC="cp1-5-1.gif" ALT="" WIDTH=159 HEIGHT=281></FONT></TD>
   </TR></TABLE>
 <BR>
-<FONT color="#0000ff">�@�@�@�@��1;<BR>
-�@�@�@�@��2;<BR>
-�@�@�@�@�c<BR>
-�@�@}</FONT><BR>
-<P>for���́A(��1; ��2; ��3)�̏����ɉ����āA{�c}�̒��̎��s�����J��Ԃ����s���܂��B�����ŁA(��1; ��2; ��3)�̏������́A�t���[�`���[�g�Ɏ����悤��<BR>
+<FONT color="#0000ff">　　　　文1;<BR>
+　　　　文2;<BR>
+　　　　…<BR>
+　　}</FONT><BR>
+<P>for文は、(式1; 式2; 式3)の条件に応じて、{…}の中の実行文を繰り返し実行します。ここで、(式1; 式2; 式3)の条件式は、フローチャートに示すように<BR>
 </P>
-<FONT color="#008000">�@�@��1�F���������ɗp���郋�[�v�ϐ��̏����l��^����B<BR>
-�@�@���Q�F���[�v�̍ŏ��Ŏ��Q�̏������������Ă��邩�ǂ����𒲂ׂ�B<BR>
-�@�@�@�������Ă���΁o�@�p�̒��̏������J��Ԃ��B�������Ă��Ȃ���Ώ������I������B<BR>
-�@�@���R�F���[�v�̍Ō�ɁA���R�����s����B <BR>
+<FONT color="#008000">　　式1：反復処理に用いるループ変数の初期値を与える。<BR>
+　　式２：ループの最初で式２の条件が成立しているかどうかを調べる。<BR>
+　　　成立していれば｛　｝の中の処理を繰り返す。成立していなければ処理を終了する。<BR>
+　　式３：ループの最後に、式３を実行する。 <BR>
 </FONT><BR>
-�Ƃ����񑩂��Ӗ����܂��B<BR>
+という約束を意味します。<BR>
 <BR>
-�Ⴆ�΁A�����^�̃��[�v�ϐ�����p���āAi���P���炎�܂łP���Ñ��₵�Ȃ���o�@�p�̒��̔��������� ����J��Ԃ�for���͎��̂悤�ɂȂ�܂��B <BR>
+例えば、整数型のループ変数ｉを用いて、iを１からｎまで１ずづ増やしながら｛　｝の中の反復処理を ｎ回繰り返すfor文は次のようになります。 <BR>
 <BR>
-<FONT color="#0000ff">�@�@for(i=1; i&lt;=n; i++){<BR>
-�@�@�@�@���P;<BR>
-�@�@�@�@���Q;<BR>
-�@�@�@�@�d�d<BR>
-�@�@} <BR>
+<FONT color="#0000ff">　　for(i=1; i&lt;=n; i++){<BR>
+　　　　文１;<BR>
+　　　　文２;<BR>
+　　　　‥‥<BR>
+　　} <BR>
 </FONT><BR>
-���̏ꍇ�A�@�܂����P�̕����Ń��[�v�ϐ����̏����l����=1�ɐݒ肵�Ă��܂��B ���ɁA�A���Q�̕����ŁAi��n�ȉ��ł��邩�ǂ����𔻒f���Ă��܂��Bi�����ȉ��̏ꍇ�́A ���̂܂܁o�@�p�̒��̎��s�������s���܂��B�����łȂ��ꍇ�͔����������I�����܂��B �B�O�҂̏ꍇ�A���������̍Ō��i++�����s���ii������₷�B�m���n���Q�Ɓj�@�ɖ߂�A�Ƃ����������J��Ԃ��܂��B���̔��������́Ai=n+1�ɂȂ��Ď��Q�̏������������Ȃ��Ȃ����� �ɏI�����܂��B���̌��ʁA{��;}�̒��̔����������Ai=1�`n�܂ł�n��J��Ԃ����s����邱�ƂɂȂ�܂��B<BR>
+この場合、①まず式１の部分でループ変数ｉの初期値をｉ=1に設定しています。 次に、②式２の部分で、iがn以下であるかどうかを判断しています。iがｎ以下の場合は、 そのまま｛　｝の中の実行文を実行します。そうでない場合は反復処理を終了します。 ③前者の場合、反復処理の最後にi++を実行し（iを一つ増やす。［注］を参照）①に戻る、という処理を繰り返します。この反復処理は、i=n+1になって式２の条件が成立しなくなった時 に終了します。その結果、{文;}の中の反復処理が、i=1～nまでのn回繰り返し実行されることになります。<BR>
 <BR>
 <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#ffffff">
   <TR>
-    <TD>[��]�F<FONT color="#0000ff">i++</FONT>�̓C���N�������g���Z�q�ŁAi=i+1������킵�܂��ii+=1�Ə������Ƃ��o���܂��j�B ���l�ɁAi--�̓f�N�������g���Z�q�ŁAi=i-1��\���܂��Bi���Q�Â��₷�ꍇ�́Ai+=2(�܂��́Ai=i+2)�̂悤�ɏ����܂��B<BR>
+    <TD>[注]：<FONT color="#0000ff">i++</FONT>はインクリメント演算子で、i=i+1をあらわします（i+=1と書くことも出来ます）。 同様に、i--はデクリメント演算子で、i=i-1を表します。iを２つづつ増やす場合は、i+=2(または、i=i+2)のように書きます。<BR>
     <BR>
-    ++i, --i�̂悤�ɕϐ��̑O�ɁA���Z�q��t���鏑����������܂��B�e�X��<BR>
+    ++i, --iのように変数の前に、演算子を付ける書き方もあります。各々は<BR>
     <BR>
-    <FONT color="#008000">�@�@++���@�F�@i=i+1�̌v�Z���s�������i���g��<BR>
-    �@�@��++�@�F�@i���g�������Ƃ�i=i+1�̌v�Z���s�Ȃ��B<BR>
+    <FONT color="#008000">　　++ｉ　：　i=i+1の計算を行った後にiを使う<BR>
+    　　ｉ++　：　iを使ったあとにi=i+1の計算を行なう。<BR>
     </FONT><BR>
-    �̈Ⴂ������܂��Bfor���̒��Ŏg�����ꍇ�́A�ǂ�����g���Ă��\���܂���B<BR>
+    の違いがあります。for文の中で使った場合は、どちらを使っても構いません。<BR>
     </TD>
   </TR></TABLE>
 <HR>
 <BR>
-��5-1 �́Afor�����g�����P���炎�܂ł̐��̘a�����߂邽�߂̃v���O�����ł��B<BR>
+例5-1 は、for文を使った１からｎまでの数の和を求めるためのプログラムです。<BR>
 <BR>
 <TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD><B><FONT color="#000080">�� 5-1</FONT> </B><BR>
+    <TD><B><FONT color="#000080">例 5-1</FONT> </B><BR>
     <PRE>#include&lt;stdio.h&gt;
 
 int main(void)
@@ -90,136 +90,136 @@ int main(void)
 }</PRE>
     </TD>
   </TR></TABLE><BR>
-<FONT color="#000080"><B>����</B>�F</FONT><BR>
-�P���炎�܂ł̐��̘a�r<SUB>n</SUB>�́A<BR>
+<FONT color="#000080"><B>説明</B>：</FONT><BR>
+１からｎまでの数の和Ｓ<SUB>n</SUB>は、<BR>
 <BR>
-�@<FONT color="#0000ff">�@�@�@ �@(1+n)n<BR>
-�@�@�r<SUB>n</SUB>��<S>�@ �@�@�@</S>.<BR>
-�@ �@�@�@�@�@�@2</FONT><BR>
+　<FONT color="#0000ff">　　　 　(1+n)n<BR>
+　　Ｓ<SUB>n</SUB>＝<S>　 　　　</S>.<BR>
+　 　　　　　　2</FONT><BR>
 <BR>
-�̌�����p���Ă��v�Z�ł��܂����A��L�̃v���O�����ł͌�����p�����ɁA<BR>
+の公式を用いても計算できますが、上記のプログラムでは公式を用いずに、<BR>
 <BR>
-�@�@<FONT color="#0000ff">�r<SUB>n</SUB>���P�{�Q�{�d�d�{��</FONT><BR>
+　　<FONT color="#0000ff">Ｓ<SUB>n</SUB>＝１＋２＋‥‥＋ｎ</FONT><BR>
 <BR>
-�𐔒l�I�Ɍv�Z���Ă��܂��B���̂��߂ɁA�ŏ���<FONT color="#0000ff">sum=0</FONT> (S<SUB>0</SUB>=0)�����Ă����āA<BR>
+を数値的に計算しています。このために、最初に<FONT color="#0000ff">sum=0</FONT> (S<SUB>0</SUB>=0)を入れておいて、<BR>
 <BR>
-�@�@�P��ڂ̌J��Ԃ��v�Z�F�@<FONT color="#0000ff">sum=sum+1</FONT>�@(S<SUB>1</SUB>=S<SUB>0</SUB>+1)<BR>
-�@�@�Q��ڂ̌J��Ԃ��v�Z�F�@<FONT color="#0000ff">sum=sum+2</FONT>�@(S<SUB>2</SUB>=S<SUB>1</SUB>+2)<BR>
-�@�@�@�@�@�@�@�@�d�d<BR>
-�@�@����ڂ̌J��Ԃ��v�Z�F�@<FONT color="#0000ff">sum=sum+n</FONT>�@(S<SUB>n</SUB>=S<SUB>n-1</SUB>+n)<BR>
+　　１回目の繰り返し計算：　<FONT color="#0000ff">sum=sum+1</FONT>　(S<SUB>1</SUB>=S<SUB>0</SUB>+1)<BR>
+　　２回目の繰り返し計算：　<FONT color="#0000ff">sum=sum+2</FONT>　(S<SUB>2</SUB>=S<SUB>1</SUB>+2)<BR>
+　　　　　　　　‥‥<BR>
+　　ｎ回目の繰り返し計算：　<FONT color="#0000ff">sum=sum+n</FONT>　(S<SUB>n</SUB>=S<SUB>n-1</SUB>+n)<BR>
 <BR>
-�ɏ]���Čv�Z���s���Ă��܂��B<BR>
+に従って計算を行っています。<BR>
 <BR>
 <TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD BGCOLOR="#e1ffff"><FONT color="#000080"><B>���K��� 5-1</B></FONT><B> </B>(Revised : 2016/06/02)<BR>
+    <TD BGCOLOR="#e1ffff"><FONT color="#000080"><B>演習問題 5-1</B></FONT><B> </B>(Revised : 2016/06/02)<BR>
     <BR>
-    for�����g���Ĉȉ��̐���̘a���v�Z����v���O�������쐬���Ă��������B<BR>
-    <FONT color="#0000ff">�@�@�@�@�@�@�@�@�@�@�@ �@�@ �@�@�@�@�@�@n<BR>
-    �@S<SUB>n</SUB> = 1<SUP>k</SUP>+2<SUP>k</SUP>+3<SUP>k</SUP>+4<SUP>k</SUP>+5<SUP>k</SUP>+...+n<SUP>k</SUP> = ��<SUP> </SUP>i<SUP>k</SUP><BR>
-    �@�@�@�@�@�@�@�@�@�@�@ �@�@�@�@�@�@�@�@i=1</FONT><BR>
-    �������An��k�̒l�̓L�[�{�[�h������͂���悤�ɂ���Bn�Ƃ��āA���̐�����͂����ꍇ�͌v�Z�����s���A���̐�����͂����ꍇ�͓��͂̂�蒼���𑣂����͂��o�͂�����ŁA���������Ƀv���O�������I��������B<BR>
-    �����ł́Ak�̒l��k=1,2,3��3�ʂ�An�̒l��k�̒l���Ƃ�2�ʂ�ȏ�ɂ��Ď������ƂƂ��A���10000�ȏ��n����͂��Ă��������B�l�@�ł́A�^�l
-    �i�ȉ��̌�����p������v�Z�̌��ʁj�Ɣ�r���Č덷������ꍇ�ɂ͂��̗��R�ɂ��čl�@���A����Ƀv���O�����̓���ɂ��Đ������Ă��������B<BR>
+    for文を使って以下の数列の和を計算するプログラムを作成してください。<BR>
+    <FONT color="#0000ff">　　　　　　　　　　　 　　 　　　　　　n<BR>
+    　S<SUB>n</SUB> = 1<SUP>k</SUP>+2<SUP>k</SUP>+3<SUP>k</SUP>+4<SUP>k</SUP>+5<SUP>k</SUP>+...+n<SUP>k</SUP> = Σ<SUP> </SUP>i<SUP>k</SUP><BR>
+    　　　　　　　　　　　 　　　　　　　　i=1</FONT><BR>
+    ただし、nとkの値はキーボードから入力するようにする。nとして、正の数を入力した場合は計算を実行し、負の数を入力した場合は入力のやり直しを促す文章を出力した上で、何もせずにプログラムを終了させる。<BR>
+    実験では、kの値はk=1,2,3の3通り、nの値はkの値ごとに2通り以上について試すこととし、一つは10000以上のnを入力してください。考察では、真値
+    （以下の公式を用いた手計算の結果）と比較して誤差がある場合にはその理由について考察し、さらにプログラムの動作について説明してください。<BR>
     <BR>
-    [�⑫]�@��v�Z�p�̌����i���F�v���O�����ɂ͈ȉ��̌�����p���Ȃ����Ɓj<BR>
+    [補足]　手計算用の公式（注：プログラムには以下の公式を用いないこと）<BR>
     <BR>
-    �@�@k=1�@ <FONT color="#0000ff">S<SUB>n</SUB>=n(n+1)/2</FONT> <BR>
-    �@�@k=2 �@<FONT color="#0000ff">S<SUB>n</SUB>= n(n+1)(2n+1)/6</FONT><BR>
-    �@�@k=3 �@<FONT color="#0000ff">S<SUB>n</SUB>=n<SUP>2</SUP>(n+1)<SUP>2</SUP></FONT><FONT color="#0000ff">/4</FONT><BR>
+    　　k=1　 <FONT color="#0000ff">S<SUB>n</SUB>=n(n+1)/2</FONT> <BR>
+    　　k=2 　<FONT color="#0000ff">S<SUB>n</SUB>= n(n+1)(2n+1)/6</FONT><BR>
+    　　k=3 　<FONT color="#0000ff">S<SUB>n</SUB>=n<SUP>2</SUP>(n+1)<SUP>2</SUP></FONT><FONT color="#0000ff">/4</FONT><BR>
     <BR>
     </TD>
   </TR></TABLE>
-<BR><B><FONT color="#800000">for�����g���Ƃ��̒��ӁF</FONT></B>�@<BR>
-�����[�v�ϐ��͐����^���g��<BR>
-�Ⴆ�΁A<BR>
+<BR><B><FONT color="#800000">for文を使うときの注意：</FONT></B>　<BR>
+■ループ変数は整数型を使う<BR>
+例えば、<BR>
 <BR>
-<FONT color="#0000ff">�@�@s=0.1+0.2+0.3+�d�d2.0<BR>
+<FONT color="#0000ff">　　s=0.1+0.2+0.3+‥‥2.0<BR>
 </FONT><BR>
-�̂悤�ɁA0.1�����݂ŁA0.1�`2.0�܂ő����Z����v�Z���l���܂��B<BR>
-������Adouble�^�̃��[�v�ϐ�x��p����<BR>
+のように、0.1きざみで、0.1～2.0まで足し算する計算を考えます。<BR>
+これを、double型のループ変数xを用いて<BR>
 <BR>
-<FONT color="#0000ff">�@�@double s,x;<BR>
-�@�@s=0.0;<BR>
-�@�@for(x=0.1; x&lt;=2.0;x+=0.1)<BR>
-�@�@�@�@s=s+x;<BR>
-�@�@printf(&quot;s=%le\n&quot;,s);<BR>
+<FONT color="#0000ff">　　double s,x;<BR>
+　　s=0.0;<BR>
+　　for(x=0.1; x&lt;=2.0;x+=0.1)<BR>
+　　　　s=s+x;<BR>
+　　printf(&quot;s=%le\n&quot;,s);<BR>
 </FONT><BR>
-�̂悤�ɂ���ƁA�������l�i21.0�j�������܂���B<BR>
-���̂��߁A���������_�̉��Z���ʂ���������Ɏg�����Ƃ������<BR>
+のようにすると、正しい値（21.0）が得られません。<BR>
+このため、浮動小数点の演算結果を条件判定に使うことを避けて<BR>
 <BR>
-<FONT color="#0000ff">�@�@int i;<BR>
-�@�@double s,x;<BR>
-�@�@s=0.0;<BR>
-�@�@for(i=1; i&lt;=20; i++)<BR>
-�@�@�@�@s=s+i*0.1;<BR>
-�@�@printf(&quot;s=%le\n&quot;,s); </FONT><BR>
+<FONT color="#0000ff">　　int i;<BR>
+　　double s,x;<BR>
+　　s=0.0;<BR>
+　　for(i=1; i&lt;=20; i++)<BR>
+　　　　s=s+i*0.1;<BR>
+　　printf(&quot;s=%le\n&quot;,s); </FONT><BR>
 <BR>
-�̂悤�ɐ����^�ϐ������[�v�ϐ��ɗp���܂��B���Ȃ킿�A���[�v�ϐ��ɂ͐����^�̕ϐ����g���悤�ɂ����ق����ǂ����ƂɂȂ�܂��B<BR><BR>
+のように整数型変数をループ変数に用います。すなわち、ループ変数には整数型の変数を使うようにしたほうが良いことになります。<BR><BR>
 <TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD BGCOLOR="#e1ffff"><B><FONT color="#000080">���K��� �T-�Q</FONT> </B>(Revised : 2013/06/07)<BR>
+    <TD BGCOLOR="#e1ffff"><B><FONT color="#000080">演習問題 ５-２</FONT> </B>(Revised : 2013/06/07)<BR>
     <BR>
-    �@��L�Q�̃v���O�����̓�����m�F���Ă��������B�܂��A�ŏ��̃v���O�����ł͐������v�Z����Ȃ����R�����̍����Ƌ��Ɏ����Ă��������B<BR>
+    ①上記２つのプログラムの動作を確認してください。また、最初のプログラムでは正しく計算されない理由をその根拠と共に示してください。<BR>
     <BR>
-    �q���g�F<BR>
-    for���̒��� x�����s �̒l��\�����邽�߂�printf����}�����āA�J��Ԃ����тɂ����̒l���ǂ̂悤�ɕω����邩�m�F����B���̏�ŁAfor���̌J��Ԃ��v�Z���A���ۂ̌v�Z�ŉ���s���Ă��邩�H�J��Ԃ��̏I�����肪�������s���Ă��邩�H�A�Ȃǂ𒲂ׂĂ݂�B<BR>
+    ヒント：<BR>
+    for文の中に xおよびs の値を表示するためのprintf文を挿入して、繰り返すたびにこれらの値がどのように変化するか確認する。その上で、for文の繰り返し計算が、実際の計算で何回行われているか？繰り返しの終了判定が正しく行われているか？、などを調べてみよ。<BR>
     <BR>
-    �A�֘A�������Ƃ��āAint�^�̃��[�v�ϐ���for���ɗp���āAdouble�^�̐�0.1��1,000,000,000 �񑫂��v�Z���s���Ă��������B���̈���ŁA1.0��
-    100,000,000 �񑫂������ʂ͂ǂ��Ȃ�܂����H���ʂ���������őO�҂̌v�Z�덷���傫���Ȃ闝�R�ɂ��Đ������Ă��������B<BR>
+    ②関連した問題として、int型のループ変数をfor文に用いて、double型の数0.1を1,000,000,000 回足す計算を行ってください。その一方で、1.0を
+    100,000,000 回足した結果はどうなりますか？結果を示した後で前者の計算誤差が大きくなる理由について説明してください。<BR>
     <BR>
-    �q���g�Fprintf���̏����w���<FONT color="#0000ff">%lf</FONT>�i���邢��<FONT color="#0000ff">%23.16le</FONT>) �Ȃǂ�p���āA16�����x�̌����ŕ\������B���Ȃ������ŕ\������Ɨ��҂��������ł��邩�̂悤�ɕ\������邱�Ƃɒ��ӂ���B<BR>
+    ヒント：printf文の書式指定に<FONT color="#0000ff">%lf</FONT>（あるいは<FONT color="#0000ff">%23.16le</FONT>) などを用いて、16桁程度の桁数で表示する。少ない桁数で表示すると両者が同じ数であるかのように表示されることに注意する。<BR>
     <BR>
-    �B<B><FONT color="#000080">�]�͂̂���l�ցF</FONT></B>double�^�̕ϐ�x�����[�v�ϐ��Ɏg������L�@�̍ŏ��̃v���O�������A�ȉ��̃q���g���Q�l�ɁA�������v�Z���ʂ��o�͂���v���O�����ɍ��ς��Ă��������B<BR>
+    ③<B><FONT color="#000080">余力のある人へ：</FONT></B>double型の変数xをループ変数に使った上記①の最初のプログラムを、以下のヒントを参考に、正しい計算結果を出力するプログラムに作り変えてください。<BR>
     <BR>
-    �q���g�F<BR>
-    �{���x����x�̔�r���Z�́A�ۂߌ덷���l�����Ĉȉ��̂悤�ɂ���K�v������B<BR>
+    ヒント：<BR>
+    倍精度実数xの比較演算は、丸め誤差を考慮して以下のようにする必要がある。<BR>
     <BR>
-    �@�@if( x == a ) �̑���ɁAif( fabs(x-a) &lt; fabs(a)*1.0e-15 )<BR>
-    �@�@if( x &lt;= a ) �̑���ɁAif( x &lt;= a+fabs(a)*1.0e-15 )<BR>
-    �@�@if( x &gt;= a ) �̑���ɁAif( x &gt;= a-fabs(a)*1.0e-15 )<BR>
+    　　if( x == a ) の代わりに、if( fabs(x-a) &lt; fabs(a)*1.0e-15 )<BR>
+    　　if( x &lt;= a ) の代わりに、if( x &lt;= a+fabs(a)*1.0e-15 )<BR>
+    　　if( x &gt;= a ) の代わりに、if( x &gt;= a-fabs(a)*1.0e-15 )<BR>
     <BR>
     </TD>
   </TR></TABLE>
 <BR>
 <BR>
-<FONT color="#800000">���d���[�v�F</FONT><BR>
-for�����d�A�O�d�ɏd�˂Ď��̂悤�ɏ������Ƃ��ł��܂��ifor���Ɍ��炸�A���鐧�䕶�̒��ɁA�ʂ̐��䕶�����X�Əd�˂Ă������Ƃ��ł��܂��j�B<BR>
+<FONT color="#800000">多重ループ：</FONT><BR>
+for文を二重、三重に重ねて次のように書くことができます（for文に限らず、ある制御文の中に、別の制御文を次々と重ねていくことができます）。<BR>
 <BR>
-<FONT color="#0000ff">�@�@�@for(�d�d)�o<BR>
-�@�@�@�@�@�d�d<BR>
-�@�@�@�@�@for(�d�d)�o<BR>
-�@�@�@�@�@�@�@�d�d<BR>
-�@�@�@�@�@�@�@for(�d�d)�o<BR>
-�@�@�@�@�@�@�@�@�@�d�d<BR>
-�@�@�@�@�@�@�@}<BR>
-�@�@�@�@�@}<BR>
-�@�@�@}<BR>
+<FONT color="#0000ff">　　　for(‥‥)｛<BR>
+　　　　　‥‥<BR>
+　　　　　for(‥‥)｛<BR>
+　　　　　　　‥‥<BR>
+　　　　　　　for(‥‥)｛<BR>
+　　　　　　　　　‥‥<BR>
+　　　　　　　}<BR>
+　　　　　}<BR>
+　　　}<BR>
 </FONT>
-<P><FONT color="#000099">[����]</FONT>�@�e�X�̃��[�v�̎n�܂�ƏI���𕪂���₷�����邽�߂ɁA��L���X�g�̂悤�ɁA���[�v���[���Ȃ�x���ƂɁA<FONT color="#ff0000">�������i�C���f���g�Aindentation�j</FONT>���s���܂��Bfor���ɂ����炸�A�n�܂��<FONT color="#0000ff">�o</FONT>�ƏI����<FONT color="#0000ff">�p</FONT>�̊Ԃ́A�K���擪��4�������x�̋󔒁i�܂���TAB�j�������i����������j�K����g�ɂ��Ă��������B<BR>
+<P><FONT color="#000099">[注意]</FONT>　各々のループの始まりと終わりを分かりやすくするために、上記リストのように、ループが深くなる度ごとに、<FONT color="#ff0000">字下げ（インデント、indentation）</FONT>を行います。for文にかぎらず、始まりの<FONT color="#0000ff">｛</FONT>と終わりの<FONT color="#0000ff">｝</FONT>の間は、必ず先頭に4文字程度の空白（またはTAB）をいれる（字下げする）習慣を身につけてください。<BR>
 <BR>
 <BR>
-���d���[�v�̎g�p��Ƃ��āA�Ⴆ�΁A<BR>
+多重ループの使用例として、例えば、<BR>
 <BR>
-<FONT color="#0000ff">�@�@int i,j,n;<BR>
-�@�@double x;<BR>
+<FONT color="#0000ff">　　int i,j,n;<BR>
+　　double x;<BR>
 <BR>
-�@�@n=10;<BR>
-�@�@for(i=0; i&lt;n; i++){<BR>
-�@�@�@�@for(j=0; j&lt;n; j++){<BR>
-�@�@�@�@�@�@x= i*n+j;<BR>
-�@�@�@�@�@�@printf(&quot;%4.0lf&quot;,x);<BR>
-�@�@�@�@}<BR>
-�@�@�@�@printf(&quot;\n&quot;);<BR>
-�@�@}<BR>
+　　n=10;<BR>
+　　for(i=0; i&lt;n; i++){<BR>
+　　　　for(j=0; j&lt;n; j++){<BR>
+　　　　　　x= i*n+j;<BR>
+　　　　　　printf(&quot;%4.0lf&quot;,x);<BR>
+　　　　}<BR>
+　　　　printf(&quot;\n&quot;);<BR>
+　　}<BR>
 </FONT><BR>
-�̃v���O���������s����ƌ��ʂ͂ǂ��Ȃ�܂����H�B<BR>
+のプログラムを実行すると結果はどうなりますか？。<BR>
 </P>
 <TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD BGCOLOR="#e1ffff"><B><FONT color="#000080">���K��� �T-�R </FONT></B>(Revised : 2015/06/11)<BR>
+    <TD BGCOLOR="#e1ffff"><B><FONT color="#000080">演習問題 ５-３ </FONT></B>(Revised : 2015/06/11)<BR>
     <BR>
-    �o�͂����L�̂悤�ɂȂ�悤�Ƀv���O���������ς��Ă��������Bfor���̃��[�v���[���Ȃ�x�ɁA�K���Ȏ��������{�����A�v���O�����ɂ��Ă��������B�܂��A�v���O�����̓���Əo�͌��ʂ��֘A�Â��Đ������ĉ������B<BR>
+    出力が下記のようになるようにプログラムを作り変えてください。for文のループが深くなる度に、適正な字下げを施した、プログラムにしてください。また、プログラムの動作と出力結果を関連づけて説明して下さい。<BR>
     <PRE>   31   32   33   34   35   36   37   38   39   40
    41   42   43   44   45   46   47   48   49   50
    51   52   53   54   55   56   57   58   59   60
@@ -230,10 +230,10 @@ for�����d�A�O�d�ɏd�˂Ď��̂悤�ɏ������Ƃ��ł��܂��ifor���Ɍ��炸�A���鐧�䕶
   101  102  103  104  105  106  107  108  109  110
   111  112  113  114  115  116  117  118  119  120
   121  122  123  124  125  126  127  128  129  130</PRE>
-    <B><FONT color="#800000">���W���F</FONT></B><BR>
+    <B><FONT color="#800000">発展問題：</FONT></B><BR>
     <BR>
-    �o�͂����L�̂悤�ɂȂ�悤�Ƀv���O���������ς��Ă��������B<BR>
-    �������A�R�d���[�v�ɂ��Ă��������B<BR>
+    出力が下記のようになるようにプログラムを作り変えてください。<BR>
+    ただし、３重ループにしてください。<BR>
     <PRE>   0    -1    -2    -3    -4    -5    -6    -7    -8    -9
  -10   -11   -12   -13   -14   -15   -16   -17   -18   -19
  -20   -21   -22   -23   -24   -25   -26   -27   -28   -29
@@ -270,28 +270,28 @@ for�����d�A�O�d�ɏd�˂Ď��̂悤�ɏ������Ƃ��ł��܂��ifor���Ɍ��炸�A���鐧�䕶
     </TD>
   </TR></TABLE>
 <BR>
-<FONT color="#008000"><B>�]�͂̂���l�͈ȉ��̖��ɂ����킵�Ă݂Ă��������B</B><BR>
+<FONT color="#008000"><B>余力のある人は以下の問題にも挑戦してみてください。</B><BR>
 </FONT><BR>
 <TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
   <TR>
-    <TD BGCOLOR="#e1ffff"><B><FONT color="#000080">���K���5-4�@�w���֐�</FONT></B><BR>
+    <TD BGCOLOR="#e1ffff"><B><FONT color="#000080">演習問題5-4　指数関数</FONT></B><BR>
     <BR>
-    �����̃e�[���[�W�J���ɏ]���āA�w���֐���<SUP>x</SUP>���v�Z����v���O�����������Ă݂Ă��������B<BR>
+    次式のテーラー展開式に従って、指数関数ｅ<SUP>x</SUP>を計算するプログラムをつくってみてください。<BR>
     <BR>
-    �@�@��<SUP>x</SUP>= �P�{���{��<SUP>2</SUP>/2!�{��<SUP>3</SUP>/3!�{�c<BR>
+    　　ｅ<SUP>x</SUP>= １＋ｘ＋ｘ<SUP>2</SUP>/2!＋ｘ<SUP>3</SUP>/3!＋…<BR>
     <BR>
-    �i�q���g�F����for���[�v�̃��[�v�ϐ��ɂ���Ηǂ��ł����H�j<BR>
+    （ヒント：何をforループのループ変数にすれば良いですか？）<BR>
     <BR>
-    �܂��Ax=1�̏ꍇ�ɂ��āAn�̒l��1����20�܂ł̂��ꂼ��̌v�Z���ʂƐ^�le=2.718281828459045...�Ƃ��r���ĉ������B<BR>
+    また、x=1の場合について、nの値が1から20までのそれぞれの計算結果と真値e=2.718281828459045...とを比較して下さい。<BR>
     <BR>
-    <FONT color="#800000"><B>���W���F</B></FONT><BR>
+    <FONT color="#800000"><B>発展問題：</B></FONT><BR>
     <BR>
-    ��=-5.5�̏ꍇ�ɂ��āA�^�l��<SUP>-5.5</SUP>��0.00408677�c�ƌ��ʂ��r���Ă݂Ă��������B���̏ꍇ�́A<BR>
-    �@�@�@ �P�@�@�@�@�@�@�@�@�@�@�@�@�@�P<BR>
-    ��<SUP>x</SUP>��<S> �@�@</S> �� <S>�@ �@ �@ �@ �@�@�@�@�@�@�@ �@ �@ �@ �@ �@ �@</S>.<BR>
-    �@�@�@ ��<SUP>-x</SUP>�@�@�@�P�{(-x)�{(-x)<SUP>2</SUP>/2!�{(-x)<SUP>3</SUP>/3!�{�c<BR>
+    ｘ=-5.5の場合について、真値ｅ<SUP>-5.5</SUP>＝0.00408677…と結果を比較してみてください。この場合は、<BR>
+    　　　 １　　　　　　　　　　　　　１<BR>
+    ｅ<SUP>x</SUP>＝<S> 　　</S> ＝ <S>　 　 　 　 　　　　　　　 　 　 　 　 　 　</S>.<BR>
+    　　　 ｅ<SUP>-x</SUP>　　　１＋(-x)＋(-x)<SUP>2</SUP>/2!＋(-x)<SUP>3</SUP>/3!＋…<BR>
     <BR>
-    �̌v�Z�����g�����ق����v�Z�덷���������ł��܂��B�ŏ��̌v�Z���Ō덷���傫���Ȃ�͉̂��̂ł����H�B<BR>
+    の計算式を使ったほうが計算誤差が小さくできます。最初の計算式で誤差が大きくなるのは何故ですか？。<BR>
     </TD>
   </TR></TABLE>
 <HR>

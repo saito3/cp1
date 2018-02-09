@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <META http-equiv="content-type" content="text/html; charset=Shift_JIS">
@@ -6,58 +6,58 @@
 <META name="Date" CONTENT="1/6/2012">
 <META name="Version" CONTENT="8.0.3720">
 <META http-equiv="Content-Style-Type" content="text/css">
-<TITLE>�O���t�B�b�N�X�v���O�����̃v���W�F�N�g�쐬�菇</TITLE>
+<TITLE>グラフィックスプログラムのプロジェクト作成手順</TITLE>
 </HEAD>
 <BODY BGCOLOR="#efefef" LINK="#0000ff" VLINK="#800080" STYLE="color:#000000">
 <HR>
 <DIV ALIGN=CENTER>
 <TABLE BORDER=0 WIDTH=100% BGCOLOR="#008000">
 <TR>
-<TD><FONT SIZE=5 COLOR="#ffffff" FACE="�l�r �S�V�b�N"><B><STRONG>�O���t�B�b�N�X�v���O�����̃v���W�F�N�g�쐬�菇</STRONG></B></FONT><FONT SIZE=6 COLOR="#ffffff" FACE="�l�r �S�V�b�N"> </FONT></TD>
+<TD><FONT SIZE=5 COLOR="#ffffff" FACE="ＭＳ ゴシック"><B><STRONG>グラフィックスプログラムのプロジェクト作成手順</STRONG></B></FONT><FONT SIZE=6 COLOR="#ffffff" FACE="ＭＳ ゴシック"> </FONT></TD>
 </TR>
 </TABLE>
 </DIV>
 <HR>
-<P>Eclipse���GDI���C�u�����[���g�����O���t�B�b�N�X�v���O�����i��P�R��A�P�S��̉ۑ�v���O�����j�����ɓ������āA�ȉ��̎菇�ɏ]���āA�v���W�F�N�g�t�@�C���̍쐬����ъ��ݒ���s���܂��B<BR>
+<P>Eclipse上でGDIライブラリーを使ったグラフィックスプログラム（第１３回、１４回の課題プログラム）を作るに当たって、以下の手順に従って、プロジェクトファイルの作成および環境設定を行います。<BR>
 <BR>
-<B><FONT color="#000099">(1)Eclipse��ł̃v���W�F�N�g�̐V�K�쐬</FONT></B><BR>
-�@���܂ł̃O���t�B�b�N�X�֐����g��Ȃ��ꍇ��<A href="intro-cp1.html">���l�̎菇</A>�i�c�[���`�F�[����MinGW GCC��I���j�ɏ]���āA�v���W�F�N�g��V�K�쐬����B<BR>
+<B><FONT color="#000099">(1)Eclipse上でのプロジェクトの新規作成</FONT></B><BR>
+　今までのグラフィックス関数を使わない場合と<A href="intro-cp1.html">同様の手順</A>（ツールチェーンはMinGW GCCを選択）に従って、プロジェクトを新規作成する。<BR>
 <BR>
-<B><FONT color="#000099">(2) �w�b�_�t�@�C���̃_�E�����[�h���y�[�X�g</FONT></B><BR>
-�@�w�b�_�t�@�C��gdi.h��<A href="gdi.h">����</A>����_�E�����[�h���āA�\�[�X�t�@�C���i�v���W�F�N�g��.c �j�������Ă���t�H���_�ɃR�s�[���y�[�X�g���Ă��������B<BR>
+<B><FONT color="#000099">(2) ヘッダファイルのダウンロード＆ペースト</FONT></B><BR>
+　ヘッダファイルgdi.hを<A href="gdi.h">ここ</A>からダウンロードして、ソースファイル（プロジェクト名.c ）が入っているフォルダにコピー＆ペーストしてください。<BR>
 <BR>
-<B><FONT color="#000099">(3)�w�b�_�t�@�C���̓ǂݍ���</FONT></B><BR>
-�@�E�v���W�F�N�g�G�N�X�v���[���E�B���h�E�ŁA�v���W�F�N�g���̃A�C�R����I������B<BR>
-�@�E�t�@�C�������t���b�V���i�܂���F5�{�^�����N���b�N�j�����s����i�v���W�F�N�g�G�N�X�v���[����gdi.h���\�������j<BR>
+<B><FONT color="#000099">(3)ヘッダファイルの読み込み</FONT></B><BR>
+　・プロジェクトエクスプローラウィンドウで、プロジェクト名のアイコンを選択する。<BR>
+　・ファイル→リフレッシュ（またはF5ボタンをクリック）を実行する（プロジェクトエクスプローラにgdi.hが表示される）<BR>
 <BR>
-<FONT color="#000099"><B>(4)���C�u�����̃����N�w��</B></FONT><IMG src="Libraryset.gif" width="405" height="313" border="0" align="right"><BR>
-�@�ȉ��̎菇�ɏ]���āA�O���t�B�b�N���C�u�����Fgdi32.lib �������N�w�肷��B<BR>
+<FONT color="#000099"><B>(4)ライブラリのリンク指定</B></FONT><IMG src="Libraryset.gif" width="405" height="313" border="0" align="right"><BR>
+　以下の手順に従って、グラフィックライブラリ：gdi32.lib をリンク指定する。<BR>
 <BR>
-�@�E�v���W�F�N�g�G�N�X�v���[���ŁA�v���W�F�N�g���A�C�R����I��(�v���W�F�N�g���̔w�i�F���ς������Ԃɂ���j����B<BR>
-�@�E���j���[�o�[��<FONT color="#0000ff">[�v���W�F�N�g]</FONT>�̒���<FONT color="#0000ff">[�v���p�e�B]</FONT>���N���b�N<BR>
-�@�i�܂��́A�v���W�F�N�g���A�C�R�����E�N���b�N�������̃��j���[����<FONT color="#0000ff">[�v���p�e�B]</FONT><FONT color="#000000">��I�ԁi</FONT>���j���[�̈�ԉ��ɉB��Ă���̂Œ��Ӂj�j<BR>
-�@<BR>
-�@�@���E�}�̃v���p�e�B�E�B���h�E���J���B<BR>
+　・プロジェクトエクスプローラで、プロジェクト名アイコンを選択(プロジェクト名の背景色が変わった状態にする）する。<BR>
+　・メニューバーの<FONT color="#0000ff">[プロジェクト]</FONT>の中の<FONT color="#0000ff">[プロパティ]</FONT>をクリック<BR>
+　（または、プロジェクト名アイコンを右クリックした時のメニューから<FONT color="#0000ff">[プロパティ]</FONT><FONT color="#000000">を選ぶ（</FONT>メニューの一番下に隠れているので注意））<BR>
+　<BR>
+　　→右図のプロパティウィンドウが開く。<BR>
 <BR>
-�@�J�����v���p�e�B�E�B���h�E���i�̃��j���[�ŁA<BR>
-�@�EC/C++�r���h��W�J���i���́����N���b�N�j�A[�ݒ�]��I���B<BR>
+　開いたプロパティウィンドウ左段のメニューで、<BR>
+　・C/C++ビルドを展開し（左の△をクリック）、[設定]を選択。<BR>
 <BR>
-�@�����̐ݒ�E�B���h�E�ŁA<BR>
-�@�EMinGW C Linker�́u���C�u�����v��I��<BR>
+　中央の設定ウィンドウで、<BR>
+　・MinGW C Linkerの「ライブラリ」を選択<BR>
 <BR>
-�@���C�u�����[��ʂ��J���B<BR>
-�@�E�E��̗ΐF��[�{]��I��ŁA<BR>
-�@<FONT color="#0000ff">gdi32</FONT><BR>
-�@�Ɠ��͂���B<BR>
+　ライブラリー画面が開く。<BR>
+　・右上の緑色の[＋]を選んで、<BR>
+　<FONT color="#0000ff">gdi32</FONT><BR>
+　と入力する。<BR>
 <BR>
-<B><FONT color="#000099">(5)�\���\�ȕ���</FONT></B><BR>
-�@�^�C�g���o�[�̕����iPROGRAM�Őݒ�j��AG_TEXT�֐���p���������ɂ́A���p�����i�A���t�@�x�b�g�p�����j�����łȂ��A�S�p�̓��{�ꕶ�����\���ł��܂��B</P>
-<P>(���j�{�v���O������Eclipse�̕����R�[�h��<FONT color="#0000ff">UTF-8</FONT>�ɐݒ肳��Ă��邱�Ƃ�O��ɂ��Ă��܂��B�[����PC��Eclipse�͏�����Ԃł��ł�<FONT color="#0000ff">UTF-8</FONT>�ɐݒ肳��Ă��܂��̂ŉ������Ȃ��đ��v�ł��B<FONT color="#0000ff">UTF-8</FONT>�ȊO�̕����R�[�h�iShift�@JIS�R�[�h�Ȃǁj���ݒ肳��Ă���ꍇ�́A�ȉ��̕��@�ɏ]���ĕύX���Ă��������i�������A���낢��ȃg���u���̂��ƂɂȂ�܂��̂Ŏ��M�̂Ȃ��l�͂��Ȃ��ł��������j�B<BR>
+<B><FONT color="#000099">(5)表示可能な文字</FONT></B><BR>
+　タイトルバーの文字（PROGRAMで設定）や、G_TEXT関数を用いた文字には、半角文字（アルファベット英数字）だけでなく、全角の日本語文字が表示できます。</P>
+<P>(注）本プログラムはEclipseの文字コードが<FONT color="#0000ff">UTF-8</FONT>に設定されていることを前提にしています。端末室PCのEclipseは初期状態ですでに<FONT color="#0000ff">UTF-8</FONT>に設定されていますので何もしなくて大丈夫です。<FONT color="#0000ff">UTF-8</FONT>以外の文字コード（Shift　JISコードなど）が設定されている場合は、以下の方法に従って変更してください（ただし、いろいろなトラブルのもとになりますので自信のない人はやらないでください）。<BR>
 <BR>
-���e�L�X�g�t�@�C���̃G���R�[�h�ݒ�<BR>
-���j���[�o�[��[<FONT color="#0000ff">�E�B���h�E</FONT>]���N���b�N�A[<FONT color="#0000ff">�ݒ�</FONT>]��I��ŁA�ݒ��ʂ��J���B<BR>
-[<FONT color="#0000ff">���</FONT>] �̉E�ׂɂ���O�p�}�[�N���N���b�N���ēW�J����郊�X�g�̒�����B[<FONT color="#0000ff">���[�N�X�y�[�X</FONT>]��I������B<BR>
-�J�������[�N�X�y�[�X��ʂ̃e�L�X�g�t�@�C���̃G���R�[�h����<FONT color="#0000ff">UTF-8</FONT>�@�ɐݒ肷��B<BR>
-�i�[����PC�̏ꍇ�A[<FONT color="#0000ff">�f�t�H���g</FONT>]�Ƀ`�F�b�N�������Ă��āA�f�t�H���g�̃R�[�h��<FONT color="#0000ff">UTF-8</FONT>�̐ݒ�ɂȂ��Ă���j�B</P>
+○テキストファイルのエンコード設定<BR>
+メニューバーの[<FONT color="#0000ff">ウィンドウ</FONT>]をクリック、[<FONT color="#0000ff">設定</FONT>]を選んで、設定画面を開く。<BR>
+[<FONT color="#0000ff">一般</FONT>] の右隣にある三角マークをクリックして展開されるリストの中から。[<FONT color="#0000ff">ワークスペース</FONT>]を選択する。<BR>
+開いたワークスペース画面のテキストファイルのエンコード欄を<FONT color="#0000ff">UTF-8</FONT>　に設定する。<BR>
+（端末室PCの場合、[<FONT color="#0000ff">デフォルト</FONT>]にチェックが入っていて、デフォルトのコードが<FONT color="#0000ff">UTF-8</FONT>の設定になっている）。</P>
 </BODY>
 </HTML>
