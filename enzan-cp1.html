@@ -1,0 +1,287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>演算子一覧</TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef">
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+<TR>
+<TD WIDTH=100%><DIV ALIGN=CENTER><FONT SIZE=5 COLOR="#ffffff"><B>演算子一覧</B></FONT></DIV></TD>
+</TR>
+</TABLE>
+<P></P>
+<TABLE bgcolor="#ffffff" height="73" border="1">
+  <TR>
+    <TD><A HREF="#math"><FONT COLOR="#0000ff">算術演算子</FONT></A></TD>
+    <TD><A HREF="#compare"><FONT COLOR="#0000ff">比較演算子</FONT></A></TD>
+    <TD><A HREF="#bit"><FONT COLOR="#0000ff">ビット演算子</FONT></A></TD>
+    <TD><A HREF="#logic"><FONT COLOR="#0000ff">論理演算子</FONT></A></TD>
+    <TD><A href="#subst"><FONT COLOR="#0000ff">代入演算子</FONT></A></TD>
+    <TD><A href="#inc"><FONT color="#0000ff">インクリメンタル演算子</FONT></A></TD>
+  
+    <TD><A href="#cond"><FONT color="#0000ff">条件演算子</FONT></A></TD>
+    <TD><A href="#cast"><FONT color="#0000ff">型変換演算子</FONT></A></TD>
+    <TD><A href="#size"><FONT color="#0000ff">sizeof演算子</FONT></A><BR></TD>
+    <TD><A href="#seq"><FONT color="#0000ff">順次演算子</FONT></A></TD>
+  </TR>
+</TABLE>
+<BR>
+<HR><BR>
+<A NAME="math"></A><STRONG>算術演算子</STRONG><BR>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">　表記　</FONT></TD>
+    <TD BGCOLOR="#dfdfff">　意味</TD>
+    <TD BGCOLOR="#dfdfff">備考</TD>
+  </TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a*b</TD>
+    <TD bgcolor="#bfebff" align="left">a×b　（aにbをかける）</TD>
+    <TD bgcolor="#bfebff" align="center"></TD>
+  </TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a/b</TD>
+    <TD bgcolor="#bfebff" align="left">a÷b 　 (aをbで割る)</TD>
+    <TD bgcolor="#bfebff" align="center"></TD>
+  </TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a+b</TD>
+    <TD bgcolor="#bfebff" align="left">a+b　（aにbを加える)</TD>
+    <TD bgcolor="#bfebff" align="center"></TD>
+  </TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a-b</TD>
+    <TD bgcolor="#bfebff" align="left">a-b　（aからbを引く）</TD>
+    <TD bgcolor="#bfebff" align="center"></TD>
+  </TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a%b</TD>
+    <TD bgcolor="#bfebff" align="left">a÷bの剰余 　(aをbで割ったときの余り)</TD>
+    <TD bgcolor="#bfebff" align="center">a,bはint型</TD>
+  </TR><TR>
+    <TD bgcolor="#bfebff" align="center">-a</TD>
+    <TD bgcolor="#bfebff" align="left">-a　　（aを符号反転した値）</TD>
+    <TD bgcolor="#bfebff" align="center">単項演算子</TD>
+  </TR></TABLE><BR>
+<HR><BR>
+<A NAME="compare"></A><STRONG>比較演算子</STRONG><BR>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">表記</FONT></TD><TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">　意味</FONT></TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a&lt;b</TD>
+    <TD BGCOLOR="#bfebff">aがbより小さいとき「真」</TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a&lt;=b</TD>
+    <TD BGCOLOR="#bfebff">aがbより小さいか或いはaとbが等しいとき「真」</TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a==b</TD>
+    <TD BGCOLOR="#bfebff">aとbが等しいとき「真」</TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a&gt;b</TD>
+    <TD BGCOLOR="#bfebff">aがbより大きいとき「真」</TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a&gt;=b</TD>
+    <TD BGCOLOR="#bfebff">aがbより大きいか或いはaとbが等しいとき「真」</TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a!=b</TD>
+    <TD BGCOLOR="#bfebff">aとbが等しくないとき「真」</TD>
+</TR></TABLE>
+<HR>
+<BR>
+<HR>
+<P><A NAME="bit"></A><STRONG>ビット演算子、シフト演算子</STRONG></P>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">表記</FONT></TD>
+    <TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">　意味</FONT></TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a&amp;b </TD>
+    <TD BGCOLOR="#bfebff">aとbのビット単位のAND</TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a|b</TD>
+    <TD BGCOLOR="#bfebff">aとbのビット単位のOR</TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a^b</TD>
+    <TD BGCOLOR="#bfebff">aとbのビット単位の排他的OR</TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a&lt;&lt;b</TD>
+    <TD BGCOLOR="#bfebff">aをbビット分、左へシフト</TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">a&gt;&gt;b</TD>
+    <TD BGCOLOR="#bfebff"><span style="color: rgb(0, 0, 0); font-family: メイリオ; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none;"></span>aをbビット分、右へシフト</TD>
+</TR>
+<TR>
+    <TD bgcolor="#bfebff" align="center">~a</TD>
+    <TD BGCOLOR="#bfebff">aの各ビットを反転</TD>
+</TR>
+
+</TABLE>
+<HR>
+<P>
+<A NAME="logic"></A><B>論理演算子</B></P>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff">表記</TD>
+    <TD BGCOLOR="#dfdfff">意味</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">a&amp;&amp;b</TD>
+    <TD BGCOLOR="#bfebff">aとbが共に真のとき「真」</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">a||b</TD>
+    <TD BGCOLOR="#bfebff">aまたはbが真のとき「真」</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">!a</TD>
+    <TD BGCOLOR="#bfebff">aが偽のとき「真」、aが真のとき「偽」</TD>
+</TR>
+</TABLE>
+<HR>
+<P><A NAME="subst"></A><STRONG>代入演算子</STRONG></P>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff">表記</TD>
+    <TD BGCOLOR="#dfdfff">意味</TD>
+</TR><TR>
+    <TD BGCOLOR="#bfebff">a=b</TD>
+    <TD BGCOLOR="#bfebff">bをaに代入する</TD>
+  </TR><TR>
+<TD BGCOLOR="#bfebff">a+=b</TD>
+    <TD BGCOLOR="#bfebff">a+bをaに代入する</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">a-=b</TD>
+    <TD BGCOLOR="#bfebff">a-bをaに代入する</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">a*=b</TD>
+    <TD BGCOLOR="#bfebff">a*bをaに代入する</TD>
+</TR><TR>
+    <TD BGCOLOR="#bfebff">a/=b</TD>
+    <TD BGCOLOR="#bfebff">a/bをaに代入する</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">a%=b</TD>
+    <TD BGCOLOR="#bfebff">a/bの剰余をaに代入する</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">a&lt;&lt;=b</TD>
+    <TD BGCOLOR="#bfebff">aを左にbビットシフトする</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">a&gt;&gt;=b</TD>
+    <TD BGCOLOR="#bfebff">aを右にbビットシフトする</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">a&amp;=b</TD>
+    <TD BGCOLOR="#bfebff">a&amp;bをaに代入する</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">a^=b</TD>
+    <TD BGCOLOR="#bfebff">a^bをaに代入する</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">a|=b</TD>
+    <TD BGCOLOR="#bfebff">a|bをaに代入する</TD>
+  </TR>
+
+</TABLE>
+<HR>
+<P>
+<A NAME="inc"></A><STRONG>インクリメンタル、デクリメンタル演算子</STRONG></P>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff">表記</TD>
+    <TD BGCOLOR="#dfdfff">意味</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">++aまたはa++</TD>
+    <TD BGCOLOR="#bfebff">a=a+1を表す</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">--aまたはa--</TD>
+    <TD BGCOLOR="#bfebff">a=a-1を表す</TD>
+</TR>
+</TABLE>
+<HR><BR>
+<A NAME="cond"></A><STRONG>条件演算子</STRONG><BR>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff">表記</TD><TD BGCOLOR="#dfdfff">意味</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">　a ? b : c　</TD><TD BGCOLOR="#bfebff">aが「真」ならbを実行、aが「偽」ならcを実行</TD>
+</TR></TABLE><BR>
+<HR>
+<P><A NAME="cast"></A><STRONG>型変換演算子</STRONG></P>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff">表記</TD>
+    <TD BGCOLOR="#dfdfff">意味</TD>
+</TR><TR>
+    <TD BGCOLOR="#bfebff">b=(type)a</TD>
+    <TD BGCOLOR="#bfebff">aをtypeに指定した型に変換してbに代入<BR>
+    ここでtypeはint,float,double,char など</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">b=(float)a</TD>
+    <TD BGCOLOR="#bfebff">aをfloat型に変換してbに代入</TD>
+  </TR><TR>
+<TD BGCOLOR="#bfebff">b=(type*)a</TD>
+    <TD BGCOLOR="#bfebff">aをtypeに指定した型のポインタに変換してbに代入</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">b=(char*)a</TD>
+    <TD BGCOLOR="#bfebff">aを文字型のポインタに変換してbに代入</TD>
+</TR>
+</TABLE>
+<BR>
+<HR>
+<P><A NAME="size"></A><STRONG>sizeof演算子</STRONG></P>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff">表記</TD>
+    <TD BGCOLOR="#dfdfff">意味</TD>
+</TR><TR>
+    <TD BGCOLOR="#bfebff">sizeof a</TD>
+    <TD BGCOLOR="#bfebff">変数aのサイズ</TD>
+  </TR><TR>
+<TD BGCOLOR="#bfebff">sizeof(type）</TD>
+    <TD BGCOLOR="#bfebff">typeに指定した型のサイズ</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">sizeof (int)</TD>
+    <TD BGCOLOR="#bfebff">int型のサイズ</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">sizeof (array)</TD>
+    <TD BGCOLOR="#bfebff">配列arrayのサイズ</TD>
+</TR>
+
+</TABLE>
+<HR>
+<P><A name="seq"></A><STRONG>順次演算子</STRONG></P>
+<TABLE border="1">
+<TBODY>
+    <TR>
+<TD bgcolor="#dfdfff">表記</TD>
+    <TD bgcolor="#dfdfff">意味</TD>
+</TR>
+<TR>
+<TD bgcolor="#bfebff">式1,式2</TD>
+    <TD bgcolor="#bfebff">, (カンマ)の左の式１を評価し次に右の式2を評価する</TD>
+</TR>
+  </TBODY>
+</TABLE>
+<HR>
+</BODY>
+</HTML>

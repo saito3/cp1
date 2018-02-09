@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>第6回</TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080"><BR>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+<TR>
+<TD WIDTH=100%><FONT size="+2"><B><FONT color="#ffffff">プログラミングおよび演習 ＮＯ．６</FONT></B></FONT></TD>
+</TR>
+</TABLE>
+<DIV ALIGN=RIGHT>Last-Modified: 2016.06.24<BR></DIV>
+<HR><BR>
+先週と先々週は、if文とfor文の２つの制御文を勉強しました。今日はこれと類似の働きをする制御文として、<BR><P>　<FONT color="#000080">①switch文（選択処理）<BR>
+　②while文（反復処理）</FONT><P>の２つを練習します。 <HR>
+<TABLE BORDER=0 WIDTH=100%>
+<TR>
+<TD BGCOLOR="#000080" WIDTH=100%><FONT color="#ffffff"><B>switch文</B></FONT></TD>
+</TR>
+</TABLE>
+<BR>
+switch文はｉｆ文と同様に条件分岐の目的で使う制御文です。<BR>
+<TABLE ALIGN=RIGHT>
+<TR>
+<TD><IMG SRC="cp1-6-1.gif" ALT="" WIDTH=379 HEIGHT=255></TD>
+</TR>
+</TABLE>
+<BR>
+　<FONT color="#0000ff">switch(変数){<BR>
+<BR>
+　　 case 定数1:<BR>
+　　 　　文１;<BR>
+　　 　　break;<BR>
+<BR>
+　　 case 定数2:<BR>
+　　 　　文２; <BR>
+　　 　　break;<BR>
+　　 　　‥‥‥<BR>
+　　 default:<BR>
+　　 　　文３;<BR>
+　　　　　break;<BR>
+　}</FONT><BR>
+<P>は変数の値を判断し、変数の値が定数１なら文１、定数２なら 文２、それ以外なら文３を実行する約束で使います。<BR>
+例えば、キーボードから入力した文字によって（メニューを選択）、結果を出力するプログラムは次のようになります。<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
+<TR>
+<TD><B><FONT color="#000080">例 6-1　キー入力によって処理を選択する</FONT></B><BR>
+<PRE>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    char c;
+
+    printf(&quot;\na,b,cのどれかを入れてください&quot;);
+    fflush(0);
+    scanf(&quot;%c&quot;, &amp;c);
+
+    switch(c){
+        case 'a':
+            printf(&quot;aが入力されました。\n&quot;);
+            break;
+        case 'b':
+            printf(&quot;bが入力されました。\n&quot;);
+            break;
+        case 'c':
+            printf(&quot;cが入力されました。\n&quot;);
+            break;
+        default:
+            printf(&quot;a,b,c以外の文字が入力されました。\n&quot;);
+            break;
+    }
+
+    return(0);
+}</PRE>
+</TD></TR></TABLE><BR>
+以下の例6-2 はキーボードから1+3や4-2のように計算式を入力して 演算子が＋か－かを判断して、所定の演算を行うプログラムです。 その演算子の条件判断にswitch文を使っています。<BR><BR><HR><BR><TABLE BORDER WIDTH=100% BGCOLOR="#ffffff"><TR><TD><B><FONT color="#000080">例 6-2　算術式を入力して計算する（switch文の練習）</FONT></B><BR><PRE>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int a,b;
+    char op;
+    
+    printf(&quot;計算式を入力してください --&gt; &quot;);
+    fflush(0);
+    scanf(&quot;%d%c%d&quot;, &amp;a, &amp;op, &amp;b);
+    
+    switch(op){
+        case '+':
+            printf(&quot;%d%c%d=%d\n&quot;, a, op, b, a+b);
+            break;
+        case '-':
+            printf(&quot;%d%c%d=%d\n&quot;, a, op, b, a-b);
+            break;
+        default: 
+            printf(&quot;演算子は加減算だけです。式を確認して下さい。\n&quot;);
+            break;
+    }
+
+    return(0);
+}</PRE></TD></TR></TABLE><BR><BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD><B><FONT color="#000080">演習問題　6-1</FONT></B>(Revised : 2015/06/18)<BR>
+    <BR>例6-2を、3つの変数a,b,cの間の加減算<BR>
+    <BR>
+    a+b+c<BR>
+a+b-c<BR>
+a-b+c<BR>
+a-b-c<BR>
+    <BR>
+    が行えるようにプログラムを変更し、プログラム全体の動作を説明しなさい。なお、計算誤差が小さくなるように全ての変数をdoubleで宣言し、かつ計算を行いなさい。レポートには、演算子ごとに、a,b,cの組合せを2通り以上試した結果について示し、必ず手計算の結果と計算結果を比較すること。また、switch文の構造を分かりやすくするために、適正な字下げ処理を施したリストを示すこと。<BR>
+    <BR>
+    ヒント：　switch文を二重にして作る。その際、上位のswitch文にもbreak文を忘れないようにする。<BR>
+    <BR>
+    </TD></TR></TABLE><BR>
+<HR>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080"><TR><TD>
+<FONT color="#ffffff"><B>while文</B></FONT></TD></TR></TABLE>
+<BR>
+while文はfor文のように反復処理を行う場合に使います。
+<TABLE ALIGN=RIGHT><TR><TD><IMG SRC="cp1-6-2.gif" ALT="" WIDTH=172 HEIGHT=214></TD></TR></TABLE>
+<BR><P>　while(条件式){<BR>
+　　 　文１;<BR>
+　　 　文２;<BR>
+　　 　‥‥;<BR>
+　}<BR>
+
+
+
+<P>は条件式を判断し、条件式が成立していれば｛ ｝の中の文を実行します。<BR>
+例えば、</P>
+<FONT color="#0000ff">　i=0;<BR>
+　while(i&lt;10){<BR>
+　　　文１；<BR>
+　　　文２；<BR>
+　　　i++;<BR>
+　}</FONT><BR>
+<P>は、{　}の中の文１と文２の処理を10回繰り返します。これは、先週習ったfor文で</P>
+<FONT color="#0000ff">　for(i=0; i&lt;10; i++){<BR>
+　　　文１；<BR>
+　　　文２；<BR>
+　}
+</FONT><BR>
+<P>
+と書くのと同じです。<BR><BR>
+以下の例6－3はキーボードから入力した文字が大文字なら小文字へ、 小文字なら大文字へ変換するプログラムです。while文を使って入力した文字が
+コントロールZ（終了コード：EOF）でなければ、変換処理をいつまでも繰り返します。 一方、コントロールZの場合は処理を終了します。ただ１回だけ実行するのではなく、一定の働きをする処理を、
+何回も繰り返し実行したい場合、このようなプログラムを作れば良いことがわかります。<HR>
+<BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff"><TR><TD><B><FONT color="#000080">例 6-3 大文字、小文字を変換するプログラム（while文の練習）</FONT></B><BR>
+
+<PRE>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main(void)
+{
+    char c;
+
+    printf(&quot;\ninput character: &quot;); 
+    fflush(0);
+    c=getchar();
+
+    while(c != EOF){
+        if(isupper(c)){
+            printf(&quot;%c ---&gt; %c&quot;,c,tolower(c));
+            printf(&quot;\ninput character: &quot;);
+        }else if(islower(c)){
+            printf(&quot;%c ---&gt; %c&quot;,c,toupper(c));
+            printf(&quot;\ninput character: &quot;);
+        }
+        fflush(0);
+        c=getchar();
+    }
+
+    return(0);
+}</PRE></TD></TR></TABLE>
+<BR>
+<HR>
+<BR>
+<FONT color="#000080"><B>補足説明</B><BR>
+<B>◎EOF</B></FONT><BR>
+while文の中に<FONT color="#0000ff">EOF</FONT>という記号が使われていますが、これはコンパイラが予め用意している定数でWINDOWSの場合は<FONT color="#0000ff">CTRL+Z</FONT>、MACやLINUXの場合は<FONT color="#0000ff">CTRL+D</FONT>をキーボードから入力したときの終了コードを表します。<BR>
+<BR>
+ただし、Eclipseでプログラムを実行させた場合は、<FONT color="#0000ff">CTRL+Z</FONT>　をEOFコードとして 認識してくれません。このため、Eclipseコンソール画面の終了ボタン（赤い四角ボタン）を押してプログラムを強制終了させてください。<BR>
+<BR>
+<FONT color="#0000ff">CTRL+Z</FONT>を認識させるようにするには、ターミナル画面（コマンドプロンプト画面）上でプログラムを実行してください。<BR>
+<BR>
+ターミナル画面でのプログラムの実行は、 <BR>
+<BR>
+　<FONT color="#0000ff">ワークスペースフォルダ\プロジェクト名フォルダ\Debug</FONT><BR>
+<P>のフォルダをエクスプローラで開いた後、実行ファイル（プロジェクト名.exeの名前のファイル）をクリックすればできます。<BR>
+<BR>
+<BR>
+<B><FONT color="#000080">◎文字を扱う標準関数</FONT></B><BR>
+今まで、コンパイラが予め用意している標準関数として、 scanf()、printf()の入出力関数や、exp(),sqrt(),sin(),cos()などの算術関数を習ってきました。<BR>
+これらの関数を使うときは、 プログラムの先頭部分で各々</P>
+<P>　<FONT color="#0000ff">#include &lt;stdio.h&gt;<BR>
+　#include &lt;math.h&gt;</FONT></P>
+<P>のように、関数に対応したヘッダファイルをインクルードする必要があることに注意してください。<BR>
+上記の例題では、新しく<FONT color="#0000ff">getchar()</FONT>という文字入力関数が使われていますが、<FONT color="#0000ff">stdio.h</FONT>のヘッダファイルをインクルードする必要があります。<BR>
+この場合</P>
+　<FONT color="#0000ff">c=getchar()</FONT>;<BR>
+<P>とすると、キーボードから変数ｃに一文字入力する働きをします。上記の文は</P>
+　<FONT color="#0000ff">scanf(“%c”,&amp;c);</FONT><BR>
+<P>としたのと同じ働きをします。<BR><BR>
+例6-3では、その他に<FONT color="#0000ff">islower(),isupper()</FONT>と<FONT color="#0000ff">tolower(),toupper()</FONT>の4つの文字関数を使っています。各々は、</P>
+　<FONT color="#0000ff">islower(c</FONT>):　cが小文字なら真値1を返す。<BR>
+　<FONT color="#0000ff">isupper(c)</FONT>:　cが大文字なら真値1を返す。<BR>
+　<FONT color="#0000ff">tolower(c)</FONT>:　cを小文字に変換する。<BR>
+　<FONT color="#0000ff">toupper(c</FONT>):　cを大文字に変換する。<BR>
+<P>のような働きをします。これらの関数を使う時は、ヘッダファイル<FONT color="#0000ff">ctype.h</FONT> をインクルードする必要があります。<HR>
+<BR>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080"><TR><TD><B><FONT color="#ffffff">do while文</FONT></B></TD></TR></TABLE>
+<BR>
+<TABLE ALIGN=RIGHT><TR><TD><IMG SRC="cp1-6-3.gif" ALT="" WIDTH=208 HEIGHT=339></TD></TR></TABLE>
+もう一つの反復処理制御文に、do while文があります。while文とよく似ていますが、while文がループの最初に条件判断を行うのに対して、
+do while文はループの最後で条件判断を行います。
+<P>　<FONT color="#0000ff">do{<BR>
+　　　文１;<BR>
+　　　文２;<BR>
+　　　‥‥;<BR>
+　}while(条件式);<BR>
+</FONT></P>
+<P>do while文は、キー入力の値を判断して次の処理に進みたいプログラムを作るのに適しています。<BR><BR>
+例えば、例6-2のキー入力部分は次のように改良することができます。</P>
+<FONT color="#0000ff">　do{<BR>
+　　　printf(&quot;\n計算式を入力してください --&gt; &quot;);<BR>
+　　　fflush(0);<BR>
+　　　scanf(&quot;%d%c%d&quot;, &amp;a, &amp;op, &amp;b);<BR>
+　}while(op!='+' &amp;&amp; op!='-');<BR>
+</FONT><BR>
+<P>この場合、'＋'または'-'の演算記号を入力されるまで、入力待ちを繰り返します。'＋'または'-'が入力されて始めて、次の処理に進みます。
+<HR>
+<BR>
+<B>■<FONT color="#000080">無限ループ</FONT></B><BR><BR>
+例えば、電卓を考えてみると、電卓のプログラムは電源をＯＦＦにするまで、何回も実行できます。 これは、普段はキー入力待ちになっていて、必要な計算処理を何回も繰り返すようなプログラムで実現できます。
+上記例6-3のようなプログラムは、特定のキー入力があるまで、一連の実行文を何回も実行するのに使いました。 無限ループは、もっと単純な考え方にたって、条件に関わらずある特定の処理を何回でも（無限回）繰り返す場合に使います。<BR><BR>
+<FONT color="#000099">◎while文による無限ループ</FONT><BR>
+例えば、<BR>
+　<BR>
+　<FONT color="#0000ff">while(1){<BR>
+　　　文１;<BR>
+　　　文２;<BR>
+　　　‥‥<BR>
+　}</FONT> <BR>
+<P>のようにすると、while文の()の中の条件式が常に１ですから、｛　｝の中の処理を永遠に繰り返すことになります。 ただし、このままではいつまでたってもプログラムが終了しません。<BR>
+<BR>
+Eclipse上で実行している場合は、コンソール画面の停止ボタンを押して強制終了させてください。<BR>
+<BR>
+一方、ターミナル画面で実行した場合、CTRL＋Cのキーを入力すると、 強制的にプログラムの実行を終らせることができます。<BR>
+これらの強制終了キーは、間違ってプログラムが暴走してしまった場合にも使うことができます。<BR>
+<BR>
+無限ループは次のように、for文やdo while文を用いても実現できます。<BR><BR>
+<FONT color="#000099">◎for文による無限ループ</FONT></P>
+　<FONT color="#0000ff">for( ; ; ){<BR>
+　　　文１;<BR>
+　　　文２;<BR>
+　　　‥‥<BR>
+　}<BR>
+</FONT><BR>
+<FONT color="#000099">◎do while文による無限ループ</FONT><BR>
+<BR>
+<FONT color="#0000ff">　do {<BR>
+　　　文１;<BR>
+　　　文２;<BR>
+　　　‥‥<BR>
+　}while(1);<BR></FONT>
+<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD><B><FONT color="#000080">演習問題 6-2</FONT></B> (Revised : 2015/06/18) <BR>
+    <BR>
+    演習問題 5-1のプログラムを無限ループを使って何回も実行できるように改良せよ。レポートには適正な字下げ処理を施したリストを示すこと。さらにプログラムの動作を説明せよ。<BR>
+    <BR>
+    </TD></TR></TABLE>
+<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD><B><FONT color="#000080">演習問題 6-3</FONT></B> (Revised : 2016/06/16)<BR>
+    <BR>
+    (1)前回の演習問題5-3の前半の二重ループを今週習ったwhile文とdo while文にそれぞれ書き換えてみてください。その際、二つのfor文を両方とも書き換えることと、演習問題5-3と同じ出力が出るように注意をして書き換えて下さい。また、ループが深くなるごとに適正な字下げ処理をしてください。<BR>
+    <BR>
+    (2)上記(1)の例は、規則的に１づつ増えるループ変数i,jを条件判断に使って、特定の回数の繰り返し処理を行う繰り返し文です。このような場合は、より短いコードで簡潔に記述できるという意味で、for文が適していると言えます。その一方で、例6-3のようにキーボードからの入力値に応じて条件判断を行なうような処理の場合は、while文もしくはdo
+    while文が適していることになります。後者の場合、while文とdo while文の各々に長短があります。while文が便利になる場合と、反対にdo
+    while文が便利になる場合について、各々の例をあげて考察してください。<BR>
+    <BR>
+    </TD></TR></TABLE>
+<BR>
+<P><B>■<FONT color="#000080">キーボードからの文字入力を繰り返す際の注意</FONT></B><BR>
+<BR>
+例6-1のプログラムを何回も実行できるようにするには、プログラム全体をwhile(1)の無限ループの中に入れて、以下のようにすればよいことになります。
+<BR>
+<BR>
+<FONT color="#000080">・例6-1のプログラムの変更 </FONT><BR>
+<BR>
+<FONT color="#0000ff">while(1){<BR>
+　　printf(&quot;\na,b,cのどれかを入れてください&quot;); <BR>
+　　fflush(0); <BR>
+　　scanf(&quot;%c&quot;, &amp;c);<BR>
+<BR>
+　　switch(c){ <BR>
+　　　　case 'a':<BR>
+　　　　　　printf(&quot;aが入力されました。\n&quot;);<BR>
+　　　　　　break；<BR>
+　　　‥‥<BR>
+　　　‥‥<BR>
+　　}<BR>
+}</FONT>
+<P>ところが、上記のプログラムを実行すると、ループ内の2回目以降のscanfによる文字入力がうまくいかなくなるトラブルが発生します。それは次のような原因によるものです。実は、キーボードから文字'a'を入力するために</P>
+<DL>
+  <DT><FONT color="#0000ff">　a Enter</FONT>
+</DL>
+<P>と打ち込んだ場合、</P>
+<DL>
+  <DT><FONT color="#0000ff">　'a'と改行コード</FONT>(LF：整数型で10の数)
+</DL>
+<P>の2文字が、コンピュータのキーボードバッファという場所に蓄えられます。プログラムの中で、最初に</P>
+<DL>
+  <DT>　<FONT color="#0000ff">scanf(&quot;%c&quot;, &amp;c);</FONT>
+</DL>
+<P>が実行された場合は、キーボードバッファの文字'a'が文字型変数ｃに正しく読み込みまれます。この時、文字'a'はキーボードバッファから消去されます。しかし、改行コード(LF)は、キーボードバッファに残ったままです。この状態で、無限ループの2回目にキーボードバッファから文字を読み込んだ場合、上記の１回目のキー入力で、キーボードバッファに残っている、改行コードLFを読んでしまいます。2回目にキーボードから入力した本来の文字を読んでくれません。<BR>
+<BR>
+この問題は、以下の(i),(ii),(iii)の何れかの方法により回避することができます。</P>
+<P> (i) fflush<FONT color="#0000ff">(stdin)</FONT>を呼び出して、キーボードバッファーを初期化する<BR>
+<BR>
+<FONT color="#0000ff">　fflush(stdin); <BR>
+　scanf(&quot;%c&quot;, &amp;c); </FONT><FONT color="#000000">（または </FONT><FONT color="#0000ff">c=getchar();</FONT><FONT color="#000000"> でもよい)<BR>
+</FONT><BR>
+　のように、scanf()の前に、fflush(stdin)を入れます。<BR>
+    <BR>
+(ii) ダミー変数に、改行コードを空読みさせる</P>
+<DL>
+  <DT>　<FONT color="#0000ff">scanf(&quot;%c%c&quot;, &amp;c,&amp;d);</FONT><BR>
+  <DT>として、別に用意した文字型変数 d に改行コードを空読みさせてください。<BR>
+  或いは、空読みの部分を別にして、<BR>
+  <DT>　<FONT color="#0000ff">scanf(&quot;%c&quot;, &amp;c); </FONT>
+  <DT>の後に、
+  <DT><FONT color="#0000ff">　scanf(&quot;%c&quot;, &amp;d);</FONT>　（または<FONT color="#0000ff">　getchar();</FONT>でもよい）
+</DL>
+<P>を付け加えても同じことができます。</P>
+<P>(iii) scanfの書式%cの前に空白を挿入する</P>
+<P>　<FONT color="#0000ff">scanf(&quot; %c&quot;, &amp;c);</FONT><BR>
+<BR>
+のようにしても、結果的に改行コードを空読みさせることができます。<BR>
+<BR>
+次の演習問題6-4は以上の点に留意してやってみてください。<BR>
+</P>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD><FONT color="#000080"><B>
+演習問題　6-４</B> </FONT>（余力のある人へ）(Revised : 2015/06/25)<BR>
+<BR>
+    (1)　<FONT color="#0000ff">1+2-5‥‥</FONT> という演算を行うために、<BR>
+    以下のように、+または-の演算子、数値、Enterキーの順に入力すると、答が逐次表示されるプログラムを無限ループを使って作って下さい（電卓風のプログラム）。<BR>
+    <BR>
+    　<FONT color="#ff0000">&gt;</FONT><FONT color="#ff0000">0</FONT><FONT color="#0000ff"><U>+1Enter</U></FONT><BR>
+<BR>
+    　<FONT color="#ff0000">&gt;1</FONT><FONT color="#0000ff"><U>+2Enter</U></FONT><BR>
+<BR>
+    　<FONT color="#ff0000">&gt;3</FONT><FONT color="#0000ff"><U>-5Enter</U></FONT><BR>
+<BR>
+    　<FONT color="#ff0000">&gt;-2</FONT><FONT color="#0000ff"><U>‥‥</U></FONT><BR>
+    <BR>
+    ここで、下線付きの青字はキーボードから入力した文字、赤字は画面に出力される文字を表す。<BR>
+    <BR>
+    (2) さらに以下のように掛け算、割り算も出来るプログラムにしてください。<BR>
+    <BR>    　<FONT color="#ff0000">&gt;0</FONT><U><FONT color="#0000ff">+1Enter</FONT></U><BR>
+<BR>
+    　<FONT color="#ff0000">&gt;1</FONT><FONT color="#0000ff"><U>*4Enter</U></FONT><BR>
+<BR>
+    　<FONT color="#ff0000">&gt;4</FONT><FONT color="#0000ff"><U>-20Enter</U></FONT><BR>
+    <BR>    　<FONT color="#ff0000">&gt;-16</FONT><FONT color="#0000ff"><U>/4Enter</U></FONT><BR>
+<BR>
+    　<FONT color="#ff0000">&gt;-4</FONT><FONT color="#0000ff"><U>‥‥</U></FONT><BR>
+    <BR>
+    <BR>
+    <FONT color="#000099">[補足説明]　</FONT><BR>
+    例6-2を単純に無限ループで囲うだけでは不満足です。上記のように表示させるためには、もう一工夫してもらう必要があります。どのようにプログラムを書き換えればよいか考えてみてください。<BR>
+    <BR>
+    </TD></TR></TABLE>
+<BR>
+</BODY></HTML>

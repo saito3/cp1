@@ -1,0 +1,598 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>第9回</TITLE>
+</HEAD>
+<BODY bgcolor="#efefef" text="#000000" link="#0000ff" vlink="#800080">
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+  <TR>
+    <TD WIDTH=100%><FONT SIZE=5 COLOR="#ffffff" FACE="ＭＳ ゴシック"><B>プログラミングおよび演習 ＮＯ．９</B></FONT></TD>
+  </TR></TABLE>
+<BR>
+<DIV ALIGN=RIGHT>Last-Modified: 2014.10.20</DIV>
+<HR><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+  <TR>
+    <TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ ゴシック"><B>関数</B></FONT></TD>
+  </TR></TABLE><BR>
+今日は関数の使い方を習います。<BR>
+プログラムの中で、同じ種類の処理（例えば、三角関数の計算、1からｎまでの足し算、成績の集計計算など‥‥）を何回も実行したい場合を考えてみます。今までのやり方では、<BR>
+　<BR>
+　‥‥<BR>
+　同じ種類の処理１<BR>
+　‥‥<BR>
+　同じ種類の処理２<BR>
+　‥‥<BR>
+　同じ種類の処理３<BR>
+　‥‥<BR>
+<BR>
+のように、処理が必要になるたびに同じコードを何回も書く必要があります。<BR>
+<BR>
+これに対して、&quot;同じ種類の処理&quot;を、関数（サブルーチン）の形で用意しておきます。処理が必要になる度に、次のように何回でも、関数を呼び出して使うことにします。<BR>
+　‥‥<BR>
+　<FONT color="#0000ff">関数の呼び出し　--&gt;</FONT><FONT color="#ff0000"> 引数を渡す</FONT><BR>
+　‥‥　　　　　　　　　　　<FONT color="#0000ff">--&gt; 関数の実行</FONT>　　
+<P>　　　　　　　　　　　　　　<FONT color="#0000ff">&lt;--</FONT>　<FONT color="#ff0000">戻り値を返す</FONT></P>
+　<FONT color="#0000ff">関数の呼び出し　--&gt;</FONT>　　　　<BR>
+　‥‥<BR>
+　<FONT color="#0000ff">関数の呼び出し　--&gt;</FONT><BR>
+<BR>
+<DIV ALIGN=CENTER><IMG SRC="co1-9-1.jpg" ALT="" WIDTH=517 HEIGHT=234><BR></DIV>
+<BR>
+このようにすれば、共通して使う部分を関数（サブルーチン）の形で一つだけ用意すれば済みます。　<BR>
+<BR>
+関数呼び出しと関数処理の流れは次のようになります。<BR>
+<BR>
+<B><FONT color="#000099">(1) 関数呼び出し</FONT></B><BR>
+<BR>
+関数に渡すデータを<FONT color="#ff0000">引数</FONT>に設定して、関数を呼び出します。関数呼び出しがあると、その地点で、呼び出し側の処理を一時中断して、関数の側に処理がジャンプします。<BR>
+<P><B><FONT color="#000099">(2) 関数処理の開始</FONT></B></P>
+受け取った<FONT color="#ff0000">引数</FONT>を用いて、関数本体の処理を開始します。関数の始りの<FONT color="#ff0000">｛</FONT>の直後の実行文から、順番に処理を進めていきます。<BR>
+<P><B><FONT color="#000099">(3) 関数処理の終了</FONT></B></P>
+関数の終わりの<FONT color="#ff0000">｝</FONT>に到達するか、または、return文やexit文が実行されると、関数処理が終了します。<BR>
+<P><B><FONT color="#000099">(4) 呼出し側の処理の再開</FONT></B></P>
+関数が終了すると、呼出した元の場所にジャンプして戻ってきます。その際、呼び出し側は、関数から<FONT color="#ff0000">戻り値</FONT>を受け取ります。 その後、中断していた呼び出し側の処理が再開され、呼び出し地点の次の行の処理を進めていきます。<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD WIDTH=100%><B><FONT color="#000099">関数を使うメリット：</FONT></B><BR>
+    <BR>
+    関数を使うことで、以下のようなメリットが生まれます。<BR>
+    <UL>
+      <LI>似通った内容の処理を何回も実行したい場合、プログラムの無駄を省くことができます。 <BR>
+      <LI>関数の形でルーチンをカプセル化することができ、関数全体の働きが分かれば、中身について知らなくて良くなります（プログラムの中身を隠蔽できる）。この結果、他人が見ても分かりやすい、修正や変更が容易で管理しやすいプログラム、が作れるようになります。<BR>
+    </UL>
+    以上のような観点から、Ｃのプログラムではプログラム全体を、各々の働きに応じて、関数に分けて作るようにします。特に、大勢の人が共同作業で大きなプログラムを完成させる場合、プログラム全体を関数の集合体の形で構成していきます。こうすることにより、一人のプログラマーは、他の人が作ったルーチンを関数の形で利用するだけで良く、大きなプログラムに対応できるようになります。<BR>
+    </TD>
+  </TR></TABLE>
+<BR>
+関数は、<BR>
+<BR>
+　　<FONT color="#0000ff">(1)Ｃコンパイラが用意している標準ライブラリ関数、<BR>
+　　(2)ユーザが自分で作った関数、<BR>
+</FONT>
+<P>の２種類に分けることができます。<BR>
+<BR>
+(1)はこれまで習ってきたように、例えば<BR>
+</P>
+　　<FONT color="#0000ff">入出力関数</FONT>：printf()，scanf()<BR>
+　　（ ヘッダーファイル：stdio.h）<BR>
+　　や　<BR>
+　　<FONT color="#0000ff">算術関数</FONT>：sin(),cos(),exp(),sqrt()<BR>
+　　（ヘッダーファイル：math.h ）<BR>
+<P>などがそうです。それぞれの関数の種類に応じて、ヘッダーファイルをインクルードして、関数の型宣言をします。そうしておいて、必要なところで、</P>
+<FONT color="#0000ff">(1)　変数名ａ＝関数名（引数１，引数２‥‥）；</FONT><BR>
+<BR>
+　　のように関数を呼び出します。例えば、<BR>
+<BR>
+　　<FONT color="#0000ff">a=sin(0.5);</FONT><BR>
+<BR>
+　　のように関数を呼び出します。この時、sin()関数は引数0.5を受け取って、0.5のサインの値を計算します。その関数の計算結果が戻り値の形で呼び出し側に戻されて変数aに代入されます。<BR>
+<BR>
+　　<FONT color="#0000ff">c=2.0*sin(0.6)+3.0</FONT><BR>
+<P>のように、式の中の一部に関数を記述することもできます。その場合、該当箇所で関数呼び出しが行われ、戻り値が代入される形で式の計算が行われます。<BR>
+<BR>
+以上は、戻り値を持つ関数の場合ですが、戻り値を持たない関数呼び出しは、<BR>
+</P>
+<FONT color="#0000ff">(2)　関数名（引数１，引数２‥‥）；</FONT><BR>
+<P>のようになります。例えば、</P>
+　　<FONT color="#0000ff">printf(&quot;Hello&quot;)</FONT>;<BR>
+<P>とすると、文字列定数&quot;Hello&quot;を引数として、printf()関数が呼び出されます。<BR>
+呼び出されたprintf()関数は、引数として受け取った文字列&quot;Hello&quot;を画面に表示します。<BR>
+<BR>
+このように、関数呼び出しが行われると、</P>
+<FONT color="#000099">　　①引数（関数に受け渡すデータ）を渡して、関数を呼び出す。 <BR>
+　　　（このとき、呼び出し地点から、関数名で指定された関数本体に処理が分岐する）。 <BR>
+　　②関数は引数を貰って、関数本体の演算処理を行う。<BR>
+　　③関数処理が終了すると、処理結果（戻り値）を持ち帰って、呼び出し地点に戻る。<BR>
+　　　（上記の例では、変数ａに関数の値が代入される）<BR>
+</FONT>
+<P>のようにプログラム処理が進みます。<BR>
+<BR>
+(２)のユーザが定義した関数についても、考え方は同じです。違う所は、関数本体の定義（関数の本体の作成）と、関数の型宣言（ヘッダファイルの部分）を自分で用意する必要があることです。具体的には、以下のようになります。<BR>
+<B><BR>
+<FONT color="#000099"><U>関数の呼び出し側（関数の使用）</U></FONT></B><BR>
+<BR>
+<FONT color="#cc00cc">・関数の型宣言</FONT></P>
+<BLOCKQUOTE>関数を呼び出す前に、以下のように関数の型宣言が必要です。これは変数を使う前に型宣言が必要であったのと同じです。変数の場合と違うのは、引数の型（引数は複数ある）と、戻り値の型の、各々について型宣言する必要があることです。</BLOCKQUOTE>
+<BLOCKQUOTE><FONT color="#0000ff">戻り値の型　関数名(引数１の型，引数２の型，‥‥);</FONT></BLOCKQUOTE>
+<BLOCKQUOTE>例：<FONT color="#0000ff">float add(float,float);</FONT></BLOCKQUOTE>
+<BLOCKQUOTE>型宣言をした後、プログラム本体で、上記(1)で説明した関数呼び出しのルールに従って次のような形で関数を呼び出します。</BLOCKQUOTE>
+<P><FONT color="#cc00cc">・関数の呼び出し</FONT></P>
+<BLOCKQUOTE>宣言した関数は、次のように呼び出すことができます。</BLOCKQUOTE>
+<BLOCKQUOTE><FONT color="#0000ff">①変数=関数(引数１,引数２,‥‥);（戻り値がある場合）</FONT></BLOCKQUOTE>
+<BLOCKQUOTE><FONT color="#0000ff">②関数(引数１,引数２,‥‥);　（戻り値がない場合）</FONT></BLOCKQUOTE>
+<BLOCKQUOTE>例えば、この後の練習問題に従って、戻り値がある関数addは、</BLOCKQUOTE>
+<BLOCKQUOTE>………</BLOCKQUOTE>
+<BLOCKQUOTE><FONT color="#0000ff">a=200.0; </FONT></BLOCKQUOTE>
+<BLOCKQUOTE><FONT color="#0000ff">b=300.0;</FONT></BLOCKQUOTE>
+<BLOCKQUOTE><FONT color="#0000ff">c=add(a,b);</FONT></BLOCKQUOTE>
+<BLOCKQUOTE>のように使うことができます。この例では 引数をa=200,b=300に設定して 関数add(a,b)をよびだす、戻り値（関数の計算結果）をcに代入する、という処理を行います。この例のように、引数に変数（或いは式）を用いてもよいし、</BLOCKQUOTE>
+<BLOCKQUOTE><FONT color="#0000ff">c=add(200.0,300.0);</FONT></BLOCKQUOTE>
+<BLOCKQUOTE>のように定数を用いることもできます。あるいは、</BLOCKQUOTE>
+<BLOCKQUOTE><FONT color="#0000ff">c=50*add(200.0,b)-4.0;</FONT></BLOCKQUOTE>
+<BLOCKQUOTE>のように、式の一部に関数を使うこともできます。</BLOCKQUOTE>
+<P><U><B><FONT color="#0000ff">関数の定義（関数の本体、呼び出され側）</FONT></B></U><BR>
+<BR>
+　次に、呼び出される関数の本体を次のように書きます。</P>
+　　　<FONT color="#0000ff">戻り値の型　関数名(引数１の型　引数１,引数２の型　引数２,‥‥)</FONT><BR>
+　　　<FONT color="#0000ff">{ </FONT>　　　　　/*　関数の始まりのかっこ　*/<BR>
+　　　　　<FONT color="#0000ff">変数や関数の型宣言；<BR>
+<BR>
+　　　　　関数本体の実行文；<BR>
+　　<BR>
+　　　　　return(戻り値);<BR>
+　　　｝　</FONT>　　　/*　関数の終りのかっこ　*/<BR>
+<BR>
+　　　例：<BR>
+　　　<FONT color="#0000ff">float add(float x, float y)<BR>
+　　　{<BR>
+　　　　　　float z;　</FONT>　 /*　関数の中で使う変数ｚの型宣言 　 */ <BR>
+　　　　　　<FONT color="#0000ff">z=x+y;</FONT>　 　　/*　関数の中の演算処理 　　　 　　　*/<BR>
+　　　　　　<FONT color="#0000ff">return(z);</FONT> 　/* 戻値（計算結果）ｚを返す　　　　 */<BR>
+　　　<FONT color="#0000ff">} </FONT><BR>
+<P><FONT color="#000099">■<B>ｖｏｉｄ型</B></FONT><BR>
+<BR>
+　関数の引数が無かったり、もしくは戻り値が無い場合があります。<BR>
+まず、引数がない場合は、引数が無いことがわかるように</P>
+　　<FONT color="#0000ff">　戻り値の型　関数名(void)</FONT><BR>
+<P>のように、引数にvoid（空という意味）を指定します。または</P>
+　　<FONT color="#0000ff">　戻り値の型　関数名()</FONT><BR>
+<P>のように()の中に何も書かないで使います。<BR>
+同様に戻り値がない(return文の()の中が空、あるいはreturn文がない）場合は、</P>
+　　　<FONT color="#0000ff">void 関数名(‥‥)<BR>
+　　　{<BR>
+　　　　　‥‥</FONT><BR>
+　　　　　<FONT color="#0000ff">return；</FONT>//或いはreturn文を書かない<BR>
+　　<FONT color="#0000ff">　}</FONT><BR>
+<P>のように、戻り値の型をvoidに指定します。<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD WIDTH=100%><FONT color="#000099"><B>関数を使うときの注意</B></FONT><BR>
+    <BR>
+    　　●<FONT color="#ff0000">呼び出し側の引数と、呼び出された関数本体の型を一致させる。<BR>
+    　　　(もちろん、引数の数と順番も一致させる）</FONT><BR>
+    <BR>
+    　　●<FONT color="#ff0000">関数の戻り値の型とreturn文の変数の型を一致させる。</FONT><BR>
+    <BR>
+    　関数のプログラムがうまく動かない場合の殆どは、上記の間違いが原因です。<BR>
+    </TD>
+  </TR></TABLE>
+<BR>
+加減乗除算の関数を用いた、プログラムの例を以下に示します。<BR>
+<BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD><B><FONT color="#000099">例9-1</FONT></B><BR>
+<PRE>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+
+/*　　関数の型宣言　　*/
+float add(float,float),sub(float,float),mul(float,float); 
+float div(float,float),mag(float,float); 
+
+int main(void) /* メイン関数 */
+{
+    /*　　変数の宣言　*/
+    float a,b,ans1,ans2,ans3,ans4,ans5; 
+    
+    /*　ここからが実行文（プログラムの本体）　　*/
+    printf(&quot;Input a=&quot;);fflush(0);scanf(&quot;%e&quot;,&amp;a);
+    printf(&quot;Input b=&quot;);fflush(0);scanf(&quot;%e&quot;,&amp;b);
+    
+    ans1=add(a,b); /* 関数add()の呼び出し */
+    ans2=sub(a,b); /* 関数sub()の呼び出し */
+    ans3=mul(a,b); /* 関数mul()の呼び出し */
+    ans4=div(a,b); /* 関数div()の呼び出し */
+    ans5=mag(a,b); /* 関数mag()の呼び出し */
+
+    printf(&quot;a+b=%f\n a-b=%f\n a*b=%f\n a/b=%f\n sqrt(a**2+b**2)=%f\n&quot;,
+    ans1,ans2,ans3,ans4,ans5);
+    
+    return(0);
+}
+
+/* 和を求める関数 */
+float add(float x, float y)
+{
+    float z;
+    z=x+y;
+    return(z);
+}
+
+/* 差を求める関数 */
+float sub(float x, float y)
+{
+    float z;
+    z=x-y;
+    return(z);
+}
+
+/* 積を求める関数 */ 
+float mul(float x, float y)
+{
+    float z;
+    z=x*y;
+    return(z);
+}
+
+/* 商を求める関数 */
+float div(float x, float y) 
+{
+    float z;
+    z=x/y;
+    return(z);
+}
+
+/* ２つの数の２乗の和の平方根 */
+float mag(float x, float y) 
+{
+    float z;
+    z=sqrt(x*x+y*y);
+    return(z);
+}
+</PRE>
+    </TD></TR></TABLE>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR>
+    <TD><FONT color="#000099"><B>演習問題9-1</B> </FONT>(Revised : 2014/10/20)<BR>
+    <BR>
+    例9-1において、<BR>
+    <BR>
+    　 ①七つの引数a,b,c,d,e,f,gの相加平均 (a+b+c+d+e+f+g)/7 を求める関数 <FONT color="#0000ff">amean(a,b,c,d,e,f,g)</FONT><BR>
+    　 ②　　〃　　　の中央値を求める関数 <FONT color="#0000ff">median(a,b,c,d,ef,g)</FONT><BR>
+    <BR>
+    を追加してください。<BR>
+    なお、レポートには、必ず、手計算の結果との比較、プログラムの動作説明、関数を用いることのメリットなどに関する考察を含めてください。<BR>
+    <BR>
+    [中央値の補足説明]　中央値は、データを大きさの順に並べたとき、データの数を2等分する位置の変数の値をいいます。<BR>
+    例えば、データの個数が7個の場合、大きい方から数えて（小さい方から数えても同じ）4番目のデータになります。データの並べ替え（ソーティング）は第8回例8-4のプログラムを利用してください。<BR>
+    </TD>
+  </TR></TABLE>
+<BR>
+<TABLE border=1 cellspacing=1 width=100% bgcolor="#e1ffff"><TR>
+    <TD><FONT color="#000099"><B>演習問題9-2</B></FONT><FONT color="#0000cc">　</FONT>(Revised : 2012/10/23)<BR>
+    <BR>
+    ウエスト周囲長と性別の２つの情報をキーボードからデータを入力すると、メタボリック症候群の可能性の有無を表示するプログラムを作成してください。メタボリック症候群の可能性を判定する関数を呼び出し、その戻り値をもとに判定結果を画面表示するプログラムを作ってください。詳細は以下の説明に従ってください。<BR>
+    実行結果は、手作業の結果と比較して正しく動作している事を確認して下さい。考察には手計算との照合結果とプログラムの動作説明を示してください。<BR>
+    <BR>
+    <FONT color="#0000cc">[判定結果の表示]<BR>
+    </FONT>メタボリック症候群の判定基準には、世界糖尿病連盟（IDF）と日本肥満学会（JASSO）の各々の機関が推奨している２種類の基準があります。<BR>
+    以下の判定条件のもとに、IDFかJASSOの基準のうちのいずれかでメタボリック症候群の可能性有と判断された場合、その基準名と共に「メタボリック症候群の可能性有、血圧や中性脂肪などの値を確認して下さい」と表示する関数を作ってください。なお、両方の基準で可能性有と判断された場合には、基準名を両方表示した上で「メタボリック症候群の可能性有、血圧や中性脂肪などの値を確認して下さい」と表示し、両方の基準が共に可能性を否定した場合には、「メタボリック症候群の可能性無」と表示すること。
+    <BR>
+    <BR>
+    <FONT color="#0000cc">[判定条件]</FONT><FONT color="#0000ff"> </FONT><BR>
+    ウエスト周囲長(cm) と性別(Male:0,Female:1)を入力し、以下の条件を満たした時にメタボリック症候群の可能性有と判断する。<BR>
+    <BR>
+    　 世界糖尿病連盟（IDF）の基準<BR>
+    　　ウエスト周囲長が 　男性≧９０ｃｍ、女性≧８０ｃｍ のとき<BR>
+    　日本肥満学会（JASSO）の基準<BR>
+    　　ウエスト周囲長が 　男性≧８５ｃｍ、女性≧９０ｃｍ のとき<BR>
+    <BR>
+    <FONT color="#0000cc">[関数の引数]</FONT><BR>
+    　　ウエスト周囲長(cm)  AC<BR>
+    　　性別(Male:0,Female:1)　Sex<BR>
+    <BR>
+    <FONT color="#0000cc">[関数の呼び出し]</FONT><BR>
+    　　Metabol(AC,Sex)<BR>
+    <BR>
+    <FONT color="#0000cc">[関数の戻り値]</FONT><BR>
+    　　メタボリック症候群の可能性無し 　0<BR>
+    　　IDFの基準でメタボリック症候群の可能性有り　1<BR>
+    　　JASSOの基準でメタボリック症候群の可能性有り　2<BR>
+    　　IDFおよびJASSOの両方の基準でメタボリック症候群の可能性有り　3<BR>
+    </TD></TR></TABLE>
+<B><FONT color="#000099"><BR>
+■main関数</FONT></B><BR>
+<BR>
+いままで、プログラムの本体を<BR>
+<BR>
+　　<FONT color="#0000ff">int main(void)<BR>
+　　{<BR>
+　　　　　‥‥<BR>
+　　}</FONT><BR>
+<BR>
+のように書くように説明してきましたが、その理屈は説明していませんでした。<BR>
+実は、mainも基本的には今日説明した関数と全く同じ意味の関数にすぎません。ただし、mainは、プログラムの一番最初に、mainという名前の関数から実行を始めるという約束のある、特別な意味のある関数です。<BR>
+　このため、main関数は、一般の関数と、次のような違いがあります。<BR>
+<BR>
+①main関数は、プログラムの中に必ずないといけません。これに対して、一般の関数はあっても無くてもかまいません（前回まで練習してきたプログラムは、main以外の関数を使っていませんでした）。<BR>
+②main関数をプログラムのどこかで呼び出す必要はありません（プログラムの開始と同時にmainが自動的に呼び出されるため）。これに対して、一般の関数は、関数呼び出しがあった場合にのみ実行されます。<BR>
+<BR>
+　今日の関数の説明で、main関数の各々の意味が理解できたでしょうか？（void の意味を含めて）。<BR>
+<BR>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080"><TR><TD><B><FONT color="#ffffff">変数の有効範囲と記憶クラス</FONT></B></TD></TR></TABLE>
+<BR>
+●関数の使い方に関連して、変数の有効範囲や記憶クラスについて説明します。<BR>
+これらは、関数を正しく理解するための重要事項ですので、是非、気を抜かないでやって貰いたいと思います。<BR>
+　また、今週のところまでをきちんと理解して貰うと、これまでとりあえず説明が難しいので、 理屈を後回しにしてきた所が、全て明らかになります。 プログラムの最初から最後まで、何故そのように書くかということが、
+理屈を含めて理解して貰えると思います。<BR><BR>
+<FONT color="#000099"><B>■記憶クラス</B></FONT><BR>
+<BR>
+まず始めに変数の記憶クラスについて説明します。記憶クラスの違いは、以下のようなデータの保持形態の違いを意味します。<BR><BR>
+<FONT color="#000099"><B>自動変数（auto)</B></FONT> <BR>
+自動変数が関数の中で使われている場合、関数の実行が終わると変数の中身は消えてしまう。 また、初期値を指定しないと、適当な数（いい加減な数）が入る（注意が必要）。
+例えば、整数型の自動変数ａは<BR>
+auto int a;<BR>
+<P>のように宣言します。ただし、autoを省略してもよいことになっていますので、普段は</P>
+　　<FONT color="#0000ff">int a;</FONT><BR>
+<P>と書きます。今まで例題で使ってきた変数は全て自動変数です。<BR><BR>
+<FONT color="#000099"><B>静的変数(static)</B></FONT><BR>
+<BR>
+静的変数は、関数の実行が終了しても変数の中身は記録されて残っています。また、初期値を指定しない場合、最初の値を０に初期化します。整数型の静的変数ａは</P>
+　　<FONT color="#0000ff">static int a;</FONT><BR>
+<P>と宣言することにより使用できます。<BR><BR>
+以上の他に、レジスタ変数や外部変数がありますが、使用頻度は低いので、ここでは説明を省略します。<BR><BR>
+<B><FONT color="#000099">■有効範囲</FONT></B><BR>
+<BR>
+C言語では、変数が何処で宣言されているかによって、その変数の有効範囲が決まります。　大きく分けて、プログラム全体にわたって共通して使える<FONT color="#ff0000">①グローバル変数</FONT>と、 各々の関数の中だけで使える<FONT color="#ff0000">②ローカル変数</FONT>の２つがあります。<BR>
+<BR>
+<FONT color="#000099"><B>①グローバル変数</B></FONT>（プログラム全体で有効）<BR>
+<BR>
+以下の例のように、main()を含めた関数の外側（ファイルの先頭部分）に、宣言して使います。<TABLE BORDER WIDTH=80%><TR><TD BGCOLOR="#ffffff">
+    <PRE>#include&lt;stdio.h&gt;
+
+int a; /*整数型変数a（ グロ－バル変数）の宣言*/
+       /*以下のプログラム全体に渡って有効*/   </PRE>
+    <TABLE width="60%" bgcolor="#80ffff">
+      <TR><TD>
+        <PRE>int main(void)<BR>{<BR>
+　　‥‥<BR>
+}<BR>
+int func(‥)<BR>{
+<BR> 　‥‥<BR>
+}</PRE></TD>
+      </TR></TABLE></TD></TR></TABLE>
+<BR>
+以上のようにグローバルで宣言した変数は、プログラム中のどの関数からも使うことができます。 グローバル変数の記憶クラスは、静的変数と同じ扱いになります（この場合、<FONT color="#0000ff">static</FONT> を先頭につける必要はありません。 また、初期値が指定されていない場合、自動的に０に初期化します）。<BR>
+<BR>
+<FONT color="#000099"><B>利点：</B></FONT>　通常は関数のデータの受け渡しは、引数や戻り値を用いるが、グローバル変数を使えば、 引数や戻り値を使わなくてもプログラムが書ける。プログラムを簡単に作りたい場合に便利。<BR>
+<BR>
+<FONT color="#000099"><B>欠点：</B></FONT>　グローバル変数を多用すると、変数の重複使用などプログラムミスを引き起こす原因になる。<BR>
+<BR>
+<FONT color="#000099"><B>②ローカル（ブロック内）変数</B></FONT>（関数内やブロック内だけで有効）<BR>
+<BR>
+関数の引数部や、関数の始まりと終わりの括弧の中（ブロック内）で宣言された変数はローカル変数になります。<BR><BR>
+<TABLE BORDER WIDTH=80%><TR><TD BGCOLOR="#ffffff">#include&lt;stdio.h&gt;<BR>
+    <BR>
+    int main(void)<BR>
+    {<BR>
+    <TABLE width="60%" bgcolor="#00ff80"><TR><TD BGCOLOR="#80ffff">
+        <PRE>
+    int a,y; /*ロ－カル変数*/<BR>
+　　‥‥<BR>
+　　 y=func(a);<BR>
+　　‥‥
+</PRE>
+        </TD></TR></TABLE>
+    }
+<BR><BR><BR>
+    int func(int x) /* 引数ｘはローカル変数*/<BR>
+    {<BR>
+    <TABLE width="60%" bgcolor="#00ff80"><TR><TD>
+        <PRE>
+     int a, z; /*ロ－カル変数*/
+     ‥‥
+     ‥‥
+     return (z)/*戻り値ｚはローカル変数*/
+</PRE></TD></TR></TABLE>
+    }</TD></TR></TABLE>
+<BR>
+上図のように宣言されたローカル変数は、 関数のブロックの中（関数の始まりの｛と終りの｝で 囲まれた範囲、上図で色で示した範囲）だけで使うことができます。<BR><BR>
+ローカル変数の記憶クラスの指定を省略した場合、 自動変数になります （静的変数にしたい場合、<FONT color="#0000ff">static</FONT> を先頭につけます）。<BR>
+<BR>
+ローカル変数の宣言文で変数の初期値を指定しなかった場合、<BR>
+<BR>
+　　<FONT color="#000099">静的変数（static） の場合　：　自動的に初期値を零にする<BR>
+　　自動変数（auto） の場合　：　　初期値の設定は行わない（何が入っているかは分からない）</FONT>
+<P>の違いがあることに注意してください。<BR>
+<BR>
+<FONT color="#ff0000">異なる関数の中で, 同じ名前のローカル変数が使われている場合、各々は独立したまったく別の変数であることに注意してください</FONT> （上図の例において、関数mainの中のａと関数funcの中のａは、名前が同じだけで全く別の変数）。<BR>
+<BR>
+<FONT color="#000099"><B>利点／欠点：</B></FONT>　グローバル変数の逆の利点／欠点がある。グローバル変数は、 プログラム全体で共通的に使用するデータや、サイズの大きい配列データなど、に用います。その他の場合は、
+プログラムのモジュール化やカプセル化の考えにたって、なるべくローカル変数を使うようにします。<BR>
+<BR>
+<BR>
+<B><FONT color="#000099">■関数の型宣言の場所と有効範囲</FONT></B></P>
+<P>以下は、例9-1の関数magの宣言と呼び出し部分を抜粋したものです。そこでは、<BR>
+<BR>
+<FONT color="#0000ff">#include&lt;stdio.h&gt;</FONT><BR>
+<BR>
+<FONT color="#0000ff">int main(void)<BR>
+{<BR>
+　　</FONT><FONT color="#990099">float mag(float,float);</FONT><FONT color="#0000ff"><BR>
+　　‥‥<BR>
+}<BR>
+</FONT><BR>
+のように、関数magの型宣言を呼び出す関数(上記の場合はmain関数）の中に書いています。 この場合、関数magの型宣言はmain関数の中だけで有効です。
+言い換えると、main関数以外の関数からmag関数を呼び出す場合、呼び出す関数のそれぞれに、関数の型宣言が必要です。これに対して、例9-1のように、<BR>
+<BR>
+<FONT color="#0000ff">#include&lt;stdio.h&gt;<BR>
+<BR>
+</FONT><FONT color="#990099">float mag(float,float);</FONT><FONT color="#0000ff"><BR>
+<BR>
+int main(void)<BR>
+{<BR>
+<BR>
+　　‥‥<BR>
+}</FONT><BR>
+<BR>
+として、main関数の外に書くこともできます。この場合、関数magの型宣言はプログラム全体にわたって有効です。 すなわち、上記のように宣言すると、main以外のどの関数からも関数magを呼び出すことができます。<BR>
+</P>
+<HR>
+<BR>
+<P>以下では、品物の税抜き価格と消費税率を与えた時に、税込み価格を計算する関数（TotalPrice）を使うプログラムについて説明します。最初の例9-2では、関数データの受け渡し方法として、通常の引数（税抜き価格と消費税率の２つの引数)と戻り値（税込み価格）を用いて実現しています。<BR>
+</P>
+<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff"><TR><TD><FONT color="#000099"><B>例9-2（ローカル変数を用いた関数データの受け渡し）</B></FONT>(Revised : 2013/10/21)<BR>
+    <PRE>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+
+int main(void)
+{
+    int TotalPrice(int, int);
+    int price,taxrate,total;
+
+    printf(&quot;Before-tax price=&quot;); fflush(0); scanf(&quot;%d&quot;,&amp;price);
+    printf(&quot;Rate of tax(%%)=&quot;); fflush(0); scanf(&quot;%d&quot;,&amp;taxrate);
+
+    total=TotalPrice(price,taxrate);
+    printf(&quot;Tax-included price=%d\n&quot;,total);
+    
+    return(0);
+}
+
+int TotalPrice(int x, int y) 
+{
+    int z;
+    z=x+x*y*0.01;
+    return(z);
+}</PRE>
+    </TD></TR></TABLE>
+<BR>
+次に以下の例9-3は、グローバル領域に宣言した変数や関数を用いる形に、例9-2を書き換えたプログラムです。すなわち、例9-2の関数TotalPriceは引数と戻り値を介してデータの受け渡しをしましたが、例9-3の関数TotalPriceは引数と戻り値を使わずに、グローバル変数price,taxrate,totalを介してデータの受け渡しをしています。
+また、関数TotalPriceの型宣言はグローバル領域に宣言しています。 <BR>
+例9-2と例9-3の 二つのプログラムの実行結果は全く同じになります。<BR>
+<BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff"><TR><TD><FONT color="#000099"><B>例9-3（グローバル領域に宣言した変数や関数を用いる形に書き変えた場合）</B></FONT>(Revised : 2013/10/21)<BR>
+    <PRE>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+
+void TotalPrice(void);
+int price,taxrate,total;
+
+int main(void)
+{
+    printf(&quot;Before-tax price=&quot;); fflush(0); scanf(&quot;%d&quot;,&amp;price);
+    printf(&quot;Rate of tax(%)=&quot;); fflush(0); scanf(&quot;%d&quot;,&amp;taxrate);
+
+    TotalPrice();
+    printf(&quot;Tax-included price=%d\n&quot;,total);
+ 
+    return(0);
+}
+
+void TotalPrice(void) 
+{
+    total=price+price*taxrate*0.01;
+
+    return;
+}</PRE>
+    </TD></TR></TABLE>
+<BR>
+<HR>
+<BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#e1ffff"><TR><TD><FONT color="#000099"><B>演習問題 9-3</B></FONT><BR>
+    <BR>
+    例9－2、9－3の各々のプログラムの動作を確認して説明してください。特に、関数への変数の受け渡し方や計算結果の受け取り方に注目してそれぞれのプログラムの動作を説明し、その上で両者の出力が同じになる理由を述べてください。<BR></TD></TR></TABLE>
+<BR>
+<BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#e1ffff"><TR><TD><FONT color="#000099"><B>演習問題 9-4 </B></FONT>　(Revised : 2013/10/21)<BR>
+    <PRE>#include &lt;stdio.h&gt;
+int gi,si;
+
+int main(void)
+{
+    int i,ai=0;
+    void count();
+
+    printf(&quot;\t gi\t si\t ai\n&quot;);
+    for(i=0; i&lt;3; i++){ 
+        count();
+        gi=gi+1;
+        si=si+1;
+        ai=ai+1;
+        printf(&quot;main()\t gi= %d\t si=%d\t ai=%d\n&quot;,gi,si,ai);
+    }
+    return(0);
+}
+
+void count(void)
+{
+    int i, ai=0;
+    static int si;
+
+    for(i=0; i&lt;3; i++){
+        gi=gi+5;
+        si=si+5;
+        ai=ai+5;
+        printf(&quot;count()\t gi= %d\t si=%d\t ai=%d\n&quot;,gi,si,ai);
+    }
+    return;
+}</PRE>
+<BR>
+    (1) 上記のプログラムを実行し、表示結果を説明しなさい。特に、gi,si,aiの三つの変数は、同じ計算を行っていることに注意し、宣言文の位置が違うだけで、三者三様の結果が表示される理由について、プログラムの動作説明を含めながら詳細に説明をしなさい。
+    <BR>
+    <BR>
+    (2) main関数内およびcount関数内の各々の自動変数aiの初期化について、以下のように変更するとどうなるかを答えなさい。具体的には、以下の３通りについて試し、各々の結果について、その理由をつけてレポートにまとめなさい。
+    <BR>
+    　①count関数内のaiだけ0に初期化し、main関数のaiは宣言のみする場合<BR>
+    　②main関数内のaiだけ0に初期化し、count関数のaiは宣言のみする場合<BR>
+　③main関数内とcount関数内のaiは両方とも初期化せずに宣言のみする場合 <BR>
+<BR>
+(3) プログラムを最初の状態に戻した後で、count関数内の静的変数siの 宣言文を取り除くとどうなるか試し、
+レポートには結果とともにその理由について述べなさい。<BR>
+<BR>
+</TD></TR></TABLE>
+<BR>
+<HR>
+<BR>
+<FONT color="#000099"><B>●インクルード文の意味</B></FONT><BR>
+<BR>
+今まで、標準関数である入出力関数を使うときは、
+<P><FONT color="#0000ff">　　#include&lt;stdio.h&gt;</FONT><BR>
+　　/*このinclude文の意味は、stdio.hというファイルをここに挿入するという意味です。*/</P>
+<P>また数学関数を使う時は、</P>
+<FONT color="#0000ff">　　#include&lt;math.h&gt;</FONT><BR>
+<P>のように、必要なヘッダファイル（stdio.hやmath.h）をインクルード（挿入）してから、使うように説明してきました。 何故、インクルードしないと使えないのでしょうか？その答えは、次のようになります。
+実は、stdio.hやmath.hの中身は、各々が用意しているいろいろな関数の型宣言が書いてあります。<BR><BR>
+例えば、math.hの中身は以下のような宣言文が並んでいます。</P>
+<FONT color="#000099">これを見ると、math.hでどんな算術関数が使えるか（どんな関数が宣言されているか）、 また各々の関数の引数の型、戻り値の型、の約束を知ることができます。</FONT><BR>
+<BR>
+<FONT color="#009900">　　‥‥<BR>
+　　double acos(double _x);<BR>
+　　double asin(double _x);<BR>
+　　double atan(double _x);<BR>
+　　double atan2(double _y, double _x);<BR>
+　　double ceil(double _x);<BR>
+　　double cos(double _x);<BR>
+　　double cosh(double _x);<BR>
+　　double exp(double _x);<BR>
+　　double fabs(double _x);<BR>
+　　double floor(double _x);<BR>
+　　double fmod(double _x, double _y);<BR>
+　　double frexp(double _x, int *_pexp);<BR>
+　　double ldexp(double _x, int _exp);<BR>
+　　double log(double _y);<BR>
+　　double log10(double _x);<BR>
+　　double modf(double _x, double *_pint);<BR>
+　　double pow(double _x, double _y);<BR>
+　　double sin(double _x);<BR>
+　　double sinh(double _x);<BR>
+　　double sqrt(double _x);<BR>
+　　double tan(double _x);<BR>
+　　double tanh(double _x);<BR>
+　　‥‥</FONT><BR>
+<BR>
+math.hがどこにあるかというと、/usr/include 　というようなディレクトリの中にあります。コンピュータ管理者の設定によって場所が違います。興味のある人は一度中身を覗いてみてください。ただし、これはあくまでも自分のコンピュータで行ってください。センターのコンピュータではあまりやらないでください（初心者の人は特に）。誤って消してしまったり、書き換えたりしてしまうと困るからです。<BR><HR><BR></BODY></HTML>

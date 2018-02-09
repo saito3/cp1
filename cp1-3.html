@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META name="Version" CONTENT="8.0.3720">
+<META name="Date" CONTENT="1/23/97">
+<META name="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>第3回</TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef" LINK="#0000ff" VLINK="#800080">
+<HR><TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+<TR>
+<TD WIDTH=100%><FONT SIZE=5 COLOR="#ffffff"><B>プログラミングおよび演習 ＮＯ．３ </B></FONT></TD>
+</TR>
+</TABLE><BR>
+<DIV ALIGN=RIGHT>Last-Modified: 2015.05.07
+<HR>
+<TABLE BORDER=0 WIDTH=100%>
+<TR>
+<TD BGCOLOR="#004080" WIDTH=100%><FONT SIZE=4 COLOR="#ffffff"><B>変数の補足</B></FONT></TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+先週は、int型とfloat型の変数について説明しました。変数を使う際の注意事項をまとめると以下のようになります。<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=80% BGCOLOR="#e4fbe3">
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#b9f5b4">変数を使うときの注意事項</TD>
+</TR>
+<TR>
+<TD WIDTH=100%>
+１．宣言文で宣言してから使う（宣言していない変数は使えない）。<BR>
+    ２．数値型変数の場合は、変数の表現可能な範囲や有効桁数に注意する。<BR>
+    ３．printf(),scanf()の入出力関数に用いるときは、書式（%d, %e)に注意する。</TD>
+</TR>
+</TABLE><BR>
+変数の表現可能な範囲や有効桁数を、<A HREF="cp1-2.html#変数">この表</A>に説明していますが、 ここには、int型とfloat以外に、double型（倍精度実数変数）やshort型（2バイトの整数変数）の数値型変数が載っています。<BR>
+これらの変数の宣言は、
+<P><BR>
+<FONT color="#0000ff">double x,y,z;<BR>
+short a,b;</FONT><BR>
+<BR>
+のようにします。また、printf()やscanf()に使うときの書式変換は、double型はほぼfloat型と同じですが、倍精度の意味で、頭にｌ（アルファベットのエル）をつけて、<BR>
+<BR>
+<FONT color="#0000ff">%le</FONT>　または　<FONT color="#0000ff"> %lf</FONT><BR>
+<BR>
+とします。同様に、short型の変数の場合はほぼint型と同じですが、頭にhをつけて<BR>
+<BR>
+<FONT color="#0000ff">%hd</FONT><BR>
+<BR>
+とします。ただし、printf()では、ｌやhをつけ忘れても正しく処理してくれます。これに対して、scanf()の場合は、ｌやhををきちんとつけないと、正しく読み込んでくれませんので注意が必要です。<BR>
+この後に説明する文字型も含めて、下表に変数と定数の種類をまとめて示します。<BR>
+<BR>
+定数および変数の種類<BR>
+</P>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=80% BGCOLOR="#c4a7fe">
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#c4a7fe">定数の種類</TD><TD ALIGN=CENTER BGCOLOR="#c4a7fe">宣言</TD><TD ALIGN=CENTER BGCOLOR="#c4a7fe">書式</TD>
+</TR>
+<TR>
+<TD ROWSPAN=2 ALIGN=CENTER BGCOLOR="#e7e6ff">整数定数</TD><TD ALIGN=CENTER BGCOLOR="#e7e6ff">short</TD><TD ALIGN=CENTER BGCOLOR="#e7e6ff">%hd</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#e7e6ff">int</TD><TD ALIGN=CENTER BGCOLOR="#e7e6ff">%d</TD>
+</TR>
+<TR>
+<TD ROWSPAN=2 ALIGN=CENTER BGCOLOR="#e7e6ff">実数定数</TD><TD ALIGN=CENTER BGCOLOR="#e7e6ff">float</TD><TD ALIGN=CENTER BGCOLOR="#e7e6ff">%f, %e</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#e7e6ff">double</TD><TD ALIGN=CENTER BGCOLOR="#e7e6ff">%lf, %le</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#e7e6ff">文字定数</TD><TD ALIGN=CENTER BGCOLOR="#e7e6ff">char</TD><TD ALIGN=CENTER BGCOLOR="#e7e6ff">%c</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#e7e6ff">文字列定数</TD><TD ALIGN=CENTER BGCOLOR="#e7e6ff">charの配列</TD><TD ALIGN=CENTER BGCOLOR="#e7e6ff">%s</TD>
+</TR>
+</TABLE>
+<BR>
+
+<BLOCKQUOTE> <TABLE BORDER=1 CELLSPACING=1 WIDTH=80% BGCOLOR="#e8ffe6">
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#b9f5b4">変数の種類</TD><TD ALIGN=CENTER BGCOLOR="#b9f5b4">宣言</TD><TD ALIGN=CENTER BGCOLOR="#b9f5b4">書式</TD>
+</TR>
+<TR>
+<TD ROWSPAN=2 ALIGN=CENTER BGCOLOR="#e8ffe6">整数型</TD><TD ALIGN=CENTER BGCOLOR="#e8ffe6">short</TD><TD ALIGN=CENTER>%hd</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#e8ffe6">int</TD><TD ALIGN=CENTER>%d</TD>
+</TR>
+<TR>
+<TD ROWSPAN=2 ALIGN=CENTER BGCOLOR="#e8ffe6">実数型</TD><TD ALIGN=CENTER BGCOLOR="#e8ffe6">float</TD><TD ALIGN=CENTER>%f, %e</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#e8ffe6">double</TD><TD ALIGN=CENTER>%lf, %le</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#e8ffe6">文字型</TD><TD ALIGN=CENTER BGCOLOR="#e8ffe6">char</TD><TD ALIGN=CENTER>%c</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#e8ffe6">文字列型</TD><TD ALIGN=CENTER BGCOLOR="#e8ffe6">charの配列</TD><TD ALIGN=CENTER>%s</TD>
+</TR>
+</TABLE>
+</BLOCKQUOTE>
+<TABLE BORDER=0 WIDTH=100%>
+<TR>
+<TD BGCOLOR="#004080" WIDTH=100%><FONT SIZE=4 COLOR="#ffffff"><B>文字型定数および文字型変数</B></FONT></TD>
+</TR>
+</TABLE>
+<BR>
+今までは数値型の変数や定数を説明してきましたが、数値型と対比する型として、文字や文字列を扱う目的の文字型の変数や定数があります。その文字型の定数は次のように表します。一つは、<BR>
+<BR>
+<FONT color="#0000ff">'a</FONT>'<BR>
+<P>のような１文字を表す文字定数（1文字の半角英数字を''で囲む）です。もう一つは</P>
+<FONT color="#0000ff">&quot;Hello World!!&quot;<BR>
+</FONT>
+<P>のよう複数文字を表す文字列定数（複数文字列を&quot;&quot;で囲む）です。例えば、これらの文字型データを画面表示するには、</P>
+<FONT color="#0000ff">printf(&quot;%c\n&quot;,'a');<BR>
+printf(&quot;%s\n&quot;,&quot;Hello World!!&quot;);</FONT><FONT color="#008000"> /* 例１のプログラムと同じ結果になる */</FONT><BR>
+<BR>
+とします。ここで重要なのは、文字定数の書式変換は%c、文字列定数の場合は%sを使うことです。<BR>
+<BR>
+次に以上で定義した文字型定数を変数に代入することを考えます。そのための文字型変数は、定数の場合と同様に、 文字型と文字列型があります。それぞれ、次のように使います。<BR>
+<BR>
+・文字型変数の宣言
+<P><FONT color="#0000ff">char c; </FONT><FONT color="#008000">/*1文字の文字変数ｃの宣言*/</FONT><BR>
+<FONT color="#0000ff">char string[100];</FONT> <FONT color="#008000">/* 100文字の長さの文字列変数配列string[]の宣言 */</FONT>
+<BR>
+<BR>
+・文字型変数へのデータの代入<BR>
+<BR>
+<FONT color="#0000ff">c='a' </FONT><BR>
+<BR>
+とします。これに対して、文字列変数の場合は、<BR>
+<BR>
+<FONT color="#0000ff">string= &quot;Hello World!!&quot;;</FONT><FONT color="#ff0000">/* これは間違い */</FONT><BR>
+<BR>
+とすればよさそうですが、不思議なことにこれはできません（この理由を説明すると難しくなるのでここでは説明しません）。<BR>
+代わりに、次のように変数を宣言するときの初期化データとして値を設定します。<BR>
+<BR>
+<FONT color="#0000ff">char s[]=&quot;Hello World!!&quot;;</FONT>　<FONT color="#008000">/*宣言文の初期化データとして値を設定/</FONT><BR>
+<BR>
+・文字型データの入出力<BR>
+入出力関数はつぎのように書きます。</P>
+<FONT color="#0000ff">scanf(&quot;%c&quot;,&amp;c);<BR>
+scanf(&quot;%s&quot;,s);<BR>
+printf(&quot;c=%c\n&quot;,c);<BR>
+printf(&quot;s=%s\n&quot;,s);</FONT><BR>
+<HR><BR>
+文字列データの扱い方を覚えるために次の練習問題をやってください。<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100%>
+<TR>
+<TD BGCOLOR="#ffffff" WIDTH=100%><FONT color="#000080"><B>例３-1</B></FONT><BR>
+    <PRE>/* 文字型変数の練習 */
+#include&lt;stdio.h&gt;
+ 
+int main(void)
+{
+    char c='a'; /* 文字変数cの宣言文*/
+    char s[]=&quot; Hello World!!&quot;;  /* 文字列変数sの宣言文 */
+
+    printf(&quot;文字定数'a'の表示：%c\n&quot;,'a');
+    printf(&quot;文字列定数\&quot;Hello World!!\&quot;の表示：%s\n&quot;,&quot;Hello World!!&quot;);
+    printf(&quot;文字変数cの表示：%c\n&quot;,c);
+    printf(&quot;文字列変数sの表示：%s\n&quot;,s);
+
+   return(0);
+}</PRE> 
+ </TD></TR></TABLE><BR>
+説明：<BR>
+宣言文は、コンピュータが実際の処理を始める前の準備（変数の領域の確保と初期化）をします。C言語では、変数を使うときは、プログラムの先頭で必ず変数の型を宣言する必要があります。<BR>
+<P><FONT color="#0000ff">char c='a'; <BR>
+char s[]=&quot;Hello World!!&quot;;</FONT></P>
+<P>はこれまでと少し違う形をしています。文字型変数cに初期値'a'を代入する、文字列配列s[]に文字列&quot;Hello World!!&quot;を代入しています。
+宣言文の書式は、一般的に</P>
+<P><FONT color="#0000ff">型　変数名[＝定数］；</FONT></P>
+<P>となります。[＝定数］の部分は、変数を定数の値で初期化することを意味します。必ずしもなくても構いません。<HR>
+<BR>
+変数の型、演算、入出力 に関する以下の問題をやってみてください。 先週のint型、float型以外のdouble型、short型についても数値の範囲や有効桁数を確かめてください。<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100%><TR><TD BGCOLOR="#ffffff" WIDTH=100%><FONT color="#000080">
+<B>例３-２ </B>
+</FONT> (Revised : 2008/05/15)<BR>
+<PRE>/* 数値型データの表現可能な範囲と有効桁数を確かめるためのプログラム*/ 
+#include &lt;stdio.h&gt; 
+
+int main(void) 
+{
+    float a,b,c;
+    short w;
+    int x,d;
+    float y,e,f;
+    double z,g;
+
+    printf(&quot;----addition and subtraction----\n&quot;);
+    a=1e-12;
+    b=1.23+a;
+    c=b-1.23;
+
+    printf(&quot;a=%e=%25.19e\n&quot;,a,a);
+    printf(&quot;b=%e=%25.19e\n&quot;,b,b);
+    printf(&quot;c=%e=%25.19e\n&quot;,c,c);
+ 
+    printf(&quot;----Multiplications----\n&quot;);
+    w=100000;
+    x=100000;
+    y=100000.0;
+    z=100000.0;
+    printf(&quot;w=%hd w*w=%hd\n&quot;,w,w*w);
+    printf(&quot;x=%d x*x=%d\n&quot;,x,x*x);
+    printf(&quot;y=%f y*y=%f\n&quot;,y,y*y);
+    printf(&quot;z=%lf z*z=%lf\n&quot;,z,z*z);
+    
+    printf(&quot;----Divisions----\n&quot;);
+    d=10/3*3;
+    e=10.0/3.0*3.0;
+    printf(&quot;d=10/3*3=%d\n&quot;,d);
+    printf(&quot;e=10.0/3.0*3.0=%f\n&quot;,e);
+    
+    e=10/3*3;
+    d=10.0/3.0*3.0;
+    printf(&quot;d=10.0/3.0*3.0=%d\n&quot;,d);
+    printf(&quot;e=10/3*3=%f\n&quot;,e);
+
+    printf(&quot;----Output float and double values----\n&quot;);
+    f=1.234567890123456789;
+    g=1.234567890123456789;
+    printf(&quot;f=%18.9f=%25.19e\n&quot;,f,f);
+    printf(&quot;g=%18.9lf=%25.19le\n&quot;,g,g);
+
+    return(0);
+}</PRE></TD></TR></TABLE><BR><HR><BR>
+最初のところで行っている計算、 <BR><P>
+<FONT color="#0000ff">c=(1.23+a)-1.23;</FONT></P><P>の結果は、aに等しくなるはずですが、そうなりません。その理由について述べてください。また、aが1.0e-4や1.0e-8の場合についても結果を求め、1.0e-12の場合の結果と比較して考察をしてください。<BR>
+次に、<BR><BR>
+<FONT color="#0000ff">printf(&quot;w=%hd w*w=%hd\n&quot;,w,w*w);<BR>
+printf(&quot;x=%d x*x=%d\n&quot;,x,x*x);<BR>
+printf(&quot;y=%f y*y=%f\n&quot;,y,y*y);<BR>
+printf(&quot;z=%lf z*z=%lf\n&quot;,z,z*z)</FONT>;<BR><BR>
+については、正しく計算できていない場合 （手計算と異なる結果を出力する場合）があります。それはどれでしょうか？理由を付けて答えなさい。<BR>
+また、既に説明していますが、<BR><BR><FONT color="#0000ff">x=100000;<BR>
+y=100000.0;</FONT><BR><BR>
+の様に、数値に小数点をつけないと整数型定数、小数点をつけると実数型定数を表します。<BR>
+従って、<BR><BR>
+<FONT color="#0000ff">d=10/3*3;<BR>
+e=10.0/3.0*3.0;</FONT><BR><BR>
+の右辺はそれぞれ、整数型と実数型の数値演算になります。dとeには異なる結果が入ることをプログラムを動かして確認し、 その理由について考察してください。<BR><BR>
+その下ではeとdを入れ替えて、<BR><BR>
+<FONT color="#0000ff">e=10/3*3;<BR>
+d=10.0/3.0*3.0;<BR></FONT><BR>
+としていますが、結果はどうなるでしょうか？先ほどの結果と比較して考察してください。<BR>
+最後に示した以下のプログラムから出力されるfとgには違いがあります。違いの理由について考察してください。<BR><BR>
+<FONT color="#0000ff">f=1.234567890123456789;<BR>
+g=1.234567890123456789;<BR>
+printf(&quot;f=%18.9f=%25.19e\n&quot;,f,f); <BR>
+printf(&quot;g=%18.9lf=%25.19le\n&quot;,g,g);</FONT></P><HR>
+<P>
+<FONT color="#000080"><B>
+printfの書式</B></FONT>：　<BR><BR>
+上記の例題において、float型の変数fを画面表示するためのprintf文には、<BR>
+<BR>
+<FONT color="#0000ff">printf(&quot;f=%18.9f=%25.19e\n&quot;,f,f);</FONT><BR>
+<BR>
+のように、書式の%の直後に数字が入っています。これは表示桁数を指定するために使います。すなわち、<BR>
+<BR>
+<FONT color="#0000ff">%18.9f<BR><BR></FONT>は、全体を18桁、小数点以下の桁数を9桁（例：123456789.123456789)、の固定小数点形式で表示することを意味します。<BR>
+同様に、<BR><BR>
+<FONT color="#0000ff">%25.19e</FONT><BR><BR>
+は全体を25桁、小数点以下の桁数を19桁の指数形式で表示します。一方、double型の変数gの場合は、<BR>
+<BR>
+<FONT color="#0000ff">printf(&quot;g=%18.9lf=%25.19le\n&quot;,g,g);</FONT><BR>
+<BR>
+のように、桁指定はfloat型の場合と同様の約束になります。ただし、double型の変数であることを断るために、 
+桁指定の後に&quot;l&quot;(アルファベットのエル、数字の1と間違えないこと）をつけて、<BR>
+<BR>
+<FONT color="#0000ff">%18.9lf　　%25.19le</FONT><BR>
+<BR>
+のように記述しています。<BR>
+<BR>
+各々の変数の型に応じて、%書式を正しく記述する必要があります。間違ってもコンピュータはエラーメッセージを出してくれません。計算結果が変になるだけですので注意が必要です。<BR>
+<BR>
+<TABLE border=1 cellspacing=1 width=100% bgcolor="#e1ffff"><TR><TD WIDTH=100%><B>
+<FONT color="#000080">演習問題３－１</FONT></B> (Revised : 2015/05/07) <BR>
+    <BR>
+    例３－１、３－２のプログラムを実行しなさい。例３－１については文字型変数の特徴を踏まえてプログラムの動作説明をしなさい。また、例３－２では、上に示した指示に従って結果を示し、解答や考察をしなさい。考察のポイントは、変数の表現可能な範囲や有効桁数です。<BR>
+    <BR>
+    <B style="color:rgb(0,0,0);font-family:'MS PGothic';font-size:medium"><FONT color="#000080">（時間が余った人に）</FONT></B><span style="color:rgb(0,0,0);font-family:'MS PGothic';font-size:medium;background-color:rgb(225,255,255)">&nbsp;</span><br style="color:rgb(0,0,0);font-family:'MS PGothic';font-size:medium">
+    <div>（※時間がある人は以下の課題にもチャレンジしなさい。（時間が余った人に）の課題をレポートに含めることで加点されます）<BR>
+    </div>
+    <div>例３－２のプログラムの最後に、</div>
+    <div><BR>
+    printf(&quot;----addition and subtraction----\n&quot;);</div>
+    <div>a=1e-12;</div>
+    <div>b=1.23+a;</div>
+    <div>c=b-1.23;</div>
+    <BR>
+    <div>printf("a=%e=%25.19e\n",a,a);</div>
+    <div>printf("b=%e=%25.19e\n",b,b);</div>
+    <div>printf("c=%e=%25.19e\n",c,c);</div>
+    <div><BR>
+    のa,b,cを、新しく定義したdoubleの変数、例えば、</div>
+    <div>double s,t,u;</div>
+    <div>に置き換えたプログラムを追加し（printf文の書式を%leにすることを忘れずに）、</div>
+    <div>float a,b,c;</div>
+    <div>を用いた場合の結果との違いについて考察しなさい。</div>
+    <BR>
+    </TD></TR></TABLE>
+<HR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR>
+<TD BGCOLOR="#e1ffff" WIDTH=100%><B><FONT color="#000080">演習問題３－２（時間が余った人に）</FONT></B> <BR><BR>
+    　時間が余った人は、気分転換に以下の課題をやってみてください。<BR>
+（来週この問題を発展させた演習問題をやってもらいますので無駄になりません。 <BR>
+    今までと違ってプログラムの雛型は示していませんが、簡単に作れるはずです。）。 <BR><BR>
+    自分の身長をキーボードから入力すると、BMI(Body Mass Index)と標準体重を計算して表示するプログラムを作ってください。なお、それぞれの計算式は以下のとおりです。<BR>
+    <BR>
+
+    <FONT color="#0000ff">　　　　　　体重（ｋｇ）<BR>
+    　BMI＝<S>　　　　　　　　　　　　　</S>　<BR>
+    　　　　　身長（ｍ）×身長（ｍ）<BR>
+    <BR>
+    　標準体重（ｋｇ）＝身長（ｍ）×身長（ｍ）×２２<BR>
+    </FONT><BR>
+    さらに、以下の計算式を用いて、体重を入力すると肥満度を算出するようにしてください。<BR><BR>
+    <FONT color="#0000ff">　　　　　　　　　　（実測体重－標準体重）×１００<BR>
+    　肥満度（％）＝<S>　　　　　　　　　　　　　　　　　　　 <BR>
+    </S>　　　　　　　　　　　　　　　標準体重 <BR>
+    </FONT><BR>
+    肥満度(％)から以下のように判定できます。<BR>
+    <BR>
+    <FONT color="#0000ff">　-10％未満　　　　　　　やせ<BR>
+    　-10％～+10％未満　　　正常<BR>
+    　+10％～+20％未満　　　肥満ぎみ<BR>
+    　+20％以上　　　　　　　肥満<BR>
+    </FONT><BR>また、BMIの値が25, 27, 29以上でそれぞれ以下の病気の発病率が２倍以上に大きく 増えると言われています。<BR>
+    <BR>
+    <FONT color="#0000ff">　BMI≧25→高血圧症, 高中性脂肪血症<BR>
+    　BMI≧27→糖尿病 　<BR>
+    　BMI≧29→高コレステロール血症</FONT><BR>
+    <BR>
+    </TD></TR></TABLE>
+<BR>
+</BODY></HTML>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META name="Date" CONTENT="1/23/97">
+<META name="Version" CONTENT="8.0.3720">
+<META name="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>プロジェクトファイルの保存先</TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef" LINK="#0000ff" VLINK="#800080" STYLE="color:#000000">
+<HR>
+<DIV ALIGN=CENTER>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#008000">
+  <TR>
+    <TD><FONT size="6" color="#ffffff" face="ＭＳ ゴシック"><B><STRONG>プロジェクトファイルの保存先</STRONG></B></FONT></TD>
+  </TR></TABLE>
+</DIV>
+<HR>
+<P style="color: rgb(0, 0, 0); font-family: メイリオ; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(239, 239, 239); font-size: medium; ">Eclipseで作ったプロジェクトファイルは、<BR>　<FONT color="#0000ff">Z:\workspace\Project名\</FONT><BR>
+<BR>
+<FONT color="#000000">の場所（</FONT><FONT color="#0000ff">workspace</FONT><FONT color="#000000">フォルダの下の<FONT color="#0000ff">Project名</FONT>フォルダの中）に</FONT>作られ、その<FONT color="#000000"><FONT color="#0000ff">Project名</FONT></FONT>フォルダの中に一連のファイルが書き込まれます。<BR>
+例えば、project1という名前のプロジェクトをコンパイル、実行すると、以下のような構成のフォルダおよびファイルが作られます。<BR>
+<BR>
+<FONT color="#000099"><B>Eclipseが作るフォルダ/ファイル構成</B></FONT></P>
+<PRE><SPAN lang=EN-US>       Z:┐  </SPAN>
+         ├ workspace┬project1┬Debug┬project1.exe　(実行ファイル)
+ 　      │    　    │   　 　│　   ├file1.txt  　 (ユーザ作成のファイル）　　
+                     │　　　　│
+                     │　　　　├src─project1.c 　 　(ソースファイル）
+                     ├project2 
+                     │
+                       ‥‥  </PRE>
+<P style="color: rgb(0, 0, 0); font-family: メイリオ; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(239, 239, 239); font-size: medium; ">まず、Eclipseで編集作業して作成したC言語のソースファイルは、srcフォルダの中に、<BR>
+<FONT color="#0000ff">project1.c</FONT><BR>
+<BR>
+の名前で保存されます。<BR>
+また、Buildを実行することにより作成される実行ファイルはDebugフォルダのなかに、<BR>
+<FONT color="#0000ff">project1.exe</FONT><BR>
+<BR>
+の名前で作られます。<BR>
+<BR>
+第１１回演習ではファイルを読み書きする課題をやって貰います。その際、フォルダ指定を省略した場合、実行ファイルと同一のフォルダのファイルに対して読み込みまたは書き込みが行われます。すなわち、上記の例ではファイル書き込みは<BR>
+<FONT color="#0000ff">Z:\workspace\project1\Debug</FONT><BR>
+<BR>
+のフォルダのなかに書き込まれます。また、ファイル読み込みは、同じDebugフォルダの中のファイルを読み込みにいきます。Debugフォルダの中に指定したファイル名のファイルが存在しないと、読み込みエラーになるので注意してください。<BR>
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,809 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>第12回</TITLE>
+<!-- saved from url=(0045)http://www.tuat.ac.jp/~yamada/cp1/cp1-12.html -->
+</HEAD>
+<BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080">
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+  <TBODY>
+    <TR>
+      <TD WIDTH=100%><FONT size="+2"><B><FONT color="#ffffff" size="+2">プログラミングおよび演習 ＮＯ．12</FONT></B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+<DIV ALIGN=RIGHT>Last-Modified: 2016.11.25<BR>
+</DIV>
+<HR>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+  <TBODY>
+    <TR>
+      <TD><FONT color="#ffffff" size="+1"><B>ファイル処理</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+今まで、データの入出力関数として、<BR>
+<BR>
+　　<FONT color="#0000ff">printf()</FONT> （画面へデータを出力する）と<BR>
+　　<FONT color="#0000ff">scanf()</FONT>　（キーボードからデータを入力する）<BR>
+<BR>
+の２つの関数を使ってきました。<BR>
+上記の２つの関数に対応して、<BR>
+<BR>
+　　<FONT color="#0000ff">fprintf()</FONT> （ファイルへデータを書き込む）<BR>
+　　<FONT color="#0000ff">fscanf()</FONT>　（ファイルからデータを読みこむ）<BR>
+<BR>
+は、ファイルに対してデータを読み書き(入出力）します。<BR>
+先週の演習問題11-3では、コンソール画面のデータをコピーし、エクセルに貼り付けてグラフを描くという作業をしていました。 <BR>
+<FONT color="#0000ff">fprintf()</FONT>を使ってファイルにデータを書き込んでおき、エクセルのファイル読込操作で読み込むようにすれば、そのようなやっかいな作業をしないで済みます。また、<FONT color="#0000ff">fscanf()</FONT>を使えば、書き込んだデータをプログラム内に読み込んで使うことができます。ファイル操作を行うには、オペレーティングシステム（WindowsやMAC）が扱っているファイル名をファイルポインタに予め設定しておいて、ファイルポインタ（プログラムの中だけで使うファイル名のようなもの）を介して目的とするファイルに読み書きします。このために、予めファイルオープンを行い、そこで操作したいファイルとファイルポインタを関連付ける作業を行います。これらのファイル操作の手順は以下のようになります。<BR>
+<OL>
+  <LI><FONT color="#00cc00">ファイルオープン</FONT>：ファイルポインタをオペレーティングシステムが使っているファイル名に関連づける作業を行う。
+  <LI><FONT color="#00cc00">ファイル入出力</FONT>：ファイルポインタを介して、指定したファイルに対するデータの読み書きを行う。
+  <LI><FONT color="#00cc00">ファイルクローズ</FONT>：ファイルポインタとファイル名との関連づけを解除する。
+</OL>
+以上の１、２、３の処理を行うためのファイル入出力関数をコンパイラが用意しています。<BR>
+その使い方は次のようになります。<BR>
+<BR>
+<FONT color="#000099"><B><U>(0)ヘッダファイルのインクルード、ファイルポインタの宣言</U></B></FONT><BR>
+入出力関数用のヘッダファイル&lt;stdio.h&gt;を<BR>
+<BR>
+　　<FONT color="#0000ff">#include &lt;stdio.h&gt;</FONT><BR>
+<BR>
+のようにインクルードします。次に、以下のようにファイルポインタを宣言します。<BR>
+<BR>
+　　<FONT color="#0000ff">FILE *fp</FONT>; /* fpという名前のファイルポインタの宣言 */<BR>
+<BR>
+ここで、FILEはファイルポインタのために定義した構造体変数の型を表します。（コンパイラの、_iobufという構造体タグ名の別名定義になっています。）<BR>
+<BR>
+<FONT color="#000099"><B><U>(1)ファイルオープン</U></B></FONT>（ファイルの読み書きの前には必ず必要）。<BR>
+<BR>
+　　<FONT color="#0000ff">fp = fopen(&quot;data1.dat&quot;,&quot;r&quot;);</FONT><BR>
+<BR>
+第１引数：ファイル名（文字列定数）<BR>
+第２引数：読み込み用のファイルの時はr、書込みの用の時はwを指定する<BR>
+<BR>
+上記の例では、<FONT color="#0000ff">data1.dat</FONT>という名前のファイルを読みこみ用にオープンし、ファイルポインタ<FONT color="#0000ff">fp</FONT>に関連付ける（ファイルポインタfpに、fopenの戻り値を代入）という処理を行っています。<BR>
+ファイル名を間違えて、ファイルオープンに失敗した場合は、戻り値は0（<FONT color="#0000ff">NULL</FONT>)になります。<BR>
+<BR>
+<FONT color="#000099"><B><U>(2)データの読み書き</U></B></FONT>：次のように、第１引数に(1)でオープンしたファイルポインタを指定します。第２引数、第３引数以下の約束は、printf()やscanf()関数の場合と同じです。例えば、<BR>
+<BR>
+　　<FONT color="#0000ff">fprintf(fp,&quot;%e&quot;,a);</FONT><BR>
+<BR>
+は、ファイルポインタfpのファイルにfloat型変数 aのデータを、&quot;%e&quot;の書式で書き込むという意味になります。同様に、<BR>
+<BR>
+　　<FONT color="#0000ff">fscanf(fp,&quot;%e&quot;,&amp;a)</FONT>;<BR>
+<BR>
+は、ファイルポインタ<FONT color="#0000ff">fp</FONT>のファイルから、&quot;%e&quot;の書式でデータを読み込んでfloat型変数aに代入します。<BR>
+ファイルの終わりに到達して読み込むデータがない場合、関数の戻り値（int 型）に<FONT color="#0000ff">EOF</FONT>(ファイルの終り）を返します。また、読み込みに失敗した場合は<FONT color="#0000ff">NULL</FONT>を返します。<BR>
+<BR>
+<FONT color="#000099"><B><U>(3)ファイルクローズ</U></B></FONT>：ファイルの読み書きが終わってファイルポインタ<FONT color="#0000ff">fp</FONT>の関連づけを解除したい場合は、<BR>
+<BR>
+　　<FONT color="#0000ff">fclose(fp);</FONT><BR>
+<BR>
+で、(1)でオープンしたファイルをクローズします。 <BR>
+<BR>
+<HR>
+以下の例題は、ファイル出力関数fprintf()を使って、ファイルに波形データを書き込むプログラムです。途中の波形データを計算するところまでは、演習問題11-4と同じです。ファイル出力関数fprintf()は、キーボードから入力したファイル名のファイルに、計算した波形データを書き込みます。<BR>
+ファイル名の拡張子は後で、エクセルに読み込むときの都合を考えて、<BR>
+<BR>
+　<FONT color="#0000ff">　txt </FONT><BR>
+<BR>
+にしてください（例：coswave.txt など）。<BR>
+<BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TBODY>
+    <TR>
+      <TD><B><FONT color="#000099">例12-1（波形データのファイル書き込み）</FONT></B><BR>
+      <PRE>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+
+void make_coswave(int,float,float,float,float *);
+void make_sinwave(int,float,float,float,float *);
+void add_data(int, float*,float*); 
+void file_write(int,float *);
+
+int main(void)
+{
+    float x1[10000], x2[10000];/*　配列x1,x2の宣言　*/
+    int len=10000; /*データの数*/
+    float SampFrq=5500.0;/*サンプリング周波数*/
+    float freq1=440; /*1番目の信号の周波数*/
+    float freq2=444; /*２番目の信号の周波数*/
+    float amp=0.5; /*信号振幅*/
+    float tdel; /*時間きざみ*/
+      
+    tdel=1.0/SampFrq;
+      
+    make_coswave(len,freq1,tdel,amp,x1); /*コサイン波１の生成*/
+    make_sinwave(len,freq2,tdel,amp,x2); /*サイン波２の生成*/
+    add_data(len,x1,x2);/*波1,２の加算*/
+      
+    file_write(len,x1);/*ファイル書き込み*/
+
+    return(0);
+}
+
+/*コサイン波の波形データを 配列xに入れる*/
+void make_coswave(int len, float freq,float tdel,float amp,float *x) 
+{ 
+    int i;
+    /*　未完成の部分は自分で作る */
+    ‥‥
+    for(i=0;i&lt;len;i++){
+        ‥‥
+        x[i]=‥‥; 
+    }
+}
+
+/*サイン波の波形データを 配列xに入れる*/
+void make_sinwave(int len, float freq,float tdel,float amp,float *x) 
+{ 
+    int i;
+
+    /*　未完成の部分は自分で作る */
+    ‥‥
+    for(i=0;i&lt;len;i++){
+        ‥‥
+        x[i]=‥‥; 
+    }
+}
+
+void add_data(int len,float *x1,float *x2)
+{
+    int i;
+
+    for(i=0;i&lt;len;i++)
+        x1[i]=x1[i]+x2[i];
+}
+
+/* 配列xのデータをファイルに書き込む。*/
+void file_write(int len, float *x)
+{
+    int i;
+    FILE *fp;　/* ファイルポインタの宣言 */
+    char name[30];
+      
+    printf(&quot;\nfilename?=&quot;);
+    fflush(0);scanf(&quot;%s&quot;,name); /*ファイル名のキーボード入力*/
+      
+    if((fp=fopen(name,&quot;w&quot;))==NULL){/*ファイルオープン*/
+        printf(&quot;\nCan't open the source file\n&quot;);
+        /* ファイルオープンに失敗した時のエラーメッセージの出力 */
+        exit(1);
+    }
+      
+    for(i=0; i&lt;len; i++)
+        fprintf(fp,&quot;%4.3f\n&quot;,x[i]); /*データx[i]の書き込み*/
+      
+    fclose(fp); /*ファイルクローズ */
+}</PRE>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><B><BR>
+<FONT color="#000099">補足（どこのフォルダにファイルが書き込まれるか）</FONT></B><BR>
+<BR>
+例12.1のプログラムをEclipseの画面上で実行すると、ワークスペースフォルダ内の下記の場所（project名フォルダ）にファイルが書き込まれます。<BR>
+<BR>
+　<FONT color="#0000ff">z:\workspace\project名</FONT><BR>
+<BR>
+ただし、Eclipseのワークスペースフォルダ(Eclipse の初期設定の際に、設定したフォルダ）を、<FONT color="#0000ff">z:\workspace</FONT>以外のフォルダに設定している場合は、これとは違う場所になります。<BR>
+</P>
+<BR>
+<HR>
+<TABLE BORDER=1 WIDTH="100%"bgcolor="#e1ffff">
+  <TBODY>
+    <TR>
+      <TD><FONT color="#000099"><B>演習問題12-1</B> (Revised : 2016/11/25)</FONT><BR>
+      <BR>
+      (1)例12-1を参考にして、振幅が同じで周波数が異なる２つのサイン波データを足し合わせて、結果をファイルに書き込むプロブラムを作ってください。<BR>
+<BR>
+      ここで、振幅と周波数の組合せは、1.0と 1.0 kHz、および、1.0と2.0 kHzとします。<BR>
+      ただし、サンプリング周波数は10 kHzとしてください。<BR>
+      <BR>
+      プログラムが正常に動作していれば、指定した名前のファイルが出来上がります。エクスプローラで自分の作業フォルダを開いて確認してください。<BR>
+<BR>
+      また、先週の演習問題11-3と同じやり方でエクセルにデータを読み込み、波形をグラフに描いてみてください。 実行前に予測した波形と一致しているかの確認は必ず行って下さい。ここでは考察として、プログラム全体の動作説明と、file_write関数の中で何を行っているかについて説明をしてください。<BR>
+<BR>
+      (2)次に、上で作ったプログラムの下に、（振幅，周波数）＝（1.0，1.0kHz）のサイン波と、（振幅，周波数）＝（1.0，<FONT color="#000000">2.0kHz</FONT>）のコサイン波の足し算の結果を別の名前のファイルに書き込むプログラムを追加してください。<BR>
+<BR>
+      サンプリング周波数は(1)と同じとします。また、エクセルを用いてグラフにしてください。<BR>
+      最後に、ファイル名として(1)と同じ名前を指定して実行した場合の結果についても示し、考察してください。<BR>
+      <BR>
+      <BR>
+      <FONT color="#000099"><B>注：</B></FONT>ファイルに書き込んでいますので、先週のようにコンソール画面の出力リストをコピーしなくても済みます。エクセルで<FONT color="#0000ff">[ファイルを開く]</FONT>を選び、ファイルの種類のところで、<FONT color="#0000ff">*.txt形式</FONT>のファイルを選んで読み込んでください（今日の問題は、データ数を10000に増やしています。 この場合、先週のように画面をコピーするやり方は難しいことがわかります）。<BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+<HR>
+以下のプログラムは演習12-1と逆の働きをするプログラムです。このプログラムでは、始めに演習12-1で作成したデータファイルのファイル名をキーボードから入力して、指定したファイルを開きます。更に、指定ファイルから読み込んだデータを配列ｘに収納します。その後、配列ｘに読み込まれたデータの最初の500個だけを画面表示します。<BR>
+<BR>
+<TABLE WIDTH=100% BORDER=1 BGCOLOR="#ffffff">
+  <TBODY>
+    <TR>
+      <TD><FONT color="#000099"><B>例12-2（ファイルから読み込んだデータの画面表示）</B>(Revised : 2012/12/3)</FONT><BR>
+      <PRE>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void file_read(int *,float *);
+void disp_data(int,float *);
+
+int main(void)
+{
+    int len;
+    float x[10000]; /*　データ配列ｘを宣言　*/
+      
+    file_read(&amp;len,x); /* 配列x[]に指定のファイルからデータを読み込む */
+    disp_data(500,x);     /* 配列x[]のデータを画面表示する：データの確認。*/
+
+    return(0);
+}
+
+void file_read(int *len, float *x) /* ファイル読み込み */
+{
+ 
+    FILE *fp;/* ファイルポインタの宣言 */
+    char name[30];
+      
+    printf(&quot;\nfilename?=&quot;); /* ファイル名の入力 */
+    fflush(0);scanf(&quot;%s&quot;,name);
+    if((fp=fopen(name,&quot;r&quot;))==NULL){ /* ファイルオープン */
+        printf(&quot;\nCan't open the source file\n&quot;); 
+        exit(1);/* プログラム終了 */
+    }
+    *len=0;
+    while(1){
+        /* 配列x[]にファイルからデータを読み込む.データが最後になったら終了する */
+        if(fscanf(fp,&quot;%f&quot;,&amp;x[*len])==EOF) break; 
+        *len=*len+1; /*データの数を数える */ 
+    }
+    fclose(fp); /* ファイルのクローズ */
+}
+
+void disp_data(int len, float *x) /* データの画面表示 */
+{
+    int i;
+    for(i=0; i&lt;len; i++)
+        printf(&quot;%f\n&quot;,x[i]);
+}
+</PRE>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+<TABLE BORDER=1 BGCOLOR="#e1ffff">
+  <TBODY>
+    <TR>
+      <TD><FONT color="#000099"><B>演習問題12-2</B>(Revised : 2012/12/4)</FONT><BR>
+      <BR>
+      例12-2 のプログラムを、配列ｘに読み込んだ任意の長さのデータがすべて画面に表示されるように修正して下さい。また、演習12-1で作成した波形データのファイルを読み込んで画面表示してください。なお、表示結果をレポートで送付する際は、最初の10行と最後の10行のみを添付し、途中は省略すること。考察では、file_read関数の各々の所で何をやっているか説明してください。<BR>
+      <BR>
+      <FONT color="#000099">[補足説明]</FONT><BR>
+      演習12-1で名前を付けて作成した波形データは、<FONT color="#0000ff">z:\workspace\&quot;演習12-1のproject名&quot;</FONT>　のフォルダに入っています。この波形データファイルを、<FONT color="#0000ff">z:\workspace\&quot;演習12-2のproject名&quot;</FONT>　のフォルダにコピーしてから、実行してください。プログラムを実行すると、<BR>
+      <FONT color="#0000ff">　filename?=</FONT><BR>
+      のメッセージがでますので、コピーした波形データファイル名を入力してください。<BR>
+      <FONT color="#0000ff">　Can't open the source file</FONT><BR>
+      というエラーが出る場合は、ファイル名が間違っている、または<FONT color="#0000ff">&quot;演習12-2のproject名&quot;</FONT>のフォルダに波形データが存在しない、の何れかの原因ですのでよく確認してください。<BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+今日はここまでにします。<BR>
+<HR><BR>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+  <TR>
+    <TD><FONT color="#ffffff" size="+1"><B>データの内部表現</B></FONT></TD>
+  </TR></TABLE><BR>
+今日は、コンピュータの中でデータがどのように扱われているか。さらに、それに伴ってファイルにどんな形でデータを読み書きするか、ということについて勉強します。<BR>
+<BR>
+キーワードとして、<BR>
+　<FONT color="#0000ff">・バイナリデータ　v.s. テキストデータ（アスキーコード）<BR>
+　・バイナリファイル　v.s. テキストファイル</FONT><BR>
+の違いを理解してもらいます（簡単に言うと、バイナリデータは演算のために２進数（1.0のデータ）で表現されているデータ、テキストデータは文字として表示するためのデータです）。<BR>
+<BR>
+<FONT color="#000099"><B>■文字データの内部表現</B></FONT><BR>
+<BR>
+文字データ（半角文字）は、char 型　<FONT color="#0000ff">8bit（１Byte)</FONT>のデータです。<BR>
+（補足：Unicodeの場合、全角文字（漢字）1文字を24bit（3Byte)で表現します）<BR>
+0～255までの数に、アルファベットや数字を対応させて、文字として表す約束で使います（<A HREF="ascii.html">アスキーコード</A>と呼んでいます）。<BR>
+<BR>
+まず、コンピュータの中で実際に使われているアスキーコードの約束を調べてみるために、次の例題をやってみてください。<BR>
+<BR>
+任意の文字定数（'a','b', '0','1'など）を、<FONT color="#0000ff">%d</FONT>で画面表示した時に現れる数字を確認してください。反対に、48 49‥‥などの数を、<FONT color="#0000ff">%c</FONT>で表示してみてください。どんな文字が表示されますか？　文字データは、コンピュータの中では、アスキーコードで入っていることがわかります。<BR>
+<BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD WIDTH=100%><FONT color="#000099"><B>例 12-3　</B>/* 文字データのコード出力*/</FONT><BR>
+   <PRE>#include&lt;stdio.h&gt;
+
+int main(void)
+{
+    printf(&quot;a:%d b:%d c:%d\n&quot;,'a','b','c');
+    printf(&quot;0:%d 1:%d 2:%d\n&quot;,'0','1','2');
+    printf(&quot;0:%c 1:%c 2:%c\n&quot;,48,49,50);
+
+    return(0);
+}</PRE></TD>
+  </TR></TABLE><BR>
+次の例題は、48から122までのコードデータを<FONT color="#0000ff">%c</FONT>で画面表示しています。<BR>
+どの文字が、アスキーコードの何番に対応しているかがわかります。<BR>
+<BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD WIDTH=100%><FONT color="#000099"><B>例 12-4　</B>/* アスキーコードの出力*/</FONT><BR>
+    <PRE>#include&lt;stdio.h&gt;
+
+int main(void)
+{
+    unsigned char i;
+
+    for(i=48;i&lt;=122;i++)
+        printf(&quot;%d:%c\n&quot;,i,i);
+
+    return(0);
+}</PRE>
+    </TD>
+  </TR></TABLE>
+<BR>
+<B><FONT color="#000099">■数値データの内部表現</FONT></B><BR>
+<BR>
+次に、数値データをコンピュータがどんな形で扱っているかについて説明します。<BR>
+<BR>
+<FONT color="#000099"><B>・データの型とビット数</B></FONT><BR>
+<TABLE BORDER WIDTH=100%>
+  <TR>
+    <TD BGCOLOR="#0080c0">型</TD><TD BGCOLOR="#0080c0">長さ</TD><TD BGCOLOR="#0080c0">範囲</TD>
+  </TR><TR>
+    <TD BGCOLOR="#dedeef">short int</TD><TD BGCOLOR="#dedeef">2Byte=16bit</TD><TD BGCOLOR="#dedeef">0～(2^16-1)　(=65,535)</TD>
+  </TR><TR>
+    <TD BGCOLOR="#dedeef">long int</TD><TD BGCOLOR="#dedeef">4Byte=32bit</TD><TD BGCOLOR="#dedeef">0～(2^32-1)　(=4,294,967,295)</TD>
+  </TR><TR>
+    <TD BGCOLOR="#dedeef">float</TD><TD BGCOLOR="#dedeef">4Byte=32bit</TD><TD BGCOLOR="#dedeef">仮数部（23ビット=8,388,608　 6～7桁)<BR>
+    指数部(8ビット=256), 符号1bit</TD>
+  </TR></TABLE><BR>
+<BR>
+<FONT color="#000099"><B>・2進数表示、16進数表示</B></FONT><BR>
+コンピュータの中では数を2進数で表現します。プログラムを作る際に、通常の10進数でなく、2進数を意識して作る必要がある場合が出てきます。その場合、2進数を直接記述するのは大変なので、代わりに16進数で表記してプログラムを作ります。<BR>
+0～１5の数の16進数、2進数、10進数各々の対応関係を以下に示します。<BR>
+<BR>
+<TABLE BORDER BGCOLOR="#e0e0ef">
+  <TR>
+    <TD>10進数</TD><TD><DIV ALIGN=RIGHT>0</DIV></TD><TD><DIV ALIGN=RIGHT>1</DIV></TD><TD><DIV ALIGN=RIGHT>2</DIV></TD><TD><DIV ALIGN=RIGHT>3</DIV></TD><TD><DIV ALIGN=RIGHT>4</DIV></TD><TD><DIV ALIGN=RIGHT>5</DIV></TD><TD><DIV ALIGN=RIGHT>6</DIV></TD><TD><DIV ALIGN=RIGHT>7</DIV></TD>
+  </TR><TR>
+    <TD>16進数</TD><TD><DIV ALIGN=RIGHT>0</DIV></TD><TD><DIV ALIGN=RIGHT>1</DIV></TD><TD><DIV ALIGN=RIGHT>2</DIV></TD><TD><DIV ALIGN=RIGHT>3</DIV></TD><TD><DIV ALIGN=RIGHT>4</DIV></TD><TD><DIV ALIGN=RIGHT>5</DIV></TD><TD><DIV ALIGN=RIGHT>6</DIV></TD><TD><DIV ALIGN=RIGHT>7</DIV></TD>
+  </TR><TR>
+    <TD>２進数</TD><TD>0000</TD><TD>0001</TD><TD>0010</TD><TD>0011</TD><TD>0100</TD><TD>0101</TD><TD>0110</TD><TD>0111</TD>
+  </TR></TABLE><BR>
+<TABLE BORDER BGCOLOR="#d7d7ec">
+  <TR>
+    <TD>10進数</TD><TD><DIV ALIGN=RIGHT>8</DIV></TD><TD><DIV ALIGN=RIGHT>9</DIV></TD><TD><DIV ALIGN=RIGHT>10</DIV></TD><TD><DIV ALIGN=RIGHT>11</DIV></TD><TD><DIV ALIGN=RIGHT>12</DIV></TD><TD><DIV ALIGN=RIGHT>13</DIV></TD><TD><DIV ALIGN=RIGHT>14</DIV></TD><TD><DIV ALIGN=RIGHT>15</DIV></TD>
+  </TR><TR>
+    <TD>16進数</TD><TD><DIV ALIGN=RIGHT>8</DIV></TD><TD><DIV ALIGN=RIGHT>9</DIV></TD><TD><DIV ALIGN=RIGHT>A</DIV></TD><TD><DIV ALIGN=RIGHT>B</DIV></TD><TD><DIV ALIGN=RIGHT>C</DIV></TD><TD><DIV ALIGN=RIGHT>D</DIV></TD><TD><DIV ALIGN=RIGHT>E</DIV></TD><TD><DIV ALIGN=RIGHT>F</DIV></TD>
+  </TR><TR>
+    <TD>２進数</TD><TD>1000</TD><TD>1001</TD><TD>1010</TD><TD>1011</TD><TD>1100</TD><TD>1101</TD><TD>1110</TD><TD>1111</TD>
+  </TR></TABLE><BR>
+プログラムの中で16進定数を使うには、たとえば、0Aならば、<BR>
+<BR>
+　<FONT color="#0000ff">0x0A</FONT><BR>
+<BR>
+のように、先頭に<FONT color="#ff0000">0x</FONT>を付けます。<BR>
+整数型のデータを16進表示する際、例えば、<BR>
+<B>short型整数の16進表示</B>（１バイトを2桁で表示、2バイトで4桁）<BR>
+<BR>
+　<FONT color="#0000ff">0x2716</FONT><BR>
+<BR>
+は、<FONT color="#ff0000">2</FONT>×2^12+<FONT color="#ff0000">7</FONT>×2^8+<FONT color="#ff0000">1</FONT>×2^4+<FONT color="#ff0000">6</FONT>×2^0=10000　 を表します。<BR>
+<BR>
+また、<B>long(int)型整数の16進表示</B>（4バイトで8桁）は、<BR>
+<BR>
+　<FONT color="#0000ff">0x3b9aca00</FONT><BR>
+<BR>
+のようになり、この場合10進で1,000,000,000を表わします。<BR>
+<BR>
+<FONT color="#000099"><B>・整数型データの表現（２の補数表現）</B></FONT><BR>
+コンピュータの中では、正の整数値しか表現できません。そのために、負の数を次のように約束して表現します。（これを2の補数表現という）<BR>
+<BR>
+まず、n=4bitの簡単な場合について説明すると、２の補数表現は以下のようになります。<BR>
+<BR>
+　<FONT color="#0000ff">10進数　　-8 -7 -6 -5 -4 -3 -2 -1 0 1 2 3 4 5 6 7<BR>
+　2の補数　　8 9 10 11 12 13 14 15 0 1 2 3 4 5 6 7</FONT><BR>
+<BR>
+実際の、short型整数（n=16bit）の場合に対する、2の補数表現は以下のようになります。<BR>
+<BR>
+　<FONT color="#0000ff">10進数　　-32768 ‥‥ 　　-2　　　 -1　 0　 1　 2 ‥‥ 32767<BR>
+　2の補数 　 32768 ‥‥ 65534 　65535 　0 　1 　2 ‥‥ 32767</FONT><BR>
+<BR>
+n bitデータの2の補数表現データxは、次のルールで、実際の符号付の数に変換できます（負の数は、2＾nを引き算すれば計算できる）。<BR>
+<BR>
+<FONT color="#0000ff">　if x &gt;= 2^(n-1)<BR>
+　then x=x-2^n</FONT><BR>
+<BR>
+以上のことを踏まえた上で、整数データの内部表現を確かめるための、次の例題をやってください。<BR>
+<BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD WIDTH=100%><FONT color="#000099"><B>例 12-5</B>（整数の%d、%x出力,上位バイト、下位バイト取り出し）</FONT><BR>
+    <PRE>#include&lt;stdio.h&gt;
+int main(void)
+{
+    short ds;
+    int dl;
+    
+    ds=10000;
+    //ds=0x2710;
+    printf(&quot;\nds(10進)=%hd&quot;,ds);
+    printf(&quot;\nds(16進)=%04hx &quot;,ds);
+    printf(&quot;\nds(下位)=%02hx &quot;,(ds&amp;0xFF));
+    printf(&quot;\nds(上位)=%02hx\n&quot;,(ds&gt;&gt;8)&amp;0xFF);
+    
+    dl=1000000000;
+    //dl=0x3b9aca00;
+    printf(&quot;\ndl(10進)%d &quot;,dl);
+    printf(&quot;\ndl(16進)%08x\n&quot;,dl);
+    printf(&quot;\ndl(最下位)%02x &quot;,(dl&amp;0xFF));
+    printf(&quot;\ndl(中下位)%02x&quot;,(dl&gt;&gt;8)&amp;0xFF);
+    printf(&quot;\ndl(中上位)%02x&quot;,(dl&gt;&gt;16)&amp;0xFF);
+    printf(&quot;\ndl(最上位)%02x&quot;,(dl&gt;&gt;24)&amp;0xFF);
+
+    return(0);
+}</PRE>
+    </TD>
+  </TR></TABLE>
+<BR>
+<FONT color="#000099"><B>例12-5のプログラムの補足説明</B><BR>
+<B>・16進数表示のための書式</B></FONT><BR>
+<BR>
+　　<FONT color="#0000ff">%d</FONT>：10進数表示<BR>
+　　<FONT color="#0000ff">%x</FONT>：16進数表示<BR>
+　　<FONT color="#0000ff">%02x </FONT>16進数を2桁で表示（数字の先頭が0の場合、0を詰めて表示）<BR>
+　　<FONT color="#0000ff">%02hx</FONT> hはshort型整数を表示<BR>
+<B><BR>
+<FONT color="#000099">・上位バイト、下位バイト取り出し方法</FONT></B><BR>
+　　short型データdsの下位バイトの取り出しは、<BR>
+<BR>
+　　<FONT color="#0000ff">ds &amp; 0xFF</FONT><BR>
+<BR>
+とすることにより実現できます。ここで、<BR>
+<BR>
+　　<FONT color="#ff0000">&amp;</FONT> <BR>
+<BR>
+はand(論理積）演算子を表します（両方のビットデータが1のとき、１にする）。従って、<BR>
+<BR>
+　 <FONT color="#ff0000">0xFF</FONT>　（=11111111）<BR>
+<BR>
+とdsのandをとると、下位バイトはそのまま、上位バイトは0になります。<BR>
+<BR>
+次に、上位バイトの取り出しは<BR>
+<BR>
+　　<FONT color="#0000ff">(ds&gt;&gt;8)&amp;0xFF</FONT><BR>
+<BR>
+の演算で実現しています。ここで、<BR>
+<BR>
+　　<FONT color="#ff0000">&gt;&gt;</FONT><BR>
+<BR>
+は右シフト演算子です。例えば、<BR>
+<BR>
+　　<FONT color="#0000ff">ds&gt;&gt;8</FONT><BR>
+<BR>
+は、dsを8ビット右にシフトさせます。<BR>
+この結果、上位バイトが下位バイトの桁の位置に移動します。その後、0xFFとandをとることにより、目的とする上位バイトを取り出すことができます。<BR>
+<BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#e1ffff">
+  <TR>
+    <TD><FONT color="#000099"><B>演習問題12-3</B> (Revised : 2013/12/02)</FONT><BR>
+    <BR>
+    例12-3,12-4, 12-5のプログラムを次のように変更してください。<BR>
+    <BR>
+    (1)例12-3の3つのprintf()文を以下のものに差し替え、「??」に適切な「2桁～4桁の数字」（注：文字ではない）を書き入れてプログラムを完成せよ。<BR>
+    <BR>
+    <FONT color="#0000ff">　printf(&quot;%c%c%c %c%c %c%c%c%c %c%c%c %c%c%c%c\n&quot;,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??);</FONT><BR>
+    <BR>
+    なお、実行結果は以下の通りとなるようにせよ。<BR>
+    <BR>
+    　:^) :( :'-( :-@ (:-&amp;<BR>
+    <BR>
+    （※海外で使われることの多い顔文字で、左から「ハッピー」「悲しい」「泣いている」「叫び」「怒り」を表す）<BR>
+    <BR>
+    (2)例12-4のプログラムを変更して、キーボードから１文字を入力したら、そのアスキーコード（整数）を出力するプログラムを作ってください。反対に、アスキーコード（整数）を入力したら、文字を出力するプログラムを作ってください。<BR>
+    <BR>
+    (3)例12-5のプログラムの変数ds,dlの値を次のように変更してください。プログラムを実行し、実行結果を説明してください。<BR>
+    <BR>
+    <FONT color="#0000ff">ds=65534; dl=4294967294;</FONT><BR>
+    <BR>
+    </TD>
+  </TR></TABLE>
+<BR>
+<HR>
+<BR>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+  <TR>
+    <TD><FONT color="#ffffff" size="+1"><B>バイナリファイル</B></FONT></TD>
+  </TR></TABLE><BR>
+以上の準備ができたところで、バイナリファイルの読み書きの方法を説明します。バイナリファイルは、数値データを2進数のバイナリデータのままで書き込んだデータです。バイナリファイルはエディタやワープロで呼び出しても中味を見ることができません。しかし、テキストファイル（アスキーコード）で書き込む場合に比べて、ファイル容量が小さくできます。このため、オペレーティングシステムのアプリケーションプログラムが扱うデータファイル（音楽データの
+*.wav、画像データの *.bmpなど）の、殆ど全てがバイナリファイルになっています。<BR>
+<BR>
+<B><FONT color="#000099">■バイナリデータのファイル書込み</FONT></B><BR>
+バイナリファイルは、今まで習ってきたテキストファイルと殆ど同じようにして、プログラムすることができます。その手順を以下に示します。<BR>
+<B><BR>
+<FONT color="#000099">①ファイルオープン</FONT></B><BR>
+<BR>
+　　<FONT color="#0000ff">fp=fopen(&quot;file.bin&quot;,&quot;wb&quot;)</FONT><BR>
+<BR>
+　第１引数：オープンするファイル名<BR>
+　第2引数：<FONT color="#ff0000">wb</FONT>の、<FONT color="#ff0000">w</FONT>は書き込み用、<FONT color="#ff0000">b</FONT>はバイナリファイルを表す。<BR>
+<BR>
+上記の例の場合は、file.binの書き込み用のバイナリファイルをオープンして、ファイルポインタfpと関連づける処理を行います。<BR>
+<BR>
+<B><FONT color="#000099">②fpに1バイト書き込み</FONT></B><BR>
+<BR>
+　　<FONT color="#0000ff">putc(d,fp)</FONT><BR>
+<BR>
+　第１引数：書き込むデータの変数名<BR>
+　第2引数：ファイルポインタ。<BR>
+<BR>
+は、ファイルポインタfpに、dを１バイト整数とみなして、１バイト分のデータを書き込みます。<BR>
+<BR>
+次の例題は、short型整数ds=10000をバイナリファイル(data.binの名前のファイル)に書き込んでいます。short型整数は2バイトデータのため、 最初に下位バイト、次に上位バイトの順番で2回　putc()関数を呼び出して書き込んでいます。<BR>
+<BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD WIDTH=100%><FONT color="#000099"><B>例 12-6　</B>/*バイナリデータの書き込み */</FONT><BR>
+    <PRE>#include&lt;stdio.h&gt;
+int main(void)
+{
+    short ds;
+    FILE *fp;
+    
+    fp=fopen(&quot;data.bin&quot;,&quot;wb&quot;);
+    ds=10000;
+    putc(ds&amp;0xFF,fp);
+    putc((ds&gt;&gt;8)&amp;0xFF,fp);
+    
+    fclose(fp);
+
+    return(0);
+}</PRE>
+    </TD>
+  </TR></TABLE>
+<BR>
+<B><FONT color="#000099">■バイナリデータの読み込み</FONT></B><BR>
+以下は、上記例題12-6で書き込んだバイナリデータを読み込むためのプログラムです。<BR>
+<BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD WIDTH=100%><FONT color="#000099"><B>例 12-7　</B>/* バイナリデータの読み込み*/</FONT><BR>
+    <PRE>#include&lt;stdio.h&gt;
+
+int main(void)
+{
+    short ds;
+    FILE *fp;
+    
+    fp=fopen(&quot;data.bin&quot;,&quot;rb&quot;);
+    ds= getc(fp);
+    ds=ds | getc(fp)&lt;&lt;8;
+    printf(&quot;ds=%d(10進) %x(16進)\n&quot;,ds,ds);
+
+    fclose(fp);
+
+    return(0);
+}</PRE></TD>
+  </TR></TABLE><BR>
+<FONT color="#000099"><B><FONT color="#0000cc">補足：</FONT></B></FONT><BR>
+<BR>
+・<FONT color="#0000ff">fp=fopen(&quot;data.bin&quot;,&quot;rb&quot;);</FONT><BR>
+　第2引数の&quot;rb&quot;のrは読み込み、bはバイナリファイルを表す。<BR>
+<BR>
+・<FONT color="#0000ff">ds=getc(fp)</FONT><BR>
+getc(fp)は、ファイルポインタｆｐのファイルから、１バイトのデータを読み込むための関数です。 読み込んだデータ（short int 型）は、戻り値で返されます。
+上記の場合、１回目に読み込んだデータ（下位バイトデータ）を、dｓに代入しています。<BR>
+<BR>
+・<FONT color="#0000ff">getc(fp)&lt;&lt;8　</FONT>　で<BR>
+<BR>
+　　<FONT color="#ff0000">&lt;&lt;</FONT><BR>
+<BR>
+の記号は左シフト演算子です。ここでは、getc(fp)で読み込んだデータ（上位バイトデータ） を8ビット左シフトして、上位バイトに桁移動させています。<BR>
+<BR>
+・<FONT color="#0000ff">ds | getc(fp)&lt;&lt;8</FONT>　　で<BR>
+<BR>
+　<FONT color="#ff0000">　|</FONT> <BR>
+<BR>
+の記号は、ビットごとのor演算(論理和演算子)を表します。<BR>
+ds（その前のところで下位バイトデータが入っている）と 2回目にgetc(fp)で読み込んだ上位バイトデータのorをとる演算を行っています。
+これにより、上位バイトデータと下位バイトデータを繋ぎ合わせています。<BR>
+<BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#e1ffff">
+  <TR>
+    <TD><FONT color="#000099"><B>演習問題12-4</B> (Revised : 2014/12/08)</FONT><BR>
+    <BR>
+    例12-6、12-7のプログラムを次のように変更してください。プログラムを実行すると同時に、プログラムの動作を説明してください。 <BR>
+    <BR>
+    (1)例12-6を参考にして、300～350までの連続した整数値を、バイナリファイ ルに書き込むプログラムを作ってください。<BR>
+    <BR>
+    　　・ヒント：書き込み部分を以下のように作ってください。ただし、「?」には適切な数字、文字、記号を書き入れること。<BR>
+    <BR>
+    　　　　<FONT color="#0000ff">for(ds=???; ds&lt;???;ds??){<BR>
+    　　　　　　　putc(ds&amp;0x??,fp);<BR>
+    　　　　　　　putc((ds&gt;&gt;?)&amp;0x??,fp);<BR>
+    　　　　}</FONT><BR>
+    <BR>
+    　　・出来上がったバイナリファイルを、試しにエディタプログラム（端末室のWindowsPCの場合は”notepad（メモ帳)”や”サクラエディタ”を使ってください)で読み込んでみてください（notepadで開いた場合は文字化けしてしまい読むことができないことを確認してください）。
+    <BR>
+    <BR>
+    (2)例12-7を参考にして、上記(1)で作成したバイナリファイル（300～350までの数のバイナリデータ）を読み込んだのち、データを画面に表示するプログラムを作ってください。<BR>
+    <BR>
+    <BR>
+    <FONT color="#0000cc">[補足説明]<BR>
+    </FONT><BR>
+    12-4(1)の課題で、保存されたバイナリファイルを、notepadで読み込んだ後、農工大メールに貼り付けて送信しようとすると、<BR>
+    <BR>
+    <FONT color="#ff0000">選択された文字コードでは利用できない文字を含んだテキストを送信しようとしています<BR>
+    </FONT><BR>
+    のエラーが出て送信できないことがあります。この場合は次のいずれかの方法を試してください。<BR>
+    <BR>
+    方法１：メール送信のテキストのエンコード方法を、日本語ISO-2022-JPではなく、Unicode(UTF8)　に変更してください。<BR>
+    方法２： notepadの代わりに、サクラエディタで開いてください（実は、サクラエディタで開くと文字化けしません）。<BR>
+    <BR>
+    </TD></TR></TABLE><BR><HR><BR>
+<FONT color="#000099"><B>■サウンドファイルの作成</B></FONT><BR>
+<BR>
+上記のバイナリデータを応用すると、サウンドファイルを作ることができます。<BR>
+<FONT color="#0000ff">wavファイル</FONT>（拡張子がwavのファイル、正確にはRIFFファイルと呼ばれている） は音声データ記述のためのファイル形式です。 元々、Windowsの標準サウンドファイル形式として作られましたが、Macでも使うことができます。
+詳細は省略しますが、<FONT color="#0000ff">wavファイル</FONT>は以下のような構造のバイナリファイルです。<BR>
+<BR>
+　ＩＤ（４バイト）<BR>
+　サイズ（４バイト）<BR>
+　フォームサイズ<BR>
+　ｆｍｔチャンク<BR>
+　dataチャンク （ここにサウンドファイルをバイナリ形式で書き込む）<BR><BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD><B><FONT color="#000099">演習問題12-5 (余裕のある人へ）</FONT></B><BR><BR>
+    演習問題12-１では、テキスト形式のファイルを書き込みました。<BR>
+    以下のプログラムは、wavフォーマットのサウンドファイルを作成するプログラムです。<BR><BR>
+    (1)プログラムを実行することによって、サウンドファイルを作成してみてください
+（この例では、2つのサイン波の合成音（うなり音）を作成しています）。<BR><BR>
+    注：プログラムを実行すると、ファイル名の入力を求めてきますので、 ファイル名を指定してください。その際、ファイル名には、拡張子wavを付けてください。<BR>
+    <BR>
+    （２）作成したサウンドファイルを実行して、実際に音を鳴らしてみてください。<BR><BR>
+    <FONT color="#000099">注：</FONT>作成したサウンドファイルを音楽プレーヤ（Windowsの場合はWindows Media Player、MACの場合はQuickTime Playerなど）で聞いてみてください。<BR>
+    <BR>
+    （3）他の波形についても行って見てください。いろいろ聞き比べてみると面白いと思います。<BR><BR><BR>
+    /* サウンドファイルの書き込み*/<BR><PRE>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;limits.h&gt;
+
+#define PI 3.14159265358979
+
+void wave_write(int, float,float *);
+void add_data(int,float *,float *);
+void make_sinwave(int,float,float,float,float *);
+float max_data(int,float *);
+void fputc2hl( unsigned short int, FILE *);
+void fputc4hl( unsigned long int, FILE *);
+void fputc2lh( unsigned short int, FILE *);
+void fputc4lh( unsigned long int, FILE *);
+
+int main(void)
+{
+    long len=10000;
+    long SampFrq=5500;
+    float freq1=440.0,freq2=444.0;
+    float amp=0.5;
+    float x1[10000],x2[10000];
+    
+    make_sinwave(len,freq1,1.0/SampFrq,amp,x1);
+    make_sinwave(len,freq2,1.0/SampFrq,amp,x2);
+    add_data(len,x1,x2);
+    
+    wave_write(len,SampFrq,x1);
+
+    return(0);
+}
+
+void wave_write(int len, float SampFrq,float *x)
+{
+    int i;
+    short dd;
+    float xmax;
+    FILE *fp;
+    char name[30];
+    
+    xmax=max_data(len,x);
+    
+    printf(&quot;\nfilename?=&quot;); fflush(0); scanf(&quot;%s&quot;,name);
+    if((fp=fopen(name,&quot;wb&quot;))==NULL){
+        printf(&quot;\nCan't open the source file\n&quot;);
+        exit(1);
+    }
+    
+    fputs(&quot;RIFF&quot;,fp);
+    fputc4lh(len*2+36,fp);
+    fputs(&quot;WAVE&quot;,fp);
+    fputs(&quot;fmt &quot;,fp);
+    fputc4lh(16,fp);
+    fputc2lh(1,fp);
+    fputc2lh(1,fp);
+    fputc4lh(SampFrq,fp);
+    fputc4lh(SampFrq*2,fp);
+    fputc2lh(2,fp);
+    fputc2lh(16,fp);
+    fputs(&quot;data&quot;,fp);
+    fputc4lh(len*2,fp);
+    
+    for(i=0; i&lt;len; i++){
+        dd=x[i]*32767/xmax;
+        fputc2lh(dd,fp);
+    }
+    fclose(fp);
+}
+
+float max_data(int len,float *x)
+{
+    int i;
+    float xmax,ax;
+    
+    xmax=0.0;
+    for(i=0;i&lt;len;i++){
+        ax=fabs(x[i]);
+        if(ax&gt;xmax)
+            xmax=ax;
+    }
+    return(xmax);
+}
+
+void add_data(int len,float *x1,float *x2)
+{
+    int i;
+
+    for(i=0;i&lt;len;i++)
+        x1[i]=x1[i]+x2[i];
+}
+
+void make_sinwave(int len, float freq,float tdel,float amp,float *x) 
+{
+    int i;
+    float time;
+    
+    for(i=0;i&lt;len;i++){
+        time=tdel*i;
+        x[i]=amp*sin(2.0*PI*freq*time);
+    }
+}
+
+void fputc2hl(unsigned short int d, FILE *fp)
+{
+    putc(d&gt;&gt;CHAR_BIT,fp);
+    putc(d &amp;0xFF,fp);
+}
+
+void fputc4hl(unsigned long int d, FILE *fp)
+{
+    putc((d&gt;&gt;CHAR_BIT*3)&amp;0xFF,fp);
+    putc((d&gt;&gt;CHAR_BIT*2)&amp;0xFF,fp);
+    putc((d&gt;&gt;CHAR_BIT )&amp;0xFF,fp);
+    putc(d &amp;0xFF,fp);
+}
+
+void fputc2lh(unsigned short int d, FILE *fp)
+{
+    putc(d &amp;0xFF,fp);
+    putc(d&gt;&gt;CHAR_BIT,fp);
+}
+
+void fputc4lh(unsigned long int d, FILE *fp)
+{
+    putc(d &amp;0xFF,fp);
+    putc((d&gt;&gt;CHAR_BIT )&amp;0xFF,fp);
+
+    putc((d&gt;&gt;CHAR_BIT*2)&amp;0xFF,fp);
+    putc((d&gt;&gt;CHAR_BIT*3)&amp;0xFF,fp);
+}</PRE></TD></TR></TABLE><BR></BODY></HTML>

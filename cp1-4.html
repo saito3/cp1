@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>第4回</TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef">
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+  <TR>
+    <TD WIDTH=100%><FONT size="+2" color="#ffffff"><FONT color="#ffffff"><B>プログラミングおよび演習 ＮＯ．４</B></FONT></FONT></TD>
+  </TR></TABLE>
+<DIV ALIGN=RIGHT>Last-Modified: 2015.05.25<BR>
+</DIV>
+<HR>
+<STRONG>何のために制御文を使うか？</STRONG><BR>
+<BR>
+プログラムは、普段は上の行から下の行に向かって１行づつ順番に実行していきます。制御文は、条件式に応じてプログラムの本来の順番を変えて実行させたい場合に
+使います。 制御文には、
+<BR>
+<BR>
+　<FONT color="#0000ff">① 選択処理（条件に応じて処理を選択する）<BR>
+<BR>
+　② 反復処理（条件に応じて処理を何回も繰り返す）</FONT><BR>
+<BR>
+があります。 ①の代表的な制御文としてif文やswitch文があります。<BR>
+今日は、その中で比較的出番の多いif文について勉強します。<BR>
+<BR>
+
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<TR>
+<TD WIDTH=100%><B><FONT color="#ffffff">ｉｆ文</FONT></B></TD></TR></TABLE>
+
+<P><IMG src="cp1-4-1.gif" alt="" width="150" height="229" align="right">if文は<BR>
+<BR>
+　<FONT color="#0000ff">if(条件式){<BR>
+    <BR>
+　　　複数の実行文1;<BR>
+<BR>
+　}else{<BR>
+    <BR>
+　　　複数の実行文2;<BR>
+<BR>
+　}<BR>
+</FONT></P>
+<P>の形をしています。この場合、条件式が成立する時に文１を実行し、不成立の時に文2を実行することになります。ここで、条件式は、以下のように約束します。</P>
+<BLOCKQUOTE>
+<TABLE BORDER=1 CELLSPACING=0>
+  <TR>
+    <TD ALIGN=CENTER BGCOLOR="#00ffff">条件式</TD><TD BGCOLOR="#00ffff">　　　意　味</TD><TD BGCOLOR="#00ffff">　注　意</TD>
+  </TR><TR>
+    <TD ALIGN=CENTER BGCOLOR="#00ff00">比較演算子</TD><TD BGCOLOR="#00ff00">　</TD><TD BGCOLOR="#00ff00">　</TD>
+  </TR><TR>
+    <TD>　x==a　</TD><TD>　xがaに等しい？</TD><TD><FONT color="#ff0000">x=aと間違えない</FONT></TD>
+  </TR><TR>
+    <TD>　x!=a</TD><TD>　xがaに等しくない？</TD><TD>　</TD>
+  </TR><TR>
+    <TD>　x&gt;a</TD><TD>　xがaより大きい？</TD><TD>　</TD>
+  </TR><TR>
+    <TD>　x&lt;a</TD><TD>　xがaより小さい？</TD><TD>　</TD>
+  </TR><TR>
+    <TD>　x&gt;=a</TD><TD>　xがa以上？</TD><TD>　</TD>
+  </TR><TR>
+    <TD>　x&lt;=a</TD><TD>　xがa以下？</TD><TD>　</TD>
+  </TR><TR>
+    <TD ALIGN=CENTER BGCOLOR="#00ff00">論理演算子</TD><TD BGCOLOR="#00ff00">　</TD><TD BGCOLOR="#00ff00">　</TD>
+  </TR><TR>
+    <TD>(式1)&amp;&amp;(式2)</TD><TD>(式1)と(式2)が同時に真？</TD><TD>　</TD>
+  </TR><TR>
+    <TD>(式1)||(式2)</TD><TD>(式1)と(式2)のどちらかが真？</TD><TD>　</TD>
+  </TR><TR>
+    <TD>!(式1)</TD><TD>(式1)が偽？</TD><TD>　</TD>
+  </TR></TABLE>
+</BLOCKQUOTE>
+<P><IMG src="cp1-4-2.gif" alt="" width="118" height="202" align="right"><BR>
+if文は上記のスタイル以外に、<BR>
+<BR>
+    <BR>
+<FONT color="#0000ff">if(条件式){<BR>
+<BR>
+　　文1;<BR>
+｝<BR>
+</FONT><BR>
+のように、else文がない書き方もあります。反対に、<BR>
+<BR>
+<FONT color="#0000ff">
+if(条件式１){<IMG src="cp1-4-3.gif" alt="" width="273" height="284" align="right"><BR>
+<BR>
+　　複数の実行文１;<BR>
+<BR>
+　}else　if(条件式2){<BR>
+<BR>
+　　複数の実行文2;<BR>
+<BR>
+　}else　if(条件式3){<BR>
+　<BR>
+　　複数の実行文3;<BR>
+<BR>
+　}else {<BR>
+<BR>
+　　複数の実行文4;<BR>
+}<BR>
+</FONT></P>
+<DIV align="left">のように書くと、(条件式１)が成立するときは、実行文１を実行、(条件式２)が成立するときは実行文２を実行、‥‥、何れも成立しない場合は、実行文4を実行します。<BR>
+<BR>
+なお、{　}の中の実行文が１つだけ(単文）の場合は、<BR>
+<BR>
+<FONT color="#0000ff">　　if(条件式)<BR>
+<BR>
+　　　　文１；<BR>
+</FONT><BR>
+のように、｛　｝を省略して書くことができます。</DIV>
+<TABLE>
+  <TBODY>
+    <TR></TR>
+  </TBODY>
+</TABLE>
+<HR>
+<BR>
+以下のプログラムは、キーボードから読み込んだ正の整数値の大きさを判断してメッセージを出力するプログラムです。 <BR>
+
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TR><TD WIDTH=100%><STRONG><FONT color="#000099">例４-１</FONT></STRONG><BR>
+<PRE>#include &lt;stdio.h&gt;
+int main(void)
+{
+    int x;
+
+    printf(&quot;\n正の整数値を入れてください\n&quot;);
+    fflush(0);
+    scanf(&quot;%d&quot;,&amp;x);
+    printf(&quot;入力した値は%dです\n&quot;,x);
+
+    if(x &lt; 0 ){
+       printf(&quot;負または大きすぎる値が入力されました。\n&quot;);
+       printf(&quot;もう一度やり直してください。\n&quot;);
+    }else if(x&gt;100000000)
+       printf(&quot;入力した値は一億より大きい数です\n&quot;);
+
+       else if(x&gt;1000000)
+       printf(&quot;入力した値は百万より大きく一億以下の数です\n&quot;);
+
+       else if(x&gt;1000)
+       printf(&quot;入力した値は千より大きく百万以下の数です\n&quot;);
+
+       else 
+       printf(&quot;入力した値は千以下の数です&quot;);
+
+    return(0);
+}</PRE></TD></TR></TABLE>
+<BR><BR>
+
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff"><TR><TD BGCOLOR="#e1ffff">
+<B><FONT color="#000099">演習問題 ４－１</FONT> </B>(Revised : 2015/05/19)<BR>
+    <BR>
+    自分の身長と実測体重をキーボードから入力すると、標準体重、BMI(Body Mass Index)および肥満度を計算して、<BR>
+<BR>
+    　<FONT color="#0000ff">入力された身長は　　　m、 実測体重は　　　kg。<BR>
+    　上記の場合の標準体重は　　　kg、 BMI指数は　　　 、 肥満度は　　　　％。</FONT><BR>
+<BR>
+    のように、計算結果を表示するプログラムを作りなさい。なお、それぞれの計算式は以下のとおり。<BR>
+    <BR>
+    <FONT color="#0000ff">　　　　　　体重（ｋｇ）<BR>
+    　BMI＝<S>　　　　　　　　　　　　　</S>　<BR>
+    　　　　　身長（ｍ）×身長（ｍ）<BR>
+    <BR>
+    　標準体重（ｋｇ）＝身長（ｍ）×身長（ｍ）×２２<BR>
+    </FONT><BR>
+    <FONT color="#0000ff">　　　　　　　　　　（実測体重－標準体重）×１００<BR>
+    　肥満度（％）＝<S>　　　　　　　　　　　　　　　　　　　 <BR>
+    </S>　　　　　　　　　　　　　　　標準体重 <BR>
+    </FONT><BR>
+    次に、BMI指数を使って、<BR>
+<BR>
+    <FONT color="#0000ff">　BMI＜18.5 　　　　　　　 　低体重<br>
+    　18.5≦BMI＜25 　　　　　 標準<br>
+    　25≦BMI＜30 　　　　　　 肥満度1<br>
+    　30≦BMI＜35 　　　　　　 肥満度2<br>
+    　35≦BMI＜40 　　　　　　 肥満度3<br>
+    　40≦BMI　　　　　　　　　　肥満度4</font><br>
+<BR>
+    と判定して肥満度などについてのコメントを出力するように改良すること。さらに、BMIが25以上については以下のコメントも出力できるようにすること。<BR>
+    <BR>
+    <FONT color="#0000ff">「高血圧症、高中性脂肪血症の発病率が2倍以上に増えます。注意してください。」</FONT><BR>
+    <BR>●補足説明<BR>
+    　・以上の課題は一つのプログラムにまとめて下さい。<BR>
+    　・実行結果は少なくとも３つの身長と体重の例について示してください。<BR>
+    　一つ目はBMIが40を超える場合、二つ目はBMIがちょうど25の場合、<BR>
+    　最後はそれ以外のBMIの値をとる好きな身長と体重の組み合わせを入力してください。<BR>
+    <BR>
+    　・考察は、それぞれの実行結果に対して別々に行ってください。特に、if文の働きに注意しながらプログラムの動作を説明してください。<BR>
+    <BR>
+ </TD></TR></TABLE>
+<BR>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<TR>
+<TD WIDTH=100%><B><FONT color="#ffffff">算　術　関　数</FONT></B></TD></TR></TABLE>
+<P>図のような直角三角形の辺の長さを求める問題を考えてみます。ピタゴラスの定理を用いると、斜辺ｃは、辺a, bを用いて、<BR>
+<IMG src="cp1-4-4.gif" width="224" height="173" border="0" align="right"><BR>
+　<FONT color="#0000ff">c=√(ａ<SUP>2</SUP>＋ｂ<SUP>2</SUP> )</FONT></P>
+<P>から計算できます。また、辺ｃと角度θが分かっているとき、辺ａ,ｂの長さは、三角関数を使って<BR>
+<BR>　　<FONT color="#0000ff">ａ=c cosθ，ｂ=c sinθ</FONT><BR>
+<BR>
+から計算できます。このような身近なところで、平方根や三角関数を使う計算がよくでてきます。<BR>
+</P>
+関数電卓の名前で呼ばれている電卓では、平方根や三角関数の計算機能が備っています。これと同じように、Ｃ言語の場合も、よく使う算術関数はコンパイラの標準関数ライブラリで用意されていて、簡単に使えるようになっています。Ｃ言語が用意している算術関数の一覧を以下にあげておきます。<BR><BR><DIV ALIGN=LEFT><STRONG>Ｃ言語が用意している算術関数一覧</STRONG></DIV><BLOCKQUOTE><TABLE BORDER=1><TR><TD BGCOLOR="#dfdfff">関数名</TD><TD BGCOLOR="#dfdfff">引数及び関数の型</TD><TD BGCOLOR="#dfdfff">機能</TD></TR><TR><TD BGCOLOR="#bfebff"><STRONG>abs(i)</STRONG></TD><TD BGCOLOR="#bfebff">int</TD><TD BGCOLOR="#bfebff">整数iの絶対値を求める</TD></TR><TR><TD BGCOLOR="#bfebff">acos(x)</TD><TD BGCOLOR="#bfebff">double</TD><TD BGCOLOR="#bfebff">実数xの逆余弦を求める</TD></TR><TR><TD BGCOLOR="#bfebff">asin(x)</TD><TD BGCOLOR="#bfebff">double</TD><TD BGCOLOR="#bfebff">実数xの逆正弦を求める</TD></TR><TR><TD BGCOLOR="#bfebff">atan(x)</TD><TD BGCOLOR="#bfebff">double</TD><TD BGCOLOR="#bfebff">実数xの逆正接を求める</TD></TR><TR><TD BGCOLOR="#bfebff">ceil(x) </TD><TD BGCOLOR="#bfebff">double</TD><TD BGCOLOR="#bfebff">実数xの小数点以下を切り上げる</TD></TR><TR><TD BGCOLOR="#bfebff"><STRONG>cos(x)</STRONG></TD><TD BGCOLOR="#bfebff">double</TD>
+<TD BGCOLOR="#bfebff">実数xの余弦を求める</TD></TR><TR>
+<TD BGCOLOR="#bfebff"><STRONG>exp(x)</STRONG></TD>
+<TD BGCOLOR="#bfebff">double</TD>
+<TD BGCOLOR="#bfebff">eのｘ乗を求める</TD></TR><TR>
+<TD BGCOLOR="#bfebff"><STRONG>fabs(x)</STRONG></TD>
+<TD BGCOLOR="#bfebff">double</TD>
+<TD BGCOLOR="#bfebff">実数xの絶対値を求める</TD></TR><TR>
+<TD BGCOLOR="#bfebff">floor(x)</TD>
+<TD BGCOLOR="#bfebff">double</TD>
+<TD BGCOLOR="#bfebff">実数xの小数点以下を切り捨てる</TD></TR><TR>
+<TD BGCOLOR="#bfebff"><STRONG>fmod(x,y)</STRONG></TD>
+<TD BGCOLOR="#bfebff">double</TD>
+<TD BGCOLOR="#bfebff">実数xをyで割った剰余を求める</TD></TR><TR>
+<TD BGCOLOR="#bfebff"><STRONG>log(x)</STRONG></TD>
+<TD BGCOLOR="#bfebff">double</TD>
+<TD BGCOLOR="#bfebff">実数xの自然対数を求める</TD></TR><TR>
+<TD BGCOLOR="#bfebff"><STRONG>log10(x)</STRONG></TD>
+<TD BGCOLOR="#bfebff">double</TD><TD BGCOLOR="#bfebff">実数xの常用対数を求める</TD></TR><TR>
+<TD BGCOLOR="#bfebff"><STRONG>pow(x,y)</STRONG></TD>
+<TD BGCOLOR="#bfebff">double</TD>
+<TD BGCOLOR="#bfebff">実数xのｙ乗を求める</TD></TR><TR>
+<TD BGCOLOR="#bfebff"><STRONG>sin(x)</STRONG></TD><TD BGCOLOR="#bfebff">double</TD>
+<TD BGCOLOR="#bfebff">実数xの正弦を求める</TD></TR><TR>
+<TD BGCOLOR="#bfebff"><STRONG>sqrt(x)</STRONG></TD>
+<TD BGCOLOR="#bfebff">double</TD>
+<TD BGCOLOR="#bfebff">実数xの平方根を求める</TD></TR><TR>
+<TD BGCOLOR="#bfebff"><STRONG>tan(x)</STRONG></TD><TD BGCOLOR="#bfebff">double</TD>
+<TD BGCOLOR="#bfebff">実数xの正接を求める</TD></TR></TABLE><BR>
+</BLOCKQUOTE><P><STRONG>■算術関数の基本的な使い方</STRONG><BR>
+関数を使うときには、まず、計算したい値を関数の(　)の中の引数に入れます。平方根sqrt()関数を例にとると次のように書きます（これらは、数式どおりに書くのと殆ど同じです）。<BR><BR>
+　　<FONT color="#0000ff">sqrt(x); </FONT>　　　変数ｘの平方根<BR>
+　　<FONT color="#0000ff">sqrt(3.0); </FONT>　　数値定数　3.0　の平方根<BR>
+　　<FONT color="#0000ff">sqrt(2.0*(x+y)/z);</FONT> 　　計算式　2.0*(x+y)/z　の平方根<BR><BR>
+次に、こうして計算した平方根の結果（関数の計算結果）の取り出し方は次のようにします（これも数式を書くのと同じように使うことができます）。<BR><BR>　　<FONT color="#0000ff">a=sqrt(x); </FONT>　　変数ａに平方根の計算結果を代入<BR>
+　　<FONT color="#0000ff">a=x*y*sqrt(x)+b;</FONT> 　　計算式の一部として用いる。計算結果を変数ａに代入。<BR><BR>
+上記の計算結果は、<BR><BR>
+　　<FONT color="#0000ff">printf(&quot;平方根=%e\n&quot;,a);</FONT><BR><BR>
+とすれば画面に表示できます。あるいは、printf()文の中に、<BR><BR>　　<FONT color="#0000ff">printf(&quot;xの平方根は%e\n&quot;,sqrt(x));<BR>　　printf(&quot;計算式の平方根は%e\n&quot;,x*y*sqrt(x)+b)</FONT>;<BR><BR>
+のように直接書く事もできます。この場合は、変数ａを使わないで済ませることができます。<BR>
+以上で算術関数の基本的な使い方が分かったと思いますが、算術関数を使うときには次の点に注意する必要があります。<BR>　<BR><STRONG>■算術関数を使うときの注意</STRONG><BR><STRONG>１．</STRONG>プログラムの先頭で、</P>　<FONT color="#0000ff">#include &lt;math.h&gt;</FONT><BR><P>のように、ヘッダーファイル&lt;math.h&gt;をインクルードすることを忘れないでください。（今まで、printf()関数やscanf()関数を使う際に、 &lt;stdio.h&gt; をインクルードしていたのもこれと同じです）<BR><BR><STRONG>２．</STRONG>関数の（）の中の引数、ならびに関数の計算結果は、決められた型に合わせるように注意してください。例えば、sqrt()関数の引数ならびに関数の型は、double型です。まず、引数の型を間違えて、<BR>
+<BR>
+　　<FONT color="#ff0000">sqrt(3)</FONT></P><P>としたり、i をint型の変数で宣言しているのに、　</P>　　<FONT color="#ff0000">sqrt(i)</FONT> <BR><P>と書くのは本当は間違いです。しかし、コンパイラがdouble型に自動変換するため、これでもおおよそ正しく計算してくれます。ところが、それをあてにしてうっかり</P>　　<FONT color="#ff0000">sqrt(7/2*2</FONT>)<BR>
+<BR>
+としてしまうと、意図に反して間違った計算をする場合があります（どこがまずいかわかりますか？）。このため、引数の型は厳密に合わせて書くことにしたほうが賢明です。<BR>
+一方、関数値の型の不一致の例として、<FONT color="#ff0000">printf(&quot;xの平方根は%d\n&quot;,sqrt(x));</FONT> のように、printf()文の書式を間違えることがあります。言うまでもなく、この場合はまったくでたらめな結果が表示されてしまいます。<BR>
+<BR>
+次の問題は、if文と算術関数の使い方に関する応用問題です。挑戦してみてください。<BR>
+<BR>
+<TABLE BORDER=1 WIDTH=100% BGCOLOR="#ffffff"><TR>
+    <TD bgcolor="#e1ffff" align="left"><B><FONT color="#000099">演習問題 ４－２　</FONT></B>(Revised : 2015/05/25) <BR>
+    <BR>
+    １．以下の実行文を実行し、異なる結果が得られることを確認し、その理由について考察せよ。また、表示される数値はそれぞれ何の平方根であるかについて答えよ。
+    <BR>
+    <br>
+    <FONT color="#ff0000">&nbsp;</FONT><FONT color="#0000ff">&nbsp;&nbsp; printf(&quot;sqrt(7/2*2)=%le\n&quot;,sqrt(7/2*2)); <br>
+    &nbsp;&nbsp;&nbsp; printf("sqrt(7.0/2.0*2.0)=%le\n",sqrt(7.0/2.0*2.0));
+<br>
+    </FONT><BR>
+    <BR>
+    ２．以下の二次式と一次式で表される曲線と直線の交点を計算せよ。<BR>
+    <BR>
+    　　<FONT color="#0000ff">y = sx<SUP>2</SUP>+tx+u <BR>
+    　　y = vx+w <BR>
+    </FONT><BR>
+    プログラムは、交点の有無を判定し、交点がある場合には交点の数と（x,y）座標を、存在しない場合にはその旨を伝える文章を表示すること。 次の5通りの(s
+    t u v w)の場合について計算をし、その結果を手計算の結果と比較した上で考察すること。考察には必ず計算誤差の評価とif文の動作の説明を含めること。
+    　<BR>
+    <BR>
+    　<FONT color="#0000ff">(0 1 1 -1 0) (1 -2 1 0.2 -0.21) (-1 -2 2 -1 -1) (1 -2 2 -1 -1) (好きな数の 組合せ)</FONT> <BR>
+    <BR>
+    なお、実数係数a, b, cをもつ２次方程式、<BR>
+    <FONT color="#0000ff">　　y = ax<SUP>2</SUP>+bx+c 　　</FONT><BR><BR>
+    の判別式と解の公式は以下の通りである。a=0の場合や重根の場合などに注意をし、交点の有無の判定や交点数の座標の計算に問題が生じないようにプログラムを工夫すること。<BR>
+    <BR>
+    <DIV align="left">
+    <TABLE BORDER=1 CELLSPACING=1 WIDTH=80% BGCOLOR="#f0ffff"><TR><TD WIDTH=100%><STRONG>２次方程式の解：</STRONG><BR>
+        (i)a=0のとき、 <BR>　 　　<FONT color="#0000ff">ｘ＝ -c/b</FONT><BR><BR>
+        (ii)a≠0のとき、　判別式　<BR><FONT color="#0000ff">　　　Ｄ=b<SUP>2</SUP>-４ａｃ </FONT><BR><BR>を計算。<BR><BR>
+        (ii)-1 　Ｄ=0のとき（重根）、<BR><FONT color="#0000ff">　　　ｘ＝-b/2a</FONT><BR><BR>
+        (ii)-2 　Ｄ&gt;0のとき（実根）、<BR>　<FONT color="#0000ff">　　　　-b±√D<BR>　　ｘ＝<S> 　　　　　　</S><BR>　　　　　　　2ａ<BR></FONT><BR>
+        (ii)-3 　Ｄ&lt;0のとき（複素根）、虚数単位　ｉ　を用いて<BR><FONT color="#0000ff">　　　　　-b± ｉ √-D<BR>　　ｘ＝<S>　　　　　　　　</S><BR>　　　　　　　2ａ</FONT></TD></TR></TABLE>
+    </DIV>
+    <BR>
+    <FONT color="#000099">[注意] (i)、(ii)-1のときは１つの解だけを、(ii)-2のときは２つの実数の解を、(ii)-3のときは２つの複素数の解を、各々を場合分けして表示するようにすること。<BR>
+    <BR>（時間が余った人に）<BR>
+    (ii)-1の重根の条件判定は、if(D==0) とした場合、ほぼ同じ数が２つ出力されてしまい、期待どおりに判定してくれない。どのようにすれば、よいか考えること(ヒント：if(
+    fabs(D)&lt;1e-15 )のような条件判定文に変更する。なぜこの式を使うか、理由を含めて考察すること）。<BR>
+    </FONT><BR>
+    </TD>
+  </TR></TABLE><BR></BODY></HTML>

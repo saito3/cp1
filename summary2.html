@@ -1,0 +1,210 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="content-type" CONTENT="text/html;charset=Shift_JIS">
+<META NAME="GENERATOR" CONTENT="HOTALL Ver.7.2W">
+<TITLE></TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080">
+<PRE><TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+<TR>
+<TD WIDTH=100%><FONT SIZE=5 COLOR="#ffffff" FACE="ＭＳ ゴシック"><B>後学期のまとめ</B></FONT></TD>
+</TR>
+</TABLE>
+</PRE><P>
+<A HREF="#第８回">第８回 ２次元配列，文字列配列，応用問題（成績表の作成）</A><BR>
+<A HREF="#第９回">第９回 関数，変数の有効範囲と記憶クラス</A><BR>
+<A HREF="#第10回">第１０回 ポインタと関数の引数，プリプロセッサ（マクロプログラム）</A><BR>
+<A HREF="#第11回">第１１回 配列とポインタ処理，応用問題（波形データの作成と表示）</A><BR>
+<A HREF="#第12回">第１２回 ファイル処理，データの内部表現，バイナリファイル</A><BR>
+<A HREF="#第13回">第１３回 グラフィック（波形データのグラフィック表示）</A><BR>
+<A HREF="#第14回">第１４回 ボールの運動，アニメーション</A><BR></P><PRE><A NAME="第８回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<TR>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第８回 ２次元配列，文字列配列，応用問題（成績表の作成）</B></FONT></TD>
+</TR>
+</TABLE>
+</PRE><P>
+<FONT COLOR="#000080">■２次元配列</FONT><BR>
+宣言：　　データ型　配列名[行の数][列の数]；<BR>
+例 int a[5][3]<BR>
+<BR>
+使い方　　a[i][j]=‥‥　 　代入<BR>
+　　　　　(a[i][j]＋‥‥）　式の中の値参照<BR>
+<BR>
+<FONT COLOR="#000080">■文字列配列</FONT><BR>
+１要素に１文字がはいる。<BR>
+代入の仕方　char a[5]=&quot;book&quot;;　　型宣言の初期化のところで代入する<BR>
+<BR>
+２次元の文字配列<BR>
+　char country[6][8]={&quot;USA&quot;, &quot;Japan&quot;, &quot;Germany&quot;, &quot;France&quot;,&quot;China&quot;,&quot;Korea&quot;};<BR>
+エクセルのシートのような表の、各行に文字列が並んでいる。<BR>
+<BR>
+<FONT COLOR="#000080">■応用問題（成績表の作成）</FONT><BR>
+<BR></P><PRE><A NAME="第９回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<TR>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第９回 関数，変数の有効範囲と記憶クラス</B></FONT></TD>
+</TR>
+</TABLE>
+</PRE><P>
+<FONT COLOR="#000080">■関数</FONT><BR>
+　関数呼び出しの流れ<BR>
+　　プログラム中に関数が現れると、関数が呼ばれる。<BR>
+　　--&gt; 呼び出し側の引数を関数本体の引数にコピーする<BR>
+　　--&gt; 関数本体のルーチンを実行<BR>
+　 --&gt; 戻り値に値を代入<BR>
+ --&gt; 呼び出したところに戻って、直後の処理を続ける。<BR>
+　関数の呼び出しの例<BR>
+　a=sin(PI/4.0); 引数をPI/4.0として、sin()を呼び出す。結果（戻り値）をaに代入。　c=2.0*(sin(PI/6.0)+4.0); <BR>
+　printf(&quot;Hello!!\n&quot;); （void型を含めて） 戻り値を必要としない関数呼び出し。<BR>
+ func(x);<BR>
+ と書いた場合、引数の値をｘにおいて、関数func(x)を呼び出す。<BR>
+<BR>
+<FONT COLOR="#000080">■変数の有効範囲と記憶クラス</FONT><BR>
+記憶クラス：　自動変数とスタティック変数の２種類がある。<BR>
+有効範囲：　関数の｛　｝の中で宣言されている変数は、その{}の中だけで有効。<BR>
+main()の前のプログラムの先頭で宣言すると、どの関数の{}にも属さないから、<BR>
+プログラム全体で有効。<BR>
+<BR></P><PRE><A NAME="第10回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<TR>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第１０回 ポインタと関数の引数，プリプロセッサ（マクロプログラム）</B></FONT></TD>
+</TR>
+</TABLE>
+</PRE><P>
+<FONT COLOR="#000080">■ポインタ</FONT><BR>
+&amp;a　：ａのメモリアドレス<BR>
+*a　：ａをアドレスと解釈して，アドレスａ番地に書き込まれているデータ<BR>
+引数を介して、関数側から値を受け取りたい場合、変数のアドレスを関数に渡す。<BR>
+関数はアドレスのメモリの中身を書き換える（これは、呼び出し側の変数の中身を書き変えることと同じ）。<BR>
+<BR>
+例：　henkan(a,b,&amp;amp,&amp;phase);<BR>
+<BR>
+<FONT COLOR="#000080">■プリプロセッサ</FONT><BR>
+#include #define 文の約束。<BR>
+<BR>
+マクロ文<BR>
+#define マクロ名(x，y‥‥) x, y‥‥を含んだ式<BR>
+<BR>
+例<BR>
+#define AREA(r) 4.0*PI*r*r /*半径ｒの球の表面積 */<BR>
+<BR></P><PRE><A NAME="第11回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<TR>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第１１回 配列とポインタ処理，応用問題（波形データの作成と表示）</B></FONT></TD>
+</TR>
+</TABLE>
+</PRE><P>
+<FONT COLOR="#000080">■配列とポインタ処理</FONT><BR>
+配列　a[10]　の<BR>
+<BR>
+aはポインタ変数になっていて、aには配列aの先頭番地が入っている。<BR>
+*(a+i)はa[i]と同じ。<BR>
+<BR>
+引数に配列a を渡して、関数sindata()を呼び出す場合<BR>
+<BR>
+　sindata(len,a); <BR>
+<BR>
+は、配列aの先頭番地のアドレスを渡している。<BR>
+関数　sindata() 本体は、渡してもらった、アドレスをたよりに、<BR>
+　a[i]=****<BR>
+のような処理により、呼び出し側の配列aの各要素に値を代入することができる。<BR>
+<BR>
+<FONT COLOR="#000080">■応用問題　波形データの作成と画面表示</FONT><BR>
+　（サイン波、高調波のサイン波の足し算、方形波、のこぎり波）<BR>
+<BR></P><PRE><A NAME="第12回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<TR>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第１２回 ファイル処理，データの内部表現，バイナリファイル</B></FONT></TD>
+</TR>
+</TABLE>
+</PRE><P>
+<FONT COLOR="#000080">■ファイル処理</FONT><BR>
+①ファイルオープン、<BR>
+ファイルのアクセスはファイルポインタを介して行う。<BR>
+<BR>
+FILE *fp; ファイルポインタfpの宣言<BR>
+<BR>
+fp = fopen(&quot;ファイル名&quot;,&quot;rまたはw&quot;); 読み書きしたいファイル名のファイルを、<BR>
+ファイルポインタfpに関連付ける。<BR>
+<BR>
+②ファイルデータの読み書き<BR>
+fprintf(fp,&quot;‥‥&quot;,a,b)　 （ファイルポインタfpのファイルへデータを書き込む）<BR>
+fscanf(fp,&quot;‥‥&quot;,&amp;a,&amp;b)　（ファイルポインタfpのファイルからデータを読みこむ）<BR>
+<BR>
+③ファイルクローズ<BR>
+fclose(fp); ファイルポインタfpのファイルをクローズする。<BR>
+<BR>
+<FONT COLOR="#000080">■応用問題</FONT><BR>
+・波形データのファイル書き込み<BR>
+・ファイルから読み込んだデータの画面表示<BR>
+<BR>
+<FONT COLOR="#000080">■データの内部表現</FONT><BR>
+・char 型データ（アスキーコード）<BR>
+・short型　2Byte=16bit 0～(2^16-1)　(=65,535) <BR>
+・long(int)型 　4Byte= 32bit 0～(2^32-1)　(=4,294,967,294) <BR>
+・float型、double型<BR>
+<BR>
+整数データの１６進表示（例：0x0A)<BR>
+整数データの表現<BR>
+（－のデータの表現方法、２の補数表現）<BR>
+<BR>
+<FONT COLOR="#000080">■バイナリ形式のファイルの読み書き</FONT><BR>
+①ファイルオープン<BR>
+　fp=fopen(&quot;file.bin&quot;,&quot;wb&quot;)<BR>
+②fpに1バイト書き込み　　putc(d,fp)<BR>
+　fpから1バイト読み込み　ds=getc(fp)<BR>
+例えば、short int型データを読み書きする場合、<BR>
+上位バイト、下位バイトに分解して読み書きする。<BR>
+<BR></P><PRE><A NAME="第13回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<TR>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第１３回 グラフィック（波形データのグラフィック表示）</B></FONT></TD>
+</TR>
+</TABLE>
+</PRE><P>
+<FONT COLOR="#000080">■グラフィック関数の使い方</FONT><BR>
+スクリーン座標の定義（VGAモードでは、600×400の大きさ）<BR>
+<BR>
+指定されたスクリーン座標に指定された色の点を打つ。<BR>
+指定された２点（スクリーン座標）間を指定された線を引く。<BR>
+のような働きをする関数がライブラリ関数として用意されている。<BR>
+<BR>
+#include&lt;gucc/gucc.h&gt; グラフィック描画用ヘッダファイルをインクルードする <BR>
+G_INIT(); グラフィック関数の初期化<BR>
+グラフィック関数の呼び出し<BR>
+getch();　最後、画面が消えないようにするために入れる<BR>
+<BR>
+<FONT COLOR="#000080">■練習問題：四角の模様を描く</FONT><BR>
+<BR>
+<FONT COLOR="#000080">■数値データのグラフ表示</FONT><BR>
+<BR>
+配列データ y[i]のグラフを描く手順。<BR>
+<BR>
+i=0からN-1まで順番に次の描画処理を繰り替えす。<BR>
+①i番目のデータのｘ座標：iΔｘ、y座標は y[i]より、原座標(xi,yi)をセットする。<BR>
+②原座標(xi,yi)=(iΔｘ,y[i])　をスクリーン座標（Wxi,Wyi)に変換する。<BR>
+③一つ前と現在のスクリーン座標の２点間（（Wxi-1,Wyi-1)と（Wxi,Wyi)）を<BR>
+　線で結ぶ。<BR>
+<BR>
+<FONT COLOR="#000080">■応用問題　サイン波の波形、高調波を足し算した波形の描画</FONT><BR>
+<BR>
+<BR></P><PRE><A NAME="第14回"></A><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+<TR>
+<TD><FONT SIZE=4 COLOR="#ffffff" FACE="ＭＳ Ｐゴシック"><B>第１４回 ボールの放物運動，アニメーション</B></FONT></TD>
+</TR>
+</TABLE>
+</PRE><P>
+<FONT COLOR="#000080">■ボールの放物運動</FONT><BR>
+質量ｍ[kg]の物体を初速度ｖ0[m/s]で角度α[rad]の方向に投げ上げる問題<BR>
+ボールの運動方程式をたてる。<BR>
+時間ｔにおけるボールの位置(ux,uy)は、<BR>
+ uｘ＝ ｖ0ｔ cos(θ)<BR>
+ uｙ＝ｖ0ｔ sin(θ)－ｇｔ^2/2<BR>
+となる。時間を変化させていって、(ux,uy)を計算。<BR>
+<BR>
+数値データをグラフ表示した場合と同じ考え方を使って、<BR>
+座標位置の点を線で結んでいけば、運動軌跡を画面に描画できる。<BR>
+<BR>
+<FONT COLOR="#000080">■アニメーション</FONT><BR>
+ボールの軌跡を線で描くかわりに円で描く。<BR>
+ ①前時刻の円を消す --&gt; ②時間待ち --&gt; ③現時刻の円を描く<BR>
+を繰り返すことにより、アニメーションの絵を書くことができる。<BR>
+（繰り返りし周期は、例えば１秒間に３０コマにすれば、人間は動いている<BR>
+ように認識する。）<BR>
+<BR></P></BODY>
+</HTML>

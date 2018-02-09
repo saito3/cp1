@@ -1,0 +1,792 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>第13回</TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080">
+<TABLE border="0" width="100%" bgcolor="#0080c0">
+  <TR>
+    <TD WIDTH=100%><B><FONT size="+2" color="#ffffff">プログラミングおよび演習 ＮＯ．13</FONT></B></TD>
+  </TR></TABLE>
+<DIV ALIGN=RIGHT>Last-Modified: 2016.4.15<BR></DIV>
+<HR><BR>
+<TABLE border="0" width="100%" bgcolor="#000080">
+  <TR>
+    <TD><FONT color="#ffffff"><B>グラフィックス</B></FONT></TD>
+  </TR></TABLE>
+<BR>
+今日は、グラフィックスプログラムを練習します。<IMG SRC="gregion.gif" ALT="" ALIGN=RIGHT WIDTH=396 HEIGHT=311><BR>
+今までプログラムの結果を表示する手段として、printf()関数を用いて文字（テキスト画面）を表示する方法を学んできました。 文字以外に線や曲線を含んだ任意の図形（グラフィックス）を画面に表示できれば、見てわかりやすい結果になります。コンピュータの画面に表示可能な画素数はディスプレイの機種に依存しますが、SXGA（Super
+eXtended Graphics Array)規格の画面の場合1280×1024になります。 指定した座標に、指定した色の点を打つことで、グラフィックスを描くことができます。グラフィックスは、コンピュータの機種やオペレーティングシステム
+（Windows、Macintosh、Linuxなど)に依存するため、 各々の環境ごとに異なるライブラリ関数を使わざるを得ません（残念なことに、Ｃ言語のグラフィックス関数には、標準仕様がありません）。例えば、Windowsの
+コンピュータ環境で使用可能なグラフィックライブラリとして、GDI（graphical device interface:　Microsoftから　提供されている、WIN32API　の中にあるライブラリ)
+があります。GDIライブラリーを使えば、GUI環境の本格的なWindows Application Program を作ることができます。しかし、使いやすさや、分かりやすさの面で、プログラムを初めて覚えようとしている人に親切ではありません。
+このため、本演習用に、 ヘッダファイル<FONT color="#0000ff">gdi.h</FONT> を特別に用意しました。この ヘッダファイルに用意した関数を使うことで、簡単にグラフィクスプログラムを作ることができるようになります（用意したラッパー関数を介して、
+GDIグラフィックスライブラリを呼び出す仕組みで実現しています）。<BR>
+　ここでは、幅：640×高さ：480の大きさの描画ウィンドウを開いて、 その領域内に図形を描画します。その際、描画ウィンドウの座標指定は、図のように左上隅を原点(0,0)に選んでいます。
+この画像領域の座標を指定して、線を引く、点を打つ、円を描く、といった関数を呼び出すことで、任意のグラフィックスを自由自在に描くことができます。gdi.hに用意しているグラフィックス関数を以下に示します。<BR>
+<P><FONT size="+1"><B><FONT color="#0000ff" size="+1">gdi.hで用意しているグラフィックス関数</FONT></B></FONT></P>
+<TABLE BORDER=1>
+  <TR>
+    <TD BGCOLOR="#dfdfff">関数定義</TD><TD BGCOLOR="#dfdfff">機能および使い方</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_CLS</B>(void)</TD><TD BGCOLOR="#ffffff">画面を消去する。呼び出すと画面が消える。</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_LINE</B>(int x1, int y1, int x2, int y2, int c)</TD><TD BGCOLOR="#ffffff">始点(x1,y1)、終点(x2,y2)の２点間を、色番号cの色の直線で結ぶ。ここで、色番号は下表に示す約束の色を表す。</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_PSET</B>(int x, int y, int c)</TD><TD BGCOLOR="#ffffff">点(x,y)に色番号cの色の点を打つ。</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_CIRCLE</B>(int x, int y, int r, int c)</TD><TD BGCOLOR="#ffffff">点(x,y)を中心とする半径rの、塗りつぶしのなしの円を、色番号cで指定した色で描く。</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_FCIRCLE</B>(int x, int y, int r, int c)</TD><TD BGCOLOR="#ffffff">点(x,y)を中心とする半径rの塗りつぶし円を、色番号cで指定した色で描く。</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_RECTANGLE</B>(int x1,int y1,int x2,int y2,int c)</TD><TD BGCOLOR="#ffffff">左上隅座標(x1,y1)、右下隅座標(x2,y2)を対角点に持つ長方形を、色番号cの色で塗りつぶしなしで描く。</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_FRECTANGLE</B>(int x1,int y1,int x2,int y2,int c)</TD><TD BGCOLOR="#ffffff">左上隅座標(x1,y1)、右下隅座標(x2,y2)を対角点に持つ長方形を、色番号cの色で塗りつぶして描く。</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff"><A name="L1">void <B>G_TEXT</B>(int x, int y, char *string, int c)</A></TD>
+    <TD BGCOLOR="#ffffff">座標(x,y)の位置に、文字列 string[ ] を、色番号cで指定した色で表示する。</TD>
+  </TR></TABLE>
+<CENTER><B><BR>
+<FONT size="+1" color="#0000ff">色番号の対応表</FONT></B></CENTER>
+<CENTER>
+<TABLE border="1" bgcolor="#efefef">
+  <TBODY>
+    <TR>
+      <TD>
+      <CENTER>
+      <TABLE height="300" border="1">
+        <TBODY>
+          <TR>
+            <TD bgcolor="#dfdfff">
+            <DIV align="CENTER">色</DIV>
+            </TD>
+            <TD bgcolor="#dfdfff">
+            <DIV align="CENTER">色番号</DIV>
+            </TD>
+            <TD bgcolor="#dfdfff">置換文字列</TD>
+            <TD bgcolor="#dfdfff">
+            <DIV align="CENTER">赤（R)</DIV>
+            </TD>
+            <TD bgcolor="#dfdfff">
+            <DIV align="CENTER">緑（G)</DIV>
+            </TD>
+            <TD bgcolor="#dfdfff">
+            <DIV align="CENTER">青（B)</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">白(明）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">White</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER"><FONT color="#000000">灰色(暗）</FONT></DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">1</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">DarkGray</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">64</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">64</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">64</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">青(暗）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">2</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">DarkBlue</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">青(明）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">3</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">Blue</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">赤(暗）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">4</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">DarkRed</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">赤(明）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">5</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">Red</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">紫(暗）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">6</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">DarkMagenta</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">紫(明）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">7</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">Magenta</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">緑(暗）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">8</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">DarkGreen</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">緑(明）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">9</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">Green</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">水色(暗）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">10</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">DarkCyan</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff" height="18">
+            <DIV align="CENTER">水色(明）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff" height="18">
+            <DIV align="CENTER">11</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">Cyan</TD>
+            <TD bgcolor="#bfebff" height="18">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff" height="18">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+            <TD bgcolor="#bfebff" height="18">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">黄(暗）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">12</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">DarkYellow</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">黄(明）</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">13</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">Yellow</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">255</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">灰色(明)</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">14</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">Gray</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">128</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">黒</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">15</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">Black</TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+            <TD bgcolor="#bfebff">
+            <DIV align="CENTER">0</DIV>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      </CENTER>
+      </TD>
+      <TD bgcolor="#ffffff"><IMG src="colorbar.gif" width="58" height="437" border="0"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BR>
+<P>Eclipse上で、グラフィックス関数を使ったプログラムを作成するための手順を、以下に示します。</P>
+<P><B>[1] 前準備</B><BR>
+<BR>
+(1)Eclipse上でのプロジェクトの新規作成<BR>
+　今までと同様の手順（ツールチェーンはMinGW GCCを選択する）に従って、プロジェクトを新規作成する。<BR>
+<BR>
+(2) ヘッダファイルのダウンロード＆ペースト<BR>
+　ヘッダファイルgdi.hを<A href="gdi.h">ここ (Last update: 2012.12.19)</A>（下線部を右クリックして[名前をつけてリンク先を保存]を選択する）からダウンロードして、ソースファイル（プロジェクト名.c ）が入っているフォルダ(<FONT color="#0000ff">Z:\workspace\Project名\src</FONT>のフォルダ)にコピー＆ペーストしてください。<BR>
+<BR>
+(3)ヘッダファイルの読み込み<BR>
+　・プロジェクトエクスプローラウィンドウで、プロジェクト名のアイコンを選択する。<BR>
+　・ファイル→リフレッシュ（またはF5ボタンをクリック）を実行する（プロジェクトエクスプローラにgdi.hが表示される）。<BR>
+<BR>
+(4)ライブラリのリンク指定<IMG src="Libraryset.gif" width="405" height="313" border="0" align="right"><BR>
+　以下の手順に従って、グラフィックライブラリ：gdi32.lib をリンク指定する。<BR>
+<BR>
+　・プロジェクトエクスプローラで、プロジェクト名アイコンを選択(プロジェクト名の背景色が変わった状態にする）<BR>
+　・メニューバーの<FONT color="#0000cc">[プロジェクト]</FONT>の中の<FONT color="#0000ff">[プロパティ]</FONT>をクリック<BR>
+　（または、プロジェクト名アイコンを右クリックした時のメニューから<FONT color="#0000ff">[プロパティ]</FONT><FONT color="#000000">を選ぶ（</FONT>メニューの一番下に隠れているので注意））<BR>
+　→右図のプロパティウィンドウが開く。<BR>
+<BR>
+　開いたプロパティウィンドウ左段のメニューで、<BR>
+　・C/C++ビルドを展開し（左の△(三角)をクリック）、[設定]を選択。<BR>
+<BR>
+　中央の設定ウィンドウで、<BR>
+　・MinGW C Linkerの「ライブラリ」を選択<BR>
+<BR>
+　ライブラリー画面が開く。<BR>
+　・右上の緑色の[＋]（ライブラリー追加ボタン）を選んで、<BR>
+　<FONT color="#0000ff">gdi32</FONT><BR>
+　と入力する。<BR>
+<BR>
+以上の(1)～(4)は、グラフィックス関数を使うための前準備にあたる作業です。<BR>
+この後、いよいよプログラム本体の作成作業を行います。<BR>
+<BR>
+<B>[2] Cプログラムの作成（ソースファイルの編集）</B><BR>
+<BR>
+グラフィックスプログラムは、次のように作ってください。<BR>
+<BR>
+(1)表題の設定<BR>
+　ソースプログラムの先頭で、<BR>
+　<FONT color="#0000ff">#define PROGRAM &quot;hyodai&quot;</FONT>　<BR>
+　のように、タイトルバーの表題を設定します。<BR>
+<BR>
+(2)gdi.hのインクルード<BR>
+<FONT color="#0000ff">　#include　&quot;gdi.h&quot;</FONT><BR>
+　のように、ヘッダファイルgdi.hをインクルードします。<BR>
+<BR>
+(3)main関数の代わりにwm_paint関数を用意する。<BR>
+　<BR>
+　次のようにwm_paint関数を用意する。main関数は不要。wm_paintの中にプログラムを作る。<BR>
+　<FONT color="#0000ff">void wm_paint(void)<BR>
+</FONT><FONT color="#000000">　{<BR>
+　　/*ここにプログラムを作る。<BR>
+　} </FONT><BR>
+<BR>
+以上をまとめると、グラフィックプログラムは次のように作ればよいことになります。</P>
+<TABLE border="1" width="100%" bgcolor="#ffffff">
+  <TBODY>
+    <TR>
+      <TD><BR>
+      /*　グラフィックプログラムの作り方 */<BR>
+      <BR>
+      <FONT color="#ff0000">#define PROGRAM &quot;hyodai&quot;</FONT>/*タイトルバーの表題 */<BR>
+      <FONT color="#ff0000">#include &quot;gdi.h&quot; </FONT> /* グラフィック描画用ヘッダファイル */<BR>
+      <BR>
+      <FONT color="#ff0000">void wm_paint(void)</FONT> { 　/* デフォルトのmainをwm_paint に変更する*/<BR>
+      <BR>
+      　　/*ここにプログラムを作る。必要なグラフィック関数を呼び出す。*/<BR>
+      }<BR>
+      　　</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+<B>[3] コンパイル＆実行<BR>
+</B>　<BR>
+　・Eclipse画面で、[ファイル]-&gt;[保管]を選んで（または Ctrl+S) 、ソースファイルを保存。<BR>
+　<BR>
+　・ビルドボタン（ハンマーのマーク）を押してビルドする。<BR>
+　<BR>
+　エラーがなく、<BR>
+<FONT color="#0000ff">　Build complete for project プロジェクト名<BR>
+　Time consumed: 421 ms. </FONT><BR>
+　のメッセージが出れば正常終了。<BR>
+<BR>
+　・実行ボタン（三角マーク）を押して実行する。<BR>
+<BR>
+　グラフィクウィンドウ（640x480）が現れる。<BR>
+　画面上にプログラムしたグラフィックが描かれる。<BR>
+　必要に応じてグラフィック画面をセーブする（セーブの方法は<A href="grcap-cp1.html">ここ</A>を参照）。<BR>
+<BR>
+　・終了ボタン（[x]）をクリックすると画面が消えて終了。</P>
+<HR>
+<BR>
+以下は、上記のグラフィック関数を使った描画プログラムの例です。<BR>
+<BR>
+<TABLE border="" width="100%" bgcolor="#ffffff">
+  <TR><TD><B><FONT color="#000099">例13-1</FONT></B><BR>
+    <PRE>#define  PROGRAM &quot;ex13-1&quot; /*タイトルバーの表題 */
+#include &quot;gdi.h&quot;          /*グラフィック関数を使うためのヘッダーファイル*/
+
+
+void wm_paint(void)
+{
+ 
+    G_FCIRCLE(320,240,100,Red); /*赤で塗りつぶした円を描く*/
+
+    G_FRECTANGLE(0,240,640,480,Blue); /*青で塗りつぶした長方形を描く*/
+
+}</PRE>
+    <IMG src="sunrise.gif" alt="" align="BOTTOM" width="322" height="242"></TD>
+  </TR></TABLE>
+<BR>
+<TABLE border="" width="100%" bgcolor="#e1ffff"><TR><TD><B><FONT color="#000099">演習問題13-1</FONT>　</B>(Revised : 2011/12/28)<BR><BR>
+    例13-1のプログラムを実行して、グラフィック関数の使い方を覚えてください。
+その際、空の色をマゼンタに塗りつぶし、黄色の三日月も太陽の右上か左上に一緒に描いてみてください
+（天文学的にはありえない構図ですが、単に演習としてやってください）。<BR>
+    </TD></TR></TABLE>
+<BR><BR>
+<TABLE border="1" cellspacing="1" width="100%" bgcolor="#e1ffff">
+  <TR><TD WIDTH=100%><B><FONT color="#000099">演習問題 13-2</FONT></B><BR>
+    <BR>
+    画面上に次のような長方形の模様を描いてみてください（長方形の位置や色は適当に工夫すること）。<BR>
+    <BR>
+    <IMG src="rect.jpg" alt="" width="300" height="210">
+
+<B><FONT color="#ff0000"><BR>
+    <BR>
+    <BR>
+    注意：</FONT></B>レポートには、 <A HREF="grcap-cp1.html">グラフィック画面のセーブ方法</A> に書いてある説明に従って保存した画像ファイルを添付してください。その際、 <FONT color="#ff0000">png, gif, jpg</FONT>などの圧縮形式のファイルを添付するようにしてください。 １ＭＢを超えるサイズの大きいファイルをメールに添付すると、 受け取る人が迷惑しますので気をつけてください（１枚の画像は10～20ｋBぐらいの大きさが目安です）。 <BR>
+    </TD></TR></TABLE>
+<HR>
+<BR>
+今週はここまでにします。<BR><BR><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080"><TR><TD><FONT color="#ffffff"><B>得点表の描画</B></FONT></TD></TR></TABLE><BR>
+今日は、上で習ったグラフィック関数の知識を生かして、得点表を折れ線グラフや棒グラフで表示する プログラムに挑戦してみることにします。<BR><BR>
+以下の例題は、演習問題8-4の得点表示プログラムに手を加えて、 各人の合計点を棒グラフにして表示するようにしたプログラムです。<BR>
+合計点に比例した長さの長方形を描画することによって棒グラフを描いています。<BR>
+<TABLE border="" width="100%" bgcolor="#ffffff"><TR><TD><STRONG><FONT color="#000099">例13-2</FONT></STRONG> (Revised : 2012/1/10)
+    <PRE>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#define  PROGRAM &quot;ex13-2 Score Table&quot;
+#include &quot;gdi.h&quot;
+
+struct slist{
+    char name[20];
+    int  ten[3];
+    int  total;
+};
+
+void wm_paint(void)
+{
+    /*変数宣言と配列の初期値設定*/
+    int i,j;
+    int ix2,iy1,iy2,ix0=80,iy0=55,wid=38;
+    int col[5]={Blue,Red,Green,Cyan,Magenta};
+    struct slist seiseki[5]={{&quot;Ito&quot;,  {70, 60, 80}, 0},
+                            {&quot;Kato&quot;,  {50, 60, 50}, 0},
+                            {&quot;Tanaka&quot;,{70, 90,100}, 0},
+                            {&quot;Suzuki&quot;,{90,100, 50}, 0},
+                            {&quot;Yamada&quot;,{40, 70, 80}, 0}};
+
+    /*表題*/
+    G_TEXT(ix0+5,iy0-20,&quot;Kimatsu shiken&quot;,Blue);
+
+    /*各学生の３科目の合計（行の計算）*/
+    for(i=0;i&lt;5;i++){
+        for(j=0;j&lt;3;j++){
+            seiseki[i].total += seiseki[i].ten[j];
+        }
+        ix2=ix0+seiseki[i].total;
+        iy1=iy0+i*wid+5;
+        iy2=iy1+wid-5;
+        G_TEXT(ix0-70,iy1+8,seiseki[i].name,Blue);
+
+        G_FRECTANGLE(ix0,iy1,ix2,iy2,col[i]);
+    }
+    G_RECTANGLE(ix0,iy0,ix0+300,iy0+5*wid+5,Black);
+}</PRE>
+    </TD></TR></TABLE><BR>
+<TABLE border="" width="100%" BGCOLOR="#e1ffff"><TR><TD><B><FONT color="#000099">演習問題 13-3</FONT></B> (Revised : 2015/1/5) <BR>
+    <PRE wrap="">※以下の課題の中には考察について特に指示はしていませんが、レポートには必ず考察を含めて下さい。
+また、通り一遍のプログラムの説明のみにならないように気をつけてください。
+
+(1)例13-3のプログラムの成績データを以下のように変更し、プログラムを実行して棒グラフを描いてください。
+
+ struct slist seiseki[5]={{&quot;Abe&quot;, {81, 60, 54}, 0},
+                           {&quot;Inose&quot;, {10, 13, 37}, 0},
+                           {&quot;Kaieda&quot;, {52, 48, 59}, 0},
+                           {&quot;Hashimoto&quot;, {61, 63, 54}, 0},
+                           {&quot;Watanabe&quot;, {38, 57, 45}, 0}};</PRE>
+    <IMG SRC="ex13-3a.gif" ALT="" WIDTH=314 HEIGHT=194><BR>
+    <BR>
+    (2)下図のように、折れ線グラフを追加してみてください。<BR>
+    <IMG SRC="ex13-3b.gif" ALT="" WIDTH=315 HEIGHT=194><BR>
+    <BR>
+    (3)余力のある人は、合計点を、下図のように各科目の得点ごとに色分けして表示させてみてください。<BR>
+    <IMG SRC="ex13-3c.gif" ALT="" WIDTH=315 HEIGHT=196><BR>
+    <BR>
+    [補足説明]<BR>
+    　文字表示には、<A href="#L1"><FONT color="#0000ff">G_TEXT()</FONT></A>　を使ってください。使い方は関数表の説明をみてください。表示可能な文字は半角文字（アルファベット英数字）だけでなく、全角の日本語文字も表示できます。<BR>
+    　　</TD></TR></TABLE><BR>
+以下の例13-3はサイン波の波形をグラフ表示するプログラムです。 最初にサイン波のデータを計算して配列ｘ[]に格納するところまでは、例11-2のプログラムと同様です。
+ここでは配列ｘ[]の折れ線グラフを画面に描画する関数draw_data()を新しく用意しています。 この関数を使うことで、以前に練習したようにエクセルを使わないで、任意のデータをグラフに描くことができます。
+<BR>
+<BR>
+<TABLE BORDER="" WIDTH=100% BGCOLOR="#ffffff"><TR><TD><STRONG><FONT color="#000099">例13-3</FONT></STRONG> (Revised : 2011/12/28)<BR>
+    <PRE>#define  PROGRAM &quot;ex13-3 Sine wave display&quot;
+#include &quot;gdi.h&quot;
+
+void sindata(int,float,float,float,float *);
+void waku(int,int,int,int,int,int);
+void draw_data(int,float *,float,float,int,int,int,int,int);
+
+void wm_paint(void)
+{
+    static float data[1000];
+    int len=500;
+    int Wxmin=50,Wymin=100,Wxmax=550,Wymax=350,Sxnum=4,Synum=6;
+    float Dmax=1.5,Dmin=-1.5,freq=40.0;
+
+    waku(Wxmin,Wymin,Wxmax,Wymax,Sxnum,Synum);
+    sindata(len,freq,1e-4,1.0,data);
+    draw_data(len,data,Dmax,Dmin,Wxmin,Wymin,Wxmax,Wymax,Blue);
+}
+
+/*サイン波のデータを計算して配列に格納する*/
+void sindata(int len, float freq,float tdel,float amp,float *data)
+{
+    int i;
+    float time;
+
+    for(i=0;i&lt;len;i++){
+        time=tdel*i;
+        data[i]=amp*sin(2.0*PI*freq*time);
+    }
+}
+
+/*枠の描画*/
+void waku(int Wxmin,int Wymin,int Wxmax,int Wymax,int Sxnum,int Synum)
+{
+    float xd,yd;
+    int i,x1,y1;
+
+    /* 外枠の描画*/
+    G_RECTANGLE(Wxmin,Wymin,Wxmax,Wymax,Blue);
+
+    /* 横をSxnum分割した縦線を引く*/
+    xd=(float)(Wxmax-Wxmin)/(float)Sxnum;
+    for(i=1;i&lt;Sxnum;i++){
+        x1=Wxmin+i*xd;
+        G_LINE(x1,Wymin,x1,Wymax,Blue);
+    }
+    /* 縦をSynum分割した横線を引く*/
+    yd=(float)(Wymax-Wymin)/(float)Synum;
+    for(i=1;i&lt;Synum;i++){
+        y1=Wymin+i*yd;
+        G_LINE(Wxmin,y1,Wxmax,y1,Blue);
+    }
+}
+
+/* 配列データの折れ線グラフを描く */
+void draw_data(int len, float *data,float Dmax,float Dmin,
+int Wxmin,int Wymin,int Wxmax,int Wymax,int color)
+{
+    int i,x1,x2,y1,y2;
+    float xd,yscale,yoff;
+
+    x1=x2=Wxmin;
+    xd=(Wxmax-Wxmin)/(len-1); /* x方向の刻み幅*/
+    x2+=xd;
+    yscale=-(Wymax-Wymin)/(Dmax-Dmin); /* y方向のスケーリング係数*/
+    yoff=(Wymax*Dmax-Wymin*Dmin)/(Dmax-Dmin);/* y方向のオフセット*/
+
+    /* 基線(y=0)を引く*/
+    G_LINE(Wxmin,(int)yoff,Wxmax,(int)yoff,Green);
+    /* 隣あうデータを直線で結んでいく*/
+    for(i=0;i&lt;len-1;i++){
+        y1=yoff+data[i]*yscale;
+        y2=yoff+data[i+1]*yscale;
+        G_LINE(x1,y1,x2,y2,color);
+        x1+=xd;
+        x2+=xd;
+    }
+}</PRE>
+    </TD></TR></TABLE><BR>
+<HR><BR>
+<FONT color="#000099"><STRONG>例13-3で使っている関数の説明</STRONG></FONT><BR>
+<BR>
+<FONT color="#000099"><B>●void draw_data(int len, float *data, float Dmax, float Dmin, int Wxmin, int Wymin, int Wxmax, int Wymax, int color)</B></FONT><BR>
+<UL><LI>機能：下図に示すように、配列データの折れ線グラフを描画します。
+</UL>
+<BR>
+<IMG SRC="cp1-14-1.gif" ALT="" WIDTH=462 HEIGHT=220><BR><UL><LI>引数の約束：len: 配列データの数、data：配列データ、 Dmax,Dmin: データ座標で表したｙ軸の最大値および最小値、Wxmin,Wymin:
+  描画領域左上隅の画面座標、Wxmax,ymax: 描画領域の右下隅の画面座標。
+</UL><FONT color="#000099"><B>●void waku(int Wxmin,int Wymin,int Wxmax,int Wymax,int Sxnum,int Synum)</B></FONT><B> </B><BR>
+<UL><LI>機能：グラフの枠および枠内の目盛り線を描画する （枠線は黒、目盛り線は水色で描かれる）。<BR>
+  <LI>引数の約束: Wxmin,Wymin: 枠の左上隅の画面座標、Wxmax,Wymax: 枠の右下隅の座標、Sxnum: 縦目盛り線の分割数、
+  Synum: 横目盛り線の分割数
+</UL><FONT color="#000099"><B>●void sindata(int len, float freq,float tdel, float amp, float *data)</B></FONT><BR><UL>
+  <LI>機能: サイン波のデータを計算し配列に格納する。
+  <LI>引数の約束: len:データの数、 freq:サイン波の周波数、tdel:時間間隔、amp:サイン波の振幅、data: サイン波のデータを入れる配列。
+</UL>
+<FONT color="#000099"><B>■ draw_data()の補足説明</B></FONT><BR><BR>
+折れ線グラフを描くためには、配列に格納されているデータの座標と グラフィック画面の座標は、各々異なるので、前者から後者へ座標変換する必要があります。<BR><BR>
+いまデータ座標の、左下隅の座標を　(x,y)<SUB>LL</SUB> =(0, Dmin)、右上隅の座標を(x,y)<SUB>UR</SUB>＝(len-1, Dmax)とする。 これら２点を画面座標の(x',y')<SUB>LL</SUB> = (Wxmin, Wymin)、(x',y')<SUB>UR</SUB>=(Wxmax, Wymax)に対応させて描画する問題を考えます。<BR><BR>
+i番目のデータ(ｘi=ｉ, yi=data[i]； i=0～len-1)を、 画面座標(ｘi', yi')に変換する変換公式は次のようになります（この計算式を自分でも導いてみてください）。<BR><BR>
+　　<FONT color="#0000ff">ｘi'＝Wxmin+ｘd×xi　<BR>
+　　yi'＝ys×yi　+　ｙoff</FONT><BR><BR>
+ここで、<BR><BR>
+　　<FONT color="#0000ff">ｘd = (Wxmax-Wxmin)/(len-1)</FONT> : 
+<FONT color="#990000">ｘ方向の刻み幅</FONT><BR>
+<FONT color="#0000ff">　　ys = -(Wymax-Wymin)/(Dmax-Dmin)</FONT> : 
+<FONT color="#990000">y方向のスケーリング係数</FONT><BR>
+<FONT color="#0000ff">　　ｙoff = (Wymax*Dmax-Wymin*Dmin)/(Dmax-Dmin)</FONT> : 
+<FONT color="#990000">y方向のオフセット,data[i]=0の基線座標。</FONT><BR><BR>
+以上の画面座標に変換して、隣り同士の配列データを折れ線で結んでいく。 すなわち、ｉ番目のデータdata[i]と、i+1番目のデータdata[i+1]を直線で結ぶ処理を　i=0～len-2
+について繰り返す。<BR><BR>
+<IMG SRC="cp1-14-2.gif" ALT="" WIDTH=742 HEIGHT=243><BR>
+　　　　　データ座標　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　画面座標<BR><BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
+  <TR><TD WIDTH=100%><B><FONT color="#000099">演習問題 13-4</FONT></B><BR>
+    <BR>
+    ※以下の課題の中には考察について特に指示はしていませんが、レポートには必ず考察を含めて下さい。<BR>
+    また、通り一遍のプログラムの説明のみにならないように気をつけてください。<BR>
+    <BR>
+    (1)例13-3のプログラムを実行し、サイン波のグラフを描いてください （演習問題11-3で行ったようにエクセルを使わなくてグラフを描くことができます）。<BR>
+    <BR>
+    <IMG SRC="ex13-5.gif" ALT="" WIDTH=565 HEIGHT=288><BR><BR>
+    (2)演習問題11-4の後の補足に用意した関数を使って、サイン波の代わりに、三角波や矩形波のグラフを描いてみてください。<BR>
+    </TD></TR></TABLE><BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD WIDTH=100%><B><FONT color="#000099">演習問題 13-5　（余力のある人だけで結構です）</FONT></B><BR><BR>
+    ファイルに格納してある波形データをグラフ表示するプログラムを作っみてください
+（ヒント：以下のようにすれば簡単につくれます。）<BR><BR>
+    (0)波形データのファイルへの書き込み：演習問題12-2のプログラムを使う（予め実行して作っておく）<BR><BR>
+    (1)ファイルの読み込み：例12-2で用いた読み込み関数file_read()を組み込む。<BR><BR>
+    (2)波形の描画：例13-3の波形データ描画関数draw_data()を使う。 <BR></TD></TR></TABLE><BR><BR>
+<B>■サイン波の足し算</B><BR>
+以上のプログラムを使うと、 波形のデータを加工し、その結果をグラフに描いて確認するといった作業が容易にできることになります。 演習問題11-4で行ったように、周波数や振幅の異なるサイン波を足し合わせることによって、
+のこぎり波や方形波、三角波を合成することができます。<BR>
+<BR>
+<FONT color="#0000ff">F'=(2/π) [ F(ｆ<SUB>0</SUB>）-(1/2)F(2ｆ<SUB>0</SUB>）+(1/3)F(3ｆ<SUB>0</SUB>）+‥‥］ （のこぎり波）<BR>
+F'=(4/π) [ F(ｆ<SUB>0</SUB>）+(1/3)F(3ｆ<SUB>0</SUB>）+(1/5)F(5ｆ<SUB>0</SUB>）+‥‥］　（方形波）<BR>
+F'=(8/π<SUP>2</SUP>)[ F(ｆ<SUB>0</SUB>）-(1/9)F(3ｆ<SUB>0</SUB>）+(1/25)F(5ｆ<SUB>0</SUB>）+‥‥］　（三角波）</FONT><BR>
+<BR>
+<IMG SRC="cp1-14-3.gif" ALT="" WIDTH=555 HEIGHT=226><BR>
+<BR>
+<TABLE BORDER="" WIDTH=100% BGCOLOR="#e1ffff"><TR><TD><B><FONT color="#000099">演習問題 13-6 (以下はやらなくて結構です）</FONT></B><BR><BR>
+    以下は、整数倍の周波数のサイン波を適当な割合で足し合わせていくと、 のこぎり波が生成できることを、グラフに描いて確かめるためのプログラムです。
+    足りない部分を補って、プログラムを完成させてください。<BR>
+    プログラムのそれぞれの所で何を行っていますか。 最後に、足し合わせるサイン波の周波数や振幅を変えて方形波を生成するように、 プログラムを変更して結果を確かめてください。<BR>
+<BR><PRE>#define PROGRAM &quot;ex13-6&quot;
+#include &quot;gdi.h&quot;
+
+void sindata(int,float,float,float,float *);
+void add_data(int, float*,float*); 
+void waku(int,int,int,int,int,int);
+void draw_data(int,float *,float,float,int,int,int,int,int);
+    
+void wm_paint(void)
+{
+    static float data[1000],sum_data[1000];
+    
+    int i,len=500;
+    int Wxmin=50,Wymin=100,Wxmax=550,Wymax=350,Sxnum=4,Synum=6;
+    float Dmax=1.5,Dmin=-1.5,freq=40.0,c1=4.0/3.141592;
+    
+    waku(Wxmin,Wymin,Wxmax,Wymax,Sxnum,Synum);
+    
+    /* F(f0)の波形を描く。sum_data[]に入れる*/
+    sindata(len,freq,1e-4,1.0,data); 
+    draw_data(len,data,Dmax,Dmin,Wxmin,Wymin,Wxmax,Wymax,Blue);
+    add_data(len,data,sum_data);
+    
+    /* (1/4)F(2f0)の波形データを描く。結果をsum_data[]に足す*/
+    sindata(len,freq*2,1e-4,-1.0/2.0,data); 
+    draw_data(len,data,Dmax,Dmin,Wxmin,Wymin,Wxmax,Wymax,Red);
+    add_data(len,data,sum_data);
+    
+    /* (1/16)F(3f0)の波形データを描く。結果をsum_data[]に足す*/
+    sindata(len,freq*3,1e-4,1.0/3.0,data); 
+    draw_data(len,data,Dmax,Dmin,Wxmin,Wymin,Wxmax,Wymax,Magenta);
+    add_data(len,data,sum_data);
+    
+    /* 足し算された波形データsum_data[]を描く。*/
+    draw_data(len,sum_data,Dmax,Dmin,Wxmin,Wymin,Wxmax,Wymax,Black);
+    
+}
+    
+/* 長さlenの配列データdata1[]とdata2[]を足し算する。結果をdata2[]に格納する。*/
+void add_data(int len,float *data1,float *data2)
+{
+    
+    ここは自分で作る。
+    
+}
+    
+void sindata(int len, float freq,float tdel,float amp,float *data) 
+{
+    ....
+}
+    
+void waku(int Wxmin,int Wymin,int Wxmax,int Wymax,int Sxnum,int Synum)
+{
+   ....
+}
+    
+void draw_data(int len, float *data,float Dmax,float Dmin, 
+    int Wxmin,int Wymin,int Wxmax,int Wymax,int color)
+{
+    ....
+}</PRE></TD></TR></TABLE>
+<BR></BODY></HTML>

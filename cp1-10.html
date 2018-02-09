@@ -1,0 +1,388 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>第10回</TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080">
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+  <TR>
+    <TD WIDTH=100%><B><FONT color="#ffffff" size="+2">プログラミングおよび演習 ＮＯ．10</FONT></B></TD>
+  </TR></TABLE>
+<DIV ALIGN=RIGHT>Last-Modified: 2014.11.03<BR>
+<BR>
+<HR>
+</DIV>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+  <TR>
+    <TD><FONT color="#ffffff"><B>ポインタ</B></FONT></TD>
+  </TR></TABLE>
+<BR>
+今日は、<FONT color="#0000ff">ポインタ</FONT>というC言語の中で比較的むずかしい事柄について勉強します。と言っても、以下の説明を良く読んで貰えば、そんなに難しいことではありません。ポインタを理解するためには、コンピュータがどのようなメモリ操作をして、プログラムを実行しているかということを考える必要があります。ポインタ操作は、自由自在にプログラムを作る（コンピュータが実際に行っていることに即した処理を行う）ために重要です。是非とも頑張って身につけてください。<BR>
+<BR>
+ポインタを説明する前に、コンピュータが変数のデータをメモリに<IMG SRC="cp1-10-0.gif" ALT="" ALIGN=RIGHT WIDTH=466 HEIGHT=255>読み書きするしくみを頭にいれる必要があります。<BR>
+<BR>
+コンピュータは、変数のデータを読み書きするためのメモリを用意します。ここで、複数ある変数の一つ一つを区別するために、メモリに番号を付ける必要があります。その番号を、<FONT color="#0000ff">アドレス(番地）</FONT>といいます。<BR>
+例えば、変数名aを <BR>
+<BR>
+<FONT color="#0000ff">　int a;<BR>
+<BR>
+</FONT>のように型宣言すると、コンピュータは変数aのためのメモリを用意します。すなわち、適当なアドレス(番地）のメモリを変数aのために確保します（例えば、変数aのメモリとして100番地を割り当てる）。このとき、<BR>
+<BR>
+<FONT color="#0000ff">　a=50;</FONT><BR>
+<BR>
+のように、aに50の数値を代入するプログラムを実行すると、コンピュータは、変数aのメモリに50の数を書き込みます。同様に、<BR>
+<BR>
+　<FONT color="#0000ff">c=a+3</FONT>;<BR>
+<BR>
+のように、変数aを参照する式を実行すると、コンピュータは、変数aのメモリに書き込まれているデータを読み出します。上の例では、読み出したaのデータに3を足すという演算を行い、結果をcのメモリに書き込みます。すなわち、変数aの参照は次のようなことを意味します。<BR>
+<BR>
+　<FONT color="#0000ff">a</FONT>　<FONT color="#990000">：変数ａのメモリに書き込まれているデータ</FONT><BR>
+<BR>
+プログラムを作る人にとって、変数aのメモリアドレスが何番地であるか、普段は気にかける必要はありません。<BR>
+しかし、変数名を指定した上記のデータの読み書き（メモリ操作）に代わって、変数のアドレスを指定してメモリ操作を行ったほうが便利なことがあります。<BR>
+　そのことは後で説明しますが、Ｃ言語ではアドレスを指定した変数の操作、すなわちポインタ操作を可能にするために、＆と＊の２つの記号を、次のように約束します。 <BR>
+<BR>
+　<FONT color="#0000ff">&amp;a</FONT>　<FONT color="#990000">：aのメモリアドレス</FONT><BR>
+　<FONT color="#0000ff">*a</FONT>　<FONT color="#990000">：aをポインタ型変数で宣言する。aをアドレスと解釈して、アドレスa番地に書き込まれているデータ（aが指している（ポイントしている）アドレスのデータ）</FONT><BR>
+<BR>
+上記の約束のもとに、(1)普通の変数と(2)ポインタ変数を、各々次のような意味で使います。<BR>
+<BR>
+<U>(1)普通の変数</U><BR>
+<BR>
+　<FONT color="#0000ff">int a</FONT>　<FONT color="#990000">：　整数型変数aの宣言（普通の宣言）</FONT>　<BR>
+　<FONT color="#0000ff">a　</FONT>　 <FONT color="#990000">：　変数aの中身、aには整数型のデータ（普通の数値データ）を代入する。</FONT><BR>
+　<FONT color="#0000ff">&amp;a</FONT>　　<FONT color="#990000">：　整数型変数aのメモリアドレス</FONT><BR>
+<BR>
+<U>(2)ポインタ変数</U> <BR>
+<BR>
+　<FONT color="#0000ff">int *a</FONT>　<FONT color="#990000">：　整数型ポインタ変数aの宣言</FONT><BR>
+　<FONT color="#0000ff">a</FONT>　　　<FONT color="#990000">：　変数aの中身、aには整数型のアドレスデータ（ポインタデータ）を代入する。</FONT><BR>
+　<FONT color="#0000ff">*a</FONT>　 　<FONT color="#990000">：　アドレスaが指しているメモリに書き込まれている整数型データ(a番地のメモリのデータ、aをアドレスと解釈する）</FONT><BR>
+<BR>
+<HR>
+<BR>
+ポインタの動作を確認するためのプログラムを以下に示します。（このプログラムは実際の役にはたちません）<BR>
+<BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD><FONT color="#000080"><B>例 10-1</B></FONT><BR><PRE> #include&lt;stdio.h&gt;
+    
+ int main(void)
+ {
+    int a,*c; /*　a：普通の変数、c：ポインタ型の変数 の宣言*/
+    
+    a=10;     /* 変数aに10を代入 */
+    c=&amp;a;     /*変数aのアドレスをポインタ変数に代入*/
+    
+    printf(&quot;a=%d &amp;a=%d\n&quot;,a,&amp;a);
+    printf(&quot;c=%d *c=%d &amp;c=%d\n&quot;,c,*c,&amp;c);
+    
+    return(0);
+}</PRE>
+    </TD>
+  </TR></TABLE>
+<FONT color="#000080"><B><BR>
+<BR>
+補足：</B></FONT><BR>
+例題10－１では、ポインタ型変数ｃに<BR>
+<BR>
+　<FONT color="#0000ff">c=&amp;a;</FONT> <BR>
+<BR>
+として、変数ａのアドレスを書き込んでいます。<BR>
+このとき、変数ａとポインタ型変数ｃの関係は下図のようになります。<BR>
+ｃが指しているメモリ（ｃのメモリの中身をアドレスとみなしたとき、そのアドレスメモリの中身）のデータ　*c　は、ａになります。<BR>
+<BR>
+<TABLE>
+  <TR>
+    <TD><IMG SRC="cp1-10-1.gif" ALT="" WIDTH=352 HEIGHT=151></TD>
+  </TR></TABLE>
+<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
+  <TR>
+    <TD WIDTH=100%><FONT color="#000080"><B>演習問題１0-１</B></FONT> 　(Revised : 2013/10/28)<BR>
+    <BR>
+    例１0-１のプログラムの動作を説明してください。また、このプログラムの、c=&amp;aの後に、<BR>
+    <BR>
+    　<FONT color="#0000ff">*c=100</FONT>;<BR>
+    <BR>
+    のような代入文を挿入した場合の結果を確かめてください。<BR>
+    変数aに対する代入演算が、ポインタ変数cを用いても実現できることを理解してください（<FONT color="#0000ff">a=100</FONT>と<FONT color="#0000ff">*c=100</FONT>のメモリ操作は、まったく同じ働きをする）。<BR>
+    </TD>
+  </TR></TABLE><BR>
+<HR><TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+  <TR>
+    <TD><FONT color="#ffffff"><B>ポインタの応用（関数の引数）</B></FONT></TD>
+  </TR></TABLE><BR>
+はじめに、先週習ったように、２つの変数ｘ、ｙの足し算をする関数<FONT color="#0000ff">sum(x,y)</FONT>を使ったプログラムは例10-2のようになります。ここでは、足し算の結果ｘ＋ｙは、関数のreturn()の戻り値を使って、結果を受け取りました。<BR>
+<BR>
+以下の例10-2は、先週の例題と同様に、戻り値を使った足し算の関数プログラムです。<BR>
+<BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD><FONT color="#000080"><B>例10-2<BR>
+    </B></FONT><PRE>#include&lt;stdio.h&gt;
+
+int main(void)
+{
+    int x=1,y=3,z=0;
+    int add(int,int);
+
+    z=add(x,y); /*ｘとyの足し算結果をｚに入れる*/
+
+    printf(&quot;次は関数mainの出力\n&quot;);
+    printf(&quot;%d+%d=%d\n&quot;,x,y,z);
+
+    return(0);
+}
+
+int add(int a, int b)
+{
+    int c;
+
+    c=a+b;
+    printf(&quot;次は関数addの出力\n&quot;);
+    printf(&quot;%d+%d=%d\n&quot;,a,b,c);
+
+    return(c);
+}</PRE></TD></TR></TABLE><BR>
+ここでは、呼び出し側と関数本体とのデータの受け渡しの様子を分かりやすく説明するために、 箱（コンピュータのメモリ）を使ったモデルに置き換えてみます。ここで、メモリにデータを書き込む操作を、
+データを書いた紙（変数データ）を箱の中に入れる作業におきかえて考えます。また、メモリからデータを 読み出す操作を、箱から紙を取り出して読む作業におきかえて考えます。どの箱にデータを入れたか分からないと
+困りますので、箱に番号をつけます。これをまとめると、次のようになります。<BR>
+<P>　　<FONT color="#0000ff">箱の名前：</FONT>　<FONT color="#990000">　変数名</FONT><BR>
+　　<FONT color="#0000ff">箱の番号：</FONT>　<FONT color="#990000">　メモリのアドレス</FONT><BR>
+　　<FONT color="#0000ff">箱の中の紙：</FONT>　<FONT color="#990000">メモリに書き込まれているデータ</FONT><BR>
+<BR>
+上記例題の関数呼び出しにおけるデータの受け渡しを、箱モデルを用いて示したのが以下の図です。<BR>
+</P>
+<TABLE><TR><TD><IMG SRC="cp1-10-3.gif" ALT="" WIDTH=589 HEIGHT=772></TD></TR></TABLE><BR>
+さて、上記のように戻り値で結果を受け取る代わりに、次の例題のように３番目の引数ｚを使って結果が受け取ることができるかどうか試してみます？。まず、期待した結果になるかどうかプログラムを動かして確かめください。<BR><BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff"><TR><TD><FONT color="#000080"><B>例10-3</B><BR></FONT><PRE>
+#include&lt;stdio.h&gt;
+
+int main(void)
+{
+    int x=1,y=3,z=0;
+
+    void add(int,int,int);
+
+    add(x,y,z); /*ｘとyの足し算結果をｚに入れる*/
+    printf(&quot;次は関数mainの出力\n&quot;);
+    printf(&quot;%d+%d=%d\n&quot;,x,y,z);
+    
+    return(0);
+}
+
+/* aとｂの値を足し算結果をcに入れるプログラム*/
+void add(int a, int b, int c)
+{
+    c=a+b;
+    printf(&quot;次は関数addの出力\n&quot;);
+    printf(&quot;%d+%d=%d\n&quot;,a,b,c);
+}</PRE></TD></TR></TABLE><BR>
+上の例10-3の問題の、関数呼び出しにおける、 呼び出し側と関数側の変数と引数を、箱のモデルに表すと下図のようになります。<BR><BR><TABLE BGCOLOR="#ffffff">
+  <TR><TD><B><FONT color="#000080">例10-３の関数呼び出し</FONT></B></TD></TR><TR><TD><IMG SRC="cp1-10-4.gif" ALT="" WIDTH=470 HEIGHT=606></TD></TR></TABLE><BR>
+<FONT color="#ff0000">ここで、引数の箱a,b,cは、呼び出し側の変数の箱ｘ、ｙ、ｚと、別の箱であることに注意してください。</FONT><BR>
+<BR>
+例10-３のプログラムの処理手順を詳しくみてみると次のようになります。<BR>
+<BR>
+<FONT color="#000099">①呼び出し側(main関数）</FONT><BR>
+<BR>
+　　　変数ｘの箱には１、変数ｙには２、変数ｚには０が、入っている。　　　<BR>
+　　　関数add()の引数aの箱に、変数xの箱の中身をコピーして入れる。<BR>
+　　　　　　　〃　　引数bの箱に、変数yの箱の中身をコピーして入れる。<BR>
+　　　　　　　〃　　引数ｃの箱に、変数ｚの箱の中身をコピーして入れる。 <BR>
+　　　関数add()を呼びだす <BR><BR>
+<FONT color="#000099">②関数側(add関数）</FONT><BR>
+<BR>
+　　　引数a，ｂの各々の箱の中身を取り出して、両者を足す。<BR>
+　　　その結果を、引数ｃの箱に入れる。<BR>
+　　　a,b,cの箱の中身を表示する。<BR>
+　　　呼び出し側に戻る。<BR><BR>
+<FONT color="#000099">③呼び出し側(main関数）</FONT><BR>
+<BR>
+　　　ｘ,ｙ,ｚの箱の中身を表示する。<BR>
+<BR>
+上記の説明で、ｚの箱の中身は書き換わらないことに注意してください。要するに、呼び出し側では、関数の引数にデータをコピーして渡しているだけです（<FONT color="#ff0000">値渡し</FONT>）。 引数のデータを呼び出し側で受け取ることは出来きないのです。すなわち、C言語 では値渡しの方法で関数にデータを渡すため、データのやり取りは基本的には,次のように一方通行しかできません。<BR>
+<BR>
+　　<FONT color="#990000">引数：　</FONT><FONT color="#0000ff">呼び出し側--&gt;関数</FONT><BR>
+　　<FONT color="#990000">戻り値：</FONT><FONT color="#0000ff">関数--&gt;呼び出し側</FONT><BR>
+<BR>
+このため、上記の場合、関数の中で 引数ｃに新しい値を代入しても、呼び出し側の変数ｚは元のままです（mainで結果を受け取ることができません）。<BR><BR>
+例10-3のプログラムを修正して、呼び出し側の引数ｚに足し算の結果を正しく受け取れるようにするには、以下のようにします。<BR><BR><U>呼出し側：</U><BR><BR>
+　　<FONT color="#0000ff">void add(int,int,int*);</FONT>　<FONT color="#990000">/*　*印はポインタ型変数（或いは関数）であることを意味する*/</FONT> <BR>
+　　<FONT color="#0000ff">add(x,y,&amp;z);</FONT>　　　　　　 <FONT color="#990000">/* 3番目の引数は、変数zの番地を渡している */ <BR>
+</FONT><BR>
+<U>関数側：</U><BR><BR>
+　　<FONT color="#0000ff">void add(int a, int b, int *c)</FONT>　 <FONT color="#990000">/* 引数cに番地データを受け取る。そのために、cをポインタ変数で宣言している */</FONT><BR>
+　<FONT color="#0000ff">　{</FONT><BR>
+　　　　　<FONT color="#0000ff">*c=a+b;</FONT>　　<FONT color="#990000">/* c番の番号の箱（すなわちｚの箱）に、a+bの結果を代入する */</FONT><BR>
+　<FONT color="#0000ff">　} </FONT><BR>
+<BR>
+<TABLE BGCOLOR="#ffffff"><TR><TD><FONT color="#000099"><B>ポインタ変数を引数に用いた関数呼び出し</B></FONT></TD></TR><TR><TD><IMG SRC="cp1-10-5.gif" ALT="" WIDTH=488 HEIGHT=645></TD></TR></TABLE>
+<BR>
+以上のように引数に変数ｚのデータを直接渡すかわりに、ｚのメモリアドレス＆ｚを渡します。 こうすれば、return文を用いなくても、アドレス情報を介して間接的にデータを受け取ることができます
+（この方法を<FONT color="#ff0000">参照渡し</FONT>と言います。C言語の関数にデータを渡す方法は、基本的に値渡しを前提にしています。このため、 引数を介して、関数側のデータを貰うためには、上記のようにポインタ変数を用いる必要があります）。<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD WIDTH=100%><FONT color="#000080"><B>演習問題 10-2</B></FONT> 　(Revised : 2011/10/31)<BR>
+    <BR>
+    　前回の演習問題9-1では、return文の戻り値を使って、関数の結果を持ち帰りま した。上記の説明に従って、ポインタ型の引数を使って、値を持ち帰る格好に全ての関数を書き換えてみてください。<BR>
+    また、scanf文でscanf(“%e”,&amp;a)のように 変数aの頭に&amp;を付ける理由についてもレポートに示してください。<BR>
+    <BR>
+</TD></TR></TABLE>
+<BR>
+<FONT color="#000080">■<B>受け取りたい結果が複数ある場合の関数の作り方</B></FONT><BR>
+<BR>
+上記の例では、一つの変数の値を受け取っただけです。この場合は、先週の例題のように戻り値を使って結果を受け取るのに比べて、都合の良いことは何もありません。しかし、受け取りたい変数の数が２つ以上ある場合は、ポインタ型の引数を使うと便利です。<BR>
+<BR>
+次の例題は、複素数z=x+jyの実数部xと虚数部yを入力すると、絶対値|z|と位相角∠ｚを、計算してくれる関数henkan()を使ったプログラムです。<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff"><TR><TD WIDTH=100%><FONT color="#000080"><B>例 10-４</B>（受け取りたいデータが２つある関数）</FONT><BR><PRE>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+
+int main(void)
+{
+    void henkan(float, float,float *, float *);
+    float a,b,amp,phase;
+    
+    printf(&quot;Input real part=&quot;); fflush(0); scanf(&quot;%e&quot;,&amp;a); 
+    printf(&quot;Input imag part=&quot;); fflush(0); scanf(&quot;%e&quot;,&amp;b);
+    
+    henkan(a,b,&amp;amp,&amp;phase);
+    printf(&quot;%e+j%e=|%e|∠%e\n&quot;,a,b, amp,phase);
+
+    return(0);
+ }
+
+ void henkan(float x, float y, float *r, float *theta) 
+ {
+    *r=sqrt(x*x+y*y);
+    *theta=180.0*atan2(y,x)/3.141592;
+ }</PRE></TD></TR></TABLE>
+<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
+  <TR>
+    <TD WIDTH=100%><FONT color="#000080"><B>演習問題　10-3</B></FONT>　(Revised : 2014/11/03)<BR>
+    <BR>
+    税抜きで一個あたり120円のハンバーグをn個、一杯あたり100円のジュースをm杯、一袋あたり250円のポテトをk袋を買った時の、税抜き価格C、消費税(8%)Tax、及び税込み価格Sを求める関数を作成して下さい。<BR>
+    <BR>
+    ただし、ハンバーグ、ジュース、ポテトの３点をセットで買った場合は、各々を単品で買った場合の合計金額(税抜き価格)から、<FONT color="#ff0000">40円×セット数の値引き</FONT>があることに注意してください(セット数は、n,m,kの最小値の数とする）。<BR>
+    <BR>
+    また、消費税は値引き後の総計に対して計算し、一円未満は切り捨てて下さい。 <BR>
+    <BR>
+    ここでは、上で示した全ての変数（n, m, k, C, Tax, S）を引数とし、n, m, k をキーボードから入力すると、合計額の税抜き価格C、消費税(8%)Tax、及び税込み価格Sを画面に表示するプログラムとしてください。<BR>
+    <BR>
+    また、メイン文と関数間の値の受け渡し方法に注目して、プログラムの動作を説明してください。<BR>
+    </TD>
+  </TR>
+</TABLE>
+<BR>
+<HR>
+<BR>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080"><TR><TD><B><FONT color="#ffffff">プリプロセッサ</FONT></B></TD></TR></TABLE>
+<BR>
+プログラムの先頭のところに、#記号のあとに続けて、以下のような構文があると、コンパイラはある定まった約束の処理を行います。その幾つかを説明します。<BR><BR><FONT color="#000080">■<B>インクルード文</B></FONT><BR><BR>
+　　　<FONT color="#0000ff">#include &quot;ファイル名&quot;</FONT><BR>
+または<BR><BR>
+　　　<FONT color="#0000ff">#include &lt;ファイル名&gt;</FONT><BR>
+<BR>
+これは以前に説明しましたように、ファイル名のファイルをinclude文の位置に挿入してコンパイルすることを意味しています。<BR><BR>
+ここで、ファイル名を&quot;&quot;で囲むと、コンパイラはカレントディレクトリから先にファイルを探します。一方、&lt;&gt;で囲んだときは、コンパイラのシステムディレクトリから先に捜す約束を表しています。そのため、標準関数のヘッダファイル（stdio.h
+やmath.h)は&lt;&gt;で囲む約束であると理解してください。<BR>
+<BR>
+<FONT color="#000080">■<B>define文</B></FONT><BR><BR>
+　　　<FONT color="#0000ff">#define 文字列１　文字列２</FONT><BR>
+<BR>
+上記のようなdefine文をプログラムの先頭に用意します。このとき、プログラムのどこかに、文字列１が含まれていると、それを文字列２で置き換えて、コンパイルします。<BR><BR>
+例えば、プログラムのなかで円周率πを用いる計算はよくあります。そのために、<BR><BR>
+　　　<FONT color="#0000ff">#define PI 3.14159265</FONT><BR>
+<BR>
+とします。上記のdefine文を用意した場合、本文中で<BR><BR>
+　　　<FONT color="#0000ff">sin(30.0/180.0*3.141593)</FONT>　<FONT color="#990000">/* sin(30°)の計算 */<BR>
+</FONT><BR>
+と書く代わりに、<BR><BR>
+　　　<FONT color="#0000ff">sin(30.0/180.0*PI)</FONT>　<BR>
+<BR>
+のように、PIを記号のように使ってプログラムを書くことができます。<BR><BR><FONT color="#000080">■<B>マクロ文</B></FONT><BR>
+define文の手の込んだ使い方として、マクロ文があります。マクロ文は関数と良く似た目的のために使うことができます。<BR>
+マクロ文は、<BR><BR>
+　　　<FONT color="#0000ff">#define マクロ名(x，y‥‥)　　マクロ定義文<BR>
+</FONT><BR>
+のように定義します。このとき、プログラム本体の中で、<BR>
+<BR>
+　　　<FONT color="#0000ff">マクロ名（a，b‥‥)</FONT><BR>
+<BR>
+のように書いてマクロ文を使います。マクロ名が表れるとコンパイラは、通常のdefine文と同じように、まずマクロ名を定義式の文字列に置き換えます。その際、マクロ文の引数に対しては、さらに、
+定義文の中の引数文字列を、呼び出し側の引数文字列に置き換えます。上記の例では、、コンパイラは、マクロ定義文の引数文字列
+<FONT color="#0000ff">&quot;x&quot;</FONT>と
+<FONT color="#0000ff">&quot;y&quot;</FONT>の各々を、プログラム中のマクロ文の引数文字列、
+<FONT color="#0000ff">&quot;a&quot;</FONT>,<FONT color="#0000ff">&quot;b&quot;</FONT>に置き換えます。<BR>
+<BR>
+その結果、あたかもマクロ名()の名前の関数を用意したのと同じ働きをさせることができます。<BR><BR>
+例をあげて説明します。<BR><BR>
+<FONT color="#0000ff">#define PI 3.141593</FONT><BR>
+<FONT color="#0000ff">#define VOLUME(r) 4.0*PI*r*r*r/3.0 </FONT>　
+<FONT color="#990000">/*半径rの球の体積を求めるマクロ*/<BR>
+</FONT><BR>
+のようにdefine文を用意します。そして、本文の中で、<BR><BR>
+　　<FONT color="#0000ff">VOLUME(2.0) </FONT>;<BR>
+<BR>
+のようにマクロ文を呼び出したとします。このように、PIやVOLUMEという文字列がプログラム中に表れると、コンパイラは、各々をdefine定義文の文字列<FONT color="#0000ff">3.141593</FONT>および<FONT color="#0000ff">4.0*PI*r*r*r/3.0</FONT>で置き換えます。その際、<FONT color="#009900">VOLUME</FONT>はマクロ文であるので（引数（カッコの中の文字列）があるので）、定義文中の引数文字列
+<FONT color="#0000ff">&quot;ｒ&quot;</FONT>を、呼び出し側の引数文字列
+<FONT color="#0000ff">&quot;2.0&quot;</FONT>に置き換えます。すなわち、<FONT color="#0000ff">VOLUME(2.0)</FONT>　を、<BR>
+<BR>
+　　<FONT color="#0000ff">4.0*3.141593*2.0*2.0*2.0/3.0;</FONT> <BR>
+<BR>
+の文字列に置き換えます。<BR><BR>
+　以上のように、プログラムを作る人にとって、見かけ上、VOLUMEという名前の関数を呼び出したかのように使うことができました（ただし、マクロ文は、文字列の置換処理によって実現している点で、関数呼び出し（サブルーチンの実行）とは本質的に異なることに注意してください）。<BR><BR><BR><TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD WIDTH=100%><FONT color="#000080"><B>演習問題　10-4（マクロ文の練習）</B></FONT>　(Revised : 2011/11/3)<BR><BR>
+    (1) 以下は、マクロ文COMPUTE(a,b)　を用いた　a*10+b　の計算プログラムです。<BR>
+    プログラムを実行し、キーボードからa,bに適当な数値を入力した際の計算結果を確認してください。<BR>
+    次に、2*(a*10+b) を計算する目的で、<BR>
+    <BR>
+    　　<FONT color="#0000ff">ans=2*COMPUTE(a,b)</FONT>;<BR>
+    <BR>
+    のように変更してみてください。この場合、期待通りの答えになりません。<BR>
+    その理由を考察し、正しい答えが出るように、マクロ文を訂正してください。<BR>
+    <PRE wrap="">#include&lt;stdio.h&gt;
+
+#define COMPUTE(a,b) a*10+b  /* aの10倍にbを加算した結果を返す */
+
+int main(void)
+{
+
+    float a,b,ans;
+    printf(&quot;input a=&quot;); fflush(0); scanf(&quot;%e&quot;,&amp;a);
+    printf(&quot;input b=&quot;); fflush(0); scanf(&quot;%e&quot;,&amp;b);
+    ans=COMPUTE(a,b);
+    printf(&quot;\nCOMPUTE(%5.3f,%5.3f)=%f\n&quot;,a,b, ans);
+
+    return(0);
+}</PRE>
+    (2) 次のプログラムは、球の半径を指定して、球の体積を求めるためのプログラムです。xxxの部分には球の半径を指定します。xxxを適当な数値に書きかえた上で、プログラムを実行してみてください。<BR>
+    xxxのところを、数値でなく、例えば　3+2　のような、足し算を含んだ式にすると、正しい答えがでてきません。<BR>
+    その理由を考察し、正しい答えが出るように、マクロ文を訂正してください。<BR>
+    <PRE>#include&lt;stdio.h&gt;
+
+#define PI 3.14159
+#define VOLUME(r) 4.0/3.0*PI*r*r*r /*半径ｒの球の体積 */
+
+int main(void)
+{
+    printf(&quot;\n半径%fの球の体積＝%f\n&quot;,xxx,VOLUME(xxx));
+
+    return(0);
+}</PRE>
+    <DIV ALIGN=LEFT>(3) 正十二面体の体積Vを指定して、一辺の長さaを求めるマクロを作成して下さい。<BR>
+    なお、Vとaの関係は以下の図の下に示しました。<BR>
+    <BR>
+    <BR>
+    <IMG src="dodecahedron.jpg" width="215" height="235" border="0"></DIV>
+    <BR>
+    (4)関数を使っても同じプログラムが作れます。マクロと関数は、どんな違いがありますか？<BR>
+    　各々のメリット、デメリットについて考察してレポートに書いてください。<BR>
+    <BR>
+    </TD></TR></TABLE><BR></BODY></HTML>

@@ -1,0 +1,390 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>第11回</TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef">
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+  <TR>
+    <TD WIDTH=100%><FONT color="#ffffff" size="+2"><FONT size="+2"><B>プログラミングおよび演習 ＮＯ．11</B></FONT></FONT></TD>
+  </TR></TABLE>
+<DIV ALIGN=RIGHT><BR>
+Last-Modified: 2013.11.18<BR>
+</DIV>
+<HR>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
+  <TR>
+    <TD><FONT color="#ffffff"><B>配列データとポインタ処理</B></FONT></TD>
+  </TR></TABLE>
+<BR>
+先週の関数の練習問題では、せいぜい一つ、二つ‥‥といった比較的、少ない数の変数の値を引数にして、関数と呼び出し側の間で、データのやりとりをする問題を考えてきました。<BR>
+<BR>
+２つ以上、例えば10個、100個というように、非常に多くの数のデータを、やりとりしたい場合はどうしたらよいでしょうか。<BR>
+<BR>
+このための方法として、配列を引数にして、多数のデータを関数に渡したり、反対に多数のデータを関数から受け取る方法について勉強します。<BR>
+<BR>
+<HR><BR>
+まず、コンピュータが配列データをどんな形でメモリに記録するかを復習します。例えば、<BR>
+<BR>
+　　<FONT color="#0000ff">int a[10]；</FONT><BR>
+<BR>
+で宣言した配列aを考えてみます。この時、コンピュータは次のような手順で配列aのメモリを用意します。<BR>
+<BR>
+<FONT color="#990000">　(1)　配列aのために、連続した番地をもつ、整数型データ10個分のメモリを確保する。<BR>
+</FONT><BR>
+　<FONT color="#990000">(2)　(1)の配列データ記録用のメモリとは別に、配列の</FONT><FONT color="#ff0000">先頭番地を記録するためのポインタ変数a</FONT><FONT color="#990000">を用意する。そのポインタ変数名には</FONT><FONT color="#ff0000">配列名と同じ名前を付ける。</FONT><BR>
+<BR>
+　<FONT color="#990000">(3)　ポインタ変数a（＝配列名）に用意したメモリの先頭番地を記録する。</FONT><BR>
+<BR>
+以上の様子を図で表わすと、下図のようになります。その結果、<BR>
+<BR>
+　０番目の配列要素　<FONT color="#0000ff">*a</FONT><BR>
+　１番目の配列要素　<FONT color="#0000ff">*(a+1)</FONT><BR>
+　　　　　‥‥<BR>
+<BR>
+のように表現できることになります。　このポインタ表現は、人が見たときに理解しにくいので、各々を<BR>
+<BR>
+　０番目の配列要素　<FONT color="#0000ff">a[0]</FONT><BR>
+　１番目の配列要素　<FONT color="#0000ff">a[1]</FONT><BR>
+　　　 ‥‥<BR>
+<BR>
+と書いてもよい約束になっています（両者は同じ意味になります）。<BR>
+<BR>
+<IMG SRC="cp1-11-1.gif" ALT="" WIDTH=577 HEIGHT=153><BR>
+<BR>
+次の例題は、上に述べた内容を具体的に確認するためのプログラムです。<BR>
+<BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD><B><FONT color="#000099">例11-1</FONT></B><BR>
+    <PRE>#include&lt;stdio.h&gt;
+
+int main(void)
+{ 
+    int a[10]={38, 52, 16, 45, 73,
+               97, 63, 25, 81, 68};/* 配列変数ａ */
+    int *c; /* ポインタ型の変数cの宣言　*/
+    int i;
+    
+    for(i=0; i&lt;10; i++)　/*配列aのデータを表示する*/
+        printf(&quot;a+%d=%d *(a+%d)=%d a[%d]=%d\n&quot;,i,a+i,i,*(a+i),i,a[i]);
+
+    return(0);
+}</PRE></TD>
+  </TR></TABLE>
+<BR>
+<BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#e1ffff">
+  <TR>
+    <TD><B><FONT color="#000099">演習問題　11-1</FONT> </B>(Revised : 2012/11/26)<BR>
+    <BR>
+    例１１－１のプログラムを実行して、配列変数の番地、配列要素の各データ、ポインタ表現を用いたときの配列要素データ、の各々の関係を確認してください（a,a+1,a+2‥‥の番地は、４づつ増えていく所に気をつけてください（１つの番地が１バイトのメモリを表す約束になっている。１つのint型データは4バイトのメモリを使うため）。<BR>
+    <BR>
+    次に、int a[10] をshort型とchar型に変更した実験（プリント文の書式も適切なものに変更することを忘れずに。ただし、番地の表示は%d、char型配列に保存された数値データの表示は%dとする）を2回別々に行ない、intで宣言した場合との違いについて考察しなさい。<BR>
+    <BR>
+    さらに、もう一度int a[10] に戻した後で（書式も元に戻す）、別に用意したポインタ変数ｃに、<BR>
+    <BR>
+    　　<FONT color="#0000ff">c=a;</FONT><BR>
+    <BR>
+    として、配列メモリの先頭番地を代入してみてください。その後で、printf()文を<BR>
+    <BR>
+    　　<FONT color="#0000ff">
+    printf(&quot;c+%d=%d *(c+%d)=%d c[%d]=%d\n&quot;,i,c+i,i,*(c+i),i,c[i])</FONT>;<BR>
+    <BR>
+    に変えてみてください。cとaの２つの配列は全く同じデータになっていることを確認し、その理由について考察しなさい。別の言い方をすると、10個分の配列データを直接コピーしなくても、<BR>
+    <BR>
+    　<FONT color="#0000ff">c=a;</FONT><BR>
+    <BR>
+    のように、配列の先頭番地をコピーするだけで（１個の番地データをコピーするだけで）、１０個全部の配列データの受け渡しができたことに注意してください。<BR>
+    </TD>
+  </TR></TABLE><BR>
+以上の演習問題が理解できたら、次の演習問題に進んでください。<BR>
+<BR>
+<TABLE BORDER WIDTH=100% BGCOLOR="#e1ffff">
+  <TR>
+    <TD> <B><FONT color="#000099">演習問題 11-2</FONT></B>(Revised : 2013/11/11)<BR>
+    <BR>
+    以下は、関数と呼び出し側の間で、配列データを受け渡す方法を理解してもらうためのプログラムです。<BR>
+    関数disp_data()は、例11-1と同じ整数型配列aのデータを受け取って画面表示する関数です。以下のプログラムを実行し、どんな形で呼び出し側と関数側の間で配列データをやり取りしているのか説明してみてください。<BR>
+    <BR>
+    <FONT color="#990000">ヒント：　関数を呼ぶと、呼び出し側の引数のデータを関数側の引数にコピーする。その結果、</FONT><BR>
+    <FONT color="#0000ff">呼び出し側　　　　　　関数側<BR>
+    　　10 　　　　　--&gt;　　 len(配列データの数）<BR>
+    　　a(先頭番地） --&gt;　　 c (ポインタ型変数）</FONT><BR>
+    <FONT color="#990000">となることに注意してください。</FONT><BR>
+    <BR>
+    <PRE>#include &lt;stdio.h&gt;
+int main(void)
+{ 
+    int a[10]={45, 22, 18, 56, 69,
+               89, 95, 13, 71, 32};/* 配列変数a の型宣言*/
+    void disp_data(int, int*); /*関数disp_data()の型宣言*/
+    
+    disp_data(10, a);
+    
+    return(0);
+}
+
+/* 配列データを画面に表示する関数*/ 
+void disp_data(int len,int *c)
+{
+    int i;
+    
+    for(i=0; i&lt;len; i++)
+        printf(&quot;c+%d=%d *(c+%d)=%d c[%d]=%d\n&quot;,i,c+i,i,*(c+i),i,c[i]);
+}</PRE></TD>
+  </TR></TABLE><BR>
+<HR>
+<BR>
+<B>配列を引数にもつ関数の応用問題</B>
+<BR>
+次は、呼び出し側と関数の間で配列データの受け渡しを行うためのプログラムです。<BR>
+ここでは、配列ｘ[]にコサイン波のデータを書き込きこむ関数、配列データを画面に出力する関数の２つを使っています。<BR>
+参考のために、<A HREF="cp1-11-ap.html">関数を使わないで実現したプログラム</A>を載せておきます。関数を使うメリットを理解してください。関数を使ってプログラムを作るためには、配列データを引数に使う必要があります。<BR>
+<BR>
+<HR>
+<TABLE bgcolor="#ffffff" border="1" width="100%">
+  <TR>
+    <TD width="100%" height="100"><B><FONT color="#000099">例 11-2</FONT></B><BR>
+    <PRE>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+
+int main(void)
+{
+    int len=500;
+
+    
+    float x[500]; /* 配列ｘの宣言 */
+    
+    void make_coswave(int,float *), disp_data(int,float *);/* 関数の型宣言 */
+    
+    make_coswave(len,x); /* コサイン波のデータを作る*/
+    disp_data(len,x);    /* 配列データを画面表示する*/
+
+    return(0);
+}
+
+/* コサイン波の配列データを作るための関数*/
+/*配列の先頭番地を、ポインタ変数の引数aで受け取る　*/
+void make_coswave(int len, float *a) 
+{
+    int i;
+
+    for(i=0;i&lt;len;i++)
+        a[i]=‥‥　; 　　　/* この部分は自分で作る */
+}
+
+/* 配列データを表示する関数*/
+void disp_data(int len, float *a) 
+{
+    int i;
+    for(i=0; i&lt;len; i++)
+        printf(&quot;%e\n&quot;,a[i]);
+}</PRE>
+    </TD>
+  </TR></TABLE>
+<BR>
+<TABLE width="100%" bgcolor="#e1ffff" border="1">
+  <TR><TD><B><FONT color="#000099">演習問題 11-3</FONT></B>(Revised : 2013/11/11)<BR>
+    <BR>
+    例１1-2に従って次式のコサイン波の値を計算するためのプロブラムを完成させてください。ただし、プログラムの具体的な仕様は以下のようにしてください。<BR><BR>
+    <FONT color="#0000ff">x(t) = cos( 2π f t )</FONT><BR><BR>
+    (1) 周波数ｆの値を50[Hz]とする。時間ｔは0.2[ms]ごとに501点（t=100～200[ms]）の時間での値を計算する。<BR>
+    <BR>
+    (2) 計算結果（501個のデータ）は時間の順番に一次元配列に書き込む。<BR><BR>
+    (3)プログラムを実行して、コサイン波のデータを画面に表示してください。<BR>
+    　<BR>
+    (4)上記(3)を行うと表示結果がコンソール画面から溢れてしまうため、最後の方のデータだけが表示された状態になります。スクロールバーを上のほうにスクロールして全体のデータを確認してください。ただし、テキスト形式の波形データは長すぎて見ることができませんので、レポートの実行結果には真ん中を省いて先頭と後尾の数行のデータだけを載せるようにしてください。<BR>
+    <BR>
+    (5) さらに、次のようにしてエクセルでグラフを描いてみてください。<BR>
+    <UL><LI>表計算ソフトのエクセルに、波形データを読み込む（手順：①Eclipseの <FONT color="#0000ff">コンソール画面のテキストをクリップボードにコピーする。</FONT>-&gt; ②エクセルを立ち上げ、表画面に　<FONT color="#0000ff">[編集]-&gt;[貼付け]</FONT>）。<BR>
+      <LI>エクセルのグラフウィザードを使って、波形を描いてみる（手順：エクセルの表画面で、<FONT color="#0000ff">[データを選択]-&gt;[グラフウィザードボタンをクリック]-&gt;[散布図を選択]-&gt;[次へ]-&gt;[完了ボタン]</FONT>）。
+    </UL>
+    <FONT color="#000099">[補足および注意]</FONT><BR>
+    ○コンソール画面のテキストをクリップボードにコピーする方法は<A HREF="clip-cp1.html">ここ</A>をみてください。<BR>
+    ○エクセルのグラフを画像データの形でファイルセーブする方法は<A HREF="grcap-cp1.html">ここ</A>を参考にしてください。<BR>
+    ○セーブした図形ファイル（<FONT color="#ff0000">ファイル形式は ’jpg’ または 'png' とする</FONT>）を<FONT color="#ff0000">メールの添付ファイルで送ってください</FONT>。<BR>
+    ○xls形式のエクセルファイルや、zip形式の圧縮ファイルで送ってくる人がいますが、エクセルを開いたり圧縮ファイルを展開するのに手間がかかりますので止めてください。<BR>
+    </TD>
+  </TR></TABLE>
+<BR>
+<HR>
+<B><FONT color="#000099">■　コサイン波計算プログラムの拡張</FONT></B><BR><BR>
+先週は、配列を引数にもつ関数の練習問題として、<BR><BR>
+　　<FONT color="#0000ff">ｘ[i]＝A cos(2πｆΔt×i) 　　　i=0,1,2,‥‥</FONT><BR><BR>
+のコサイン波データを計算する関数make_coswave()を使ったプログラムを練習しました。<BR>
+今日は、前回作ったプログラムに手を加えて、より手の込んだプログラムに拡張していくことにします。<BR><BR>
+前回作った周波数ｆ0のコサイン波F(ｆ0)に、その３倍（3ｆ0）、5倍（5ｆ0）の周波数のコサイン波を<BR>
+<BR><FONT color="#0000ff">　　F'=(4/π) [ F(ｆ0）-(1/3)F(3ｆ0）+(1/5)F(5ｆ0）+‥‥］</FONT><BR><BR>
+のように足し合わせていくと方形波に近い波形が得られます。同様に、<BR>
+<BR><FONT color="#0000ff">　　F'=(8/π<SUP>2</SUP>) [ F(ｆ0）+(1/9)F(3ｆ0）+(1/25)F(5ｆ0）+‥‥］</FONT><BR><BR>
+のように、足し合わせると、今度は三角波に近い波形になります。<BR><BR>
+上記の計算を行うプログラムを作るために、前回のプログラムを次のような方針のもとに変更します。<BR><BR>
+<FONT color="#000099"><B>準備１：</B></FONT><FONT color="#990000"><B>関数の中で使うパラメータを引数にする。呼び出側でパラメータを変えて、計算できるようにする（関数の汎用性が高くなる。関数を修正する必要がなくなる）。</B></FONT><BR>
+　<BR>
+この方針に添って、関数make_coswave()のこれまでの引数<BR><BR>
+　　<FONT color="#0000ff">配列データ : ｘ[]、　データ数 : len、</FONT><BR>
+<BR>
+に、　次の波形パラメータを追加する。<BR><BR>
+　<FONT color="#0000ff">周波数 : freq，　時間刻み : tdel,　振幅 : amp<BR>
+</FONT><BR>
+この考え方に従って、例11-2のコサイン波のデータ生成関数、make_coswave　を書き換えたのが、次のリストです。<BR><PRE>
+void make_coswave(int len, float freq,float tdel,float amp,float *x) 
+{
+    int i;
+    float time;
+
+    for(i=0;i&lt;len;i++){
+        time=tdel*i;
+        x[i]=amp*cos(2.0*PI*freq*time);
+    }
+}
+</PRE><BR>
+<FONT color="#000099"><B>準備２：　</B></FONT><FONT color="#990000"><B>複数の波形を足し合わせるための関数を用意する。</B></FONT><BR><BR>
+ここでは、２つの波形データを加算する関数を用意します。以下に、その２つの配列データｘ1[]とｘ２[]を足し算し、結果をｘ1[]に書き込むための関数　add_data()　を示します。<BR><PRE>
+void add_data(int len,float *x1,float *x2)<BR>{
+    int i;
+
+    for(i=0;i&lt;len;i++)
+        x1[i]=x1[i]+x2[i];
+}</PRE>
+上記の問題のために3つの波形データを加算するには、上記の関数を２回呼び出すようにして使うことにします。<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff"><TR><TD WIDTH=100%><FONT color="#000099"><B>演習問題11-4</B></FONT> (Revised : 2013/11/18)<BR><BR>
+    以下のプログラムを完成させて、基本波のコサイン波に、２倍、３倍‥‥の周波数をもつ高調波のコサイン波を、<BR><BR>
+    　<FONT color="#0000ff">　F'=(4/π) [ F(ｆ0）-(1/3)F(3ｆ0）+(1/5)F(5ｆ0）+‥‥］　（方形波）<BR>
+    　　F'=(8/π<SUP>2</SUP>) [ F(ｆ0）+(1/9)F(3ｆ0）+(1/25)F(5ｆ0）+‥‥］　（三角波）<BR>
+    　　F'=(2/π)- (4/π) [ (1/3)F(2ｆ0）+(1/15)F(4ｆ0）+(1/35)F(6ｆ0）‥‥］　（全波整流波）</FONT><BR>
+    <BR>
+    に従って足し合わせた波形を計算してみてください。演習問題11-3と同様に、エクセルに描いてみてください。また、プログラムの動作を説明してください。<BR><BR>
+    ただし、データ数、時間きざみ、及び周波数は以下のプログラム中にあるものを使ってください。<BR><BR><PRE>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#define PI 3.14159265
+
+void add_data(int, float*,float*); 
+void make_coswave(int,float,float,float,float *);
+void disp_data(int , float *); 
+
+int main(void)
+{
+    float x1[1000], x2[1000];
+    float tdel,freq,amp;
+    int len;
+    len=400; /*データ数*/
+    tdel=5e-5; /*時間きざみ*/
+    freq=50.0; /*周波数*/
+    
+    /* @@@の部分は自分で作りかえること */
+    amp=@@@;
+    
+    make_coswave(len,freq,tdel,amp,x1); /*基本波の計算*/
+    
+    make_coswave(len, freq*@@@,tdel,amp/@@@,x2); /*1番目の高調波の計算*/
+    add_data(len,x1,x2);
+    
+    make_coswave(len,freq*@@@,tdel,amp/@@@,x2); /*2番目の高調波の計算*/
+    add_data(len,x1,x2);
+    
+    disp_data(len,x1);
+
+    return(0);
+}
+
+void add_data(int len,float *x1,float *x2)
+{
+    int i;
+
+    for(i=0;i&lt;len;i++)
+        x1[i]=x1[i]+x2[i];
+}
+
+/*コサイン波のデータを計算して配列に入れる*/
+void make_coswave(int len, float freq,float tdel,float amp,float *x) 
+{
+    int i;
+    float time;
+    
+    for(i=0;i&lt;len;i++){
+        time=tdel*i;
+        x[i]=amp*cos(2.0*PI*freq*time);
+    }
+}
+
+void disp_data(int len, float *x) 
+{
+    int i;
+
+    for(i=0; i&lt;len; i++)
+        printf(&quot;%e\n&quot;,x[i]);
+}</PRE></TD></TR></TABLE>
+<BR>
+<TABLE BORDER BGCOLOR="#ffffff"><TR><TD><STRONG><FONT color="#000099">補足：波形を直接計算するための関数</FONT></STRONG><BR><BR>
+    以下は、方形波、三角波、全波整流波、を直接計算するための関数を示します。時間が余った人は、演習問題11-4のコサイン波を足し合わせて作った波形データと比較してみてください。<BR><BR>
+    /* 方形波データの計算*/<IMG SRC="cp1-11-2.gif" ALT="" ALIGN=RIGHT WIDTH=196 HEIGHT=421><BR><PRE>void make_rectwave(int len, float freq,float tdel,float amp,float *x)
+{
+    int i;
+    float arg,time;
+    
+    for(i=0;i&lt;len;i++){
+        time=tdel*i;
+        arg=fmod(freq*time,1.0);
+        if(arg==0.0 || arg==0.5)
+            x[i]=0.0;
+        else if(arg&lt;0.5)
+            x[i]=amp;
+        else
+        x[i]=-amp;
+    }
+    
+}
+
+/* 三角波データの計算*/
+void make_triwave(int len, float freq,float tdel,float amp,float *x)
+{
+    int i;
+    float arg,time;
+    
+    for(i=0;i&lt;len;i++){
+        time=tdel*i;
+        arg=fmod(freq*time,1.0);
+        if(arg&lt;=0.25)
+            x[i]=4.0*amp*arg;
+        else if(arg&lt;=0.75)
+            x[i]=4.0*amp*(0.5-arg);
+        else
+            x[i]=4.0*amp*(arg-1.0);
+    }
+}
+
+/* 全波整流波データの計算*/
+void make_fulwavrec(int len, float freq,float tdel,float amp,float *x)
+{
+    int i;
+    float arg,time;</PRE><IMG src="fulwavrec.jpg" alt="" align="RIGHT" width="150" height="92"><PRE>    for(i=0;i&lt;len;i++){
+        time=tdel*i;
+        x[i]=fabs(sin(2.0*PI*freq*time));
+    }
+}
+
+/* のこぎり波データの計算*/
+void make_sawtoothwave(int len, float freq,float tdel,float amp,float *x)
+{
+    int i;
+    float arg,time;
+    
+    for(i=0;i&lt;len;i++){
+        time=tdel*i;
+        arg=fmod(freq*time,1.0);
+        if(arg&lt;0.5)
+            x[i]=2.0*amp*arg;
+        else if(arg==0.5)
+            x[i]=0.0;
+        else
+            x[i]=2.0*amp*(arg-1.0);
+    }
+}</PRE></TD></TR></TABLE>
+<BR>
+</BODY></HTML>

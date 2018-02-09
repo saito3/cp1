@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="content-type" CONTENT="text/html;charset=Shift_JIS">
+<META NAME="GENERATOR" CONTENT="HOTALL Ver.7.2W">
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+<P>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+<TR>
+<TD WIDTH=100%><FONT SIZE=5 COLOR="#ffffff" FACE="ＭＳ ゴシック"><B> ＮＯ．11の補足</B></FONT></TD>
+</TR>
+</TABLE><BR>
+<BR>
+<TABLE BORDER WIDTH=80% BGCOLOR="#ffffff">
+<TR>
+<TD>
+<FONT COLOR="#000080"><B>例11-２-1</B></FONT><BR>
+#include&lt;stdio.h&gt;<BR>
+<BR>
+#include&lt;stdlib.h&gt;<BR>
+#include&lt;math.h&gt;<BR>
+#define PI 3.14159265<BR>
+<BR>
+void main()<BR>
+{<BR><UL>
+ int i,len=500;<BR>
+ float x; <BR>
+ float freq=10,t;<BR>
+<BR>
+ for(i=0;i&lt;len;i++){<BR>
+<UL>
+ t=i*1e-3;<BR>
+ x=sin(2*PI*freq*t);<BR>
+ printf(&quot;%e\n&quot;,x);<BR>
+</UL> }<BR>
+</UL>
+}<BR>
+</TD>
+</TR>
+</TABLE><BR>
+<BR>
+<BR>
+<TABLE BORDER WIDTH=80% BGCOLOR="#ffffff">
+<TR>
+<TD>
+<FONT COLOR="#000080"><B>例11-２-2</B></FONT><BR>
+#include&lt;stdio.h&gt;<BR>
+#include&lt;stdlib.h&gt;<BR>
+#include&lt;math.h&gt;<BR>
+#define PI 3.14159265<BR>
+<BR>
+void main()<BR>
+{<BR><UL>
+ int i,len=500;<BR>
+ float x[500]; <BR>
+ float freq=10,t;<BR>
+ <BR>
+ for(i=0;i&lt;len;i++){<BR>
+<UL>
+ t=i*1e-3;<BR>
+ x[i]=sin(2*PI*freq*t);<BR>
+ printf(&quot;%e\n&quot;,x[i]);<BR>
+</UL> }<BR>
+</UL>
+}<BR>
+</TD>
+</TR>
+</TABLE><BR>
+<BR></P></BODY>
+</HTML>

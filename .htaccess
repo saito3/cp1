@@ -1,0 +1,6 @@
+<Files ~ "^\.ht">
+deny from all
+</Files>
+
+# Default Page Change
+DirectoryIndex index.html

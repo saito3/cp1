@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META name="Date" CONTENT="1/23/97">
+<META name="Version" CONTENT="8.0.3720">
+<META name="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>第2回</TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef" LINK="#0000ff" VLINK="#800080">
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+  <TR>
+    <TD WIDTH=100%><FONT size="6" color="#ffffff"><B>プログラミングおよび演習 ＮＯ．２</B></FONT></TD>
+  </TR></TABLE>
+<BR>
+<DIV ALIGN=RIGHT>Last-Modified:　2015/04/23</DIV>
+<HR>
+<TABLE BORDER=0 WIDTH=100%>
+  <TR>
+    <TD BGCOLOR="#004080" WIDTH=100%><FONT SIZE=4 COLOR="#ffffff"><B>変数</B></FONT></TD>
+  </TR></TABLE>
+<P>先週はコンピュータに電卓の働きをさせるために、数値定数を用いた数式の計算結果を表示するプログラムを習いました。しかし、複雑で長い計算式や、同じ公式を用いた計算を何度も繰り返す場合、演算内容が一目で分かるようにする、などの要求を考えると、もっと使いやすいプログラムに改良する必要があります。
+始めに、</P>
+<BLOCKQUOTE><FONT color="#0000ff">sum=a+b;</FONT></BLOCKQUOTE>
+<P>の式に従って、２つの数の和を求めて画面表示するプログラムを考えます。例として、a=1.0, b=2.0の場合は、先週習ったように、</P>
+<BLOCKQUOTE><FONT color="#0000ff">printf(&quot;sum=%e\n&quot;,1.0+2.0);</FONT></BLOCKQUOTE>
+<P>とすることにより実現できます。同じ計算を、今週は変数を使って、</P>
+<BLOCKQUOTE><FONT color="#0000ff">a=1.0;<BR>
+b=2.0;<BR>
+sum=a+b;<BR>
+printf(&quot;sum=%e\n&quot;,sum);</FONT></BLOCKQUOTE>
+<P>のように書くことにします。このほうがよりプログラムらしくなります。<BR>
+さて、上記のプログラムでは、a,b,sumの３つの変数を使っています。変数は、コンピュータのメモリ領域に任意の名前を付けて（名前の付け方の規則は後で説明します）、その名前のメモリ領域にデータを格納するために使います。ちょうど、電卓のメモリ演算機能と同じです。<BR>
+この時、変数の型によってデータの格納の仕方が異なることに注意する必要があります。変数の型には、大きく分けて数値変数と文字変数がありますが、前者の数値変数はさらに、実数変数と整数変数の２つに分けられます。先週、数値定数に実数（小数点がついてもよい数値）と整数（小数点がつかない数値）があることを説明しましたが、変数の場合も同じです。実数変数は更に単精度型と倍精度型の２つがあるので、下表のようになりますが、とりあえず</P>
+<BLOCKQUOTE><FONT color="#0000ff">int(整数）, float（単精度実数）, char（文字）</FONT></BLOCKQUOTE>
+<P><FONT COLOR="#000000">の３つは最低覚えてください。</FONT><BR>
+<FONT COLOR="#004080"><BR>
+<B>変数の型 </B></FONT><BR>
+<TABLE BORDER=1 BGCOLOR="#ceffce" STYLE="border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;">
+  <TR>
+    <TD>型</TD><TD>型表記</TD><TD>サイズ</TD><TD>表現できる数値の範囲</TD>
+  </TR><TR>
+    <TD>文字</TD><TD>char</TD><TD>1バイト</TD><TD>-128～127</TD>
+  </TR><TR>
+    <TD>Short整数</TD><TD>short</TD><TD>2バイト</TD><TD>-32,768～32,767</TD>
+  </TR><TR>
+    <TD>整数</TD><TD>int</TD><TD>4バイト</TD><TD>-2,147,483,648～2,147,483,647</TD>
+  </TR><TR>
+    <TD>単精度実数</TD><TD>float</TD><TD>4バイト</TD><TD>約7桁 +/-(3.4e-38～3.4e38)</TD>
+  </TR><TR>
+    <TD>倍精度実数</TD><TD>double</TD><TD>8バイト</TD><TD>約16桁 +/-(1.7e-308～1.7e308)</TD>
+  </TR></TABLE>
+<P>次に、上記のプログラムには、変数に数値を代入する</P>
+<BLOCKQUOTE><FONT color="#0000ff">a=1.0;</FONT></BLOCKQUOTE>
+<P>のような実行文が出てきました。これは、代入文といって、右辺の数値定数や変数（または、それらを組み合わせた数式）を、左辺の変数に代入する操作をコンピュータに指示します。左辺は必ず変数でなければいけないことに注意してください。</P>
+<BLOCKQUOTE><FONT color="#0000ff">3.14＝PI;</FONT> /*　これは間違い*/</BLOCKQUOTE>
+<P>のように書くことは誤りです。また、右辺は数値定数だけでなく、変数、または それらを組み合わせた任意の数式を書くこともできます。例えば、</P>
+<BLOCKQUOTE><FONT color="#0000ff">a=1.0+2.0+5.0　や　　a=5.0*(1.0+b)+c</FONT></BLOCKQUOTE>
+<P>など。<BR>
+以上の説明を念頭において、実際のプログラムをみてみます。</P>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD><FONT color="#0000cc"><B>例 2－1</B></FONT><BR>
+    <PRE>/* 変数を使ったプログラム */
+#include &lt;stdio.h&gt;
+
+int main(void)
+{ 
+    float a,b,sum;
+    a=1.0;
+    b=2.0;
+    sum=a+b;
+    printf(&quot;sum=%e\n&quot;,sum);
+
+    return(0);
+}</PRE>
+    </TD>
+  </TR></TABLE>
+<BR>
+<FONT COLOR="#004080"><STRONG><BR>
+◎宣言文</STRONG></FONT><BR>
+<P>上記のプログラムで、まだ説明していない</P>
+<FONT color="#0000ff">float a,b,sum;</FONT><BR>
+<P>という文がでてきました。Ｃ言語では、変数を使う前にその変数が何型の変数なのかを予め宣言しておく必要があるためです。 上記の例では、float型（単精度実数型）の３つの変数、a,b,sumを使うことを宣言しています。
+３つの変数の宣言は、上記のように&quot;,&quot;で区切って１行で済ますこともできますが、3行に渡って</P>
+<P align="left"><FONT COLOR="#0000ff">　　float a;</FONT><BR>
+<FONT COLOR="#0000ff">　　float b;</FONT><BR>
+<FONT COLOR="#0000ff">　　float sum;</FONT></P>
+<P>と書いても良いです。ただし、宣言文の位置は関数　main　の始まりの　<FONT COLOR="#0000ff">｛　</FONT>の直後に書かなければいけません。</P>
+<HR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
+  <TR>
+    <TD><FONT SIZE=3 COLOR="#000080"><B>演習問題 2－1 </B></FONT>(Revised : 2015/04/23)<BR>
+    <BR>
+    円錐（底面の半径r[m]、母線の長さh[m]）の表面積S [m<SUP>2</SUP>]（＝πr(r+h)）を求めるプログラムを作り、(r, h)={(1.0, 1.0)、(0.1, 10.0)} の場合について計算をしなさい。また、πを3.141592653589793とする手計算の結果（電卓は使わないように）とコンピュータによる結果を比較して、何処の桁まで一致しているかを示し、その理由について考察しなさい。<BR>
+    <BR>
+    [補足]： printfの書式指定を<FONT color="#0000ff">%e</FONT>とすると7桁までしか表示されません。有効桁数を確認するためには、もっと長い桁数で表示する必要があります。例えば、<FONT color="#0000ff">%23.15e</FONT>　として、全体を23桁小数点以下の桁数を15桁の指数形式で表示してみてください。<BR>
+    </TD>
+  </TR></TABLE>
+<BR>
+<HR><BR>
+<TABLE BORDER=0 WIDTH=100%>
+  <TR>
+    <TD BGCOLOR="#004080" WIDTH=100%><FONT SIZE=4 COLOR="#ffffff"><B>キーボード入力（scanf関数)</B></FONT></TD>
+  </TR></TABLE>
+<P>いままで、printf()関数を使うと、文字列や数値を画面に表示することができました。これに対して、 scanf()関数は、キーボードから打ち込んだ文字や数値を、コンピュータ内の変数に代入するために用います。
+ちょうど、printf()関数の逆の働きをします。例えば、</P>
+<BLOCKQUOTE><FONT color="#0000ff">scanf(&quot;%e&quot;,&amp;a)</FONT></BLOCKQUOTE>
+<P>とすると、実数型変数 aに%e形式で、キーボードからの数値を入力します。scanf()関数の使い方の約束は、printf()関数の場合とおおよそ同じと考えることができます。ただし、<FONT COLOR="#ff0000">変数aの前に&amp;記号がつく</FONT>など、全く同じではない点に注意してください（この理由はこの授業のずっと後の方で説明します）。<BR>
+キーボードから数値を入力するプログラムを練習するために、以下の例題をやってみてください。
+<BR>
+<BR>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff">
+  <TR>
+    <TD><B><FONT color="#0000cc"><STRONG>例</STRONG></FONT><FONT size="3" color="#0000cc"> 2－2</FONT></B>(Revised : 2011/04/21)<BR>
+    <PRE>/* キーボードから数値を入力するプログラム */
+#include&lt;stdio.h&gt;
+
+int main(void)
+{ 
+    float a;
+
+    printf(&quot;Input a= &quot;);
+    fflush(0);
+    scanf(&quot;%e&quot;,&amp;a);
+    printf(&quot;a=%e\n&quot;,a);
+
+    return(0);
+}</PRE>
+    </TD></TR></TABLE>
+<HR>
+<P>例2-2ができたら、今まで出てきた例題の応用問題として、 キーボードから２つの数を入力し、その足し算結果を画面に表示する次の例題をやってください。</P>
+<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff"><TR><TD><FONT COLOR="#400080"><STRONG>例</STRONG></FONT> <FONT size="3" color="#000080"><B>2－3</B></FONT> (Revised : 2011/04/21)<BR>
+    <BR>
+    /* キーボードから入力した数の足し算とその画面表示*/
+    <PRE>#include&lt;stdio.h&gt; 
+
+int main(void)
+{ 
+    int a,b,c,d;
+
+    printf(&quot;Input a= &quot;); fflush(0);scanf(&quot;%d&quot;,&amp;a);
+    printf(&quot;Input b= &quot;); fflush(0);scanf(&quot;%d&quot;,&amp;b);
+
+    c=a+b;
+    d=a-b;
+ 
+    printf(&quot;%d + %d = %d\n&quot;,a,b,c); 
+    printf(&quot;%d - %d = %d\n&quot;,a,b,d);
+ 
+    return(0);
+} 
+    </PRE>
+    </TD></TR></TABLE><BR><FONT COLOR="#400080"><STRONG>説明： </STRONG></FONT><BR>
+<P>各々の行でやっていることを具体的に説明すると、以下のようになります。</P>
+<OL><LI>第５行： 整数変数 a,b,c,dを宣言。<BR>
+  <LI>第６行： 関数printf()を呼んでInput a=の文字を画面に表示し、続いて関数scanf()を呼んで、 キーボードから変数 aに数値を入力する。ただし、Eclipse上でプログラムを実行した場合、出力バッファにInput
+  a=の文字が出力バッファに蓄えられたままになっていて、scanf()を実行する直前のタイミングで、画面に文字を表示してくれない。この問題を回避するために、scanf()の直前でfflush(0)を呼び出す。これにより出力バッファの内容が画面に表示される（出力バッファは空になる）。Eclipse上で実行しない場合は、fflush(0)の呼び出しは不要である。<BR>
+  <LI>第７行：変数bに対して第６行と同様の操作を行う。 <BR>
+  <LI>第８行： a+b の演算の結果を変数cに代入する。 <BR>
+  <LI>第９行： a-b の演算の結果を変数dに代入する。 <BR>
+  <LI>第10行： 関数printf()を呼んで、(aの値)+(bの値)=(cの値) の結果を画面に表示する。 <BR>
+  <LI>第11行： 関数printf()を呼んで、(aの値)-(bの値)=(dの値) の結果を画面に表示する。</OL>
+<HR>
+<P><FONT color="#000000"><STRONG>今まで出てきたところを、以下にまとめておきます。</STRONG>
+</FONT><BR>
+<BR>
+<FONT COLOR="#400080"><STRONG>◎printf()関数</STRONG></FONT></P>
+<P>printf()は書式出力の関数である。</P>
+<BLOCKQUOTE><FONT color="#0000ff">printf（&quot;a=%d b=%d\n&quot;,a,b）; </FONT></BLOCKQUOTE>
+<P>の例で示すように、printf（”書式”，出力変数）の形をしていて、基本的には、””で囲まれた文字列がそのまま出力される。ただし、\n 記号のように\マークが付いた文字はエスケープ文字と呼ばれ、画面制御を行う特別な記号として扱われる（\n：復帰改行）。そのため、画面上には表示されない。また、<FONT color="#0000cc">%</FONT>（その後に続く文字を含めて）は、””の後に表記されている変数（上の例では、変数a,b）の値を、画面に表示する際の以下の約束の書式を表している。</P>
+<P STYLE="margin-left:0ex">エスケープ文字の例：　<FONT COLOR="#0000ff">\n</FONT> ： 復帰改行、 <FONT COLOR="#0000ff">\t </FONT>： 水平タブ、 <FONT COLOR="#0000ff">\v</FONT> ： 垂直タブ、 <FONT COLOR="#0000ff">\b</FONT> ： １文字後退</P>
+<P><FONT color="#0000ff">%d</FONT>： 整数（int型データ）の符号付き10進数表示 <BR>
+<FONT color="#0000ff">%f</FONT>： 単精度実数（float型データ）の指数なし表示<BR>
+<FONT color="#0000ff">%e</FONT>： 単精度実数（float型データ）の指数つき表示 <BR>
+<FONT color="#0000ff">%hd</FONT>: 2バイト整数（short型データ）の表示<BR>
+<FONT color="#0000ff">%lf</FONT>： 倍精度実数（double型データ）の指数なし表示 <BR>
+<FONT color="#0000ff">%le</FONT>： 倍精度実数（double型データ）の指数つき表示</P>
+<P>%f, %e は、printf関数では単精度実数型（float)と倍精度実数型（double)の両方に使える 。<BR>
+一方、この後で説明するscanf関数では、単精度実数型（float)の場合は、%f, %e、倍精度実数型（double)場合は %lｆ，%le を使う必要がある。</P>
+<P><FONT color="#0000ff">%c </FONT>： 文字型データの１文字<BR>
+<FONT color="#0000ff">%s</FONT> ： 文字列データ<BR>
+<BR>
+<FONT color="#0000cc"><B>注1）</B></FONT><FONT color="#0000ff"><B></B>変数と書式の型を合わせる。<BR>
+</FONT>必ず、表示する変数と同じ型の書式を指定する。例えば、変数aがint型の場合は、%dを指定する。間違えて、%fや%eを指定するとデタラメな値が表示されてしまう（エラーメッセージも出ないので注意する）。<BR>
+<FONT color="#0000cc"><B><BR>
+注2）%や\の画面表示</B></FONT><BR>
+上記のように、<FONT color="#0000ff">%</FONT>や<FONT color="#0000ff">\</FONT>は、printf文の中で書式やエスケープ文字を表す特別な目的で使われます。このため、そのままでは<FONT color="#0000ff">%</FONT>や<FONT color="#0000ff">\</FONT>の文字を画面表示することができません。文字として表示したい場合は、<FONT color="#0000ff">%%</FONT> や　<FONT color="#0000ff">\\</FONT>　のように２回重ねて表記します。この様子を理解するために、次のようなprintf文を実行してみてください。<BR>
+<BR>
+　　<FONT color="#0000ff">printf(&quot;%%\\\n%%%%\\\n&quot;);</FONT><BR>
+</P>
+<HR>
+<BR>
+<FONT COLOR="#400080"><STRONG>◎scanf()関数</STRONG></FONT><BR><BR>
+<P>キーボードからの入力データを、第一引数 ”‥”に記した<FONT COLOR="#0000ff">%何とか</FONT>の書式にしたがって、第二引数に記した変数（以下の例では、変数a）に代入する（変数aの先頭に&amp;がつくことに注意する。理屈はしばらくわからなくてよい）
+。ここで、<FONT COLOR="#0000ff">%何とか</FONT>の約束はprintf()の場合と同様である。</P>
+<P>例：<BR>
+<FONT color="#0000ff">scanf(&quot;%d&quot;, &amp;a) </FONT></P>
+<HR>
+<BR>
+<FONT COLOR="#400080"><STRONG>◎定数 </STRONG></FONT><BR>
+<P>変数はプログラムの中で値を変えることができるデータであるのに対して、定数は値が固定されているデータです。定数は、変数と同様の型をもっており、以下のように数値や文字を直接的に表現します。</P>
+<P><FONT color="#0000ff">定数の種類 </FONT><BR>
+<FONT color="#0000ff">文字........'z' </FONT><BR>
+<FONT color="#0000ff">文字列......&quot;abcde&quot; </FONT><BR>
+<FONT color="#0000ff">整数定数........120 </FONT><BR>
+<FONT color="#0000ff">実数定数........2.3e2 </FONT></P>
+<HR>
+<BR>
+<FONT COLOR="#400080"><STRONG>◎算術演算</STRONG></FONT><BR>
+<P>Ｃ言語では、通常の数式と類似した約束で数式を表すことができます。そのための算術演算子に以下のものがあります。</P>
+<P>算術演算子の種類 <BR>
+<FONT color="#0000ff">* </FONT>&nbsp;&nbsp; 乗算 &nbsp; a*b &nbsp; aにbを掛ける <BR>
+<FONT color="#0000ff">/ </FONT>&nbsp;&nbsp; 除算 &nbsp; a/b &nbsp; aをbで割る <BR>
+<FONT color="#0000ff">+ </FONT>&nbsp;&nbsp; 加算 &nbsp; a+b &nbsp; aにbを足す <BR>
+<FONT color="#0000ff">- </FONT>&nbsp;&nbsp; 減算 &nbsp; a-b &nbsp; aからbを引く<BR>
+<FONT color="#0000ff">%</FONT>　　剰余　a%b　 aをbで割った余り 　(注：a,bは整数型の数、実数型の数を使うとエラーになる）</P>
+<HR>
+<BR>
+<FONT COLOR="#400080"><STRONG>◎変数名の規則 </STRONG></FONT><BR>
+<P>変数名に使える文字は、半角の英字（a-z,A-Z)、アンダーバー( _ )、数字（0-9)、に限られます。πやθなどの全角文字を間違って使ってしまう人がいますが、使えないので注意してください。変数名は、上記の半角英数字とアンダーバ_
+を組み合わせた名前とします。ただし、先頭は必ず英字でなければいけません。 小文字と大文字は区別されます。名前の長さは、一般的に最初の31文字までは有効です。さらに、
+以下の予約語を変数名にすることはできません。</P>
+<P>予約語<BR>
+<FONT COLOR="#0000a0">auto break case char const continue default do double else enum extern
+float for goto if int long register return short signed sizeof static struct
+switch typedef uinion unsigned void volatile while </FONT></P>
+<HR>
+<FONT COLOR="#400080"><STRONG>◎代入文 </STRONG></FONT>
+<P>a=b+c; 　c=1.3;　のような</P>
+<BLOCKQUOTE><FONT COLOR="#0000ff">変数　=　式； </FONT></BLOCKQUOTE><P>の形の実行文は、右辺の式を計算した結果を左辺の変数に代入するというコンピュータ処理をあらわしています。通常の数式のように、単純に左辺と右辺が等しいということを表しているのではないことに注意してください。<HR>
+<TABLE border="1" cellspacing="1" width="100%" bgcolor="#e1ffff"><TR><TD WIDTH=100%><FONT SIZE=3 COLOR="#000080"><B>演習問題 2－2</B></FONT> (Revised : 2015/04/23)<BR>
+    <BR>
+    例2－3を参考にして、キーボードから読み込んだ2つの数n,m（いずれもint型）の、積、商、及び2のべき乗（2<SUP>n</SUP>）を計算してint型の変数に代入するプログラム を作りなさい。ここで、べき乗は math.hをインクルードして算術関数pow(2.0,(float)n)を使うこと。<BR>
+（補足：nの前の(float)はfloat型への型変換を明示的に行うキャスト演算子）<BR>
+<BR>
+    1．零でない数を零で割り算するとどうなりますか？ 実際に計算を実行し、エラーの内容についても具体的に調べて答えなさい。<BR>
+<BR>
+    2．小数点以下の端数が出る割り算を行い、端数の扱われ方について具体的に調べ、その理由について説明しなさい。<BR>
+<BR>
+    3．べき乗演算（2<SUP>n</SUP>）により正しく計算できる整数型変数の最大数を調べなさい。つまり、（2<SUP>n</SUP>）をnを変えて計算し、正しい答えが表示される最も大きなnを求めなさい。また、考察では、求めた最大数とnの値を示し、なぜ扱える数に限界があるか、その理由について述べなさい。<BR>
+<BR>
+    4．2のプログラムの全ての変数の型をfloat型にすると、整数の時と比べて端数の扱われ方にどのような違いが生まれますか？　実際の計算結果を示し、考察すること。（補足：書式指定は、%fを使うことに注意）<BR>
+    </TD></TR></TABLE>
+<P><BR>
+</P>
+</BODY></HTML>

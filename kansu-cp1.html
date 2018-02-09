@@ -1,0 +1,400 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>標準関数一覧</TITLE>
+</HEAD>
+<BODY BGCOLOR="#efefef">
+<P>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+<TR>
+<TD WIDTH=100%><DIV ALIGN=CENTER><FONT SIZE=5 COLOR="#ffffff"><B>標 準 関 数 一 覧</B></FONT></DIV></TD>
+</TR>
+</TABLE><BR>
+<HR>
+<TABLE BORDER BGCOLOR="#ffffff">
+<TR>
+<TD>
+<A HREF="#stdio"><FONT COLOR="#0000ff">入出力関数</FONT></A><BR>
+（stdio.h)</TD><TD>
+<A HREF="#math"><FONT COLOR="#0000ff">数学関数</FONT></A><BR>
+(math.h)</TD><TD><A HREF="#string"><FONT COLOR="#0000ff">文字列関数</FONT></A>（string.h)</TD><TD>
+<A HREF="#ctype"><FONT COLOR="#0000ff">文字関数</FONT></A><BR>
+(ctype.h)</TD><TD>
+<FONT COLOR="#0000ff">コンソール入出力関数</FONT><BR>
+(conio.h)</TD>
+</TR>
+<TR>
+<TD><A HREF="#stdlib"><FONT COLOR="#0000ff">スタンダード関数</FONT></A>（stdlib.h)</TD><TD><A HREF="#gucc"><FONT COLOR="#0000ff">グラフィック関数</FONT></A>(gdi.h)</TD><TD><BR></TD><TD><BR></TD><TD><BR></TD>
+</TR>
+</TABLE><BR>
+<HR><BR>
+<A NAME="stdio"></A><STRONG>入出力関数(stdio.h)</STRONG><BR>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">関数定義</FONT></TD><TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">機能</FONT></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">File *<B>fopen</B>(const char *file,const char *mode)</TD><TD BGCOLOR="#bfebff">指定したファイル名を指定したモードで開く</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>fclose</B>(File *fp)</TD><TD BGCOLOR="#bfebff">指定したモードで開いたファイルを閉じる</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>fprintf</B>(File *fp, const char *format‥‥)</TD><TD BGCOLOR="#bfebff">指定した書式に従ってファイルへデータを書き込む</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>fscanf</B>(const char *format‥‥)</TD><TD BGCOLOR="#bfebff">指定した書式に従ってファイルからデータを読み込む</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>getchar</B>(void)</TD><TD BGCOLOR="#bfebff">キーボードから一文字を入力（最後にリターンキーを入力）</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">char * <B>gets</B>(char *s)</TD><TD BGCOLOR="#bfebff">キーボードから文字列を入力</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>printf</B>（const char *format‥‥)</TD><TD BGCOLOR="#bfebff">指定された書式に従って，画面に文字，文字列，数値を表示</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>putchar</B>(int c)</TD><TD BGCOLOR="#bfebff">画面に一文字を表示</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>puts</B>(char *s)</TD><TD BGCOLOR="#bfebff">画面に文字列を表示</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>scanf</B>(const char *format‥‥)</TD><TD BGCOLOR="#bfebff">指定された書式に従って，キーボードから文字，文字列，数値を入力</TD>
+</TR>
+</TABLE><BR>
+<HR><BR>
+<A NAME="math"></A><STRONG>数学関数(math.h)</STRONG><BR>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">関数定義</FONT></TD><TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">機能</FONT></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>abs</B>(int i)</TD><TD BGCOLOR="#bfebff">整数iの絶対値を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>acos</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの逆余弦を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>asin</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの逆正弦を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>atan</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの逆正接を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>ceil</B>(double x) </TD><TD BGCOLOR="#bfebff">実数xの小数点以下を切り上げる</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>cos</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの余弦を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>exp</B>(double x)</TD><TD BGCOLOR="#bfebff">eのｘ乗を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>fabs</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの絶対値を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>floor</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの小数点以下を切り捨てる</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>fmod</B>(double x,double y)</TD><TD BGCOLOR="#bfebff">実数xをyで割った剰余を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>log</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの自然対数を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>log10</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの常用対数を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>pow</B>(double x,double y)</TD><TD BGCOLOR="#bfebff">実数xのｙ乗を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>sin</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの正弦を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>sqrt</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの平方根を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>tan</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの正接を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>sinh</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの双曲線正弦を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>cosh</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの双曲線余弦を求める</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>tanh</B>(double x)</TD><TD BGCOLOR="#bfebff">実数xの双曲線正接を求める</TD>
+</TR>
+</TABLE><BR>
+<HR><BR>
+<A NAME="string"></A><B>文字列</B><STRONG>関数(string.h)</STRONG><BR>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">関数定義</FONT></TD><TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">機能</FONT></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">char * <B>strcat</B>(char *s,char *t)</TD><TD BGCOLOR="#bfebff">二つの文字列の連結</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">char * <B>strcmp</B>(char * s,char * t)</TD><TD BGCOLOR="#bfebff">二つの文字列の内容の比較</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">char * <B>strcpy</B>(char * s,char * t)</TD><TD BGCOLOR="#bfebff">文字列を他の文字配列にコピー</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">size_t <B>strlen</B>(char * s)</TD><TD BGCOLOR="#bfebff">文字列の長さを調べる</TD>
+</TR>
+</TABLE><BR>
+<HR><BR>
+<A NAME="ctype"></A><STRONG>文字関数(</STRONG><B>ctype</B><B><STRONG>.</STRONG></B><STRONG>h)</STRONG><BR>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">関数定義</FONT></TD><TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">機能</FONT></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>isalnum</B>(int c)</TD><TD BGCOLOR="#bfebff">cが英数字であるか否かの検査</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>isalpha</B>(int c)</TD><TD BGCOLOR="#bfebff">cが英字であるか否かの検査</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>isdigit</B>(int c)</TD><TD BGCOLOR="#bfebff">cが数字であるか否かの検査</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>isascii</B>(int c)</TD><TD BGCOLOR="#bfebff">cがASCII文字であるか否かの検査</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>iscntrl</B>(int c)</TD><TD BGCOLOR="#bfebff">cが制御文字であるか否かの検査</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>islower</B>(int c)</TD><TD BGCOLOR="#bfebff">cが小文字であるか否かの検査</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>isupper</B>(int c)</TD><TD BGCOLOR="#bfebff">cが大文字であるか否かの検査</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>toupper</B>(int c)</TD><TD BGCOLOR="#bfebff">cを大文字に変換</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>tolower</B>(int c)</TD><TD BGCOLOR="#bfebff">cを小文字に変換</TD>
+</TR>
+</TABLE><BR>
+<BR>
+<HR><BR>
+<A NAME="stdlib"></A><STRONG>スタンダード関数(stdlib.h)</STRONG><BR>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">関数定義</FONT></TD><TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">機能</FONT></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">double <B>atof</B>(char *s)</TD><TD BGCOLOR="#bfebff">文字列を数値（double型)に変換</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>atoi</B>(char *s)</TD><TD BGCOLOR="#bfebff">文字列を数値（int型)に変換</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">long <B>atol</B>(char *s)</TD><TD BGCOLOR="#bfebff">文字列を数値（long型)に変換</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">void <B>exit</B>(int x)</TD><TD BGCOLOR="#bfebff">プログラムを正常終了または異常終了する</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>system</B>(char *cmd)</TD><TD BGCOLOR="#bfebff">DOSモードでコマンドcmdを実行する</TD>
+</TR>
+</TABLE><BR>
+<HR><BR>
+<A NAME="conio"></A><STRONG>コンソール入出力関数(conio.h)</STRONG><BR>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">関数定義</FONT></TD><TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">機能</FONT></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>getch</B>(void)</TD><TD BGCOLOR="#bfebff">キーボードから１文字をエコーバックなしで読み込む</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>getche</B>(void)</TD><TD BGCOLOR="#bfebff">キーボードから１文字をエコー付きで読み込む</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">int <B>putch</B>(int)</TD><TD BGCOLOR="#bfebff">画面に文字を出力する。</TD>
+</TR>
+</TABLE><BR>
+<HR><BR>
+<A NAME="gucc"></A><STRONG>グラフィック関数(gdi.h)</STRONG><BR>
+<TABLE BORDER=1>
+<TR>
+<TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">関数定義</FONT></TD><TD BGCOLOR="#dfdfff"><FONT COLOR="#400040">機能</FONT></TD>
+</TR><TR>
+<TD BGCOLOR="#bfebff">void <B>G_CLS</B>(void)</TD><TD BGCOLOR="#bfebff">画面を消去する。</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">void <B>G_LINE</B>(int x1,int y1,int x2,int y2,int c)</TD><TD BGCOLOR="#bfebff">始点(x1,y1)、終点(x2,y2)の２点間を、色番号cの色の直線で結ぶ。ここで、色番号は下表に示す約束の色を表す。</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">void <B>G_COLOR</B>(int c)</TD><TD BGCOLOR="#bfebff">色番号cを指定する。</TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff">void <B>G_PSET</B>(int x, int y, int c)</TD><TD BGCOLOR="#bfebff">点(x,y)に色番号cで点を打つ。</TD>
+</TR><TR>
+<TD BGCOLOR="#bfebff">void <B>G_CIRCLE</B>(int x, int y, int r)</TD><TD BGCOLOR="#bfebff">点(x,y)を中心とする半径rの、塗りつぶしのなしの円を、色番号cで指定した色で描く。</TD>
+</TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_FCIRCLE</B>(int x, int y, int r, int c) </TD>
+    <TD BGCOLOR="#bfebff">点(x,y)を中心とする半径rの塗りつぶし円を、色番号cで指定した色で描く。</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_RECTANGLE</B>(int x1,int y1,int x2,int y2,int c)</TD>
+    <TD BGCOLOR="#bfebff">左上隅座標(x1,y1)、右下隅座標(x2,y2)を対角点に持つ長方形を、色番号cの色で塗りつぶしなしで描く。</TD>
+  </TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_FRECTANGLE</B>(int x1,int y1,int x2,int y2,int c)</TD>
+    <TD BGCOLOR="#bfebff">左上隅座標(x1,y1)、右下隅座標(x2,y2)を対角点に持つ長方形を、色番号cの色で塗りつぶして描く。</TD>
+  </TR><TR>
+<TD BGCOLOR="#bfebff">void <B>G_PALLET</B>(int c, int red, int green,int blue)</TD><TD BGCOLOR="#bfebff">色番号cの色を，red,green,blueで指定する。</TD>
+</TR><TR>
+    <TD BGCOLOR="#bfebff">void <B>G_TEXT</B>(int x, int y, char *string, int c)</TD>
+    <TD BGCOLOR="#bfebff">座標(x,y)の位置に、文字列 string[ ] を、色番号cで指定した色で表示する。</TD>
+  </TR></TABLE><BR>
+<BR>
+<B>色番号の初期設定値</B><BR>
+<TABLE BORDER>
+<TR>
+<TD BGCOLOR="#dfdfff"><DIV ALIGN=CENTER>色番号</DIV></TD>
+    <TD BGCOLOR="#dfdfff"><DIV ALIGN=CENTER>色</DIV></TD>
+    <TD bgcolor="#dfdfff" width="106">置換文字列</TD>
+    <TD bgcolor="#dfdfff"><DIV ALIGN=CENTER>赤（R)</DIV></TD>
+    <TD BGCOLOR="#dfdfff"><DIV ALIGN=CENTER>緑（G)</DIV></TD>
+    <TD BGCOLOR="#dfdfff"><DIV ALIGN=CENTER>青（B)</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>白(明）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">White</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>1</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>灰色(暗)</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">DarkGray</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>64</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>64</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>64</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>2</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>青(暗）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">DarkBlue</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>3</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>青(明）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">Blue</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>4</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>赤(暗）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">DarkRed</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>5</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>赤(明）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">Red</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>6</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>紫(暗）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">DarkMagenta</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>7</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>紫(明）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">Magenta</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>8</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>緑(暗）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">DarkGreen</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>9</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>緑(明）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">Green</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>10</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>水色(暗）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">DarkCyan</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>11</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>水色(明）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">Cyan</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>12</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>黄(暗）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">DarkYellow</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>13</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>黄(明）</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">Yellow</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>255</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>14</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>灰色(明)</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">Gray</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>128</DIV></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>15</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>黒</DIV></TD>
+    <TD bgcolor="#bfebff" width="106">Black</TD>
+    <TD bgcolor="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+    <TD BGCOLOR="#bfebff"><DIV ALIGN=CENTER>0</DIV></TD>
+</TR>
+</TABLE><BR>
+</BODY>
+</HTML>
