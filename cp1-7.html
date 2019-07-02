@@ -12,7 +12,7 @@
     <TD WIDTH=100%><FONT size="+2"><B><FONT color="#ffffff" size="+2">プログラミングおよび演習 ＮＯ．7</FONT></B></FONT></TD>
   </TR></TABLE>
 <BR>
-<DIV ALIGN=RIGHT>Last-Modified: 2017.06.29<BR></DIV>
+<DIV ALIGN=RIGHT>Last-Modified: 2019.07.02<BR></DIV>
 <HR>
 <TABLE BORDER=0 WIDTH=100%>
   <TR>
@@ -169,7 +169,7 @@ int main(void)
     標準偏差sdの計算に当たって、式（2）を変形した式(4)を使うこともできます。<BR>
     <BR>
     <FONT color="#0000ff">　　　　　 1 　 N　　　　　　　　 N<BR>
-    　sd= { <S>　 　</S>　[Σ (ｘ<SUB>i</SUB><SUP>2　</SUP>-　2ｘ<SUB>av</SUB>Σ ｘ<SUB>i</SUB> + N x<SUB>av</SUB><SUP>2</SUP>] }<SUP>1/2</SUP><BR>
+    　sd= { <S>　 　</S>　[Σ ｘ<SUB>i</SUB><SUP>2　</SUP>-　2ｘ<SUB>av</SUB>Σ ｘ<SUB>i</SUB> + N x<SUB>av</SUB><SUP>2</SUP>] }<SUP>1/2</SUP> </FONT><FONT color="#ff0000">←　訂正（2019/07/02)</FONT><FONT color="#0000ff"><BR>
     　　　　 N-1　i=1 　　　　　　　 i=1<BR>
     <BR>
     　　　　　1 　 N　　　　　 1 　 N<BR>
@@ -286,13 +286,14 @@ int main(void)
         for(i=0;i&lt;7;i++){
             total+=ten[i][j];
         }
-        avg=total/7;
+        avg=(float)total/7.0;   // 訂正(2019/07/02)
         printf(&quot;%8.1f&quot;,avg);
     }
     printf(&quot;\n&quot;);
 
     return(0);
-}</PRE></TD></TR></TABLE><BR><HR><BR>
+}</PRE>
+    </TD></TR></TABLE><BR><HR><BR>
 <TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
   <TR><TD><FONT color="#000080"><B>演習問題7-3　</B>(Revised: 2015/07/09)<BR>
     </FONT><BR>
