@@ -1,479 +1,55 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
-<META http-equiv="content-type" content="text/html; charset=UTF-8">
+<META http-equiv="content-type" content="text/html; charset=Shift_JIS">
 <META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 12.0.0.0 for Windows">
 <META http-equiv="Content-Style-Type" content="text/css">
-<TITLE>第8回</TITLE>
+<TITLE>Eclipse�̃g���u���Ώ����@</TITLE>
 </HEAD>
-<BODY BGCOLOR="#efefef" TEXT="#000000" LINK="#0000ff" VLINK="#800080"><BR>
-<TABLE BORDER=0 WIDTH=100% BGCOLOR="#0080c0">
+<BODY BGCOLOR="#efefef" LINK="#0000ff" VLINK="#800080" STYLE="color:#000000">
+<DIV ALIGN=CENTER>
+<TABLE BORDER=0 WIDTH=100% BGCOLOR="#008000">
   <TR>
-    <TD WIDTH=100%><FONT size="+3" color="#ffffff"><B>プログラミングおよび演習 ＮＯ．8</B></FONT></TD>
+    <TD><FONT SIZE=5 COLOR="#ffffff">Eclipse�̃g���u���Ώ����@ </FONT></TD>
   </TR></TABLE>
-<BR>
-<DIV ALIGN=RIGHT>Last-Modified: 2018.10.02</DIV>
-<HR><BR>
-<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
-  <TR>
-    <TD><FONT color="#ffffff"><B>一次元文字列配列</B></FONT></TD>
-  </TR></TABLE><BR>
-配列は数値以外に、文字列データを格納するための変数として使います。<BR>
-このとき、１つの配列要素に１文字の文字型データを格納します。<BR>
-文字列データは、複数の文字データと、その<FONT color="#ff0000">最後に終了コード'\0'</FONT>がついたデータです。<BR>
-配列に文字列データを設定する方法には、宣言文の変数の初期化のところで行う方法と、実行文の中で行う方法があります。<BR>
-<BR>
-<B><FONT color="#000080">表１ 一次元の文字列配列データ</FONT></B><BR>
-<IMG SRC="cp1-8-3.gif" ALT="" WIDTH=250 HEIGHT=54><BR>
-<P><BR>
-<STRONG><FONT color="#008000">宣言文の中で設定する方法</FONT>（プログラムの最初に初期値として設定する）</STRONG><BR>
-(1)方法１ <BR>
-<BR>
-　<FONT color="#0000ff">char a[5]=&quot;book&quot;;</FONT>　　//文字列データ&quot;book&quot;をa[5]に代入。</P>
-<P>a[5]は&quot;book&quot;の文字数+1（=5）の数に合わせています。データ数を指定せずに</P>
-<FONT color="#0000ff">　char a[]=&quot;book&quot;</FONT>;<BR>
-<P>のように書くこともできます。この場合、コンピュータは配列の長さを文字列データ&quot;book&quot;に自動的に合わせてくれます。一方で、</P>
-<FONT color="#0000ff">　char a[4]=&quot;book&quot;;</FONT>　<FONT color="#ff0000">//こう書いてはいけません。</FONT><BR>
-<P>のように、実際の文字列データの長さより短い長さで宣言すると間違いです。<BR>
-(上記のようにしてもエラーメッセージは出ません。しかし、上記のプログラムを走らせると、場合によってコンピュータがフリーズします）<BR>
-<BR>
-(2)方法2 <BR>
-<BR>
-<FONT color="#0000ff">　char a[5]={'b','o','o','k','\0'};</FONT>　//１文字づつ値を指定している。</P>
-<P>最後の\0は文字列の終了コード。'\0'を最後につけないといけない。<BR>
-<BR>
-<FONT color="#008000"><STRONG>実行文の中で設定する方法</STRONG></FONT><STRONG>(プログラムの途中で書き込むことで設定する）</STRONG><BR>
-<BR>
-(3)方法3　本文の実行文の中で、次のように１文字づつ代入操作を行う。<BR>
-<BR>
-　<FONT color="#0000ff">a[0]='b'; a[1]='o'; a[2]='o'; a[3]='k'; a[4]='\0';</FONT></P>
-<P>(4)方法4　次のように文字列コピー関数 strcpy()を用いる。<BR>
-<BR>
-<FONT color="#0000ff">　strcpy(a,&quot;book&quot;);</FONT>　//配列ａに文字列&quot;book&quot;をコピーする。<BR>
-</P>
-<P>ただし、(3),(4)の方法を用いる場合は、以下の宣言文が必ず必要です。<BR>
-<BR>
-<FONT color="#0000ff">　char a[5];</FONT><BR>
-<BR>
-注意：実行文の中で、<BR>
-<BR>
-<FONT color="#0000ff">　a=&quot;book&quot;; </FONT><FONT color="#ff0000">//こう書いてはいけません。</FONT><BR>
-<BR>
-のような文字列の代入演算はできません。必ず、(4)のような方法を用いて下さい。</P>
+</DIV>
 <HR>
+<P>�@Eclipse�̃g���u���ɔY�܂���Ă���l�́A�S��������TA�w���ɉ��������ɑ��k���ė~�����̂ł����A���Ǝ��ԊO�ł����ɑ��k�ł��Ȃ��ꍇ�������Ǝv���܂��B���������ꍇ�A�ȉ��̐������Q�l�ɁA���ȉ�����}���Ă��炤�Ƃ悢�Ǝv���܂��B<BR>
 <BR>
-以下は一次元配列に文字列を代入しその結果を表示するプログラムです。
-<BR><BR>
-<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
-  <TR>
-    <TD><B><FONT color="#000080">例8-1（世界のあいさつ１）</FONT></B><BR>
-    <PRE>#include&lt;stdio.h&gt;
-
-int main(void)
-{
-    char USA[]= &quot;Hello&quot;;
-    char Japan[]= &quot;こんにちは&quot;;
-    char France[]= &quot;Bonjour&quot;;
-    char Germany[]= &quot;Guten Tag&quot;;
-    char China[]= &quot;ウーアン&quot;;
-    char Korea[]= &quot;アンニョン&quot;;
-    
-    printf(&quot;%s\n&quot;,USA);
-    printf(&quot;%s\n&quot;,Japan);
-    printf(&quot;%s\n&quot;,France);
-    printf(&quot;%s\n&quot;,Germany);
-    printf(&quot;%s\n&quot;,China);
-    printf(&quot;%s\n&quot;,Korea);
-    
-    return(0);
-
-}</PRE>
-    </TD>
-  </TR></TABLE>
+<FONT color="#0000ff">�P�DEclipse���N���ł��Ȃ��A�v���W�F�N�g���쐬�ł��Ȃ��A���삪���������A�Ȃǂ̑S�ʓI�ȏǏ�ɑ΂���<BR>
 <BR>
-<HR><BR>
-<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
-  <TR>
-    <TD><FONT color="#ffffff"><B>二次元文字列配列</B></FONT></TD>
-  </TR></TABLE>
+</FONT><FONT color="#000000">[�΍�1]</FONT>�@<FONT color="#000000">���炩�̌����ŁAEclipse�̊��ݒ�t�@�C���i.eclipse�t�H���_�̒��g�j�����Ă��邩������܂���B</FONT>���̏ꍇ�A���ݒ�t�@�C�������������Ă��������B��̓I�ɂ́AC:\Users\&quot;TUAT-ID&quot;\�i���z�f�X�N�g�b�v�̃z�[���f�B���N�g���j�ɂ��� &quot;<FONT color="#0000ff">.eclipse</FONT>&quot; �Ƃ������O�̃t�H���_���A�hbk_eclipse&quot;�@�Ȃǂ̓K���ȃt�H���_���ɕύX���Ă��������B���̌�A Eclipse
+���N������� &quot;.eclipse&quot; �͏����̂��̂���������i����������j�AEclipse ���N���ł���悤�ɂȂ�܂��B�������A���̑�����s���ƁAEclipse
+�̐ݒ�͏�����Ԃɖ߂��Ă��܂��܂��B�g���u������������Ȃ��ꍇ�A�����͂������ďǏ󂪈������Ă��܂����ꍇ�́A�hbk_eclipse&quot;
+�����Ƃ̖��O &quot;.eclipse&quot;�ɖ߂��Ă��������B<BR>
 <BR>
-一つの文字列を、複数のます目に文字が入っているデータとして扱うと、表１に示したように文字数分のます目が横方向に並んだ一次元のデータと考えることができます。文字列が複数ある場合は、横方向に並んだ１つの文字列データが、縦の方向にも複数行にわたって並んでいる二次元データとして考えることができます。<BR>
+<FONT color="#000000">[�΍�2]</FONT><FONT color="#0000ff"> </FONT><FONT color="#000000">���z�[���ō�Ƃ��Ă���ꍇ�A�z�[���f�B���N�g���ɕۑ����Ă���t�@�C���T�C�Y�������e�ʁi��1GB�j���肬��ɂȂ��Ă���ƁA���삪���������Ȃ�܂��i������PC���Eclipse�𓮂����Ă���ꍇ�͊֌W�Ȃ��̂œǂݔ�΂��Ă��������j�B���̏ꍇ�A</FONT>�z�[���f�B���N�g���iZ�h���C�u��TUAT�L���r�l�b�g�j�̃t�@�C���e�ʂ��ł��邾�����炵�Ă��������B�K�v�̂Ȃ��t�@�C���͍폜����B�c�������t�@�C���́A������PC�ɑޔ�����Ȃǂ��Ă��������B</P>
+<P><FONT color="#0000ff">�Q�D��13��A��14��̉ۑ�ŁA�w�b�_�t�@�C��gdi.h���̑��Ɍ����s���̃G���[�}�[�N���t���ăr���h�ł��Ȃ��B</FONT><BR>
 <BR>
-例8-1のプログラムにおいて、６カ国のあいさつの文字列を一まとめにして、全体をhelloという配列名の二次元文字列配列データに格納することにします。<BR>
-例えば、６カ国のあいさつの文字列を、二次元の配列（横方向に並んだ一次元の文字列配列を複数、縦方向に並べたデータ）に格納する場合、表２のようなイメージになります。この場合、一次元配列を６個用意するのに比べて、二次元配列を１個用意するだけで済み、プログラムが見やすくなることや、より便利にプログラムを作ることができるようになります。<BR>
+<FONT color="#000000">[�΍�3] </FONT> ���̃G���[�́AEclipse��gdi.h�����܂������邱�Ƃ��ł��Ȃ����߂ɔ������Ă��܂��Bworkspace���ɕۑ����Ă���t�@�C���������Ȃ�ƕ��ׂ��d���Ȃ茩���ɂ����Ȃ�̂ŁA��̕��@�Ƃ��āAworkspace����x�A�ʂ̐V�����t�H���_�ɕύX���Ă݂Ă��������B������@�́AEclipse�̉�ʏ��<BR>
+<BR>[�t�@�C��] -&gt; [���[�N�X�y�[�X�̐؂�ւ�]-&gt;[���̑�]<BR>
 <BR>
-<B><FONT color="#000080">表２　二次元文字列配列データ</FONT></B><BR>
-<P><IMG src="cp1-8-2.gif" width="552" height="184" border="0"><BR>
+�Ƒ��삵�āA���[�N�X�y�[�X�����`���[��ʂ��J���B���̌�́AEclipse �̏�����Ƃ̂Ƃ���ōs�����̂Ɠ��l�ɂ��āA�V�������[�N�X�y�[�X�t�H���_��ݒ肵�Ă��������i���g�������Ă��Ȃ��V�����t�H���_���w�肷��j�B<BR>
 <BR>
+<FONT color="#000000">[�΍�4] </FONT>�w�b�_�t�@�C������ƃf�B���N�g�����炫����ƒT������悤�A�v���p�e�B�Ɏw�肷��B<BR>
+������@�́AEclipse�̉�ʏ�ŁA���Y�̃v���W�F�N�g��I��������ԂŁA���j���[�o�[��<BR>
+[�v���W�F�N�g] -&gt; [�v���p�e�B] ���N���b�N����B<BR>
 <BR>
-<FONT color="#000080">[補足説明]　英数字（ASCII文字）１文字を１Byte(配列要素１個）、日本語全角文字１文字を2Byte（配列要素2個: シフトJIS、JIS、EUCコードの場合）または3Byte（配列要素3個:
-UTF-８コードの場合）で扱うことに注意してください。端末室で使用しているEclipse付属のgccコンパイラーは、全角文字をUTF-8コードで扱っています。このため、全角文字１文字を格納するのに、配列要素3個が必要です。すなわち、英数字の場合は、（英数字の文字数＋１)、全角文字の場合は、（全角文字の文字数×3＋１)の要素数の配列を宣言してください。</FONT><BR>
+��[�v���p�e�B�E�B���h�E]���J���B���i�̃��j���[�́A<BR>
+�@[C/C++���]��W�J���i���́�(�O�p)���N���b�N�j -&gt;�@[�p�X����уV���{��]�@��I�ԁB<BR>
 <BR>
-以上のような考え方にたって、例８－２は二次元の文字列配列を使って書き換えたプログラムです。ここでは、６カ国の国名も表示するようにするために、６カ国のあいさつ文をデータにもつhelloという変数名の二次元配列に加えて、６カ国の国名をデータにもつcountryという変数名の二次元配列を使っています。<BR>
+��[�p�X����уV���{��]��ʂ��J���B<BR>
+������ʂ́A[�C���N���[�h�^�u]��I���A����ɁA<BR>
+���ꗓ��[GNU C]��I��<BR>
+[�C���N���[�h��f�B���N�g��]���ŁA[�ǉ�]��I��<BR>
 <BR>
-</P>
-<TABLE BORDER WIDTH=100% BGCOLOR="#ffffff">
-  <TR>
-    <TD><B><FONT color="#000080">例8-2（世界のあいさつ２）</FONT> </B>(Revised : 2018/10/02)<BR>
-    <PRE>#include&lt;stdio.h&gt;
-
-int main(void)
-{ 
-    char country[6][8]={&quot;USA&quot;, &quot;Japan&quot;, &quot;Germany&quot;,
-    &quot;France&quot;,&quot;China&quot;,&quot;Korea&quot;};
-    char hello[6][16]= {&quot;Hello&quot;, &quot;こんにちは&quot;, &quot;Guten Tag&quot;,&quot;Bonjour&quot;
-           ,&quot;ウーアン&quot;,&quot;アンニョン&quot;};
-
-    int i;
-    
-    for(i=0;i&lt;6;i++)
-        printf(&quot;%8s : %16s\n&quot;,country[i],hello[i]);
-
-    return(0);
-}</PRE></TD>
-  </TR></TABLE>
+��[�f�B���N�g���p�X�̒ǉ�]��ʂ��J���B<BR>
+�f�B���N�g�����Ɉȉ�����͂���B<BR>
+�@/${ProjName}/src<BR>
 <BR>
-　例8-1と例8-２の両者をよく見比べてください。例8-２の方が簡潔で自由度の高いプログラムらしいプログラムになっていることを見てください。<BR>
+����ɁA���̉��́A[���[�N�X�y�[�X�p�X] �Ƀ`�F�b�N�����A[OK]���N���b�N���ĕ���B<BR>
+�߂�����ʂŁA[�K�p���ĕ���]�A���N���b�N���ďI������B<BR>
 <BR>
-<HR>
-<BR>
-<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
-  <TR>
-    <TD><FONT color="#000080"><B>演習問題 8-1 </B>(Revised : 2014/10/06)</FONT><BR>
-    前回例7-3の成績表示プログラムで、<BR>
-    <BR>
-    　　<FONT color="#0000ff">char name[7][7]={&quot;Ito&quot;,&quot;Kato&quot;,&quot;Tanaka&quot;,&quot;Suzuki&quot;,&quot;Yamada&quot;,&quot;Takada&quot;,&quot;Sato&quot;};<BR>
-    　　char hyodai[5][7]={&quot;NAME&quot;,&quot;EIGO&quot;,&quot;SUGAKU&quot;,&quot;BUTURI&quot;,&quot;GOKEI&quot;};</FONT><BR>
-    <BR>
-    のような文字列データを用いることで、各人の名前がついた点数表が表示されるようにプログラムを作りかえてください。<BR>
-    </TD>
-  </TR></TABLE>
-<BR>
-<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
-  <TR>
-    <TD><FONT color="#ffffff"><B>構　造　体</B></FONT></TD>
-  </TR></TABLE>
-<BR>
-前回の例7-3に新たに学生番号を付け加えて、以下のような項目から成り立っている成績データを考えます。<BR>
-<BR>
-<FONT color="#0000ff">　①学生番号(整数型）、②名前（文字列型配列）、③三科目の点数（整数型配列）、④合計点（整数型）</FONT><BR>
-<BR>
-今までは、これらの項目ごとに別々の変数を用意してプログラムを作りました。<BR>
-その場合、各々の項目データはお互いにバラバラなため、見通しが悪く取り扱いが厄介です。<BR>
-①～④を一つにまとめた変数名で表わしたほうが、込み入った複雑なデータをわかり易く簡単に扱うことができるようになります。<BR>
-構造体は、このような目的のために使います。<BR>
-以下にその使い方を説明します。<BR>
-<BR>
-<FONT color="#000080"><B>(1) 構造体の型枠（テンプレート）の宣言</B></FONT><BR>
-構造体変数を使う前に、予め構造体の型枠を宣言します（型を定義する働きをする）。
-<P>　　　<FONT color="#008000"><B>struct 構造体タグ名｛メンバ変数の宣言文の並び}；</B></FONT></P>
-<P>構造体タグ名は、｛メンバ変数の宣言｝の中に宣言している複数のメンバ変数を<BR>
-ひとまとめにした名前を表わします。そして、メンバ変数の宣言文は<BR>
-</P>
-<B>　</B><FONT color="#008000"><B>｛</B><BR>
-<B>　　　変数の型　変数名１；</B><BR>
-<B>　　　変数の型　変数名2；</B><BR>
-<B>　　‥‥‥‥｝</B></FONT><BR>
-<P>のように、複数のメンバ変数の宣言文を列挙します。<BR>
-成績データの場合、<BR>
-</P>
-　<FONT color="#800000">①学生番号を入れる整数型変数 　　　‥‥　　　</FONT><FONT color="#008000"><B>num</B></FONT><FONT color="#800000"><BR>
-　②名前を入れる文字列配列変数 　　　‥‥　　　</FONT><FONT color="#008000"><B>name[20]</B></FONT><FONT color="#800000"><BR>
-　③３科目分の点数を入れる整数型配列　‥‥　　</FONT><FONT color="#008000"><B>ten[3]</B></FONT><FONT color="#800000"><BR>
-　④各科目の合計点を入れる整数型変数　‥‥　 </FONT><FONT color="#008000"><B>total</B></FONT><BR>
-<P>の4つのメンバ変数を、一つにまとめて表わすための構造体タグ名 <B>slist</B>を次のように宣言します。（型枠宣言は、mainの前のプログラムの先頭（大域変数領域）に置きます）<BR>
-<BR></P>
-　　<FONT color="#0000ff">　struct slist{</FONT>
-<DL>
-  <DD><FONT color="#0000ff">　int num;<BR>
-  </FONT>
-  <DD><FONT color="#0000ff">　char name[20];<BR>
-  </FONT>
-  <DD><FONT color="#0000ff">　int ten[3];<BR>
-  </FONT>
-  <DD><FONT color="#0000ff">　int total;<BR>
-  </FONT>
-</DL>
-<DL>
-  <DD><FONT color="#0000ff">}</FONT><BR>
-</DL>
-<P><FONT color="#000080"><B>(2) 構造体変数の宣言</B></FONT><BR>
-　　構造体を実際に使いたい所で（例えばmain関数の中）、構造体変数を宣言します（メモリ領域の確保が行われる）。</P>
-<B>　　<FONT color="#008000">struct 構造体タグ名　構造体変数名；</FONT></B><BR>
-<P>　　次のように構造体変数を、配列で宣言することもできます。<BR>
-　　（以下の成績データの場合には、人数分の要素数の構造体配列を宣言します）</P>
-<B>　　<FONT color="#008000">struct 構造体タグ名　構造体配列名[要素数]；</FONT></B><BR>
-<P>　　成績処理プログラムの場合、slist型の構造体配列変数 seiseki を次のように宣言します。<BR>
-　　（この例では、学生の数が7人なので、7個の要素からなる配列変数にしている。）<BR>
-<BR>
-　　　<FONT color="#0000ff">struct slist seiseki[7]；</FONT><BR>
-<BR>
-　　通常の変数と同じように、宣言文の所で例えば次のようにして、構造体配列変数 seiseki 　に初期値を設定することができます。</P>
-　　<FONT color="#0000ff">struct slist seiseki[7]={ {1, &quot;Ito&quot;, 　{70, 60, 80}, 0},<BR>
-　　　　　　　　　　　　　　　　　　　　　　　　　　　　‥‥｝｝;</FONT><BR>
-<P><FONT color="#000080"><B>(3) 構造体メンバの参照（使用）</B></FONT><BR>
-　プログラムの実行文の中で、構造体変数の中の各要素変数を参照する場合、<BR>
-<BR>
-<B>　　<FONT color="#008000">構造体名.構造体メンバ名</FONT></B><BR>
-<BR>
-のように、ドットを使って、構造体名を構造体メンバ名で修飾します。<BR>
-構造体変数が配列の場合には、参照方法は、<BR>
-<BR>
-<B>　<FONT color="#008000">構造体配列名［要素番号］.構造体メンバ名</FONT></B><BR>
-<BR>
-のようになります。さらに、構造体メンバも配列の場合、<BR>
-<BR>
-<B>　<FONT color="#008000">構造体配列名［要素番号］.構造体メンバ名[要素番号]</FONT></B><BR>
-<BR>
-となります。上記の構造体配列<FONT color="#0000ff">seiseki</FONT>の例では、メンバ変数を次のように参照します。</P>
-　　<FONT color="#0000ff">seiseki[i].num </FONT>　　　 i番の学生の学生番号<BR>
-　　<FONT color="#0000ff">seiseki[i].name</FONT> 　　　i番の学生の名前<BR>
-　　<FONT color="#0000ff">seiseki[i].ten[0]</FONT>　　　i番の学生の、0番の科目の点数<BR>
-　　<FONT color="#0000ff">seiseki[i].ten[1]</FONT>　　　i番の学生の、1番の科目の点数<BR>
-　　<FONT color="#0000ff">seiseki[i].ten[2]</FONT>　　　i番の学生の、2番の科目の点数<BR>
-　　<FONT color="#0000ff">seiseki[i].total</FONT>　　　　i番の学生の合計点<BR>
-<BR>
-<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff">
-  <TR>
-    <TD><B><FONT color="#000080">例 8-3 </FONT></B>(Revised : 2012/10/01)<BR>
-    <BR>
-    次は構造体変数を用いて、例7-3 を書き直した成績データ処理プログラムです。<BR>
-    プログラムリストをとおして構造体変数の使い方を勉強してください。<BR>
-    <BR><PRE> /* 構造体を使った成績データの並び替え */
-#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-
-struct slist{
-    int num; /* 番号 */
-    char name[20]; /* 名前 */
-    int ten[3]; /* 各科目の点数(3科目） */
-    int total; /* 合計点 */
-};
-
-int main(void){ 
-    /*変数宣言と配列の初期値設定*/ 
-    int i,j;
-    int N=7,M=3,K=6; /* N:学生数, M:科目数 K:項目数*/
-    struct slist seiseki[7] = {{1, &quot;Ito&quot;, {65, 55, 80}, 0},
-                              {2, &quot;Kato&quot;, {30, 40, 50}, 0},
-                              {3, &quot;Tanaka&quot;,{65, 85,100}, 0},
-                              {4, &quot;Suzuki&quot;,{85,90, 65}, 0},
-                              {5, &quot;Yamada&quot;,{20, 50, 80}, 0},
-                              {6, &quot;Takada&quot;,{90, 30, 40}, 0},
-                              {7, &quot;Sato&quot;,{50, 70, 55}, 0}};
-    char hyodai[6][7]={&quot;no.&quot;,&quot;name&quot;,&quot;eigo&quot;,&quot;sugaku&quot;,&quot;buturi&quot;,&quot;total&quot;};<BR>
-    
-    /*表題の表示*/
-    printf(&quot;------------------------------------------------\n&quot;);
-    printf(&quot; Original Data\n&quot;);
-    printf(&quot;------------------------------------------------\n&quot;);
-    for(i=0;i&lt;K;i++){
-        printf(&quot;%8s&quot;,hyodai[i]);
-    };
-    printf(&quot;\n&quot;);
-    
-    /*各学生の３科目の合計（行の計算）*/
-    for(i=0;i&lt;N;i++){
-        printf(&quot;%8d%8s&quot;,seiseki[i].num,seiseki[i].name);
-    
-        for(j=0;j&lt;M;j++){
-            printf(&quot;%8d&quot;, seiseki[i].ten[j]);
-            seiseki[i].total += seiseki[i].ten[j];
-        }
-        printf(&quot;%8d\n&quot;,seiseki[i].total);
-    }
-
-    return(0);
-}</PRE>
-    </TD>
-  </TR></TABLE>
-<BR>
-<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
-  <TR>
-    <TD><FONT color="#000080"><B>演習問題 8-2</B></FONT> (Revised : 2014/10/06)<BR>
-    <BR>
-    例8-3を以下のような動作をするプログラムに変更してください。<BR>
-    レポートには、このプログラムの動作説明等を含む考察を書いてください。<BR>
-    <BR>
-    ①画面に、&gt;1:Ito, 2:Kato, 3:Tanaka, 4:Suzuki, 5:Yamada, 6:Takada, 7:Sato<BR>
-    　　　　　&gt;学籍番号を入力してください（1-7)? 　<BR>
-    と表示した後、成績表示したい学生の番号をキーボードから入力すると、該当する学生についてのみ、番号、名前、3科目の素点、および合計点を表示。<BR>
-    <BR>
-    ②画面に、&gt;1:EIGO, 2:SUGAKU, 3:BUTURI<BR>
-    　　 　　　　　&gt;科目番号を入力してください（1-3)? 　<BR>
-    と表示した後、成績表示したい科目の番号をキーボードから入力すると、該当する科目についてのみ、平均点、最高点、最低点、標準偏差を表示。<BR>
-    <BR>
-    </TD>
-  </TR></TABLE>
-<BR>
-<TABLE BORDER=0 WIDTH=100% BGCOLOR="#000080">
-  <TR>
-    <TD><FONT color="#ffffff"><B>並び替え（ソーティング）</B></FONT></TD>
-  </TR></TABLE>
-<BR>
-例えば、７人の学生の学生番号と合計点が　<BR>
-<BR>
-<FONT color="#0000ff">　番号　合計点<BR>
-　　1 　　210<BR>
-　　2 　　160<BR>
-　　3 　　260<BR>
-　　4 　　240<BR>
-　　5 　　190<BR>
-　　6　　 210<BR>
-　　7 　　180<BR>
-</FONT>
-<P>のように並んでいたとします。合計点の多い順に</P>
-<FONT color="#0000ff">　番号 合計<BR>
-　　3 　　260<BR>
-　　4　　 240<BR>
-　　1　　 210<BR>
-　　6　　 210<BR>
-　　5 　　190<BR>
-　　7 　　180<BR>
-　　2　　 160</FONT><BR>
-<P>のように並べ替えるにはどうしたらよいでしょうか？<BR>
-<BR>
-ソーティングアルゴリズムには、①選択ソート、②挿入ソート、③バブルソート、④クイックソート、などがあります。①②③の処理回数は、データ個数ｎの二乗に比例するため、データ数が多くなるにつれて処理時間が長くなってしまう欠点があります。ただし、②③の方法には、安定なソート（同順位のデータの順番が、並び替え前の順番と同じになること）を行うことができる長所があります。これに対して、④のクイックソートは安定でない欠点がありますが、処理回数を少なくできる（平均的な回数は、n
-logn に比例する） ため実用的によく使われます。ここでは、学習目的のために、アルゴリズムが単純でプログラムが理解しやすい①の選択ソート法を取り上げることにします。<BR>
-<BR>
-（注：　ソーティングのアルゴリズムについて詳しく知りたい人は、</P>
-<PRE>　　http://ja.wikipedia.org/wiki/Category:%E3%82%BD%E3%83%BC%E3%83%88</PRE>
-<P>などを参考にしてください。）<BR>
-<BR>
-例えば、ソートしたい数が</P>
-　　<FONT color="#0000ff">（原データ）　210 160 260 240 190 210 180</FONT><BR>
-<P>のように並んでいるとします。最初の繰り返し処理において、最大値のデータとその番号を調べます。その後、最大値のデータ（260)を１番目のデータと交換して、</P>
-<FONT color="#0000ff">　　（１回目）　</FONT><FONT color="#ff0000">260</FONT><FONT color="#0000ff"> 160</FONT><FONT color="#ff0000"> 210</FONT><FONT color="#0000ff"> 240 190 210 180</FONT><BR>
-<P>とします。次に、２番目以降のデータに対して、上記の場合と同様に、最大値を見つける処理ならびに、最大値(240)のデータと２番目のデータを交換する作業を行って</P>
-<FONT color="#0000ff">　　（２回目）　</FONT><FONT color="#008000">260</FONT><FONT color="#0000ff"> </FONT><FONT color="#ff0000">240</FONT><FONT color="#0000ff"> 210 </FONT><FONT color="#ff0000">160</FONT><FONT color="#0000ff"> 190 210 180</FONT><BR>
-<P>と並べ替えます。以下同様に、以上の処理を、残り２つのデータになるまで繰り返します。その結果、</P>
-<FONT color="#0000ff">　　（３回目）　</FONT><FONT color="#008000">260 240</FONT><FONT color="#0000ff"> </FONT><FONT color="#ff0000">210</FONT><FONT color="#0000ff"> 160 190 210 180<BR>
-　　（４回目）　</FONT><FONT color="#008000">260 240 210</FONT><FONT color="#ff0000"> 210</FONT><FONT color="#0000ff"> 190 </FONT><FONT color="#ff0000">160</FONT><FONT color="#0000ff"> 180<BR>
-　　（５回目）　</FONT><FONT color="#008000">260 240 210 210</FONT><FONT color="#ff0000"> 190 </FONT><FONT color="#0000ff">160 180<BR>
-　　（６回目）　</FONT><FONT color="#008000">260 240 210 210 190</FONT><FONT color="#0000ff"> </FONT><FONT color="#ff0000">180 160</FONT><BR>
-<BR>
-のように６回の並び替えの後に、降順（点数の高い順）にデータを並べかえることができます。以上の処理過程において、最大値ではなく、最小値を捜すように変更を加えれば、昇順（点数の低い順）に並べることもできます。<BR>
-<BR>
-<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#ffffff">
-  <TR>
-    <TD><B><FONT color="#000080">例 8-4</FONT> </B>(Revised : 2006/10/09)<BR>
-    <PRE>/* 成績データのソーティング*/
-#include&lt;stdio.h&gt;
-
-int main(void)
-{
-    /*変数宣言と配列の初期値設定*/
-
-    int i,j;
-    int N=7,jmax,totalmax;
-    int total[7]={210,160,260,240,190,210,180};
-  
-    /*並び替え前の合計点の表示 */
-    printf(&quot;--------------------------\n&quot;);
-    printf(&quot;原データ\n&quot;);
-    printf(&quot;--------------------------\n&quot;);
-    for(i=0;i&lt;N;i++){
-        printf(&quot;%8d\n&quot;, total[i]);
-    }
-
-    for(i=0;i&lt;N-1;i++){
-    
-        totalmax=total[i];
-        jmax=i;
-    
-        /* 最大値を求める*/
-        for(j=i+1; j&lt;N; j++){
-            if(total[j] &gt; totalmax){
-                jmax=j;
-                totalmax=total[j];
-            }
-        }
-
-        /* 最大値(jmax番目)のデータとi番目のデータを交換*/
-        total[jmax]=total[i];
-        total[i]=totalmax;
-    }
-
-    /*並ぎ替え後の合計点の表示 */
-    printf(&quot;--------------------------\n&quot;);
-    printf(&quot;並び替えデータ\n&quot;);
-    printf(&quot;--------------------------\n&quot;);
-    for(j=0;j&lt;N;j++){
-        printf(&quot;%5d\n&quot;, total[j]);
-    }
-
-    return(0);
-}</PRE>
-    </TD>
-  </TR></TABLE>
-<BR>
-<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
-  <TR>
-    <TD><B><FONT color="#000080">演習問題 8-3</FONT> </B>(Revised : 2014/10/06)<BR>
-    <BR>
-    原データを<BR>
-    <BR>
-    int total[8]={46,52,97,13,46,78,46,108};<BR>
-    <BR>
-    としたとき、以下のように小さい順から出力するよう、例8-4のプログラムを改良してください。また、並び替え後の？に入る番号を答えなさい。<BR>
-    <BR>
-    --------------------------<BR>
- 原データ<BR>
---------------------------<BR>
- 番号 合計<BR>　1 46<BR>
-　2 52<BR>
-　3 97<BR>
-　4 13<BR>
-　5 46<BR>
-　6 78<BR>
-    　7 46<BR>
-    　8 108<BR>
-    <BR>  
---------------------------<BR>
- 並び替えデータ<BR>
---------------------------<BR>
- 番号 合計<BR>　4 13<BR>
-　? 46<BR>
-　? 46<BR>
-　? 46<BR>
-　2 52<BR>
-　6 78<BR>
-    　3 97<BR>
-    　8 108<BR>
-    <BR>
-    </TD>
-  </TR></TABLE><BR>
-<TABLE BORDER=1 CELLSPACING=1 WIDTH=100% BGCOLOR="#e1ffff">
-  <TR>
-    <TD><B><FONT color="#000080">演習問題 8-4　余力がある人へ</FONT> </B>(Revised : 2014/10/06)<BR>
-    例8-3で練習した構造体変数を用いて、次のような結果を表示するプログラムを作ってください<BR>
-    （合計点の高い順にソーティングするプログラム）。<BR>
-    <PRE>------------------------------------------------
-　Original Data
-------------------------------------------------
-　No.　Name　  Eigo Sugaku　Buturi　Total
-　1　　Ito　　　65　　55　　　80　　 200
-　2　　Kato 　　30　　40　　　50　　 120
-　3　　Tanaka 　65　　85 　　100　　 250
-　4　　Suzuki 　85 　 90　　　65　　 240
-　5　　Yamada 　20　　50　　　80　　 150
-　6　　Takada 　90    30      40 　　160
-　7　　Sato 　　50    70      55 　　175
-
-------------------------------------------------
-　Sorted Data
-------------------------------------------------
-  No.  Name    Eigo Sugaku  Buturi  Total
-  3    Tanaka 　65　　85 　　100　　 250
-  4    Suzuki 　85 　 90　　　65　　 240
-  1    Ito　　　65　　55　　　80　　 200
-  7    Sato 　　50    70      55 　　175
-  6    Takada 　90    30      40 　　160
-  5    Yamada 　20　　50　　　80　　 150
-  2    Kato 　　30　　40　　　50　　 120
-</PRE>
-    </TD>
-  </TR></TABLE>
-<BR>
+�@��L�̑Ή��Ŗw�ǏC���ł��܂����A�܂�ɉ��z�[���V�X�e����Eclipse�{�̂̌����Ńg���u�����������邱�Ƃ�����܂��B���̏ꍇ�́A������񃁃f�B�A�Z���^�[�́A��t�i�}���قPF)��A�Ɩ����i8����5F�j�ɑ��k���Ă��������B</P>
 </BODY>
 </HTML>
